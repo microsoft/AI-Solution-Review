@@ -1,138 +1,150 @@
-# AI Solution Review
+# Agent Review Program
 
-A short, expert-led review of a working AI agent. Three sessions over about 30 days give you a clear
-picture of how your agent actually behaves, why it underperforms, a prioritized list of fixes, and a
-measured before-and-after check that those fixes worked.
+> An expert-guided review, debugging and optimization, and validation service for your Copilot Studio
+> agents, declarative agents, plugins, and skills.
+
+The Agent Review Program pairs Microsoft experts with the **Agent Review Center** — a tool that runs
+in your own environment and scores your agent against practices Microsoft teams have gathered across
+customer engagements.
+
+You get a scored baseline, risk-ranked findings with concrete remediation steps, and — once you have
+made the fixes — a re-run measured against that baseline. The tool stays in your environment
+afterward, so you can review your agents again whenever you want.
 
 ---
 
 ## What it is
 
-The AI Solution Review is a structured, time-boxed engagement delivered by the Microsoft team that
-builds agent assessment tooling. We look at your agent as it actually runs — its configuration,
-instructions, tools, and behavior in real usage — and turn that into findings your team can act on.
-
-The review is built around one idea: **measure, fix, then measure again the same way.** We capture a
-baseline assessment of your agent in Session 1 and re-run that same assessment in Session 3. The
-difference between the two is your evidence that the agent improved.
-
-**It is for you if:**
-
-- You have an agent that is working, or close to working, aimed at a meaningful number of users.
-- You are heading toward production, or toward a significantly larger rollout.
-- You want to know what will break before your users find it.
-- You need something concrete to put in front of a decision maker before you scale.
-
-## The problem it addresses
-
-| What teams run into | Why it hurts |
+| | |
 |---|---|
-| Problems surface only after an incident | There is no early warning. Issues show up in production instead of before it. |
-| You can tell the agent is misbehaving, but not where | Without root cause, teams guess. Is it configuration, the platform, or prompting and orchestration? |
-| No baseline, so no proof of improvement | Nothing to measure "before" against "after." Improvements can't be demonstrated or trusted ahead of scaling. |
-
-Agent problems are rarely just errors. Cost, latency, answer quality, users abandoning a task
-part-way, and user sentiment all matter — and none of them show up in an error log.
-
-## What you get
-
-| Deliverable | When | What it's for |
-|---|---|---|
-| **Baseline assessment** | Session 1 | A recorded, frozen picture of how your agent behaves today. It is not overwritten later, so the comparison stays honest. |
-| **Findings report** | Session 2 | What we found, ranked by severity, with the evidence behind each finding. |
-| **Prioritized recommendations** | Session 2 | A concrete fix list with impact and effort on each item, so you can decide what to do first. |
-| **Validation re-run and delta** | Session 3 | The same assessment run again, with the before-and-after difference. |
-| **Closeout summary** | Session 3 | The outcome, any residual risk in writing, and where to go next for deeper or ongoing work. |
-
-The findings report and the delta are yours. They are written to be readable by an engineer and
-defensible to an executive.
-
-## How the review works
-
-Three sessions, roughly 3–6 hours of your team's time in total, with an implementation window of
-about 30 days built into the middle.
+| **Review** | Configuration, orchestration, knowledge and data grounding, and traces, checked against best practice. |
+| **Debug** | Failure modes surfaced from your own transcripts and telemetry, not guesswork. |
+| **Optimize** | Gaps named and ranked — including evals generated for you where you have none. |
+| **Validate** | Fix, then prove the fix worked against your baseline. |
 
 ```mermaid
 flowchart LR
-    R["Request<br/>a review"] --> P["Scoping & access<br/>~1 week ahead"]
-    P --> S1["Session 1 · Discovery<br/>1–3h · baseline captured"]
-    S1 --> A["Analysis<br/>on our side"]
-    A --> S2["Session 2 · Findings & Recommendations<br/>1–2h"]
-    S2 --> G["~30 days<br/>you implement"]
-    G --> S3["Session 3 · Validation<br/>1h · re-run & delta"]
-    S3 --> C["Closeout<br/>report & next steps"]
+    B["Baseline<br/>scored review of your agents"] --> F["Findings<br/>risk-ranked, with remediation"]
+    F --> X["You fix<br/>in your own environment"]
+    X --> R["Re-run<br/>scored against the baseline"]
+    R -->|"evidence the fix worked"| B
 ```
 
-| Stage | Your time | What happens | What comes out of it |
-|---|---|---|---|
-| **Scoping & access** | Short async prep | We confirm the review is a fit, agree which agents are in scope, and your admin arranges the access the review needs. | Confirmed scope, access in place, Session 1 booked |
-| **Session 1 · Discovery** | 1–3 hours | We walk your agent with you, agree what is in and out of scope, and capture the baseline assessment and supporting evidence. | Frozen baseline |
-| **Analysis** | None | We turn the baseline into findings and a prioritized set of recommendations. | Draft findings |
-| **Session 2 · Findings & Recommendations** | 1–2 hours | We present what we found and why. You decide what you will implement, who owns each item, and by when. The ~30-day clock starts, and Session 3 goes on the calendar. | Report, committed action list, Session 3 booked |
-| **Implementation window** | Your team's own work | You implement the changes you committed to. | Agent ready for validation |
-| **Session 3 · Validation** | 1 hour | We re-run the same assessment against the same kind of data window and show the difference. | Validation score, baseline-to-validation delta, closeout |
+## What it checks
 
-Two things make the comparison trustworthy, and we hold to them:
-
-- **The baseline is frozen.** The Session 1 assessment is stored as-is. A re-run never overwrites it.
-- **The re-run matches the baseline.** Same assessment, same method, same data window length. If
-  something changed underneath that affects the comparison, we say so in the report rather than
-  quietly absorbing it.
-
-## What we need from you
-
-| What | Why it matters |
+| Area | What we look at |
 |---|---|
-| A working or in-progress agent | The review analyzes a running system. There needs to be something to look at. |
-| A named technical owner | One person who knows the agent and can answer questions during the sessions. |
-| Someone who can implement fixes | Ideally the same person, and with the authority to make changes without a further approval round. |
-| Agreed data access, arranged ahead of Session 1 | Access typically needs an admin and a change window. Start this about a week before Session 1. |
-| Logging and telemetry switched on early | Usage history is generally not backfilled. If recording is turned on the day before Session 1, there is little to analyze. The earlier it is on, the deeper the review can go. |
-| Attendance at all three sessions | Session 2 and Session 3 dates are agreed during Session 1 so the window is realistic for your team. |
-| Ownership of the fixes | You own the implementation during the ~30-day window. We do not make changes to your agent for you. |
-| The two or three areas you want reviewed | Telling us where it hurts most makes Session 1 faster and the findings sharper. |
+| **Configuration** | How the agent is set up: instructions, skills, tools, manifests, and the settings that shape its behavior. |
+| **Orchestration** | How work is routed between agents, topics, and tools. Overlapping delegation triggers and contradictory guidance between parent and child agents are common and expensive. |
+| **Knowledge and data grounding** | What the agent is grounded in, and whether its answers are actually supported by it. |
+| **Traces** | Real runtime behavior from your own transcripts and telemetry: where conversations fail, what the agent actually did, and where users give up. |
 
-If the recommendations aren't implemented during the window, there is nothing to re-measure, and the
-review closes without a validation session. The window length is agreed with you at Session 2, so
-set one your team can actually meet.
+Checks are grounded in field practice — each one tests the agent against best practices Microsoft
+teams gathered across customer engagements. Findings cite their sources, including Microsoft Learn
+and published references such as OWASP.
 
-## What this is not
+## What you get
 
-- **Not break/fix or support escalation.** If you have a live production incident, go through
-  Microsoft Support. This review is a scheduled engagement, not an incident channel.
-- **Not open-ended consulting.** It is three sessions with a defined start and end, not an
-  ongoing advisory relationship.
-- **Not an architecture design engagement.** We review the running system and its behavior data. A
-  design engagement reviews intent and architecture choices. They are different engagements, and the
-  review can hand off into deeper work if you need it.
-- **Not a rubber stamp.** "Don't scale this yet, and here's the evidence why" is a valid and
-  expected outcome. The decision to ship stays yours.
+| | |
+|---|---|
+| **Confidence** | You know whether the agent is ready to ship. |
+| **Diagnosis** | Named failure modes instead of guesses about what is wrong. |
+| **Priority** | A risk-ranked backlog, so the highest-impact fixes come first. |
+| **Evidence** | A before-and-after score you can hand to stakeholders. |
 
-## Data handling and privacy
+### What a finding looks like
 
-Our default posture is deliberately conservative:
+Findings are grouped by component area — Orchestration, for example — and each one carries:
 
-- **Your tenant, your screen.** Analysis runs against your environment, driven by you in a
-  screen-share. You stay in control of what is shown.
-- **No customer data at rest by default.** We do not take your conversation data away with us.
-- **Every data type has a recorded reason.** If we look at something, there is a written rationale
-  for why the review needed it.
-- **Sharing is opt-in and explicit.** We ask separately, and in advance, before any report is shared
-  beyond your team or before your organization is named in anything.
+| Field | What it tells you |
+|---|---|
+| **Severity** | How much it matters. Drives the order you work in. |
+| **Finding ID** | A stable identifier, so you can track and discuss a specific finding. |
+| **Title** | The problem in one line. |
+| **Type** | The class of problem, such as `overlap` or `contradiction`. |
+| **Agents affected** | Which of your agents the finding applies to. |
+| **Explanation** | What is wrong, in plain language, with the parsed facts behind it. |
+| **Impact** | What it costs you if it stays unfixed. |
+| **Remediation** | What to do about it, plus concrete step-by-step actions. |
+| **Detection and source** | How it was found and what practice or reference it is based on. |
 
-If a review needs anything beyond this posture, we agree it with you in writing before it starts.
+An illustrative example:
 
-## Get started
+> **HIGH · `XSK-01` · Overlapping delegation triggers across connected agents**
+>
+> **Type:** `overlap` · **Agents:** Central Copilot, Supplier Ops Assistant, Travel and Expense Assistant
+>
+> Central Copilot routes invoices, purchase orders, and procurement to Supplier Ops Assistant, and
+> routes expense reports, claims, and reimbursements to Travel and Expense Assistant. But both child
+> agents describe themselves as handling expense approvals and finance approvals. The boundary is
+> ambiguous, so routing is unpredictable.
+>
+> **Remediation.** Draw one boundary between the two finance child agents and restate it identically
+> in the parent routing rule and in both child agent instructions.
+>
+> 1. Decide which agent owns expense approvals.
+> 2. Remove the losing claim from the other agent's instructions.
+> 3. Update the parent routing rule to match.
 
-1. **Talk to your Microsoft account team** — your account executive, Cloud Solution Architect, or
-   Customer Program Manager. Ask them to submit an AI Solution Review request for your agent.
-2. **Tell them what to look at** — the agent or agents in scope, roughly how many users it is aimed
-   at, where you are in the build, and the two or three things worrying you most.
-3. **We confirm fit and book Session 1** — including the access your admin needs to arrange first.
+A second example from the same family: **`XSK-03` · Contradictory guidance between parent and child
+agents**, where conflicting escalation instructions suppress the escalation path that the parent's
+own ticket-creation rule depends on. Neither of these is visible by reading one agent at a time.
 
-If you are not sure who your account team is, or you have a question about how the review works,
-[open an issue](../../issues) in this repository. See [SUPPORT.md](SUPPORT.md) for what this
-repository is and is not the right place for.
+## The Agent Review Center
+
+The Agent Review Center is the tool behind the review. It runs in your own environment, against your
+own agents.
+
+| Capability | What it does |
+|---|---|
+| **Scored review result** | A rolled score across every agent reviewed — a grade and a number, such as `B+ · 87/100` — with per-agent tabs so you can see which agent is dragging the score. |
+| **Review summary** | Total checks passed, broken down into passed, needs attention, and fail, plus the count of references cited. |
+| **Findings list** | Every finding, expandable, filterable by component and status, showing parsed fact, impact, recommendation, and detection method. You can include or ignore a rule, or jump straight to editing the skill. |
+| **Agent map** | How your agents connect, so routing and delegation problems are visible as structure, not buried in instructions. |
+| **Runtime analysis** | Behavior from real runs, not just static configuration. |
+| **Conversation analytics** | Coverage across your agents, conversations analyzed, detected risks, PII exposure, sentiment breakdown, and activity trends over time. |
+| **Agent debugger** | Step through a failed conversation and see variable values and the steps the agent actually took. |
+| **Rule packs** | Versioned sets of checks, so you know exactly which rules produced a result and can compare like with like. |
+| **Snapshots and re-run** | Keep a snapshot of a review and run it again later. This is what turns "we changed some things" into a measured before-and-after. |
+| **Share results** | Hand the scored result to your own stakeholders. |
+
+Every run records its own metadata — when it ran, how long it took, the model used, whether memory
+and web search were on, and its credit accounting — so a result is reproducible and auditable later.
+
+## What you need to bring
+
+| What | Detail |
+|---|---|
+| **A named owner with the right access** | One person who can work on the agent directly, with about **3–6 hours** across the engagement. |
+| **Agreement to install the Agent Review Center** | It runs in **your own environment**, so your data stays in your tenant. |
+| **An agent with a meaningful user base** | In testing, pilot, or production, with enough real traces for the failure modes to be informative. |
+| **Premium Power Apps license** | Required to run the Agent Review Center. |
+| **Copilot credits** | Running the review consumes credits in your tenant. |
+
+An agent with little or no real traffic can still be reviewed for configuration and orchestration,
+but the runtime and conversation analysis will have little to work with.
+
+## Data handling
+
+- **The tool runs in your environment.** The Agent Review Center is installed in your own tenant and
+  runs against your own agents.
+- **Your data stays in your tenant.** Transcripts, telemetry, and traces are analyzed where they
+  already live.
+- **You control what is shared.** Results are yours. Sharing them outside your team is your decision.
+
+## How to get started
+
+1. **Pick the agent or agents you want reviewed.** Something in testing, pilot, or production with a
+   meaningful user base, and enough real traces for the findings to tell you something.
+2. **Ask your Microsoft team.** Talk to the Microsoft team you already work with and ask them about
+   the Agent Review Program.
+3. **Name your owner and book the first slot** for discovery, Agent Review Center setup, and data
+   preparation.
+
+Not sure whether your agent is a fit? Ask your Microsoft contact — we will scope it with you
+beforehand.
+
+For questions about these docs, see [SUPPORT.md](SUPPORT.md).
 
 ---
 

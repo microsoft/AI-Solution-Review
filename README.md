@@ -52,44 +52,6 @@ and published references such as OWASP.
 | **Priority** | A risk-ranked backlog, so the highest-impact fixes come first. |
 | **Evidence** | A before-and-after score you can hand to stakeholders. |
 
-### What a finding looks like
-
-Findings are grouped by component area — Orchestration, for example — and each one carries:
-
-| Field | What it tells you |
-|---|---|
-| **Severity** | How much it matters. Drives the order you work in. |
-| **Finding ID** | A stable identifier, so you can track and discuss a specific finding. |
-| **Title** | The problem in one line. |
-| **Type** | The class of problem, such as `overlap` or `contradiction`. |
-| **Agents affected** | Which of your agents the finding applies to. |
-| **Explanation** | What is wrong, in plain language, with the parsed facts behind it. |
-| **Impact** | What it costs you if it stays unfixed. |
-| **Remediation** | What to do about it, plus concrete step-by-step actions. |
-| **Detection and source** | How it was found and what practice or reference it is based on. |
-
-An illustrative example:
-
-> **HIGH · `XSK-01` · Overlapping delegation triggers across connected agents**
->
-> **Type:** `overlap` · **Agents:** Central Copilot, Supplier Ops Assistant, Travel and Expense Assistant
->
-> Central Copilot routes invoices, purchase orders, and procurement to Supplier Ops Assistant, and
-> routes expense reports, claims, and reimbursements to Travel and Expense Assistant. But both child
-> agents describe themselves as handling expense approvals and finance approvals. The boundary is
-> ambiguous, so routing is unpredictable.
->
-> **Remediation.** Draw one boundary between the two finance child agents and restate it identically
-> in the parent routing rule and in both child agent instructions.
->
-> 1. Decide which agent owns expense approvals.
-> 2. Remove the losing claim from the other agent's instructions.
-> 3. Update the parent routing rule to match.
-
-A second example from the same family: **`XSK-03` · Contradictory guidance between parent and child
-agents**, where conflicting escalation instructions suppress the escalation path that the parent's
-own ticket-creation rule depends on. Neither of these is visible by reading one agent at a time.
-
 ## The Agent Review Center
 
 The Agent Review Center is the tool behind the review. It runs in your own environment, against your

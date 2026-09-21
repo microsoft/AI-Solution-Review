@@ -78,13 +78,85 @@ and web search were on, and its credit accounting — so a result is reproducibl
 | What | Detail |
 |---|---|
 | **A named owner with the right access** | One person who can work on the agent directly, with about **3–6 hours** across the engagement. |
-| **Agreement to install the Agent Review Center** | It runs in **your own environment**, so your data stays in your tenant. |
+| **Agreement to install the Agent Review Center** | It runs in **your own environment**, so your data stays in your tenant. See [Install the Agent Review Center](#install-the-agent-review-center). |
 | **An agent with a meaningful user base** | In testing, pilot, or production, with enough real traces for the failure modes to be informative. |
-| **Premium Power Apps license** | Required to run the Agent Review Center. |
-| **Copilot credits** | Running the review consumes credits in your tenant. |
+| **Licensing and credits** | A Copilot Studio license, a Power Apps Premium license, and Copilot credits. See [Prerequisites](#prerequisites). |
 
 An agent with little or no real traffic can still be reviewed for configuration and orchestration,
 but the runtime and conversation analysis will have little to work with.
+
+## Install the Agent Review Center
+
+The Agent Review Center is installed as part of the **Copilot Agent Kit**, an open-source toolkit for
+Copilot Studio agents. It goes into a Power Platform environment in your own tenant.
+
+Start this before your first working session. The tenant admin approvals and the transcript setting
+are the two things most likely to hold up a review, and neither is quick to arrange on the day.
+
+> The Copilot Agent Kit documentation refers to the underlying capability as the **Agent Review
+> Tool**. It is the same thing you will see described here as the Agent Review Center.
+
+### Prerequisites
+
+**Licensing — tenant level**
+
+| Requirement | Why |
+|---|---|
+| **Copilot Studio license** | The agents under review run on it. |
+| **Power Apps Premium license** | Required to run the app and the Power Automate cloud flows that use Premium connectors. |
+| **Copilot credits** | Running a review consumes credits. Credits must also be allocated to the environment where the Agent Review Center runs, not only owned at tenant level. |
+
+**Environment configuration — needs a system administrator**
+
+| Setting | Notes |
+|---|---|
+| **Dataverse provisioned** | The environment must [have Dataverse as a data store](https://learn.microsoft.com/en-us/power-platform/admin/create-environment). Configuration and results are stored there. |
+| **Not a preview environment** | Use a standard environment. |
+| **Code apps enabled** | [Enable Power Apps Code Apps](https://learn.microsoft.com/en-us/power-apps/developer/code-apps/overview#enable-code-apps-on-a-power-platform-environment) on the environment. |
+| **Power Apps component framework enabled** | [Enable the component framework for canvas apps](https://learn.microsoft.com/en-us/power-apps/developer/component-framework/component-framework-for-canvas-apps#enable-the-power-apps-component-framework-feature). |
+| **Bot transcripts enabled** | Required for runtime analysis and conversation analytics. See the note below — turn this on early. |
+| **Creator Kit deployed** | A required dependency. [Set up the Creator Kit](https://learn.microsoft.com/en-us/power-platform/guidance/creator-kit/setup) first. |
+| **Connectors allowed by data policy** | Your environment's [data loss prevention policies](https://learn.microsoft.com/en-us/power-platform/admin/wp-data-loss-prevention) must permit every connector shipped in the solution, and connections must be populated at import time — regardless of which features you plan to use. |
+
+**Access and roles**
+
+Two environments can be involved: the one where the Agent Review Center runs, and the one where the
+agent being reviewed lives. They can be the same environment, but they do not have to be.
+
+| Where | What your tenant admin grants |
+|---|---|
+| **Environment running the Agent Review Center** | System administrator to perform the install. For the review owner: a security role that can read the Agent Review Center tables, and direct access to the Agent Review Center code app. |
+| **Environment holding the agent under review** | **Agent Maker**, so the owner can work on the agent. **Bot Transcript Viewer**, so conversation transcripts can be read. Transcript access is [governed by environment security roles](https://learn.microsoft.com/en-us/microsoft-copilot-studio/admin-share-bots). |
+
+Full detail is in the [Copilot Agent Kit prerequisites](https://learn.microsoft.com/en-us/microsoft-copilot-studio/guidance/kit-prerequisites).
+
+### Turn on transcripts early
+
+**Transcript recording is not retroactive.** Nothing is backfilled. If recording is switched on the
+day before the review starts, there is almost no history to analyze, and the runtime and
+conversation analysis will have little to say.
+
+Two things to tell your admin:
+
+- Transcript recording is an **environment setting**, so it applies to agents in that environment,
+  not only the ones under review. Environment-group policies can override a per-environment setting.
+- **Retention is configurable.** Check that the retention window covers the period you want reviewed.
+
+After switching it on, run a test conversation and confirm a transcript row actually appears before
+you rely on it.
+
+### Install
+
+| Step | What to do |
+|---|---|
+| **1. Check prerequisites** | Work through [Copilot Agent Kit prerequisites](https://learn.microsoft.com/en-us/microsoft-copilot-studio/guidance/kit-prerequisites) before downloading anything. |
+| **2. Install the kit** | From [Marketplace](https://aka.ms/DownloadCopilotStudioKit), or import the latest managed solution from the [GitHub releases](https://github.com/microsoft/Power-CAT-Copilot-Studio-Kit/releases/latest). Full steps: [Install Copilot Agent Kit](https://learn.microsoft.com/en-us/microsoft-copilot-studio/guidance/kit-install). |
+| **3. Configure connection references** | In Power Apps, open the default solution and make sure the **Copilot Agent Kit - Dataverse** connection reference is valid. |
+| **4. Enable the cloud flows** | In Power Automate, confirm every flow in the solution is on. Enable them in order: flows ending in **Grandchild**, then **Child**, then the rest. |
+| **5. Finish in the Setup Wizard** | The kit includes a [Setup Wizard](https://learn.microsoft.com/en-us/microsoft-copilot-studio/guidance/kit-setup-wizard) for connection references, environment variables, and flows. The **Agents (preview)** connector used by the review workflow cannot be configured during solution import — skip it at import and complete it in the Setup Wizard. |
+
+If you are already scoping a review with your Microsoft contact, they can walk your admin through
+this. You do not have to get it all working alone before you talk to us.
 
 ## Data handling
 
@@ -100,7 +172,9 @@ but the runtime and conversation analysis will have little to work with.
    meaningful user base, and enough real traces for the findings to tell you something.
 2. **Ask your Microsoft team.** Talk to the Microsoft team you already work with and ask them about
    the Agent Review Program.
-3. **Name your owner and book the first slot** for discovery, Agent Review Center setup, and data
+3. **Start the setup early.** Get the [prerequisites and permissions](#install-the-agent-review-center)
+   in front of your tenant admin, and turn on transcript recording as soon as you can.
+4. **Name your owner and book the first slot** for discovery, Agent Review Center setup, and data
    preparation.
 
 Not sure whether your agent is a fit? Ask your Microsoft contact — we will scope it with you

@@ -57,6 +57,9 @@
   --font-mono: ui-monospace, "Cascadia Mono", "Segoe UI Mono", Consolas, monospace;
 
   --dot-grid: radial-gradient(currentColor 1px, transparent 1px);
+
+  --agentpill-bg: #115ea3;
+  --agentpill-fg: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -97,6 +100,9 @@
     --shadow-sm: 0 1px 2px rgba(0,0,0,.4), 0 3px 10px rgba(0,0,0,.3);
     --shadow-md: 0 2px 4px rgba(0,0,0,.45), 0 12px 30px rgba(0,0,0,.4);
     --shadow-lg: 0 4px 10px rgba(0,0,0,.5), 0 26px 64px rgba(0,0,0,.5);
+
+    --agentpill-bg: #1b4a71;
+    --agentpill-fg: #eaf2fb;
   }
 }
 
@@ -346,24 +352,83 @@ img { max-width: 100%; }
 .appwin__title { font-size: .78rem; font-weight: 600; color: var(--text-muted); margin: 0; }
 .appwin__body { padding: 1.3rem 1.35rem 1.45rem; }
 
-/* score ring */
-.score { display: flex; align-items: center; gap: 1.15rem; }
-.score__ring { position: relative; flex-shrink: 0; width: 104px; height: 104px; }
-.score__ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
-.score__track { fill: none; stroke: var(--surface-3); stroke-width: 9; }
-.score__value { fill: none; stroke: var(--brand); stroke-width: 9; stroke-linecap: round; }
-.score__num { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; }
-.score__grade {
-  font-family: var(--font-display); font-weight: 700; font-size: 1.6rem;
-  letter-spacing: -.02em; color: var(--text); line-height: 1;
+/* score block — mirrors the app: square letter badge + rolled-up score */
+.score { display: flex; align-items: center; gap: .9rem; flex-shrink: 0; }
+.score__badge {
+  flex-shrink: 0;
+  width: 62px; height: 62px; border-radius: 12px;
+  display: grid; place-items: center;
+  font-family: var(--font-display); font-weight: 700; font-size: 1.9rem;
+  letter-spacing: -.02em;
+  background: var(--ok-soft); color: var(--ok);
 }
-.score__outof { font-size: .72rem; color: var(--text-faint); margin-top: .15rem; }
-.score__meta { min-width: 0; }
-.score__label {
-  font-size: .74rem; text-transform: uppercase; letter-spacing: .08em;
-  color: var(--text-faint); font-weight: 700; margin: 0 0 .3rem;
+.score__meta { min-width: 0; border-left: 3px solid var(--ok); padding-left: .8rem; }
+.score__label { font-size: .76rem; font-weight: 600; color: var(--text-muted); margin: 0; }
+.score__targets { font-size: .66rem; color: var(--text-faint); margin: 0 0 .1rem; }
+.score__value {
+  font-family: var(--font-display); font-weight: 700; font-size: 1.45rem;
+  line-height: 1.1; color: var(--text-muted); margin: 0;
 }
-.score__agents { font-size: .95rem; color: var(--text-muted); margin: 0; }
+.score__value b { color: var(--ok); font-size: 1.7rem; }
+
+.score__agent {
+  display: inline-flex; align-items: center; gap: .5rem; align-self: flex-start;
+  background: var(--agentpill-bg); color: var(--agentpill-fg);
+  border-radius: 8px; padding: .44rem .72rem; margin: .85rem 0 0;
+  font-size: .8rem; font-weight: 600; max-width: 100%;
+}
+.score__agent .sk { background: color-mix(in srgb, var(--agentpill-fg) 42%, transparent); }
+
+/* review summary — total checks passed, pass/fail bar, run metadata */
+.summary {
+  border: 1px solid var(--border); border-radius: 10px;
+  padding: .8rem .85rem; margin-top: .9rem; background: var(--surface);
+}
+.summary__top {
+  display: flex; justify-content: space-between; align-items: baseline;
+  font-size: .74rem; color: var(--text-muted); margin-bottom: .42rem;
+}
+.summary__top b { font-family: var(--font-display); color: var(--text); font-size: .88rem; }
+.summary__bar { display: block; height: 7px; border-radius: 4px; background: var(--bad); overflow: hidden; }
+.summary__bar i { display: block; height: 100%; background: var(--ok); }
+.summary__legend {
+  display: flex; flex-wrap: wrap; gap: .3rem .8rem; list-style: none;
+  margin: .5rem 0 0; padding: 0; font-size: .66rem; color: var(--text-faint);
+}
+.summary__legend li { display: inline-flex; align-items: center; gap: .3rem; }
+.summary__legend .is-pass::before,
+.summary__legend .is-fail::before { content: ""; width: 7px; height: 7px; border-radius: 2px; }
+.summary__legend .is-pass::before { background: var(--ok); }
+.summary__legend .is-fail::before { background: var(--bad); }
+.summary__meta {
+  display: flex; flex-wrap: wrap; gap: .3rem .9rem;
+  margin-top: .55rem; font-size: .66rem; color: var(--text-faint);
+}
+.summary__meta span { display: inline-flex; align-items: center; gap: .32rem; }
+
+/* rule id chip + status pill, as shown on every finding row */
+.ruleid {
+  font-family: var(--font-mono); font-size: .62rem; color: var(--text-faint);
+  border: 1px solid var(--border); border-radius: 4px;
+  padding: .1rem .3rem; flex-shrink: 0;
+}
+.statuspill {
+  display: inline-flex; align-items: center; gap: .28rem;
+  font-size: .64rem; font-weight: 600; padding: .14rem .45rem;
+  border-radius: 999px; flex-shrink: 0; border: 1px solid transparent;
+}
+.statuspill::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.statuspill.is-fail { background: var(--bad-soft); color: var(--bad); border-color: color-mix(in srgb, var(--bad) 28%, transparent); }
+.statuspill.is-pass { background: var(--ok-soft); color: var(--ok); border-color: color-mix(in srgb, var(--ok) 28%, transparent); }
+
+/* segmented sub-tabs (Errors / Latency / Knowledge) */
+.mockseg {
+  display: inline-flex; align-self: flex-start;
+  border: 1px solid var(--border);
+  border-radius: 7px; overflow: hidden; margin-bottom: .7rem;
+}
+.mockseg span { font-size: .68rem; padding: .3rem .58rem; color: var(--text-faint); }
+.mockseg span[data-on] { background: var(--surface-3); color: var(--text); font-weight: 600; }
 
 /* chips */
 .chips { display: flex; flex-wrap: wrap; gap: .45rem; list-style: none; margin: 1.15rem 0 0; padding: 0; }
@@ -374,9 +439,6 @@ img { max-width: 100%; }
   background: var(--surface-2); color: var(--text-muted);
 }
 .chip::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
-.chip--ok   { background: var(--ok-soft);   color: var(--ok);   border-color: color-mix(in srgb, var(--ok) 28%, transparent); }
-.chip--warn { background: var(--warn-soft); color: var(--warn); border-color: color-mix(in srgb, var(--warn) 32%, transparent); }
-.chip--bad  { background: var(--bad-soft);  color: var(--bad);  border-color: color-mix(in srgb, var(--bad) 28%, transparent); }
 
 /* tab strip */
 .mocktabs { display: flex; gap: .3rem; margin-top: 1.2rem; border-bottom: 1px solid var(--border); }
@@ -567,40 +629,12 @@ img { max-width: 100%; }
   padding: .55rem .7rem; border: 1px solid var(--border);
   border-radius: 8px; background: var(--surface-2);
 }
-.mockrow__sev { width: 6px; align-self: stretch; border-radius: 3px; background: var(--border-strong); flex-shrink: 0; }
-.mockrow__sev[data-sev="high"] { background: var(--bad); }
-.mockrow__sev[data-sev="med"]  { background: var(--warn); }
-.mockrow__sev[data-sev="low"]  { background: var(--ok); }
 .mockrow__body { flex: 1; min-width: 0; display: grid; gap: .34rem; }
-.mockrow__chev { color: var(--text-faint); flex-shrink: 0; }
 
 .mockstats { display: grid; grid-template-columns: repeat(3, 1fr); gap: .6rem; }
 .mockstat { border: 1px solid var(--border); border-radius: 9px; padding: .6rem .7rem; background: var(--surface-2); }
 .mockstat b { display: block; font-family: var(--font-display); font-size: 1.05rem; color: var(--text); line-height: 1.2; }
 .mockstat span { font-size: .7rem; color: var(--text-faint); }
-
-.mockchart { display: flex; align-items: flex-end; gap: .4rem; flex: 1; min-height: 40px; margin-top: .85rem; }
-.mockchart i {
-  flex: 1; border-radius: 4px 4px 0 0; display: block;
-  background: linear-gradient(180deg, var(--brand), color-mix(in srgb, var(--brand) 32%, transparent));
-}
-
-/* two-column dashboard area inside the wide mock */
-.mockgrid {
-  display: grid; grid-template-columns: 1.35fr .65fr; gap: .8rem;
-  flex: 1; min-height: 0; margin-top: .9rem;
-}
-.mockpanel {
-  display: flex; flex-direction: column; min-height: 0; overflow: hidden;
-  border: 1px solid var(--border); border-radius: 10px;
-  padding: .7rem .78rem; background: var(--surface);
-}
-.mockpanel__h {
-  font-size: .68rem; text-transform: uppercase; letter-spacing: .08em;
-  color: var(--text-faint); font-weight: 700; margin: 0 0 .5rem;
-}
-.mockgrid .mockrows { margin-top: 0; }
-.mockgrid .mockchart { margin-top: .2rem; }
 
 .mocksteps { display: grid; gap: .45rem; margin-top: .9rem; }
 .mockstep { display: flex; align-items: center; gap: .6rem; font-size: .76rem; color: var(--text-muted); }
@@ -612,12 +646,31 @@ img { max-width: 100%; }
 .mockstep[data-fail] i { background: var(--bad-soft); color: var(--bad); }
 .mockstep[data-fail] { color: var(--bad); }
 
-.mockmap { flex: 1; min-height: 0; margin-top: .5rem; }
+/* agent map: typed component cards, labelled edges, evidence legend */
+.maplegend {
+  display: flex; flex-wrap: wrap; gap: .25rem .9rem;
+  font-size: .63rem; color: var(--text-faint); margin-bottom: .35rem;
+}
+.maplegend span { display: inline-flex; align-items: center; gap: .32rem; }
+.maplegend i { width: 16px; border-top: 1.5px solid var(--border-strong); }
+.maplegend i[data-dashed] { border-top-style: dashed; }
+
+/* bottom padding keeps map nodes clear of the PLACEHOLDER badge */
+.mockmap { flex: 1; min-height: 0; padding-bottom: 22px; }
 .mockmap svg { width: 100%; height: 100%; display: block; }
-.mockmap .mm-edge { stroke: var(--border-strong); stroke-width: 1.5; fill: none; }
-.mockmap .mm-node { fill: var(--surface-2); stroke: var(--brand); stroke-width: 1.5; }
-.mockmap .mm-node--root { fill: var(--brand-soft); }
-.mockmap .mm-label { fill: var(--text-faint); font-size: 7px; font-family: var(--font); text-anchor: middle; }
+.mockmap .mm-card { fill: var(--surface); stroke: var(--border-strong); stroke-width: .9; }
+.mockmap .mm-card--root { fill: var(--brand-soft); stroke: var(--brand); }
+.mockmap .mm-ico { fill: var(--brand); opacity: .75; }
+.mockmap .mm-ico--knowledge { fill: var(--ok); }
+.mockmap .mm-ico--skill { fill: var(--accent); }
+.mockmap .mm-bar { fill: color-mix(in srgb, var(--text-faint) 32%, transparent); }
+.mockmap .mm-type { fill: var(--text-faint); font-size: 4.6px; font-family: var(--font); }
+.mockmap .mm-edge { stroke: var(--border-strong); stroke-width: 1; fill: none; }
+.mockmap .mm-edge--found { stroke-dasharray: 3 2.4; }
+.mockmap .mm-elabel {
+  fill: var(--text-faint); font-size: 4.4px;
+  font-family: var(--font); text-anchor: middle;
+}
 
 /* ---------- video ---------- */
 .video { margin: 0; }
@@ -833,9 +886,8 @@ img { max-width: 100%; }
 
   .steps__item { padding: 1.4rem 1.2rem 1.4rem 3.8rem; }
   .shot__frame { aspect-ratio: 4 / 3; }
-  .mockgrid { grid-template-columns: 1fr; }
-  .score { gap: .85rem; }
-  .score__ring { width: 84px; height: 84px; }
+  .score { gap: .7rem; }
+  .score__badge { width: 52px; height: 52px; font-size: 1.55rem; }
 }
 
 /* =========================================================================

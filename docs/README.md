@@ -51,3 +51,8 @@ Pages behaves.
 - Anything that moves must be wrapped in a `prefers-reduced-motion` check.
 - Mock panels are illustrative only. Keep the `PLACEHOLDER` badge on them, and use skeleton shapes
   rather than invented numbers or finding text, so nothing reads as a real product claim.
+- The mocks were drawn from the real Agent Review Center UI: a square letter badge with a rolled-up
+  score, a per-agent pill, `Agent review / Agent map / Runtime` tabs, a total-checks-passed bar with
+  run metadata, finding rows carrying a rule ID (`INS-07`, `SKL-02`) and a pass/fail pill, an agent
+  map of typed component cards with solid "configured" vs dashed "found by AI review" edges, and a
+  runtime stat-tile grid. Keep them aligned with the product if it changes.

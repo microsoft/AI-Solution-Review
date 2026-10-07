@@ -122,44 +122,46 @@
           </div>
           <div class="appwin__body">
             <div class="score">
-              <div class="score__ring">
-                <svg viewBox="0 0 104 104" focusable="false">
-                  <circle class="score__track" cx="52" cy="52" r="44"/>
-                  <circle class="score__value" cx="52" cy="52" r="44" stroke-dasharray="240.5 276.5"/>
-                </svg>
-                <span class="score__num">
-                  <span class="score__grade">B+</span>
-                  <span class="score__outof">87/100</span>
-                </span>
-              </div>
+              <span class="score__badge">B+</span>
               <div class="score__meta">
-                <p class="score__label">Overall score</p>
-                <p class="score__agents">Rolled across every agent reviewed</p>
-                <ul class="chips">
-                  <li class="chip chip--ok">Passed</li>
-                  <li class="chip chip--warn">Needs attention</li>
-                  <li class="chip chip--bad">Fail</li>
-                </ul>
+                <p class="score__label">Rolled up score</p>
+                <p class="score__targets">4 targets (Copilot Studio Agent)</p>
+                <p class="score__value"><b>87</b>/100</p>
               </div>
             </div>
 
+            <p class="score__agent">
+              <svg viewBox="0 0 16 16" width="12" height="12" focusable="false"><rect x="3" y="5" width="10" height="8" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 2.5V5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              <span class="sk sk--line" style="width:112px"></span>
+              · 87/100
+            </p>
+
             <div class="mocktabs">
-              <span data-on>All agents</span>
-              <span>Agent 1</span>
-              <span>Agent 2</span>
-              <span>Agent 3</span>
+              <span data-on>Agent review</span>
+              <span>Agent map</span>
+              <span>Runtime</span>
+            </div>
+
+            <div class="summary">
+              <p class="summary__top"><span>Total checks passed</span> <b>24 / 27</b></p>
+              <span class="summary__bar"><i style="width:89%"></i></span>
+              <ul class="summary__legend">
+                <li class="is-pass">Passed (89%)</li>
+                <li class="is-fail">Fail (11%)</li>
+                <li>References cited</li>
+              </ul>
             </div>
 
             <div class="mockrows">
               <div class="mockrow">
-                <span class="mockrow__sev" data-sev="high"></span>
-                <span class="mockrow__body"><span class="sk sk--line" style="width:72%"></span><span class="sk sk--line sk--soft" style="width:44%"></span></span>
-                <svg class="mockrow__chev" viewBox="0 0 16 16" width="13" height="13" focusable="false"><path d="m6 4 4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span class="mockrow__body"><span class="sk sk--line" style="width:72%"></span></span>
+                <span class="ruleid">INS-07</span>
+                <span class="statuspill is-fail">Fail</span>
               </div>
               <div class="mockrow">
-                <span class="mockrow__sev" data-sev="med"></span>
-                <span class="mockrow__body"><span class="sk sk--line" style="width:58%"></span><span class="sk sk--line sk--soft" style="width:36%"></span></span>
-                <svg class="mockrow__chev" viewBox="0 0 16 16" width="13" height="13" focusable="false"><path d="m6 4 4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span class="mockrow__body"><span class="sk sk--line" style="width:58%"></span></span>
+                <span class="ruleid">SKL-02</span>
+                <span class="statuspill is-pass">Pass</span>
               </div>
             </div>
           </div>
@@ -341,65 +343,68 @@
                 </div>
                 <div class="appwin__body">
                   <div class="score">
-                    <div class="score__ring">
-                      <svg viewBox="0 0 104 104" focusable="false">
-                        <circle class="score__track" cx="52" cy="52" r="44"/>
-                        <circle class="score__value" cx="52" cy="52" r="44" stroke-dasharray="240.5 276.5"/>
-                      </svg>
-                      <span class="score__num">
-                        <span class="score__grade">B+</span>
-                        <span class="score__outof">87/100</span>
-                      </span>
-                    </div>
+                    <span class="score__badge">B+</span>
                     <div class="score__meta">
-                      <p class="score__label">Overall score</p>
-                      <ul class="chips">
-                        <li class="chip chip--ok">Passed</li>
-                        <li class="chip chip--warn">Needs attention</li>
-                        <li class="chip chip--bad">Fail</li>
-                        <li class="chip">References cited</li>
-                      </ul>
+                      <p class="score__label">Rolled up score</p>
+                      <p class="score__targets">4 targets (Copilot Studio Agent)</p>
+                      <p class="score__value"><b>87</b>/100</p>
                     </div>
                   </div>
+
+                  <p class="score__agent">
+                    <svg viewBox="0 0 16 16" width="12" height="12" focusable="false"><rect x="3" y="5" width="10" height="8" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 2.5V5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    <span class="sk sk--line" style="width:128px"></span>
+                    · 87/100
+                  </p>
+
                   <div class="mocktabs">
-                    <span data-on>All agents</span>
-                    <span>Agent 1</span>
-                    <span>Agent 2</span>
-                    <span>Agent 3</span>
-                    <span>Agent 4</span>
+                    <span data-on>Agent review</span>
+                    <span>Agent map</span>
+                    <span>Runtime</span>
                   </div>
-                  <div class="mockgrid">
-                    <div class="mockpanel">
-                      <p class="mockpanel__h">Findings</p>
-                      <div class="mockrows">
-                        <div class="mockrow">
-                          <span class="mockrow__sev" data-sev="high"></span>
-                          <span class="mockrow__body"><span class="sk sk--line" style="width:74%"></span><span class="sk sk--line sk--soft" style="width:46%"></span></span>
-                        </div>
-                        <div class="mockrow">
-                          <span class="mockrow__sev" data-sev="med"></span>
-                          <span class="mockrow__body"><span class="sk sk--line" style="width:62%"></span><span class="sk sk--line sk--soft" style="width:38%"></span></span>
-                        </div>
-                        <div class="mockrow">
-                          <span class="mockrow__sev" data-sev="low"></span>
-                          <span class="mockrow__body"><span class="sk sk--line" style="width:68%"></span><span class="sk sk--line sk--soft" style="width:42%"></span></span>
-                        </div>
-                        <div class="mockrow">
-                          <span class="mockrow__sev" data-sev="low"></span>
-                          <span class="mockrow__body"><span class="sk sk--line" style="width:57%"></span><span class="sk sk--line sk--soft" style="width:35%"></span></span>
-                        </div>
-                        <div class="mockrow">
-                          <span class="mockrow__sev" data-sev="med"></span>
-                          <span class="mockrow__body"><span class="sk sk--line" style="width:71%"></span><span class="sk sk--line sk--soft" style="width:44%"></span></span>
-                        </div>
-                      </div>
+
+                  <div class="summary">
+                    <p class="summary__top"><span>Total checks passed</span> <b>24 / 27</b></p>
+                    <span class="summary__bar"><i style="width:89%"></i></span>
+                    <ul class="summary__legend">
+                      <li class="is-pass">Passed (89%)</li>
+                      <li class="is-fail">Fail (11%)</li>
+                      <li>References cited</li>
+                      <li>Microsoft Learn</li>
+                    </ul>
+                    <p class="summary__meta">
+                      <span>Completed on <span class="sk sk--line" style="width:46px"></span></span>
+                      <span>Duration <span class="sk sk--line" style="width:30px"></span></span>
+                      <span>Model <span class="sk sk--line" style="width:44px"></span></span>
+                      <span>Ignored 0</span>
+                    </p>
+                  </div>
+
+                  <div class="mockrows">
+                    <div class="mockrow">
+                      <span class="mockrow__body"><span class="sk sk--line" style="width:70%"></span></span>
+                      <span class="ruleid">EVL-01</span>
+                      <span class="statuspill is-fail">Fail</span>
                     </div>
-                    <div class="mockpanel">
-                      <p class="mockpanel__h">Checks by area</p>
-                      <div class="mockchart">
-                        <i style="height:58%"></i><i style="height:82%"></i><i style="height:44%"></i>
-                        <i style="height:90%"></i><i style="height:66%"></i><i style="height:76%"></i>
-                      </div>
+                    <div class="mockrow">
+                      <span class="mockrow__body"><span class="sk sk--line" style="width:62%"></span></span>
+                      <span class="ruleid">INS-07</span>
+                      <span class="statuspill is-fail">Fail</span>
+                    </div>
+                    <div class="mockrow">
+                      <span class="mockrow__body"><span class="sk sk--line" style="width:74%"></span></span>
+                      <span class="ruleid">SKL-02</span>
+                      <span class="statuspill is-pass">Pass</span>
+                    </div>
+                    <div class="mockrow">
+                      <span class="mockrow__body"><span class="sk sk--line" style="width:58%"></span></span>
+                      <span class="ruleid">KNW-04</span>
+                      <span class="statuspill is-pass">Pass</span>
+                    </div>
+                    <div class="mockrow">
+                      <span class="mockrow__body"><span class="sk sk--line" style="width:66%"></span></span>
+                      <span class="ruleid">ORC-09</span>
+                      <span class="statuspill is-pass">Pass</span>
                     </div>
                   </div>
                 </div>
@@ -426,29 +431,34 @@
                 </div>
                 <div class="appwin__body">
                   <ul class="chips" style="margin-top:0">
-                    <li class="chip">Component</li>
-                    <li class="chip">Status</li>
+                    <li class="chip">All components</li>
+                    <li class="chip">All status</li>
                   </ul>
                   <div class="mockrows">
                     <div class="mockrow">
-                      <span class="mockrow__sev" data-sev="high"></span>
-                      <span class="mockrow__body"><span class="sk sk--line" style="width:76%"></span><span class="sk sk--line sk--soft" style="width:50%"></span></span>
-                      <svg class="mockrow__chev" viewBox="0 0 16 16" width="13" height="13" focusable="false"><path d="m4 6 4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      <span class="mockrow__body"><span class="sk sk--line" style="width:76%"></span></span>
+                      <span class="ruleid">EVL-01</span>
+                      <span class="statuspill is-fail">Fail</span>
                     </div>
                     <div class="mockrow">
-                      <span class="mockrow__sev" data-sev="high"></span>
-                      <span class="mockrow__body"><span class="sk sk--line" style="width:62%"></span><span class="sk sk--line sk--soft" style="width:40%"></span></span>
-                      <svg class="mockrow__chev" viewBox="0 0 16 16" width="13" height="13" focusable="false"><path d="m6 4 4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      <span class="mockrow__body"><span class="sk sk--line" style="width:62%"></span></span>
+                      <span class="ruleid">INS-07</span>
+                      <span class="statuspill is-fail">Fail</span>
                     </div>
                     <div class="mockrow">
-                      <span class="mockrow__sev" data-sev="med"></span>
-                      <span class="mockrow__body"><span class="sk sk--line" style="width:70%"></span><span class="sk sk--line sk--soft" style="width:33%"></span></span>
-                      <svg class="mockrow__chev" viewBox="0 0 16 16" width="13" height="13" focusable="false"><path d="m6 4 4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      <span class="mockrow__body"><span class="sk sk--line" style="width:70%"></span></span>
+                      <span class="ruleid">INS-03</span>
+                      <span class="statuspill is-pass">Pass</span>
                     </div>
                     <div class="mockrow">
-                      <span class="mockrow__sev" data-sev="low"></span>
-                      <span class="mockrow__body"><span class="sk sk--line" style="width:55%"></span><span class="sk sk--line sk--soft" style="width:45%"></span></span>
-                      <svg class="mockrow__chev" viewBox="0 0 16 16" width="13" height="13" focusable="false"><path d="m6 4 4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      <span class="mockrow__body"><span class="sk sk--line" style="width:55%"></span></span>
+                      <span class="ruleid">SKL-02</span>
+                      <span class="statuspill is-pass">Pass</span>
+                    </div>
+                    <div class="mockrow">
+                      <span class="mockrow__body"><span class="sk sk--line" style="width:66%"></span></span>
+                      <span class="ruleid">SKL-13</span>
+                      <span class="statuspill is-pass">Pass</span>
                     </div>
                   </div>
                 </div>
@@ -473,14 +483,49 @@
                   <p class="appwin__title">Agent map</p>
                 </div>
                 <div class="appwin__body">
+                  <p class="maplegend">
+                    <span><i></i> Configured on the agent</span>
+                    <span><i data-dashed></i> Found by AI review</span>
+                  </p>
                   <div class="mockmap">
-                    <svg viewBox="0 0 220 120" preserveAspectRatio="xMidYMid meet" focusable="false">
-                      <path class="mm-edge" d="M110 26v18M110 44H46v22M110 44h64v22M46 78v14h34M174 78v14h-34"/>
-                      <circle class="mm-node mm-node--root" cx="110" cy="20" r="13"/>
-                      <circle class="mm-node" cx="46" cy="72" r="11"/>
-                      <circle class="mm-node" cx="174" cy="72" r="11"/>
-                      <circle class="mm-node" cx="80" cy="100" r="9"/>
-                      <circle class="mm-node" cx="140" cy="100" r="9"/>
+                    <svg viewBox="0 0 260 128" preserveAspectRatio="xMidYMid meet" focusable="false">
+                      <!-- edges: solid = configured, dashed = found by AI review -->
+                      <path class="mm-edge" d="M130 74V60q0-6-6-6H72"/>
+                      <path class="mm-edge mm-edge--found" d="M130 74V60q0 6 6-6h52"/>
+                      <path class="mm-edge mm-edge--found" d="M118 88H58q-6 0-6 6v8"/>
+                      <path class="mm-edge" d="M142 88h60q6 0 6 6v8"/>
+                      <text class="mm-elabel" x="96" y="50">references knowledge</text>
+                      <text class="mm-elabel" x="168" y="50">reads tool</text>
+
+                      <!-- knowledge -->
+                      <rect class="mm-card" x="12" y="38" width="58" height="22" rx="5"/>
+                      <rect class="mm-ico mm-ico--knowledge" x="17" y="44" width="8" height="8" rx="2"/>
+                      <rect class="mm-bar" x="29" y="44" width="34" height="3.4" rx="1.7"/>
+                      <text class="mm-type" x="29" y="55">Knowledge</text>
+
+                      <!-- connector tool -->
+                      <rect class="mm-card" x="190" y="38" width="58" height="22" rx="5"/>
+                      <rect class="mm-ico" x="195" y="44" width="8" height="8" rx="2"/>
+                      <rect class="mm-bar" x="207" y="44" width="30" height="3.4" rx="1.7"/>
+                      <text class="mm-type" x="207" y="55">Connector tool</text>
+
+                      <!-- agent (root) -->
+                      <rect class="mm-card mm-card--root" x="96" y="70" width="68" height="24" rx="5"/>
+                      <rect class="mm-ico" x="102" y="77" width="9" height="9" rx="2"/>
+                      <rect class="mm-bar" x="115" y="77" width="42" height="3.6" rx="1.8"/>
+                      <text class="mm-type" x="115" y="89">Agent</text>
+
+                      <!-- skill -->
+                      <rect class="mm-card" x="24" y="102" width="56" height="22" rx="5"/>
+                      <rect class="mm-ico mm-ico--skill" x="29" y="108" width="8" height="8" rx="2"/>
+                      <rect class="mm-bar" x="41" y="108" width="28" height="3.4" rx="1.7"/>
+                      <text class="mm-type" x="41" y="119">Skill</text>
+
+                      <!-- connector tool -->
+                      <rect class="mm-card" x="180" y="102" width="56" height="22" rx="5"/>
+                      <rect class="mm-ico" x="185" y="108" width="8" height="8" rx="2"/>
+                      <rect class="mm-bar" x="197" y="108" width="26" height="3.4" rx="1.7"/>
+                      <text class="mm-type" x="197" y="119">Connector tool</text>
                     </svg>
                   </div>
                 </div>
@@ -505,15 +550,14 @@
                   <p class="appwin__title">Conversation analytics</p>
                 </div>
                 <div class="appwin__body">
+                  <p class="mockseg"><span data-on>Errors</span><span>Latency</span><span>Knowledge</span></p>
                   <div class="mockstats">
-                    <div class="mockstat"><b><span class="sk sk--line" style="width:38px;height:11px"></span></b><span>Conversations</span></div>
-                    <div class="mockstat"><b><span class="sk sk--line" style="width:30px;height:11px"></span></b><span>Detected risks</span></div>
-                    <div class="mockstat"><b><span class="sk sk--line" style="width:26px;height:11px"></span></b><span>PII exposure</span></div>
-                  </div>
-                  <div class="mockchart">
-                    <i style="height:42%"></i><i style="height:60%"></i><i style="height:36%"></i>
-                    <i style="height:75%"></i><i style="height:52%"></i><i style="height:84%"></i>
-                    <i style="height:48%"></i><i style="height:66%"></i>
+                    <div class="mockstat"><b><span class="sk sk--line" style="width:34px;height:11px"></span></b><span>Conversations analysed</span></div>
+                    <div class="mockstat"><b><span class="sk sk--line" style="width:26px;height:11px"></span></b><span>Detected risks</span></div>
+                    <div class="mockstat"><b><span class="sk sk--line" style="width:22px;height:11px"></span></b><span>PII exposure</span></div>
+                    <div class="mockstat"><b><span class="sk sk--line" style="width:28px;height:11px"></span></b><span>Tool calls</span></div>
+                    <div class="mockstat"><b><span class="sk sk--line" style="width:30px;height:11px"></span></b><span>Average tool time</span></div>
+                    <div class="mockstat"><b><span class="sk sk--line" style="width:24px;height:11px"></span></b><span>Knowledge searches</span></div>
                   </div>
                 </div>
               </div>

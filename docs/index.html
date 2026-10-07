@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Agent Review Program — review, debug, optimize and validate your Copilot Studio agents</title>
+<title>Agent Review Program</title>
 <meta name="description" content="An expert-guided review, debugging and optimization, and validation service for your Copilot Studio agents, declarative agents, plugins, and skills.">
 <meta name="color-scheme" content="light dark">
 
@@ -17,6 +17,7 @@
 
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="styles.css">
+<script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
 
@@ -26,268 +27,324 @@
   <div class="wrap site-header__inner">
     <a class="brand" href="./">
       <span class="brand__mark" aria-hidden="true">
-        <svg viewBox="0 0 24 24" width="22" height="22" focusable="false">
-          <path d="M12 2.5 3.5 6v6.1c0 5 3.6 8.4 8.5 9.4 4.9-1 8.5-4.4 8.5-9.4V6L12 2.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-          <path d="m8.6 12.1 2.3 2.4 4.5-4.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <svg viewBox="0 0 24 24" width="18" height="18" focusable="false">
+          <path d="M12 2.8 4.5 6.2v5.6c0 4.6 3.2 7.8 7.5 8.7 4.3-.9 7.5-4.1 7.5-8.7V6.2L12 2.8Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+          <path d="m8.7 12 2.2 2.3 4.3-4.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </span>
       <span class="brand__text">Agent Review Program</span>
     </a>
 
-    <nav class="site-nav" aria-label="Section navigation">
-      <ul class="site-nav__list">
-        <li><a href="#how-it-works">How it works</a></li>
-        <li><a href="#what-it-checks">What it checks</a></li>
-        <li><a href="#see-it">See it</a></li>
-        <li><a href="#review-center">Agent Review Center</a></li>
-        <li><a href="setup.html">Setup</a></li>
-      </ul>
-    </nav>
-
-    <details class="menu">
-      <summary class="menu__button" aria-label="Open section navigation">
-        <span aria-hidden="true">Menu</span>
-      </summary>
-      <nav class="menu__panel" aria-label="Section navigation (compact)">
-        <ul>
-          <li><a href="#how-it-works">How it works</a></li>
-          <li><a href="#what-it-checks">What it checks</a></li>
-          <li><a href="#see-it">See it</a></li>
-          <li><a href="#what-you-get">What you get</a></li>
-          <li><a href="#review-center">Agent Review Center</a></li>
-          <li><a href="#bring">What you bring</a></li>
-          <li><a href="setup.html">Install &amp; prerequisites</a></li>
-          <li><a href="#data-handling">Data handling</a></li>
-          <li><a href="#get-started">Get started</a></li>
-        </ul>
-      </nav>
-    </details>
-
-    <a class="btn btn--primary btn--sm site-header__cta" href="#get-started">Ask your Microsoft team</a>
+    <a class="btn btn--primary btn--sm site-header__cta" href="#nominate">Nominate your agent</a>
   </div>
 </header>
 
 <main id="main">
 
-  <!-- ============================= 1. HERO ============================= -->
+  <!-- ============================= HERO ============================= -->
   <section class="hero">
     <div class="wrap hero__inner">
-      <p class="eyebrow">Microsoft Agent Review Program</p>
-      <h1 class="hero__title">Know whether your agent is ready to ship.</h1>
-      <p class="hero__lede">
-        An expert-guided review, debugging and optimization, and validation service for your
-        Copilot&nbsp;Studio agents, declarative agents, plugins, and skills.
-      </p>
-      <p class="hero__body">
-        The Agent Review Program pairs Microsoft experts with the <strong>Agent Review Center</strong> — a tool
-        that runs in your own environment and scores your agent against practices Microsoft teams have
-        gathered across customer engagements.
-      </p>
-      <p class="hero__body">
-        You get a scored baseline, risk-ranked findings with concrete remediation steps, and — once you have
-        made the fixes — a re-run measured against that baseline. The tool stays in your environment
-        afterward, so you can review your agents again whenever you want.
-      </p>
-      <p class="hero__actions">
-        <a class="btn btn--primary" href="#get-started">Ask your Microsoft team</a>
-        <a class="btn btn--ghost" href="#how-it-works">See how it works</a>
-      </p>
-    </div>
-  </section>
 
-  <!-- ================= 2. REVIEW / DEBUG / OPTIMIZE / VALIDATE ================= -->
-  <section class="section" id="how-it-works" aria-labelledby="how-it-works-h">
-    <div class="wrap">
-      <h2 class="section__title" id="how-it-works-h">What it is</h2>
-      <p class="section__lede">Four things, in order, with evidence at the end of each one.</p>
+      <div class="hero__copy">
+        <p class="eyebrow">Microsoft Agent Review Program</p>
+        <h1 class="hero__title">Know whether your agent is <em>ready to ship</em>.</h1>
 
-      <ul class="cards cards--4" role="list">
-        <li class="card">
-          <p class="card__step" aria-hidden="true">01</p>
-          <h3 class="card__title">Review</h3>
-          <p>Configuration, orchestration, knowledge and data grounding, and traces, checked against best practice.</p>
-        </li>
-        <li class="card">
-          <p class="card__step" aria-hidden="true">02</p>
-          <h3 class="card__title">Debug</h3>
-          <p>Failure modes surfaced from your own transcripts and telemetry, not guesswork.</p>
-        </li>
-        <li class="card">
-          <p class="card__step" aria-hidden="true">03</p>
-          <h3 class="card__title">Optimize</h3>
-          <p>Gaps named and ranked — including evals generated for you where you have none.</p>
-        </li>
-        <li class="card">
-          <p class="card__step" aria-hidden="true">04</p>
-          <h3 class="card__title">Validate</h3>
-          <p>Fix, then prove the fix worked against your baseline.</p>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ===================== 3. THE LOOP (hand-built, no runtime deps) ===================== -->
-  <section class="section section--alt" aria-labelledby="loop-h">
-    <div class="wrap">
-      <h2 class="section__title" id="loop-h">The loop</h2>
-      <p class="section__lede">A review is not a one-off report. It closes.</p>
-
-      <div class="loop">
-        <ol class="loop__track" role="list">
-          <li class="loop__step">
-            <h3 class="loop__name">Baseline</h3>
-            <p class="loop__detail">Scored review of your agents</p>
-          </li>
-          <li class="loop__step">
-            <h3 class="loop__name">Findings</h3>
-            <p class="loop__detail">Risk-ranked, with remediation</p>
-          </li>
-          <li class="loop__step">
-            <h3 class="loop__name">You fix</h3>
-            <p class="loop__detail">In your own environment</p>
-          </li>
-          <li class="loop__step">
-            <h3 class="loop__name">Re-run</h3>
-            <p class="loop__detail">Scored against the baseline</p>
-          </li>
-        </ol>
-
-        <p class="loop__return">
-          <span class="loop__return-label">evidence the fix worked</span>
+        <p class="hero__lede">
+          An expert-guided review, debugging and optimization, and validation service for your
+          Copilot&nbsp;Studio agents, declarative agents, plugins, and skills.
         </p>
+
+        <p class="hero__actions">
+          <a class="btn btn--primary btn--lg" href="#nominate">Nominate your agent</a>
+          <a class="btn btn--ghost btn--lg" href="#overview-video">Watch the overview</a>
+        </p>
+
+        <ul class="hero__trust">
+          <li>
+            <svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" focusable="false"><path d="M3 8.4 6.2 11.6 13 4.8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Runs in your own environment
+          </li>
+          <li>
+            <svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" focusable="false"><path d="M3 8.4 6.2 11.6 13 4.8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Your data stays in your tenant
+          </li>
+        </ul>
       </div>
+
+      <!-- Illustrative mock of the scored review result, not a screenshot. -->
+      <div class="hero__visual" aria-hidden="true">
+        <div class="appwin">
+          <div class="appwin__bar">
+            <span class="appwin__dots"><i></i><i></i><i></i></span>
+            <p class="appwin__title">Agent Review Center — Review result</p>
+          </div>
+          <div class="appwin__body">
+            <div class="score">
+              <span class="score__badge">B+</span>
+              <div class="score__meta">
+                <p class="score__label">Rolled up score</p>
+                <p class="score__targets">4 targets (Copilot Studio Agent)</p>
+                <p class="score__value"><b>87</b>/100</p>
+              </div>
+            </div>
+
+            <p class="score__agent">
+              <svg viewBox="0 0 16 16" width="12" height="12" focusable="false"><rect x="3" y="5" width="10" height="8" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 2.5V5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              <span class="sk sk--line" style="width:112px"></span>
+              · 87/100
+            </p>
+
+            <div class="mocktabs">
+              <span data-on>Agent review</span>
+              <span>Agent map</span>
+              <span>Runtime</span>
+            </div>
+
+            <div class="summary">
+              <p class="summary__top"><span>Total checks passed</span> <b>24 / 27</b></p>
+              <span class="summary__bar"><i style="width:89%"></i></span>
+              <ul class="summary__legend">
+                <li class="is-pass">Passed (89%)</li>
+                <li class="is-fail">Fail (11%)</li>
+                <li>References cited</li>
+              </ul>
+            </div>
+
+            <div class="mockrows">
+              <div class="mockrow">
+                <span class="mockrow__body"><span class="sk sk--line" style="width:72%"></span></span>
+                <span class="ruleid">INS-07</span>
+                <span class="statuspill is-fail">Fail</span>
+              </div>
+              <div class="mockrow">
+                <span class="mockrow__body"><span class="sk sk--line" style="width:58%"></span></span>
+                <span class="ruleid">SKL-02</span>
+                <span class="statuspill is-pass">Pass</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- ===================== 4. WHAT IT CHECKS ===================== -->
-  <section class="section" id="what-it-checks" aria-labelledby="checks-h">
-    <div class="wrap">
-      <h2 class="section__title" id="checks-h">What it checks</h2>
-
-      <ul class="cards cards--2" role="list">
-        <li class="card">
-          <h3 class="card__title">Configuration</h3>
-          <p>How the agent is set up: instructions, skills, tools, manifests, and the settings that shape its behavior.</p>
-        </li>
-        <li class="card">
-          <h3 class="card__title">Orchestration</h3>
-          <p>How work is routed between agents, topics, and tools. Overlapping delegation triggers and contradictory guidance between parent and child agents are common and expensive.</p>
-        </li>
-        <li class="card">
-          <h3 class="card__title">Knowledge and data grounding</h3>
-          <p>What the agent is grounded in, and whether its answers are actually supported by it.</p>
-        </li>
-        <li class="card">
-          <h3 class="card__title">Traces</h3>
-          <p>Real runtime behavior from your own transcripts and telemetry: where conversations fail, what the agent actually did, and where users give up.</p>
-        </li>
-      </ul>
-
-      <p class="note">
-        Checks are grounded in field practice — each one tests the agent against best practices Microsoft
-        teams gathered across customer engagements. Findings cite their sources, including Microsoft&nbsp;Learn
-        and published references such as OWASP.
-      </p>
-    </div>
-  </section>
-
-  <!-- ===================== 5. SCREENSHOT GALLERY ===================== -->
+  <!-- ===================== SCREENSHOTS ===================== -->
   <!--
-    ASSET SWAP: each <figure class="shot"> contains a placeholder <div class="shot__ph">
-    and a real <img>. The image is hidden until it actually loads (see main.js), so simply
-    dropping the named PNG into docs/assets/ is enough — no markup change required.
-    Filenames and dimensions are documented in docs/assets/README.md.
+    ASSET SWAP
+    Every <figure class="shot"> holds a designed mock of the panel plus a real <img>
+    pointing at its final path. main.js reveals the image once it actually loads and
+    hides the mock, so dropping a correctly named PNG into assets/ is the whole change.
+    Filenames and dimensions: assets/README.md
   -->
   <section class="section section--alt" id="see-it" aria-labelledby="see-it-h">
     <div class="wrap">
-      <h2 class="section__title" id="see-it-h">Example review results</h2>
-      <p class="section__lede">What the Agent Review Center hands back at the end of a run.</p>
+      <div class="section__head" data-reveal>
+        <h2 class="section__title" id="see-it-h">What you get back</h2>
+        <p class="section__lede">
+          Panels below are illustrative mockups until the real screenshots drop in.
+        </p>
+      </div>
 
       <div class="gallery">
 
-        <figure class="shot shot--wide">
+        <!-- scored review result -->
+        <figure class="shot" data-reveal>
           <div class="shot__frame">
-            <div class="shot__ph">
-              <p class="shot__ph-score" aria-hidden="true">B+ · 87/100</p>
-              <p class="shot__ph-name">assets/shot-scored-review-result.png</p>
-              <p class="shot__ph-hint">Screenshot placeholder — 1600 × 1000</p>
+            <div class="shot__ph" aria-hidden="true">
+              <div class="appwin">
+                <div class="appwin__bar">
+                  <span class="appwin__dots"><i></i><i></i><i></i></span>
+                  <p class="appwin__title">Review result</p>
+                </div>
+                <div class="appwin__body">
+                  <div class="score">
+                    <span class="score__badge">B+</span>
+                    <div class="score__meta">
+                      <p class="score__label">Rolled up score</p>
+                      <p class="score__targets">4 targets (Copilot Studio Agent)</p>
+                      <p class="score__value"><b>87</b>/100</p>
+                    </div>
+                  </div>
+
+                  <p class="score__agent">
+                    <svg viewBox="0 0 16 16" width="12" height="12" focusable="false"><rect x="3" y="5" width="10" height="8" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 2.5V5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    <span class="sk sk--line" style="width:128px"></span>
+                    · 87/100
+                  </p>
+
+                  <div class="mocktabs">
+                    <span data-on>Agent review</span>
+                    <span>Agent map</span>
+                    <span>Runtime</span>
+                  </div>
+
+                  <div class="summary">
+                    <p class="summary__top"><span>Total checks passed</span> <b>24 / 27</b></p>
+                    <span class="summary__bar"><i style="width:89%"></i></span>
+                    <ul class="summary__legend">
+                      <li class="is-pass">Passed (89%)</li>
+                      <li class="is-fail">Fail (11%)</li>
+                      <li>References cited</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
-            <img class="shot__img" src="assets/shot-scored-review-result.png" alt="Scored review result showing a rolled grade and number across every agent reviewed, with per-agent tabs." loading="lazy" decoding="async" width="1600" height="1000">
+            <p class="shot__tag"><b>Placeholder</b> <span>assets/shot-scored-review-result.png</span></p>
+            <img class="shot__img" src="assets/shot-scored-review-result.png" alt="Scored review result showing a rolled grade and number across every agent reviewed." loading="lazy" decoding="async" width="1600" height="1000">
           </div>
-          <figcaption>
-            <strong>Scored review result.</strong> A rolled score across every agent reviewed — a grade and a
-            number, such as <code>B+ · 87/100</code> — with per-agent tabs so you can see which agent is
-            dragging the score.
-          </figcaption>
+          <figcaption><strong>A scored baseline.</strong> A grade and a number across every agent reviewed.</figcaption>
         </figure>
 
-        <figure class="shot">
+        <!-- findings list -->
+        <figure class="shot" data-reveal>
           <div class="shot__frame">
-            <div class="shot__ph">
-              <p class="shot__ph-name">assets/shot-findings-list.png</p>
-              <p class="shot__ph-hint">Screenshot placeholder — 1600 × 1000</p>
+            <div class="shot__ph" aria-hidden="true">
+              <div class="appwin">
+                <div class="appwin__bar">
+                  <span class="appwin__dots"><i></i><i></i><i></i></span>
+                  <p class="appwin__title">Findings</p>
+                </div>
+                <div class="appwin__body">
+                  <ul class="chips" style="margin-top:0">
+                    <li class="chip">All components</li>
+                    <li class="chip">All status</li>
+                  </ul>
+                  <div class="mockrows">
+                    <div class="mockrow">
+                      <span class="mockrow__body"><span class="sk sk--line" style="width:76%"></span></span>
+                      <span class="ruleid">EVL-01</span>
+                      <span class="statuspill is-fail">Fail</span>
+                    </div>
+                    <div class="mockrow">
+                      <span class="mockrow__body"><span class="sk sk--line" style="width:62%"></span></span>
+                      <span class="ruleid">INS-07</span>
+                      <span class="statuspill is-fail">Fail</span>
+                    </div>
+                    <div class="mockrow">
+                      <span class="mockrow__body"><span class="sk sk--line" style="width:70%"></span></span>
+                      <span class="ruleid">INS-03</span>
+                      <span class="statuspill is-pass">Pass</span>
+                    </div>
+                    <div class="mockrow">
+                      <span class="mockrow__body"><span class="sk sk--line" style="width:55%"></span></span>
+                      <span class="ruleid">SKL-02</span>
+                      <span class="statuspill is-pass">Pass</span>
+                    </div>
+                    <div class="mockrow">
+                      <span class="mockrow__body"><span class="sk sk--line" style="width:66%"></span></span>
+                      <span class="ruleid">SKL-13</span>
+                      <span class="statuspill is-pass">Pass</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <img class="shot__img" src="assets/shot-findings-list.png" alt="Findings list with expandable rows, filters for component and status, and the parsed fact, impact, recommendation and detection method for a finding." loading="lazy" decoding="async" width="1600" height="1000">
+            <p class="shot__tag"><b>Placeholder</b> <span>assets/shot-findings-list.png</span></p>
+            <img class="shot__img" src="assets/shot-findings-list.png" alt="Findings list with expandable rows, filters for component and status, and a rule identifier on each finding." loading="lazy" decoding="async" width="1600" height="1000">
           </div>
-          <figcaption>
-            <strong>Findings list.</strong> Every finding, expandable, filterable by component and status, showing
-            parsed fact, impact, recommendation, and detection method.
-          </figcaption>
+          <figcaption><strong>Risk-ranked findings.</strong> Each with concrete remediation steps.</figcaption>
         </figure>
 
-        <figure class="shot">
+        <!-- agent map -->
+        <figure class="shot" data-reveal>
           <div class="shot__frame">
-            <div class="shot__ph">
-              <p class="shot__ph-name">assets/shot-agent-map.png</p>
-              <p class="shot__ph-hint">Screenshot placeholder — 1600 × 1000</p>
+            <div class="shot__ph" aria-hidden="true">
+              <div class="appwin">
+                <div class="appwin__bar">
+                  <span class="appwin__dots"><i></i><i></i><i></i></span>
+                  <p class="appwin__title">Agent map</p>
+                </div>
+                <div class="appwin__body">
+                  <p class="maplegend">
+                    <span><i></i> Configured on the agent</span>
+                    <span><i data-dashed></i> Found by AI review</span>
+                  </p>
+                  <div class="mockmap">
+                    <svg viewBox="0 0 260 128" preserveAspectRatio="xMidYMid meet" focusable="false">
+                      <path class="mm-edge" d="M130 74V60q0-6-6-6H72"/>
+                      <path class="mm-edge mm-edge--found" d="M130 74V60q0 6 6-6h52"/>
+                      <path class="mm-edge mm-edge--found" d="M118 88H58q-6 0-6 6v8"/>
+                      <path class="mm-edge" d="M142 88h60q6 0 6 6v8"/>
+                      <text class="mm-elabel" x="96" y="50">references knowledge</text>
+                      <text class="mm-elabel" x="168" y="50">reads tool</text>
+
+                      <rect class="mm-card" x="12" y="38" width="58" height="22" rx="5"/>
+                      <rect class="mm-ico mm-ico--knowledge" x="17" y="44" width="8" height="8" rx="2"/>
+                      <rect class="mm-bar" x="29" y="44" width="34" height="3.4" rx="1.7"/>
+                      <text class="mm-type" x="29" y="55">Knowledge</text>
+
+                      <rect class="mm-card" x="190" y="38" width="58" height="22" rx="5"/>
+                      <rect class="mm-ico" x="195" y="44" width="8" height="8" rx="2"/>
+                      <rect class="mm-bar" x="207" y="44" width="30" height="3.4" rx="1.7"/>
+                      <text class="mm-type" x="207" y="55">Connector tool</text>
+
+                      <rect class="mm-card mm-card--root" x="96" y="70" width="68" height="24" rx="5"/>
+                      <rect class="mm-ico" x="102" y="77" width="9" height="9" rx="2"/>
+                      <rect class="mm-bar" x="115" y="77" width="42" height="3.6" rx="1.8"/>
+                      <text class="mm-type" x="115" y="89">Agent</text>
+
+                      <rect class="mm-card" x="24" y="102" width="56" height="22" rx="5"/>
+                      <rect class="mm-ico mm-ico--skill" x="29" y="108" width="8" height="8" rx="2"/>
+                      <rect class="mm-bar" x="41" y="108" width="28" height="3.4" rx="1.7"/>
+                      <text class="mm-type" x="41" y="119">Skill</text>
+
+                      <rect class="mm-card" x="180" y="102" width="56" height="22" rx="5"/>
+                      <rect class="mm-ico" x="185" y="108" width="8" height="8" rx="2"/>
+                      <rect class="mm-bar" x="197" y="108" width="26" height="3.4" rx="1.7"/>
+                      <text class="mm-type" x="197" y="119">Connector tool</text>
+                    </svg>
+                  </div>
+                </div>
+              </div>
             </div>
+            <p class="shot__tag"><b>Placeholder</b> <span>assets/shot-agent-map.png</span></p>
             <img class="shot__img" src="assets/shot-agent-map.png" alt="Agent map showing how agents connect, with routing and delegation relationships drawn as a structure diagram." loading="lazy" decoding="async" width="1600" height="1000">
           </div>
-          <figcaption>
-            <strong>Agent map.</strong> How your agents connect, so routing and delegation problems are visible as
-            structure, not buried in instructions.
-          </figcaption>
+          <figcaption><strong>Agent map.</strong> How your agents actually connect.</figcaption>
         </figure>
 
-        <figure class="shot">
+        <!-- runtime -->
+        <figure class="shot" data-reveal>
           <div class="shot__frame">
-            <div class="shot__ph">
-              <p class="shot__ph-name">assets/shot-conversation-analytics.png</p>
-              <p class="shot__ph-hint">Screenshot placeholder — 1600 × 1000</p>
+            <div class="shot__ph" aria-hidden="true">
+              <div class="appwin">
+                <div class="appwin__bar">
+                  <span class="appwin__dots"><i></i><i></i><i></i></span>
+                  <p class="appwin__title">Runtime</p>
+                </div>
+                <div class="appwin__body">
+                  <p class="mockseg"><span data-on>Errors</span><span>Latency</span><span>Knowledge</span></p>
+                  <div class="mockstats">
+                    <div class="mockstat"><b><span class="sk sk--line" style="width:34px;height:11px"></span></b><span>Conversations analysed</span></div>
+                    <div class="mockstat"><b><span class="sk sk--line" style="width:26px;height:11px"></span></b><span>Conversations with errors</span></div>
+                    <div class="mockstat"><b><span class="sk sk--line" style="width:22px;height:11px"></span></b><span>Distinct error types</span></div>
+                    <div class="mockstat"><b><span class="sk sk--line" style="width:28px;height:11px"></span></b><span>Tool calls</span></div>
+                    <div class="mockstat"><b><span class="sk sk--line" style="width:30px;height:11px"></span></b><span>Average tool time</span></div>
+                    <div class="mockstat"><b><span class="sk sk--line" style="width:24px;height:11px"></span></b><span>Knowledge searches</span></div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <img class="shot__img" src="assets/shot-conversation-analytics.png" alt="Conversation analytics dashboard showing coverage across agents, conversations analyzed, detected risks, PII exposure, sentiment breakdown and activity trends." loading="lazy" decoding="async" width="1600" height="1000">
+            <p class="shot__tag"><b>Placeholder</b> <span>assets/shot-runtime.png</span></p>
+            <img class="shot__img" src="assets/shot-runtime.png" alt="Runtime analysis showing conversations analysed, errors, tool calls and knowledge searches." loading="lazy" decoding="async" width="1600" height="1000">
           </div>
-          <figcaption>
-            <strong>Conversation analytics.</strong> Coverage across your agents, conversations analyzed, detected
-            risks, PII exposure, sentiment breakdown, and activity trends over time.
-          </figcaption>
-        </figure>
-
-        <figure class="shot">
-          <div class="shot__frame">
-            <div class="shot__ph">
-              <p class="shot__ph-name">assets/shot-agent-debugger.png</p>
-              <p class="shot__ph-hint">Screenshot placeholder — 1600 × 1000</p>
-            </div>
-            <img class="shot__img" src="assets/shot-agent-debugger.png" alt="Agent debugger stepping through a failed conversation, showing variable values and the steps the agent actually took." loading="lazy" decoding="async" width="1600" height="1000">
-          </div>
-          <figcaption>
-            <strong>Agent debugger.</strong> Step through a failed conversation and see variable values and the
-            steps the agent actually took.
-          </figcaption>
+          <figcaption><strong>Real runtime behavior.</strong> From your own transcripts and telemetry.</figcaption>
         </figure>
 
       </div>
     </div>
   </section>
 
-  <!-- ===================== 6. VIDEO ===================== -->
+  <!-- ===================== VIDEO ===================== -->
   <section class="section" id="overview-video" aria-labelledby="video-h">
     <div class="wrap wrap--narrow">
-      <h2 class="section__title" id="video-h">Overview video</h2>
-      <p class="section__lede">A short walkthrough of the program and the Agent Review Center.</p>
+      <div class="section__head section__head--center" data-reveal>
+        <h2 class="section__title" id="video-h">Watch the overview</h2>
+      </div>
 
-      <figure class="video">
+      <figure class="video" data-reveal>
         <div class="video__frame">
 
           <!--
@@ -324,8 +381,8 @@
 
           <div class="video__ph">
             <span class="video__ph-play" aria-hidden="true">
-              <svg viewBox="0 0 68 68" width="68" height="68" focusable="false">
-                <circle cx="34" cy="34" r="32" fill="none" stroke="currentColor" stroke-width="2"/>
+              <svg viewBox="0 0 68 68" width="62" height="62" focusable="false">
+                <circle cx="34" cy="34" r="32" fill="rgba(255,255,255,.12)" stroke="currentColor" stroke-width="1.6"/>
                 <path d="M28 22.5 48 34 28 45.5Z" fill="currentColor"/>
               </svg>
             </span>
@@ -334,208 +391,31 @@
             <p class="video__ph-duration"><span class="pill">2:30</span></p>
           </div>
         </div>
-        <figcaption>Overview video — 2 minutes 30 seconds.</figcaption>
       </figure>
     </div>
   </section>
 
-  <!-- ===================== 7. WHAT YOU GET ===================== -->
-  <section class="section section--alt" id="what-you-get" aria-labelledby="get-h">
-    <div class="wrap">
-      <h2 class="section__title" id="get-h">What you get</h2>
-
-      <ul class="cards cards--4" role="list">
-        <li class="card">
-          <h3 class="card__title">Confidence</h3>
-          <p>You know whether the agent is ready to ship.</p>
-        </li>
-        <li class="card">
-          <h3 class="card__title">Diagnosis</h3>
-          <p>Named failure modes instead of guesses about what is wrong.</p>
-        </li>
-        <li class="card">
-          <h3 class="card__title">Priority</h3>
-          <p>A risk-ranked backlog, so the highest-impact fixes come first.</p>
-        </li>
-        <li class="card">
-          <h3 class="card__title">Evidence</h3>
-          <p>A before-and-after score you can hand to stakeholders.</p>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ===================== 8. THE AGENT REVIEW CENTER ===================== -->
-  <section class="section" id="review-center" aria-labelledby="arc-h">
-    <div class="wrap">
-      <h2 class="section__title" id="arc-h">The Agent Review Center</h2>
-      <p class="section__lede">
-        The Agent Review Center is the tool behind the review. It runs in your own environment, against your
-        own agents.
-      </p>
-
-      <div class="table-wrap">
-        <table class="table table--stack">
-          <caption class="visually-hidden">Agent Review Center capabilities and what each one does</caption>
-          <thead>
-            <tr><th scope="col">Capability</th><th scope="col">What it does</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Scored review result</th>
-              <td>A rolled score across every agent reviewed — a grade and a number, such as <code>B+ · 87/100</code> — with per-agent tabs so you can see which agent is dragging the score.</td>
-            </tr>
-            <tr>
-              <th scope="row">Review summary</th>
-              <td>Total checks passed, broken down into passed, needs attention, and fail, plus the count of references cited.</td>
-            </tr>
-            <tr>
-              <th scope="row">Findings list</th>
-              <td>Every finding, expandable, filterable by component and status, showing parsed fact, impact, recommendation, and detection method. You can include or ignore a rule, or jump straight to editing the skill.</td>
-            </tr>
-            <tr>
-              <th scope="row">Agent map</th>
-              <td>How your agents connect, so routing and delegation problems are visible as structure, not buried in instructions.</td>
-            </tr>
-            <tr>
-              <th scope="row">Runtime analysis</th>
-              <td>Behavior from real runs, not just static configuration.</td>
-            </tr>
-            <tr>
-              <th scope="row">Conversation analytics</th>
-              <td>Coverage across your agents, conversations analyzed, detected risks, PII exposure, sentiment breakdown, and activity trends over time.</td>
-            </tr>
-            <tr>
-              <th scope="row">Agent debugger</th>
-              <td>Step through a failed conversation and see variable values and the steps the agent actually took.</td>
-            </tr>
-            <tr>
-              <th scope="row">Rule packs</th>
-              <td>Versioned sets of checks, so you know exactly which rules produced a result and can compare like with like.</td>
-            </tr>
-            <tr>
-              <th scope="row">Snapshots and re-run</th>
-              <td>Keep a snapshot of a review and run it again later. This is what turns “we changed some things” into a measured before-and-after.</td>
-            </tr>
-            <tr>
-              <th scope="row">Share results</th>
-              <td>Hand the scored result to your own stakeholders.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <p class="note">
-        Every run records its own metadata — when it ran, how long it took, the model used, whether memory
-        and web search were on, and its credit accounting — so a result is reproducible and auditable later.
-      </p>
-    </div>
-  </section>
-
-  <!-- ===================== 9. WHAT YOU NEED TO BRING ===================== -->
-  <section class="section section--alt" id="bring" aria-labelledby="bring-h">
-    <div class="wrap">
-      <h2 class="section__title" id="bring-h">What you need to bring</h2>
-
-      <ul class="cards cards--2" role="list">
-        <li class="card">
-          <h3 class="card__title">A named owner with the right access</h3>
-          <p>One person who can work on the agent directly, with about <strong>3–6 hours</strong> across the engagement.</p>
-        </li>
-        <li class="card">
-          <h3 class="card__title">Agreement to install the Agent Review Center</h3>
-          <p>It runs in <strong>your own environment</strong>, so your data stays in your tenant.
-            <a href="setup.html">See install and prerequisites</a>.</p>
-        </li>
-        <li class="card">
-          <h3 class="card__title">An agent with a meaningful user base</h3>
-          <p>In testing, pilot, or production, with enough real traces for the failure modes to be informative.</p>
-        </li>
-        <li class="card">
-          <h3 class="card__title">Licensing and credits</h3>
-          <p>A Copilot Studio license, a Power Apps Premium license, and Copilot credits.
-            <a href="setup.html#prerequisites">See prerequisites</a>.</p>
-        </li>
-      </ul>
-
-      <p class="note">
-        An agent with little or no real traffic can still be reviewed for configuration and orchestration,
-        but the runtime and conversation analysis will have little to work with.
-      </p>
-
-      <aside class="callout" aria-labelledby="setup-callout-h">
-        <h3 class="callout__title" id="setup-callout-h">Start the setup early</h3>
-        <p>
-          The Agent Review Center is installed as part of the <strong>Copilot Agent Kit</strong>, an open-source
-          toolkit for Copilot Studio agents. It goes into a Power Platform environment in your own tenant.
-        </p>
-        <p>
-          Start this before your first working session. The tenant admin approvals and the transcript setting
-          are the two things most likely to hold up a review, and neither is quick to arrange on the day.
-        </p>
-        <p class="callout__actions">
-          <a class="btn btn--primary" href="setup.html">Install &amp; prerequisites</a>
-          <a class="btn btn--ghost" href="setup.html#transcripts">Turn on transcripts early</a>
-        </p>
-      </aside>
-    </div>
-  </section>
-
-  <!-- ===================== 10. DATA HANDLING ===================== -->
-  <section class="section" id="data-handling" aria-labelledby="data-h">
-    <div class="wrap">
-      <h2 class="section__title" id="data-h">Data handling</h2>
-
-      <ul class="cards cards--3" role="list">
-        <li class="card">
-          <h3 class="card__title">The tool runs in your environment</h3>
-          <p>The Agent Review Center is installed in your own tenant and runs against your own agents.</p>
-        </li>
-        <li class="card">
-          <h3 class="card__title">Your data stays in your tenant</h3>
-          <p>Transcripts, telemetry, and traces are analyzed where they already live.</p>
-        </li>
-        <li class="card">
-          <h3 class="card__title">You control what is shared</h3>
-          <p>Results are yours. Sharing them outside your team is your decision.</p>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ===================== 11. HOW TO GET STARTED ===================== -->
-  <section class="section section--cta" id="get-started" aria-labelledby="start-h">
-    <div class="wrap">
-      <h2 class="section__title" id="start-h">How to get started</h2>
-
-      <ol class="steps" role="list">
-        <li class="steps__item">
-          <h3 class="steps__title">Pick the agent or agents you want reviewed</h3>
-          <p>Something in testing, pilot, or production with a meaningful user base, and enough real traces for
-            the findings to tell you something.</p>
-        </li>
-        <li class="steps__item">
-          <h3 class="steps__title">Ask your Microsoft team</h3>
-          <p>Talk to the Microsoft team you already work with and ask them about the Agent Review Program.</p>
-        </li>
-        <li class="steps__item">
-          <h3 class="steps__title">Start the setup early</h3>
-          <p>Get the <a href="setup.html">prerequisites and permissions</a> in front of your tenant admin, and
-            turn on <a href="setup.html#transcripts">transcript recording</a> as soon as you can.</p>
-        </li>
-        <li class="steps__item">
-          <h3 class="steps__title">Name your owner and book the first slot</h3>
-          <p>For discovery, Agent Review Center setup, and data preparation.</p>
-        </li>
-      </ol>
-
-      <div class="closing">
+  <!-- ===================== NOMINATE ===================== -->
+  <section class="section section--cta" id="nominate" aria-labelledby="nominate-h">
+    <div class="wrap wrap--narrow">
+      <div class="closing" data-reveal>
+        <h2 class="closing__title" id="nominate-h">Nominate your agent</h2>
         <p class="closing__text">
-          Not sure whether your agent is a fit? Ask your Microsoft contact — we will scope it with you
-          beforehand.
+          Pick an agent in testing, pilot, or production with enough real traffic for the findings to
+          tell you something. We will scope it with you before anything starts.
         </p>
+
         <p>
-          <a class="btn btn--primary btn--lg" href="#get-started">Ask your Microsoft team</a>
+          <!-- ===================== NOMINATION FORM =====================
+               Replace the href below with the Microsoft Form URL. This is
+               the only place that URL appears anywhere on the site.
+               ============================================================ -->
+          <a class="btn btn--primary btn--lg" href="#nominate" data-nomination-form>Open the nomination form</a>
+        </p>
+
+        <p class="closing__fine">
+          You will need a named owner for about <strong>3–6 hours</strong>, and the Agent Review Center
+          installed in your own tenant. <a href="setup.html">See what is involved</a>.
         </p>
       </div>
     </div>
@@ -548,10 +428,8 @@
     <p class="site-footer__brand">Agent Review Program</p>
     <nav aria-label="Footer">
       <ul class="site-footer__links">
-        <li><a href="https://github.com/microsoft/AI-Solution-Review">Repository</a></li>
-        <li><a href="https://github.com/microsoft/AI-Solution-Review/blob/main/SUPPORT.md">Support</a></li>
-        <li><a href="https://github.com/microsoft/AI-Solution-Review/blob/main/SECURITY.md">Security</a></li>
-        <li><a href="https://github.com/microsoft/AI-Solution-Review/blob/main/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+        <li><a href="setup.html">Install &amp; prerequisites</a></li>
+        <li><a href="#nominate">Nominate your agent</a></li>
       </ul>
     </nav>
     <p class="site-footer__legal">

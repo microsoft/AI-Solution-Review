@@ -8,10 +8,10 @@ The customer-facing landing page for the Agent Review Program, published with Gi
 
 | Path | What it is |
 |---|---|
-| `index.html` | The landing page — hero, four-up, the Baseline → Re-run loop, what it checks, screenshot gallery, video, what you get, capability table, what you bring, data handling, get started. |
+| `index.html` | The landing page — hero with a product mock, Review/Debug/Optimize/Validate, the Baseline → Re-run loop, what it checks, screenshot gallery, video, what you get, the Agent Review Center capability grid, what you bring, data handling, get started. |
 | `setup.html` | The dense reference page: prerequisites, transcript guidance, and the five install steps. Linked from the landing page so the detail does not swamp the top of the site. |
 | `styles.css` | All styling. Light and dark themes via `prefers-color-scheme`, responsive, `prefers-reduced-motion` aware, plus a print stylesheet. |
-| `main.js` | ~60 lines of progressive enhancement: reveals screenshots once they load, and dismisses the compact menu. The site is fully readable and navigable without it. |
+| `main.js` | ~130 lines of progressive enhancement: reveals screenshots once they load, scroll-reveals sections, adds a hairline to the stuck header, and dismisses the compact menu. The site is fully readable and navigable without it. |
 | `favicon.svg` | Site icon. |
 | `assets/` | Screenshots, video, and social card. See [`assets/README.md`](assets/README.md) for filenames and dimensions. |
 | `.nojekyll` | Tells GitHub Pages to serve these files as-is instead of running them through Jekyll. |
@@ -49,3 +49,5 @@ Pages behaves.
 - Keep semantic HTML and the heading hierarchy intact (one `<h1>` per page).
 - Give every image real alt text.
 - Anything that moves must be wrapped in a `prefers-reduced-motion` check.
+- Mock panels are illustrative only. Keep the `PLACEHOLDER` badge on them, and use skeleton shapes
+  rather than invented numbers or finding text, so nothing reads as a real product claim.

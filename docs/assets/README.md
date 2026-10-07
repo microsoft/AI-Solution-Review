@@ -3,15 +3,17 @@
 Everything in this folder is served directly by GitHub Pages from
 `https://microsoft.github.io/AI-Solution-Review/assets/…`.
 
-The landing page is already laid out for these files. Until a file exists, the page shows a styled
-placeholder box with the expected filename printed inside it, so the layout is correct either way.
+The landing page is already laid out for these files. Until a file exists, the page shows a **designed
+mock of that panel** — app-window chrome with a realistic skeleton of the UI — carrying a dark
+`PLACEHOLDER` badge with the expected filename. The layout is therefore already correct, and the page
+looks finished while you gather the real captures.
 
 ---
 
 ## Screenshots
 
 Drop the PNGs in with **exactly these filenames**. No HTML or CSS change is needed — `main.js`
-detects that the image loaded and hides the placeholder automatically.
+detects that the image loaded, then hides the mock and its badge automatically.
 
 | Filename | Where it appears | Capture this |
 |---|---|---|
@@ -37,7 +39,7 @@ If you want to add or remove a screenshot, copy an existing `<figure class="shot
 
 > **Expected until the assets land:** each missing image logs a `404` in the browser console. That is
 > the mechanism working as designed — the `<img>` points at its final path so the swap needs no code
-> change, and the placeholder covers it in the meantime. The 404s disappear as soon as the files are
+> change, and the mock covers it in the meantime. The 404s disappear as soon as the files are
 > committed.
 
 ### Alt text

@@ -17,11 +17,10 @@ detects that the image loaded, then hides the mock and its badge automatically.
 
 | Filename | Where it appears | Capture this |
 |---|---|---|
-| `shot-scored-review-result.png` | Full-width, first in the gallery | The rolled score across every agent reviewed — the grade and number (e.g. `B+ · 87/100`) with the per-agent tabs visible. |
-| `shot-findings-list.png` | Gallery, 2-up | The findings list with one finding expanded, showing parsed fact, impact, recommendation and detection method. Filters visible if possible. |
-| `shot-agent-map.png` | Gallery, 2-up | The agent map showing how agents connect. |
-| `shot-conversation-analytics.png` | Gallery, 2-up | Conversation analytics: coverage, conversations analyzed, detected risks, PII exposure, sentiment, activity trends. |
-| `shot-agent-debugger.png` | Gallery, 2-up | The debugger stepping through a failed conversation, with variable values and the steps taken. |
+| `shot-scored-review-result.png` | Gallery, top-left | The rolled-up score — letter badge, `NN/100`, the per-agent pill and the review summary bar. |
+| `shot-findings-list.png` | Gallery, top-right | The findings list with rule IDs and pass/fail status visible. Expand one finding if it still fits. |
+| `shot-agent-map.png` | Gallery, bottom-left | The agent map showing how components connect, with the relationship-evidence legend visible. |
+| `shot-runtime.png` | Gallery, bottom-right | The Runtime tab — the stat tiles (conversations analysed, errors, tool calls, knowledge searches). |
 
 **Specification**
 
@@ -35,7 +34,7 @@ detects that the image loaded, then hides the mock and its badge automatically.
   names, email addresses, agent names, environment URLs, GUIDs, and any PII in transcript text.
 
 If you want to add or remove a screenshot, copy an existing `<figure class="shot">` block in
-`docs/index.html`. Add `shot--wide` to the figure to make it span the full gallery width.
+`docs/index.html`. The gallery is a 2×2 grid, so add or remove them in pairs to keep it balanced.
 
 > **Expected until the assets land:** each missing image logs a `404` in the browser console. That is
 > the mechanism working as designed — the `<img>` points at its final path so the swap needs no code

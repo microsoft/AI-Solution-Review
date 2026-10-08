@@ -84,35 +84,6 @@
     update();
   }
 
-  /* -----------------------------------------------------------------------
-     Compact <details> menu: close on selection, outside click, or Escape.
-     The menu works without this — it is only dismissal polish.
-     ----------------------------------------------------------------------- */
-  function wireCompactMenu() {
-    var menu = document.querySelector(".menu");
-    if (!menu) return;
-
-    function close() {
-      menu.removeAttribute("open");
-    }
-
-    menu.addEventListener("click", function (event) {
-      if (event.target.closest(".menu__panel a")) close();
-    });
-
-    document.addEventListener("click", function (event) {
-      if (menu.hasAttribute("open") && !menu.contains(event.target)) close();
-    });
-
-    document.addEventListener("keydown", function (event) {
-      if (event.key !== "Escape" || !menu.hasAttribute("open")) return;
-      close();
-      var summary = menu.querySelector("summary");
-      if (summary) summary.focus();
-    });
-  }
-
   wireScrollReveal();
   wireStickyHeader();
-  wireCompactMenu();
 })();

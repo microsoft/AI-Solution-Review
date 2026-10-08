@@ -8,10 +8,9 @@ The customer-facing landing page for the Agent Review Program, published with Gi
 
 | Path | What it is |
 |---|---|
-| `index.html` | The landing page. Four blocks only: hero, screenshot gallery, overview video, nominate. |
-| `setup.html` | Prerequisites, transcript guidance and the install steps — linked from the nominate block and the footer, so the detail never lands on the landing page. |
+| `index.html` | The whole site. Four blocks: hero, overview video, screenshot gallery, nominate. |
 | `styles.css` | All styling. Fluent-flavoured tokens, light + dark, responsive, reduced-motion and print aware. |
-| `main.js` | ~100 lines of progressive enhancement: scroll-reveals sections, adds a hairline to the stuck header, and dismisses the compact menu. The site is fully readable and navigable without it. |
+| `main.js` | ~90 lines of progressive enhancement: scroll-reveals sections and adds a hairline to the stuck header. The site is fully readable and navigable without it. |
 | `favicon.svg` | Site icon. |
 | `assets/` | Screenshots and the overview video. See [`assets/README.md`](assets/README.md). |
 | `.nojekyll` | Tells GitHub Pages to serve these files as-is instead of running them through Jekyll. |
@@ -26,8 +25,11 @@ has to change once.
 
 ## Keep it short
 
-The landing page deliberately carries almost no prose. It exists to show the product, play the
-video, and take a nomination. Detail belongs in [`README.md`](../README.md) or `setup.html` — resist
+The site is deliberately one page carrying almost no prose. It exists to show the product, play the
+video, and take a nomination.
+
+Installation and prerequisite guidance was removed on purpose while the set of offerings is still
+changing — it is not hiding on a second page. Detail belongs in [`README.md`](../README.md). Resist
 adding sections here.
 
 ## Content source

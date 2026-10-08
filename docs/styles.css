@@ -319,10 +319,9 @@ img { max-width: 100%; }
 .bullets li { margin-bottom: .55rem; }
 
 /* ---------- screenshot gallery ---------- */
-/* Single column: these are 1280px-wide product UIs, and at half-width the
-   interface text is too small to read, which defeats the point of showing
-   them at all. */
-.gallery { display: grid; grid-template-columns: 1fr; gap: 2.75rem; }
+/* Two up: the video carries the detailed walkthrough, so these are
+   supporting marketing visuals rather than documentation. */
+.gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem 1.75rem; }
 .shot { margin: 0; }
 .shot__img {
   display: block; width: 100%; height: auto;
@@ -332,10 +331,15 @@ img { max-width: 100%; }
   box-shadow: var(--shadow-4);
 }
 .shot figcaption {
-  margin-top: .9rem; color: var(--text-muted);
-  font-size: 1rem; line-height: 1.5; max-width: 70ch;
+  margin-top: 1rem; color: var(--text-muted);
+  font-size: .97rem; line-height: 1.5; max-width: 46ch;
 }
-.shot figcaption strong { color: var(--ink); }
+.shot figcaption strong {
+  display: block; color: var(--ink);
+  font-family: var(--font-display); font-weight: 600;
+  font-size: 1.12rem; letter-spacing: -.012em;
+  margin-bottom: .25rem;
+}
 /* ---------- video ---------- */
 .video { margin: 0; }
 .video__frame {
@@ -465,6 +469,7 @@ img { max-width: 100%; }
 
 @media (max-width: 860px) {
   html { scroll-padding-top: 70px; }
+  .gallery { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 740px) {

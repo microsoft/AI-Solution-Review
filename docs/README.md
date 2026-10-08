@@ -18,10 +18,11 @@ The customer-facing landing page for the Agent Review Program, published with Gi
 
 ## The nomination form
 
-The primary call to action is a single button in the `#nominate` section of `index.html`. The
-Microsoft Form URL appears in exactly one place, marked with a `NOMINATION FORM` comment and a
-`data-nomination-form` attribute. Until it is set the button points at `#nominate` itself, so it is
-inert rather than broken.
+The primary call to action is a single button in the `#nominate` section of `index.html`, pointing at
+<https://aka.ms/CATAgentReviewSignup>. The URL appears in exactly one place, marked with a
+`NOMINATION FORM` comment and a `data-nomination-form` attribute — every other "Nominate your agent"
+link on the site is an in-page anchor to that section. Keep it that way so the form URL only ever
+has to change once.
 
 ## Keep it short
 

@@ -71,272 +71,57 @@
         </ul>
       </div>
 
-      <!-- Illustrative mock of the scored review result, not a screenshot. -->
-      <div class="hero__visual" aria-hidden="true">
-        <div class="appwin">
-          <div class="appwin__bar">
-            <span class="appwin__dots"><i></i><i></i><i></i></span>
-            <p class="appwin__title">Agent Review Center — Review result</p>
-          </div>
-          <div class="appwin__body">
-            <div class="score">
-              <span class="score__badge">B+</span>
-              <div class="score__meta">
-                <p class="score__label">Rolled up score</p>
-                <p class="score__targets">4 targets (Copilot Studio Agent)</p>
-                <p class="score__value"><b>87</b>/100</p>
-              </div>
-            </div>
-
-            <p class="score__agent">
-              <svg viewBox="0 0 16 16" width="12" height="12" focusable="false"><rect x="3" y="5" width="10" height="8" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 2.5V5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-              <span class="sk sk--line" style="width:112px"></span>
-              · 87/100
-            </p>
-
-            <div class="mocktabs">
-              <span data-on>Agent review</span>
-              <span>Agent map</span>
-              <span>Runtime</span>
-            </div>
-
-            <div class="summary">
-              <p class="summary__top"><span>Total checks passed</span> <b>24 / 27</b></p>
-              <span class="summary__bar"><i style="width:89%"></i></span>
-              <ul class="summary__legend">
-                <li class="is-pass">Passed (89%)</li>
-                <li class="is-fail">Fail (11%)</li>
-                <li>References cited</li>
-              </ul>
-            </div>
-
-            <div class="mockrows">
-              <div class="mockrow">
-                <span class="mockrow__body"><span class="sk sk--line" style="width:72%"></span></span>
-                <span class="ruleid">INS-07</span>
-                <span class="statuspill is-fail">Fail</span>
-              </div>
-              <div class="mockrow">
-                <span class="mockrow__body"><span class="sk sk--line" style="width:58%"></span></span>
-                <span class="ruleid">SKL-02</span>
-                <span class="statuspill is-pass">Pass</span>
-              </div>
-            </div>
-          </div>
-        </div>
+      <!-- Scored review result from the Agent Review Center. -->
+      <div class="hero__visual">
+        <img class="hero__shot" src="assets/shot-scorecard.png"
+             alt="Agent Review Center showing a rolled-up score of B, 86 out of 100, across three Copilot Studio agents, with a review summary of 27 of 37 checks passed and a list of findings below."
+             width="1280" height="720" decoding="async" fetchpriority="high">
       </div>
 
     </div>
   </section>
 
   <!-- ===================== SCREENSHOTS ===================== -->
-  <!--
-    ASSET SWAP
-    Every <figure class="shot"> holds a designed mock of the panel plus a real <img>
-    pointing at its final path. main.js reveals the image once it actually loads and
-    hides the mock, so dropping a correctly named PNG into assets/ is the whole change.
-    Filenames and dimensions: assets/README.md
-  -->
   <section class="section section--alt" id="see-it" aria-labelledby="see-it-h">
     <div class="wrap">
       <div class="section__head" data-reveal>
         <h2 class="section__title" id="see-it-h">What you get back</h2>
-        <p class="section__lede">
-          Panels below are illustrative mockups until the real screenshots drop in.
-        </p>
+        <p class="section__lede">Taken from the Agent Review Center.</p>
       </div>
 
       <div class="gallery">
 
-        <!-- scored review result -->
         <figure class="shot" data-reveal>
-          <div class="shot__frame">
-            <div class="shot__ph" aria-hidden="true">
-              <div class="appwin">
-                <div class="appwin__bar">
-                  <span class="appwin__dots"><i></i><i></i><i></i></span>
-                  <p class="appwin__title">Review result</p>
-                </div>
-                <div class="appwin__body">
-                  <div class="score">
-                    <span class="score__badge">B+</span>
-                    <div class="score__meta">
-                      <p class="score__label">Rolled up score</p>
-                      <p class="score__targets">4 targets (Copilot Studio Agent)</p>
-                      <p class="score__value"><b>87</b>/100</p>
-                    </div>
-                  </div>
-
-                  <p class="score__agent">
-                    <svg viewBox="0 0 16 16" width="12" height="12" focusable="false"><rect x="3" y="5" width="10" height="8" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 2.5V5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-                    <span class="sk sk--line" style="width:128px"></span>
-                    · 87/100
-                  </p>
-
-                  <div class="mocktabs">
-                    <span data-on>Agent review</span>
-                    <span>Agent map</span>
-                    <span>Runtime</span>
-                  </div>
-
-                  <div class="summary">
-                    <p class="summary__top"><span>Total checks passed</span> <b>24 / 27</b></p>
-                    <span class="summary__bar"><i style="width:89%"></i></span>
-                    <ul class="summary__legend">
-                      <li class="is-pass">Passed (89%)</li>
-                      <li class="is-fail">Fail (11%)</li>
-                      <li>References cited</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <p class="shot__tag"><b>Placeholder</b> <span>assets/shot-scored-review-result.png</span></p>
-            <img class="shot__img" src="assets/shot-scored-review-result.png" alt="Scored review result showing a rolled grade and number across every agent reviewed." loading="lazy" decoding="async" width="1600" height="1000">
-          </div>
-          <figcaption><strong>A scored baseline.</strong> A grade and a number across every agent reviewed.</figcaption>
+          <img class="shot__img" src="assets/shot-finding-detail.png"
+               alt="A finding expanded to show its detection method, its source on Microsoft Learn, the parsed fact, what it means, and a recommendation, inside a filterable list of findings."
+               width="1280" height="720" loading="lazy" decoding="async">
+          <figcaption><strong>Risk-ranked findings.</strong> Parsed fact, what it means, and a concrete recommendation — each citing its source.</figcaption>
         </figure>
 
-        <!-- findings list -->
         <figure class="shot" data-reveal>
-          <div class="shot__frame">
-            <div class="shot__ph" aria-hidden="true">
-              <div class="appwin">
-                <div class="appwin__bar">
-                  <span class="appwin__dots"><i></i><i></i><i></i></span>
-                  <p class="appwin__title">Findings</p>
-                </div>
-                <div class="appwin__body">
-                  <ul class="chips" style="margin-top:0">
-                    <li class="chip">All components</li>
-                    <li class="chip">All status</li>
-                  </ul>
-                  <div class="mockrows">
-                    <div class="mockrow">
-                      <span class="mockrow__body"><span class="sk sk--line" style="width:76%"></span></span>
-                      <span class="ruleid">EVL-01</span>
-                      <span class="statuspill is-fail">Fail</span>
-                    </div>
-                    <div class="mockrow">
-                      <span class="mockrow__body"><span class="sk sk--line" style="width:62%"></span></span>
-                      <span class="ruleid">INS-07</span>
-                      <span class="statuspill is-fail">Fail</span>
-                    </div>
-                    <div class="mockrow">
-                      <span class="mockrow__body"><span class="sk sk--line" style="width:70%"></span></span>
-                      <span class="ruleid">INS-03</span>
-                      <span class="statuspill is-pass">Pass</span>
-                    </div>
-                    <div class="mockrow">
-                      <span class="mockrow__body"><span class="sk sk--line" style="width:55%"></span></span>
-                      <span class="ruleid">SKL-02</span>
-                      <span class="statuspill is-pass">Pass</span>
-                    </div>
-                    <div class="mockrow">
-                      <span class="mockrow__body"><span class="sk sk--line" style="width:66%"></span></span>
-                      <span class="ruleid">SKL-13</span>
-                      <span class="statuspill is-pass">Pass</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <p class="shot__tag"><b>Placeholder</b> <span>assets/shot-findings-list.png</span></p>
-            <img class="shot__img" src="assets/shot-findings-list.png" alt="Findings list with expandable rows, filters for component and status, and a rule identifier on each finding." loading="lazy" decoding="async" width="1600" height="1000">
-          </div>
-          <figcaption><strong>Risk-ranked findings.</strong> Each with concrete remediation steps.</figcaption>
+          <img class="shot__img" src="assets/shot-runtime-errors.png"
+               alt="Runtime error analysis showing 151 conversations analysed, 12 with errors, 237 tool calls and 65 knowledge searches, above a list of failing connectors ranked by occurrence."
+               width="1280" height="720" loading="lazy" decoding="async">
+          <figcaption><strong>Real runtime behavior.</strong> Where conversations fail, from your own transcripts and telemetry.</figcaption>
         </figure>
 
-        <!-- agent map -->
         <figure class="shot" data-reveal>
-          <div class="shot__frame">
-            <div class="shot__ph" aria-hidden="true">
-              <div class="appwin">
-                <div class="appwin__bar">
-                  <span class="appwin__dots"><i></i><i></i><i></i></span>
-                  <p class="appwin__title">Agent map</p>
-                </div>
-                <div class="appwin__body">
-                  <p class="maplegend">
-                    <span><i></i> Configured on the agent</span>
-                    <span><i data-dashed></i> Found by AI review</span>
-                  </p>
-                  <div class="mockmap">
-                    <svg viewBox="0 0 260 128" preserveAspectRatio="xMidYMid meet" focusable="false">
-                      <path class="mm-edge" d="M130 74V60q0-6-6-6H72"/>
-                      <path class="mm-edge mm-edge--found" d="M130 74V60q0 6 6-6h52"/>
-                      <path class="mm-edge mm-edge--found" d="M118 88H58q-6 0-6 6v8"/>
-                      <path class="mm-edge" d="M142 88h60q6 0 6 6v8"/>
-                      <text class="mm-elabel" x="96" y="50">references knowledge</text>
-                      <text class="mm-elabel" x="168" y="50">reads tool</text>
-
-                      <rect class="mm-card" x="12" y="38" width="58" height="22" rx="5"/>
-                      <rect class="mm-ico mm-ico--knowledge" x="17" y="44" width="8" height="8" rx="2"/>
-                      <rect class="mm-bar" x="29" y="44" width="34" height="3.4" rx="1.7"/>
-                      <text class="mm-type" x="29" y="55">Knowledge</text>
-
-                      <rect class="mm-card" x="190" y="38" width="58" height="22" rx="5"/>
-                      <rect class="mm-ico" x="195" y="44" width="8" height="8" rx="2"/>
-                      <rect class="mm-bar" x="207" y="44" width="30" height="3.4" rx="1.7"/>
-                      <text class="mm-type" x="207" y="55">Connector tool</text>
-
-                      <rect class="mm-card mm-card--root" x="96" y="70" width="68" height="24" rx="5"/>
-                      <rect class="mm-ico" x="102" y="77" width="9" height="9" rx="2"/>
-                      <rect class="mm-bar" x="115" y="77" width="42" height="3.6" rx="1.8"/>
-                      <text class="mm-type" x="115" y="89">Agent</text>
-
-                      <rect class="mm-card" x="24" y="102" width="56" height="22" rx="5"/>
-                      <rect class="mm-ico mm-ico--skill" x="29" y="108" width="8" height="8" rx="2"/>
-                      <rect class="mm-bar" x="41" y="108" width="28" height="3.4" rx="1.7"/>
-                      <text class="mm-type" x="41" y="119">Skill</text>
-
-                      <rect class="mm-card" x="180" y="102" width="56" height="22" rx="5"/>
-                      <rect class="mm-ico" x="185" y="108" width="8" height="8" rx="2"/>
-                      <rect class="mm-bar" x="197" y="108" width="26" height="3.4" rx="1.7"/>
-                      <text class="mm-type" x="197" y="119">Connector tool</text>
-                    </svg>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <p class="shot__tag"><b>Placeholder</b> <span>assets/shot-agent-map.png</span></p>
-            <img class="shot__img" src="assets/shot-agent-map.png" alt="Agent map showing how agents connect, with routing and delegation relationships drawn as a structure diagram." loading="lazy" decoding="async" width="1600" height="1000">
-          </div>
-          <figcaption><strong>Agent map.</strong> How your agents actually connect.</figcaption>
+          <img class="shot__img" src="assets/shot-knowledge-usage.png"
+               alt="Knowledge usage showing 357 sources configured, 5 confirmed used and 348 never used, with knowledge sources ranked from most to least used."
+               width="1280" height="720" loading="lazy" decoding="async">
+          <figcaption><strong>Knowledge grounding.</strong> What the agent is grounded in, and whether its answers are actually supported by it.</figcaption>
         </figure>
 
-        <!-- runtime -->
         <figure class="shot" data-reveal>
-          <div class="shot__frame">
-            <div class="shot__ph" aria-hidden="true">
-              <div class="appwin">
-                <div class="appwin__bar">
-                  <span class="appwin__dots"><i></i><i></i><i></i></span>
-                  <p class="appwin__title">Runtime</p>
-                </div>
-                <div class="appwin__body">
-                  <p class="mockseg"><span data-on>Errors</span><span>Latency</span><span>Knowledge</span></p>
-                  <div class="mockstats">
-                    <div class="mockstat"><b><span class="sk sk--line" style="width:34px;height:11px"></span></b><span>Conversations analysed</span></div>
-                    <div class="mockstat"><b><span class="sk sk--line" style="width:26px;height:11px"></span></b><span>Conversations with errors</span></div>
-                    <div class="mockstat"><b><span class="sk sk--line" style="width:22px;height:11px"></span></b><span>Distinct error types</span></div>
-                    <div class="mockstat"><b><span class="sk sk--line" style="width:28px;height:11px"></span></b><span>Tool calls</span></div>
-                    <div class="mockstat"><b><span class="sk sk--line" style="width:30px;height:11px"></span></b><span>Average tool time</span></div>
-                    <div class="mockstat"><b><span class="sk sk--line" style="width:24px;height:11px"></span></b><span>Knowledge searches</span></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <p class="shot__tag"><b>Placeholder</b> <span>assets/shot-runtime.png</span></p>
-            <img class="shot__img" src="assets/shot-runtime.png" alt="Runtime analysis showing conversations analysed, errors, tool calls and knowledge searches." loading="lazy" decoding="async" width="1600" height="1000">
-          </div>
-          <figcaption><strong>Real runtime behavior.</strong> From your own transcripts and telemetry.</figcaption>
+          <img class="shot__img" src="assets/shot-score-progress.png"
+               alt="A score progress chart tracking one agent across three reviews, rising to 95 out of 100, up 11 points since the first review."
+               width="1280" height="720" loading="lazy" decoding="async">
+          <figcaption><strong>Evidence the fix worked.</strong> A re-run, scored against your baseline.</figcaption>
         </figure>
 
       </div>
     </div>
   </section>
-
   <!-- ===================== VIDEO ===================== -->
   <section class="section" id="overview-video" aria-labelledby="video-h">
     <div class="wrap wrap--narrow">

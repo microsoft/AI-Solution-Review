@@ -9,35 +9,6 @@
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* -----------------------------------------------------------------------
-     Screenshot placeholders.
-
-     Each <figure class="shot"> ships with a designed mock of the panel and a
-     real <img> pointing at its final path. CSS keeps the image at opacity 0
-     (not display:none, so loading="lazy" still fires) with the mock on top.
-     When a real file is dropped into docs/assets/ the image loads, we add
-     .shot--live, and the mock is replaced automatically — no markup change.
-
-     With JavaScript unavailable the mock simply stays, which is the correct
-     fallback while the assets are still missing.
-     ----------------------------------------------------------------------- */
-  function revealLoadedScreenshots() {
-    document.querySelectorAll(".shot").forEach(function (figure) {
-      var img = figure.querySelector(".shot__img");
-      if (!img) return;
-
-      function reveal() {
-        if (img.naturalWidth > 0) figure.classList.add("shot--live");
-      }
-
-      if (img.complete) {
-        reveal();
-      } else {
-        img.addEventListener("load", reveal, { once: true });
-      }
-    });
-  }
-
-  /* -----------------------------------------------------------------------
      Scroll reveal. Elements carrying [data-reveal] are hidden by CSS only
      while the .js class is present, so a no-JS visitor sees everything.
      Reduced-motion visitors get the content revealed immediately.
@@ -141,7 +112,6 @@
     });
   }
 
-  revealLoadedScreenshots();
   wireScrollReveal();
   wireStickyHeader();
   wireCompactMenu();

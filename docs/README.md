@@ -11,9 +11,9 @@ The customer-facing landing page for the Agent Review Program, published with Gi
 | `index.html` | The landing page. Four blocks only: hero, screenshot gallery, overview video, nominate. |
 | `setup.html` | Prerequisites, transcript guidance and the install steps — linked from the nominate block and the footer, so the detail never lands on the landing page. |
 | `styles.css` | All styling. Fluent-flavoured tokens, light + dark, responsive, reduced-motion and print aware. |
-| `main.js` | ~130 lines of progressive enhancement: reveals screenshots once they load, scroll-reveals sections, adds a hairline to the stuck header, and dismisses the compact menu. The site is fully readable and navigable without it. |
+| `main.js` | ~100 lines of progressive enhancement: scroll-reveals sections, adds a hairline to the stuck header, and dismisses the compact menu. The site is fully readable and navigable without it. |
 | `favicon.svg` | Site icon. |
-| `assets/` | Screenshots, video, and social card. See [`assets/README.md`](assets/README.md) for filenames and dimensions. |
+| `assets/` | Screenshots and the overview video. See [`assets/README.md`](assets/README.md). |
 | `.nojekyll` | Tells GitHub Pages to serve these files as-is instead of running them through Jekyll. |
 
 ## The nomination form
@@ -64,12 +64,9 @@ Pages behaves.
 - No build step, no npm, no Jekyll theme gems — keep it plain HTML and CSS.
 - No analytics, trackers, or third-party fonts.
 - Keep semantic HTML and the heading hierarchy intact (one `<h1>` per page).
-- Give every image real alt text.
+- Give every image real alt text. Several alt strings quote figures visible in the screenshot, so
+  update them whenever an image is replaced.
 - Anything that moves must be wrapped in a `prefers-reduced-motion` check.
-- Mock panels are illustrative only. Keep the `PLACEHOLDER` badge on them, and use skeleton shapes
-  rather than invented numbers or finding text, so nothing reads as a real product claim.
-- The mocks were drawn from the real Agent Review Center UI: a square letter badge with a rolled-up
-  score, a per-agent pill, `Agent review / Agent map / Runtime` tabs, a total-checks-passed bar with
-  run metadata, finding rows carrying a rule ID (`INS-07`, `SKL-02`) and a pass/fail pill, an agent
-  map of typed component cards with solid "configured" vs dashed "found by AI review" edges, and a
-  runtime stat-tile grid. Keep them aligned with the product if it changes.
+- Colour comes from Fluent 2: `#0078D4` as the only accent, on the Fluent neutral ramp, with small
+  radii (2/4/8) and Fluent's light elevation. `--text-faint` is the disabled grey and fails contrast
+  for body text — never use it for copy.

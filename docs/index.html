@@ -131,55 +131,26 @@
 
       <figure class="video" data-reveal>
         <div class="video__frame">
-
-          <!--
-            ================== VIDEO EMBED: SWAP HERE ==================
-            Replace the <div class="video__ph"> block below with ONE of the following.
-            Both inherit the responsive 16:9 box automatically.
-
-            A) Hosted (YouTube / Microsoft Stream / Vimeo):
-
-               <iframe class="video__embed"
-                       src="https://www.youtube.com/embed/VIDEO_ID"
-                       title="Agent Review Program overview"
-                       frameborder="0"
-                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                       referrerpolicy="strict-origin-when-cross-origin"
-                       allowfullscreen></iframe>
-
-            B) Self-hosted MP4 committed to docs/assets/
-               (keep it under GitHub's file-size limits — see docs/assets/README.md):
-
-               <video class="video__embed"
-                      controls
-                      preload="none"
-                      playsinline
-                      poster="assets/video-poster.png">
-                 <source src="assets/agent-review-overview.mp4" type="video/mp4">
-                 <track kind="captions" src="assets/agent-review-overview.vtt" srclang="en" label="English" default>
-                 Your browser does not support embedded video.
-                 <a href="assets/agent-review-overview.mp4">Download the overview video</a>.
-               </video>
-
-            ============================================================
-          -->
-
-          <div class="video__ph">
-            <span class="video__ph-play" aria-hidden="true">
-              <svg viewBox="0 0 68 68" width="62" height="62" focusable="false">
-                <circle cx="34" cy="34" r="32" fill="rgba(255,255,255,.12)" stroke="currentColor" stroke-width="1.6"/>
-                <path d="M28 22.5 48 34 28 45.5Z" fill="currentColor"/>
-              </svg>
-            </span>
-            <p class="video__ph-title">Agent Review Program overview</p>
-            <p class="video__ph-hint">Video placeholder — drop in <code>assets/agent-review-overview.mp4</code> or paste an embed URL</p>
-            <p class="video__ph-duration"><span class="pill">2:30</span></p>
-          </div>
+          <!-- Self-hosted so the page pulls in no third-party player.
+               preload="none" means only the poster loads until play is pressed. -->
+          <video class="video__embed"
+                 controls
+                 preload="none"
+                 playsinline
+                 poster="assets/video-poster.png"
+                 width="1920" height="1080">
+            <source src="assets/agent-review-overview.mp4" type="video/mp4">
+            <!-- Captions: add assets/agent-review-overview.vtt, then uncomment.
+            <track kind="captions" src="assets/agent-review-overview.vtt" srclang="en" label="English" default>
+            -->
+            Your browser does not support embedded video.
+            <a href="assets/agent-review-overview.mp4">Download the overview video</a>.
+          </video>
         </div>
+        <figcaption>A walkthrough of the Agent Review Center — 2 minutes 21 seconds.</figcaption>
       </figure>
     </div>
   </section>
-
   <!-- ===================== NOMINATE ===================== -->
   <section class="section section--cta" id="nominate" aria-labelledby="nominate-h">
     <div class="wrap wrap--narrow">

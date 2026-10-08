@@ -35,28 +35,40 @@ figures from the screenshot.
 
 ---
 
-## Overview video — still needed
+## Overview video
 
-The page has a responsive 16:9 player slot showing the duration (**2:30**).
+`agent-review-overview.mp4` — 2:21, 1920 × 1080, H.264 / AAC, **15.6 MB**, self-hosted so the page
+pulls in no third-party player. `video-poster.png` is the still shown before playback, taken from
+the 1:58 mark.
 
-### Option A — hosted (recommended)
+The `<video>` element uses `preload="none"`, so only the poster loads until someone presses play.
 
-In `docs/index.html`, find the `VIDEO EMBED: SWAP HERE` comment inside `<section id="overview-video">`
-and replace the `<div class="video__ph">…</div>` with the ready-made `<iframe class="video__embed" …>`
-snippet in that comment.
+### ⚠️ Captions are still missing
 
-Hosted avoids repo size cost and handles captions. Prefer a privacy-respecting embed domain
-(e.g. `youtube-nocookie.com`) — the site itself has no analytics or trackers.
+The video has narration, and there is no `.vtt` yet. Prerecorded audio needs captions
+([WCAG 1.2.2](https://www.w3.org/WAI/WCAG22/Understanding/captions-prerecorded)), so this is an open
+accessibility gap on a public page.
 
-### Option B — self-hosted MP4
+To close it, add `agent-review-overview.vtt` here and uncomment the `<track>` line in
+`docs/index.html` — it is already written, just commented out.
 
-| File | Purpose | Spec |
-|---|---|---|
-| `agent-review-overview.mp4` | The video | H.264 / AAC, 1920 × 1080. **Keep under 50 MB.** |
-| `video-poster.png` | Still before playback | 1920 × 1080, under 500 KB. |
-| `agent-review-overview.vtt` | Captions | WebVTT. Required for accessibility. |
+### If the video is ever re-encoded
 
-**GitHub limits — read before committing an MP4**
+The source was a 161 MB `.mov`, which **exceeds GitHub's 100 MB hard limit** and could not be
+committed. It was transcoded with:
+
+```bash
+ffmpeg -i source.mov -map 0:v:0 -map 0:a:0 \
+  -c:v libx264 -preset slow -crf 24 -pix_fmt yuv420p -profile:v high -level 4.0 \
+  -c:a aac -b:a 128k -ac 2 \
+  -movflags +faststart agent-review-overview.mp4
+```
+
+`-movflags +faststart` matters: it moves the index to the front of the file so playback can begin
+before the whole thing downloads. `-crf 24` took 161 MB down to 15.6 MB — screen recordings
+compress very well, so raise the CRF before reaching for a lower resolution.
+
+**GitHub limits**
 
 - GitHub warns above **50 MB** and blocks over **100 MB**.
 - A published Pages site is capped at **1 GB**.

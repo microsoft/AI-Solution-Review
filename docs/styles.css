@@ -358,6 +358,18 @@ img { max-width: 100%; }
 .closing__title { font-size: clamp(1.5rem, 3vw, 2rem); letter-spacing: -.018em; margin-bottom: .6rem; }
 .closing__text { font-size: 1.04rem; color: var(--text-muted); max-width: 50ch; margin-inline: auto; margin-bottom: 1.5rem; }
 
+/* two nomination paths: one for the agent owner, one for Microsoft teams */
+.paths {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: 1.4rem 2.25rem;
+}
+.path { display: flex; flex-direction: column; align-items: center; gap: .55rem; }
+.path__who {
+  margin: 0; font-size: .82rem; font-weight: 600;
+  color: var(--text-muted);
+}
+
 /* ---------- footer ---------- */
 .site-footer { border-top: 1px solid var(--border); background: var(--bg); padding-block: 2.5rem 2.75rem; }
 .site-footer__brand { font-family: var(--font-display); font-weight: 600; color: var(--ink); margin-bottom: .85rem; }

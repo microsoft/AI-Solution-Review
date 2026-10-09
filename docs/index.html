@@ -32,7 +32,7 @@
       <span class="brand__text">Agent Review Program</span>
     </a>
 
-    <a class="btn btn--primary btn--sm site-header__cta" href="#nominate">Nominate your agent</a>
+    <a class="btn btn--primary btn--sm site-header__cta" href="#nominate">Nominate an agent</a>
   </div>
 </header>
 
@@ -52,7 +52,7 @@
         </p>
 
         <p class="hero__actions">
-          <a class="btn btn--primary btn--lg" href="#nominate">Nominate your agent</a>
+          <a class="btn btn--primary btn--lg" href="#nominate">Nominate an agent</a>
           <a class="btn btn--ghost btn--lg" href="#overview-video">Watch the overview</a>
         </p>
 
@@ -198,20 +198,31 @@
   <section class="section section--cta" id="nominate" aria-labelledby="nominate-h">
     <div class="wrap wrap--narrow">
       <div class="closing" data-reveal>
-        <h2 class="closing__title" id="nominate-h">Nominate your agent</h2>
+        <h2 class="closing__title" id="nominate-h">Nominate an agent</h2>
         <p class="closing__text">
           Pick an agent in testing, pilot, or production with enough real traffic for the findings to
           tell you something. We will scope it with you before anything starts.
         </p>
 
-        <p>
-          <!-- ===================== NOMINATION FORM =====================
-               The aka.ms short link is the canonical entry point; it
-               redirects to the Microsoft Form. This is the only place
-               that URL appears anywhere on the site.
-               ============================================================ -->
-          <a class="btn btn--primary btn--lg" href="https://aka.ms/CATAgentReviewSignup" data-nomination-form>Open the nomination form</a>
-        </p>
+        <!-- ===================== NOMINATION FORMS =====================
+             Two audiences, two forms. These aka.ms short links are the
+             canonical entry points and are the only place either URL
+             appears anywhere on the site.
+             ============================================================ -->
+        <ul class="paths">
+          <li class="path">
+            <p class="path__who">If you run the agent</p>
+            <a class="btn btn--primary btn--lg"
+               href="https://aka.ms/CATAgentReviewSignup"
+               data-nomination-form="self">Nominate your agent</a>
+          </li>
+          <li class="path">
+            <p class="path__who">If you are on a Microsoft team</p>
+            <a class="btn btn--ghost btn--lg"
+               href="https://aka.ms/AgentReviewCustomerNomination"
+               data-nomination-form="customer">Nominate a customer</a>
+          </li>
+        </ul>
       </div>
     </div>
   </section>

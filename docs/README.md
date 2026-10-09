@@ -14,13 +14,21 @@ The customer-facing landing page for the Agent Review Program, published with Gi
 | `assets/` | Logo, screenshots and the overview video. See [`assets/README.md`](assets/README.md). |
 | `.nojekyll` | Tells GitHub Pages to serve these files as-is instead of running them through Jekyll. |
 
-## The nomination form
+## The nomination forms
 
-The primary call to action is a single button in the `#nominate` section of `index.html`, pointing at
-<https://aka.ms/CATAgentReviewSignup>. The URL appears in exactly one place, marked with a
-`NOMINATION FORM` comment and a `data-nomination-form` attribute — every other "Nominate your agent"
-link on the site is an in-page anchor to that section. Keep it that way so the form URL only ever
-has to change once.
+Two audiences, two forms, both in the `#nominate` section of `index.html` and nowhere else:
+
+| Who | Link | Attribute |
+|---|---|---|
+| The customer, nominating their own agent | <https://aka.ms/CATAgentReviewSignup> | `data-nomination-form="self"` |
+| A Microsoft team, nominating a customer | <https://aka.ms/AgentReviewCustomerNomination> | `data-nomination-form="customer"` |
+
+Every other "Nominate an agent" link on the page is an in-page anchor to that section, so each form
+URL only ever has to change in one place. The header and hero buttons are deliberately worded
+neutrally — they scroll to a choice rather than to a single form.
+
+Use the `aka.ms` short links, not the resolved `forms.cloud.microsoft` URLs, so either form can be
+repointed without a site change.
 
 ## Keep it short
 

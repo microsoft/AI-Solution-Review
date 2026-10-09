@@ -8,12 +8,12 @@ Served directly by GitHub Pages from `https://microsoft.github.io/AI-Solution-Re
 
 | File | Used for | Notes |
 |---|---|---|
-| `logo.png` | Header mark, favicon, Apple touch icon | 280 × 280 circular badge. Everything outside the circle was masked to real transparency — the supplied file had a white box baked into the corners at partial alpha, which showed as a white square on any non-white background. |
+| `logo.png` | Header mark, favicon, Apple touch icon | 280 × 280 square tile. Flattened to fully opaque — the supplied file carried ragged alpha in the corners (255, 128, 128, 64), which would have let the page show through on what is meant to be a solid tile. Rendered at 36px with an 8px radius. |
 | `og-card.png` | `og:image` link previews | 1200 × 630, logo centred on the site surface colour. Regenerate with the ffmpeg command below if the logo changes. |
 
 ```bash
 ffmpeg -y -f lavfi -i "color=c=0xfaf9f8:s=1200x630" -i logo.png \
-  -filter_complex "[1:v]scale=340:340[lg];[0:v][lg]overlay=(W-w)/2:(H-h)/2" \
+  -filter_complex "[1:v]scale=320:320,format=rgba[lg];[0:v][lg]overlay=(W-w)/2:(H-h)/2" \
   -frames:v 1 og-card.png
 ```
 

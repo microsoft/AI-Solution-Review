@@ -188,7 +188,7 @@ img { max-width: 100%; }
 .brand__mark {
   display: block; flex-shrink: 0;
   width: 36px; height: 36px;
-  border-radius: 50%;
+  border-radius: var(--radius-lg);
 }
 
 .site-header__cta { flex-shrink: 0; margin-left: auto; }

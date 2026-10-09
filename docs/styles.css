@@ -186,9 +186,9 @@ img { max-width: 100%; }
   white-space: nowrap; flex-shrink: 0;
 }
 .brand__mark {
-  display: grid; place-items: center;
-  width: 26px; height: 26px; border-radius: var(--radius);
-  background: var(--brand); color: #fff;
+  display: block; flex-shrink: 0;
+  width: 36px; height: 36px;
+  border-radius: 50%;
 }
 
 .site-header__cta { flex-shrink: 0; margin-left: auto; }
@@ -381,9 +381,15 @@ img { max-width: 100%; }
 }
 
 /* the header carries only the brand and the primary action; below this the
-   wordmark drops so the call to action is never clipped */
+   wordmark is hidden visually but kept for assistive tech, so the link
+   retains an accessible name once only the logo is showing */
 @media (max-width: 560px) {
-  .brand__text { display: none; }
+  .brand__text {
+    position: absolute;
+    width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%);
+    white-space: nowrap;
+  }
 }
 
 /* =========================================================================

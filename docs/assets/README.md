@@ -4,6 +4,26 @@ Served directly by GitHub Pages from `https://microsoft.github.io/AI-Solution-Re
 
 ---
 
+## Brand
+
+| File | Used for | Notes |
+|---|---|---|
+| `logo.png` | Header mark, favicon, Apple touch icon | 280 × 280 circular badge. Everything outside the circle was masked to real transparency — the supplied file had a white box baked into the corners at partial alpha, which showed as a white square on any non-white background. |
+| `og-card.png` | `og:image` link previews | 1200 × 630, logo centred on the site surface colour. Regenerate with the ffmpeg command below if the logo changes. |
+
+```bash
+ffmpeg -y -f lavfi -i "color=c=0xfaf9f8:s=1200x630" -i logo.png \
+  -filter_complex "[1:v]scale=340:340[lg];[0:v][lg]overlay=(W-w)/2:(H-h)/2" \
+  -frames:v 1 og-card.png
+```
+
+> **Naming:** the badge reads *Agent Review **Center*** — the tool — while the site is the
+> Agent Review **Program**. At 36px in the header the inner text is not legible so it reads purely
+> as a mark, but it is clearly readable in link previews, where the card says "Center" and the title
+> says "Program". Worth a deliberate decision if the program gets its own mark.
+
+---
+
 ## Screenshots
 
 All five are in place. They are captures of the Agent Review Center against demo agents

@@ -11,8 +11,7 @@ The customer-facing landing page for the Agent Review Program, published with Gi
 | `index.html` | The whole site. Four blocks: hero, overview video, screenshot gallery, nominate. |
 | `styles.css` | All styling. Fluent-flavoured tokens, light + dark, responsive, reduced-motion and print aware. |
 | `main.js` | ~90 lines of progressive enhancement: scroll-reveals sections and adds a hairline to the stuck header. The site is fully readable and navigable without it. |
-| `favicon.svg` | Site icon. |
-| `assets/` | Screenshots and the overview video. See [`assets/README.md`](assets/README.md). |
+| `assets/` | Logo, screenshots and the overview video. See [`assets/README.md`](assets/README.md). |
 | `.nojekyll` | Tells GitHub Pages to serve these files as-is instead of running them through Jekyll. |
 
 ## The nomination form

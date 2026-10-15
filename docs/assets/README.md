@@ -12,7 +12,7 @@ Served directly by GitHub Pages from `https://microsoft.github.io/AI-Solution-Re
 | `og-card.png` | `og:image` link previews | 1200 × 630, logo centred on the site surface colour. Regenerate with the ffmpeg command below if the logo changes. |
 
 ```bash
-ffmpeg -y -f lavfi -i "color=c=0xfaf9f8:s=1200x630" -i logo.png \
+ffmpeg -y -f lavfi -i "color=c=0x1b1a19:s=1200x630" -i logo.png \
   -filter_complex "[1:v]scale=320:320,format=rgba[lg];[0:v][lg]overlay=(W-w)/2:(H-h)/2" \
   -frames:v 1 og-card.png
 ```
@@ -31,27 +31,41 @@ All five are in place. They are captures of the Agent Review Center against demo
 
 | File | Where it appears | What it shows |
 |---|---|---|
-| `shot-scorecard.png` | Hero | Rolled-up score of B · 86/100 across three agents, the per-agent pills, and the review summary. |
-| `shot-finding-detail.png` | Gallery 1 | A finding expanded: detection method, source, parsed fact, what it means, recommendation. |
+| `shot-scorecard.png` | Hero | Rolled-up score of B · 83/100 across three agents, the per-agent pills, and the review summary. |
+| `shot-finding-detail.png` | Gallery 1 | A finding expanded: what the rule checks, what was found, why it matters, recommendation. |
 | `shot-runtime-errors.png` | Gallery 2 | Runtime → Errors: conversations analysed, error counts, tool calls, and the failing connectors. |
-| `shot-knowledge-usage.png` | Gallery 3 | Runtime → Knowledge: sources configured vs confirmed used vs never used. |
+| `shot-knowledge-usage.png` | Gallery 3 | Runtime → Knowledge: 357 sources configured vs 5 confirmed used vs 348 never used. |
 | `shot-score-progress.png` | Gallery 4 | One agent's score across three reviews, rising to 95/100. |
 
 **Specification**
 
-- **Format:** PNG. **Dimensions: 1280 × 720 (16:9).** Keep this ratio — the layout reserves space
-  from the `width`/`height` attributes, so a different ratio will shift the page as images load.
-- **Rendering:** the gallery is a single column so each image renders near full size (~1084px, about
-  85%). That is deliberate: at half-width the interface text is unreadable, which defeats the point.
-- **File size:** these sit at 48–129 KB each. Keep replacements under ~200 KB.
+- **Format:** PNG. **Dimensions: 2524 × 1344.** Keep this ratio — the layout reserves space from the
+  `width`/`height` attributes, so a different ratio will shift the page as images load.
+- **Why 2524 wide:** these are **2× captures**. They display at ~1084px, so the extra pixels are
+  what keeps the interface text sharp on high-DPI screens rather than soft and upscaled. A 1280px
+  source shown at this size looks visibly blurry — that is the problem these replaced.
+- **File size:** these sit at 149–410 KB each. Keep replacements under ~500 KB.
 - **Content:** these are customer-facing on a **public** site. Scrub real tenant data — customer and
   user names, email addresses, environment URLs, GUIDs, and any PII in transcript text.
+
+### How these were captured
+
+Playwright at `deviceScaleFactor: 2` against a 1280 × 720 viewport, screenshotting the
+`iframe[name="fullscreen-app-host"]` element rather than the page so the purple Power Apps chrome is
+excluded. The raw grab is 2560 × 1344; the right-hand scrollbar is then cropped off:
+
+```bash
+ffmpeg -y -i raw.png -vf "crop=2524:1344:0:0" shot-name.png
+```
+
+Note that `Emulation.setDeviceMetricsOverride` over CDP does **not** work for this — it still yields
+1× output. A new browser context created with `deviceScaleFactor: 2` is what produces real 2× pixels.
 
 ### Replacing or adding one
 
 The images are plain `<img>` tags in `docs/index.html`. Swap the file, and update the `alt` text and
-the `<figcaption>` to match what the new capture actually shows — several alt strings quote specific
-figures from the screenshot.
+the `<figcaption>` to match what the new capture actually shows — several alt strings and one
+caption ("348 of 357 sources never used") quote specific figures from the screenshot.
 
 ---
 

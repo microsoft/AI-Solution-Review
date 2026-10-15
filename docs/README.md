@@ -9,7 +9,7 @@ The customer-facing landing page for the Agent Review Program, published with Gi
 | Path | What it is |
 |---|---|
 | `index.html` | The whole site. Four blocks: hero, overview video, screenshot gallery, nominate. |
-| `styles.css` | All styling. Fluent-flavoured tokens, light + dark, responsive, reduced-motion and print aware. |
+| `styles.css` | All styling. Fluent-flavoured tokens, forced dark, responsive, reduced-motion and print aware. |
 | `main.js` | ~90 lines of progressive enhancement: scroll-reveals sections and adds a hairline to the stuck header. The site is fully readable and navigable without it. |
 | `assets/` | Logo, screenshots and the overview video. See [`assets/README.md`](assets/README.md). |
 | `.nojekyll` | Tells GitHub Pages to serve these files as-is instead of running them through Jekyll. |
@@ -29,6 +29,24 @@ neutrally — they scroll to a choice rather than to a single form.
 
 Use the `aka.ms` short links, not the resolved `forms.cloud.microsoft` URLs, so either form can be
 repointed without a site change.
+
+## Dark only, on purpose
+
+The page ships **one palette: dark**, regardless of the visitor's OS setting. The link gets shared
+around, and it should look the same for everyone who opens it.
+
+That is enforced in two places and both are needed:
+
+- `<meta name="color-scheme" content="dark">` in `index.html`
+- `color-scheme: dark` on `html` in `styles.css` — this is what makes scrollbars, form controls and
+  the video player chrome render dark too
+
+The dark values live directly in `:root`. There is **no `prefers-color-scheme` block for tokens**;
+re-adding one would reintroduce the light theme. If you are adding a colour, add it to `:root`.
+
+One consequence worth knowing: the dark accent (`#2899f5`) is light enough that **white text on it
+fails AA**. Anything sitting on `--brand` takes dark text (`#0b1a26`) — see `.btn--primary` and
+`.skip`.
 
 ## Keep it short
 
@@ -76,6 +94,8 @@ Pages behaves.
 - Give every image real alt text. Several alt strings quote figures visible in the screenshot, so
   update them whenever an image is replaced.
 - Anything that moves must be wrapped in a `prefers-reduced-motion` check.
-- Colour comes from Fluent 2: `#0078D4` as the only accent, on the Fluent neutral ramp, with small
-  radii (2/4/8) and Fluent's light elevation. `--text-faint` is the disabled grey and fails contrast
-  for body text — never use it for copy.
+- Colour comes from Fluent 2, on the Fluent neutral ramp, with small radii (2/4/8) and Fluent's
+  elevation. The accent is the dark-theme communication blue `#2899F5`. `--text-faint` is the
+  disabled grey and fails contrast for body text — never use it for copy.
+- Screenshots are **2× captures** (2524 × 1344) shown at ~1084px. Replacing one with a 1× image will
+  look soft. See [`assets/README.md`](assets/README.md) for how they are taken.

@@ -10,44 +10,47 @@
 
 /* ---------- tokens ---------- */
 :root {
-  /* Fluent communication blue */
-  --brand:        #0078d4;
-  --brand-hover:  #106ebe;
-  --brand-press:  #005a9e;
-  --brand-soft:   #eff6fc;
-  --brand-border: #c7e0f4;
+  /* Forced dark. The page ships one palette so a shared link looks the same
+     for everyone — see docs/README.md. Light values are no longer defined. */
+
+  /* Fluent communication blue, lifted for contrast on dark */
+  --brand:        #2899f5;
+  --brand-hover:  #4aa9f7;
+  --brand-press:  #1a86dd;
+  --brand-soft:   #112a3f;
+  --brand-border: #1f4e78;
 
   /* Fluent neutrals */
-  --ink:          #201f1e;
-  --text:         #323130;
-  --text-muted:   #605e5c;
-  --text-faint:   #8a8886;   /* Fluent disabled grey — decorative use only, never body text */
+  --ink:          #ffffff;
+  --text:         #f3f2f1;
+  --text-muted:   #c8c6c4;
+  --text-faint:   #979593;   /* decorative use only, never body text */
 
-  --border:       #edebe9;
-  --border-strong:#d2d0ce;
+  --border:       #3b3a39;
+  --border-strong:#5d5b59;
 
-  --bg:           #ffffff;
-  --bg-alt:       #faf9f8;
-  --bg-deep:      #201f1e;
-  --surface:      #ffffff;
-  --surface-2:    #f3f2f1;
-  --surface-3:    #edebe9;
+  --bg:           #1b1a19;
+  --bg-alt:       #201f1e;
+  --bg-deep:      #121111;
+  --surface:      #252423;
+  --surface-2:    #292827;
+  --surface-3:    #3b3a39;
 
-  --ok:           #107c10;
-  --ok-soft:      #dff6dd;
-  --bad:          #a4262c;
-  --bad-soft:     #fde7e9;
+  --ok:           #6bb700;
+  --ok-soft:      #0d2b0d;
+  --bad:          #f1707b;
+  --bad-soft:     #3b1319;
 
   /* Fluent uses small radii; this is a large part of not looking generic */
   --radius-sm: 2px;
   --radius:    4px;
   --radius-lg: 8px;
 
-  /* Fluent elevation — far lighter than a typical drop shadow */
-  --shadow-2:  0 0.5px 1.5px rgba(0,0,0,.14);
-  --shadow-4:  0 1.2px 3.6px rgba(0,0,0,.11), 0 .3px .9px rgba(0,0,0,.07);
-  --shadow-8:  0 3.2px 7.2px rgba(0,0,0,.13), 0 .6px 1.8px rgba(0,0,0,.09);
-  --shadow-16: 0 6.4px 14.4px rgba(0,0,0,.13), 0 1.2px 3.6px rgba(0,0,0,.09);
+  /* Fluent elevation — deepened for a dark surface */
+  --shadow-2:  0 0.5px 1.5px rgba(0,0,0,.4);
+  --shadow-4:  0 1.2px 3.6px rgba(0,0,0,.4);
+  --shadow-8:  0 3.2px 7.2px rgba(0,0,0,.45);
+  --shadow-16: 0 6.4px 14.4px rgba(0,0,0,.5);
 
   --maxw: 1140px;
   --maxw-narrow: 760px;
@@ -58,52 +61,21 @@
           "Helvetica Neue", Arial, sans-serif;
   --font-mono: ui-monospace, "Cascadia Mono", "Segoe UI Mono", Consolas, monospace;
 
-  --agentpill-bg: #005a9e;
-  --agentpill-fg: #ffffff;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --brand:        #2899f5;
-    --brand-hover:  #4aa9f7;
-    --brand-press:  #1a86dd;
-    --brand-soft:   #112a3f;
-    --brand-border: #1f4e78;
-
-    --ink:          #ffffff;
-    --text:         #f3f2f1;
-    --text-muted:   #c8c6c4;
-    --text-faint:   #979593;
-
-    --border:       #3b3a39;
-    --border-strong:#5d5b59;
-
-    --bg:           #1b1a19;
-    --bg-alt:       #201f1e;
-    --bg-deep:      #121111;
-    --surface:      #252423;
-    --surface-2:    #292827;
-    --surface-3:    #3b3a39;
-
-    --ok:           #6bb700;
-    --ok-soft:      #0d2b0d;
-    --bad:          #f1707b;
-    --bad-soft:     #3b1319;
-
-    --shadow-2:  0 0.5px 1.5px rgba(0,0,0,.4);
-    --shadow-4:  0 1.2px 3.6px rgba(0,0,0,.4);
-    --shadow-8:  0 3.2px 7.2px rgba(0,0,0,.45);
-    --shadow-16: 0 6.4px 14.4px rgba(0,0,0,.5);
-
-    --agentpill-bg: #0f3a5f;
-    --agentpill-fg: #f3f2f1;
-  }
+  --agentpill-bg: #0f3a5f;
+  --agentpill-fg: #f3f2f1;
 }
 
 /* ---------- base ---------- */
 *, *::before, *::after { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+html {
+  /* forced dark: also makes scrollbars, form controls and the video
+     player chrome render dark regardless of the OS preference */
+  color-scheme: dark;
+  background: var(--bg);
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
 
 body {
   margin: 0;
@@ -151,11 +123,11 @@ img { max-width: 100%; }
   position: absolute; left: 50%; top: .5rem;
   transform: translate(-50%, -160%);
   z-index: 100;
-  background: var(--brand); color: #fff;
+  background: var(--brand); color: #0b1a26;
   padding: .6rem 1.1rem; border-radius: var(--radius);
   text-decoration: none; font-weight: 600;
 }
-.skip:focus { transform: translate(-50%, 0); color: #fff; }
+.skip:focus { transform: translate(-50%, 0); color: #0b1a26; }
 
 .wrap { width: 100%; max-width: var(--maxw); margin-inline: auto; padding-inline: 28px; }
 .wrap--narrow { max-width: var(--maxw-narrow); }
@@ -201,20 +173,16 @@ img { max-width: 100%; }
   border: 1px solid transparent; text-decoration: none; cursor: pointer;
   transition: background-color .1s linear, border-color .1s linear, color .1s linear;
 }
-.btn--primary { background: var(--brand); color: #fff; }
-.btn--primary:hover { background: var(--brand-hover); color: #fff; }
-.btn--primary:active { background: var(--brand-press); }
+/* Dark brand blue is light enough that the label must be dark to pass AA. */
+.btn--primary { background: var(--brand); color: #0b1a26; }
+.btn--primary:hover { background: var(--brand-hover); color: #0b1a26; }
+.btn--primary:active { background: var(--brand-press); color: #0b1a26; }
 
 .btn--ghost { background: transparent; color: var(--ink); border-color: var(--border-strong); }
 .btn--ghost:hover { background: var(--surface-2); color: var(--ink); border-color: var(--text-faint); }
 
 .btn--sm { font-size: .9rem; padding: .44rem .9rem; }
 .btn--lg { font-size: 1.05rem; padding: .8rem 1.7rem; }
-
-@media (prefers-color-scheme: dark) {
-  .btn--primary { color: #0b1a26; }
-  .btn--primary:hover, .btn--primary:active { color: #0b1a26; }
-}
 
 /* ---------- hero ---------- */
 .hero { background: var(--bg); border-bottom: 1px solid var(--border); }
@@ -276,9 +244,10 @@ img { max-width: 100%; }
 .section__lede { color: var(--text-muted); font-size: 1.02rem; margin: 0; }
 
 /* ---------- screenshot gallery ---------- */
-/* Two up: the video carries the detailed walkthrough, so these are
-   supporting marketing visuals rather than documentation. */
-.gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem 1.75rem; }
+/* One up. These carry fine UI detail — scores, rule IDs, stat tiles — so they
+   are shown full width at roughly half their native 2524px so the text in
+   them stays legible on both standard and high-DPI screens. */
+.gallery { display: grid; grid-template-columns: 1fr; gap: 3.25rem; }
 .shot { margin: 0; }
 .shot__img {
   display: block; width: 100%; height: auto;
@@ -289,7 +258,7 @@ img { max-width: 100%; }
 }
 .shot figcaption {
   margin-top: 1rem; color: var(--text-muted);
-  font-size: .97rem; line-height: 1.5; max-width: 46ch;
+  font-size: 1rem; line-height: 1.55; max-width: 68ch;
 }
 .shot figcaption strong {
   display: block; color: var(--ink);
@@ -384,7 +353,6 @@ img { max-width: 100%; }
 
 @media (max-width: 860px) {
   html { scroll-padding-top: 70px; }
-  .gallery { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 740px) {

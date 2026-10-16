@@ -8,7 +8,7 @@ The customer-facing landing page for the Agent Review Program, published with Gi
 
 | Path | What it is |
 |---|---|
-| `index.html` | The landing page: hero, overview video, screenshot gallery, program timeline, concise prerequisites, nominate. |
+| `index.html` | The landing page: hero, overview video, screenshot gallery, program timeline, prerequisites, permissions/configurations, nominate. |
 | `styles.css` | All styling. Fluent-flavoured tokens, forced dark, responsive, reduced-motion and print aware. |
 | `main.js` | ~90 lines of progressive enhancement: scroll-reveals sections and adds a hairline to the stuck header. The site is fully readable and navigable without it. |
 | `assets/` | Logo, screenshots and the overview video. See [`assets/README.md`](assets/README.md). |
@@ -51,15 +51,19 @@ fails AA**. Anything sitting on `--brand` takes dark text (`#0b1a26`) — see `.
 ## Keep it short
 
 The landing page deliberately keeps prose short. It exists to show the product, explain the program,
-state the four prerequisites, and take a nomination.
+state the prerequisites and required permissions/configurations, and take a nomination.
 
-Keep the landing-page prerequisite cards concise. Installation guidance and detailed setup
-requirements are not part of the published site.
+Keep the prerequisite cards concise. Installation guidance is not part of the published site.
+
+The **Permissions and configurations** section has a narrower source boundary than the rest of the
+page: it comes only from the approved *Agent Review Center - Roles, Permissions and Configurations*
+document. Do not add roles, admin permissions, environment settings or setup dependencies that are
+not in that source.
 
 ## Content source
 
-Wording on the site comes from the repository [`README.md`](../README.md). Do not add product claims
-that are not in it.
+Wording on the site comes from the repository [`README.md`](../README.md), except for the approved
+permissions/configurations source noted above. Do not add other product claims.
 
 > The repo is **private** but the published site is **public**. Never link to `github.com/microsoft/AI-Solution-Review`
 > or any file in it from these pages — those links 404 for visitors.

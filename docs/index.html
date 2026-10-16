@@ -199,31 +199,92 @@
     <div class="wrap">
       <div class="section__head" data-reveal>
         <h2 class="section__title" id="what-you-need-h">What you need to bring</h2>
-        <p class="section__lede">Four prerequisites for everyone who uses the Agent Review Center.</p>
+        <p class="section__lede">Required licenses, capacity and environment for Agent Review Center (ARC).</p>
       </div>
 
       <div class="requirements-grid" data-reveal>
         <article class="requirement">
-          <h3 class="requirement__title">Copilot Studio licence</h3>
-          <p>A tenant licence, plus a <strong>Copilot Studio User License</strong> for each person who uses Agent Review Center.</p>
+          <h3 class="requirement__title">Copilot Studio</h3>
+          <p>Copilot Studio tenant license, plus a <strong>Copilot Studio User License</strong> for each ARC user.</p>
         </article>
 
         <article class="requirement">
           <h3 class="requirement__title">Power Apps Premium</h3>
-          <p>For each user. A Premium licence, pay-as-you-go billing or an App Pass all work.</p>
+          <p>Power Apps Premium coverage for each ARC user (Premium license, pay-as-you-go, or App Pass).</p>
         </article>
 
         <article class="requirement">
           <h3 class="requirement__title">Copilot Credits</h3>
-          <p>From a Copilot Studio capacity pack or a pay-as-you-go plan.</p>
+          <p>Copilot Credits (Copilot Studio capacity pack or pay-as-you-go billing plan).</p>
         </article>
 
         <article class="requirement">
           <h3 class="requirement__title">Dataverse environment</h3>
-          <p>A standard release Power Platform environment. It cannot be an early release environment or a Dataverse for Teams environment.</p>
+          <p>Standard release.</p>
         </article>
       </div>
 
+    </div>
+  </section>
+
+  <!-- ===================== PERMISSIONS AND CONFIGURATIONS ===================== -->
+  <section class="section section--alt" id="permissions-configurations" aria-labelledby="permissions-configurations-h">
+    <div class="wrap">
+      <div class="section__head" data-reveal>
+        <h2 class="section__title" id="permissions-configurations-h">Permissions and configurations</h2>
+        <p class="section__lede">Agent Review Center (ARC) runs as a Power Apps code app and reads Copilot Studio agents and conversation transcripts from Dataverse.</p>
+      </div>
+
+      <div data-reveal>
+        <h3 class="subhead">Environment configurations</h3>
+        <div class="table-wrap">
+          <table class="table permissions-table">
+            <caption class="visually-hidden">Required Agent Review Center environment settings, where to find them and who can set them</caption>
+            <colgroup>
+              <col class="permissions-table__setting">
+              <col class="permissions-table__where">
+              <col class="permissions-table__owner">
+            </colgroup>
+            <thead>
+              <tr>
+                <th scope="col">Setting</th>
+                <th scope="col">Where</th>
+                <th scope="col">Who can set it</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Dataverse environment, standard release</th>
+                <td data-label="Where">Power Platform admin center (PPAC) &gt; Manage &gt; Environments</td>
+                <td data-label="Who can set it">Power Platform admin</td>
+              </tr>
+              <tr>
+                <th scope="row">Copilot Credits allocated to the environment</th>
+                <td data-label="Where">PPAC &gt; Licensing &gt; Copilot Studio &gt; Manage capacity</td>
+                <td data-label="Who can set it">Power Platform admin</td>
+              </tr>
+              <tr>
+                <th scope="row">Enable code apps: On</th>
+                <td data-label="Where">PPAC &gt; Environments &gt; [env] &gt; Settings &gt; Product &gt; Features &gt; Code Apps</td>
+                <td data-label="Who can set it">Environment System admin</td>
+              </tr>
+              <tr>
+                <th scope="row">Both transcript settings On: &ldquo;Allow conversation transcripts and their associated metadata to be saved in Dataverse&rdquo; and &ldquo;Allow agent owners and editors to see session transcripts&hellip;&rdquo;</th>
+                <td data-label="Where">PPAC &gt; Environments &gt; [env] &gt; Settings &gt; Product &gt; Features &gt; Copilot Studio agents</td>
+                <td data-label="Who can set it">Environment System admin</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 class="subhead">Reviewer roles and permissions</h3>
+        <p class="permissions__lede">Each reviewer needs all of the following.</p>
+        <ul class="roles-list">
+          <li>Environment Maker</li>
+          <li>Bot Viewer</li>
+          <li>Bot Transcript Viewer</li>
+        </ul>
+      </div>
     </div>
   </section>
 

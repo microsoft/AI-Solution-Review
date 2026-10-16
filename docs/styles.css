@@ -341,7 +341,30 @@ img { max-width: 100%; }
 }
 .requirement strong { color: var(--text); }
 
-/* ---------- setup reference page ---------- */
+/* ---------- permissions and configurations ---------- */
+.permissions-table__setting { width: 34%; }
+.permissions-table__where { width: 43%; }
+.permissions-table__owner { width: 23%; }
+.permissions-table tbody th { width: auto; }
+.permissions__lede { color: var(--text-muted); margin-bottom: 1rem; }
+.roles-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.roles-list li {
+  padding: 1rem 1.1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* ---------- reference content primitives ---------- */
 .pagehead {
   padding-block: clamp(2.5rem, 6vw, 4.5rem);
   background: var(--bg-alt);
@@ -509,11 +532,13 @@ img { max-width: 100%; }
 @media (max-width: 740px) {
   body { font-size: 16px; }
   .wrap { padding-inline: 20px; }
-  .requirements-grid { grid-template-columns: 1fr; }
+  .requirements-grid,
+  .roles-list { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 620px) {
   .table-wrap { overflow: visible; }
+  .permissions-table colgroup { display: none; }
   .table,
   .table tbody,
   .table tr,
@@ -522,7 +547,16 @@ img { max-width: 100%; }
   .table thead { position: absolute; clip: rect(0 0 0 0); clip-path: inset(50%); }
   .table tbody tr + tr { border-top: 1px solid var(--border-strong); }
   .table tbody th { padding-bottom: .25rem; background: var(--surface-2); }
+  .permissions-table tbody th { width: 100%; }
   .table tbody td { padding-top: .55rem; }
+  .permissions-table td[data-label]::before {
+    content: attr(data-label);
+    display: block;
+    margin-bottom: .2rem;
+    color: var(--ink);
+    font-size: .78rem;
+    font-weight: 600;
+  }
 }
 
 /* the header carries only the brand and the primary action; below this the

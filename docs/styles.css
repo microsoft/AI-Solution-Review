@@ -317,6 +317,158 @@ img { max-width: 100%; }
   .timeline__label { margin-bottom: 0; }
 }
 
+/* ---------- prerequisites ---------- */
+.requirements-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+.requirement {
+  padding: 1.4rem 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+.requirement__title {
+  margin-bottom: .45rem;
+  font-size: 1.08rem;
+  letter-spacing: -.01em;
+}
+.requirement p {
+  color: var(--text-muted);
+  font-size: .96rem;
+  line-height: 1.55;
+}
+.requirement strong { color: var(--text); }
+.requirements__more { margin-top: 1.5rem; }
+
+/* ---------- setup reference page ---------- */
+.pagehead {
+  padding-block: clamp(2.5rem, 6vw, 4.5rem);
+  background: var(--bg-alt);
+  border-bottom: 1px solid var(--border);
+}
+.pagehead__title {
+  font-size: clamp(2.1rem, 5vw, 3.3rem);
+  letter-spacing: -.02em;
+  margin-bottom: .8rem;
+}
+.pagehead__lede {
+  color: var(--text);
+  font-size: clamp(1.08rem, 2vw, 1.2rem);
+  line-height: 1.55;
+}
+.pagehead__body { color: var(--text-muted); }
+
+.crumbs { margin-bottom: 1.4rem; }
+.crumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: var(--text-muted);
+  font-size: .86rem;
+}
+.crumbs li + li::before {
+  content: "/";
+  margin-right: .35rem;
+  color: var(--text-faint);
+}
+
+.quote,
+.note,
+.callout {
+  margin: 1.5rem 0 0;
+  padding: 1.1rem 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--brand);
+  border-radius: var(--radius);
+  color: var(--text-muted);
+}
+.quote { font-style: normal; }
+.quote strong, .callout strong { color: var(--ink); }
+.callout--warn { border-left-color: #fce100; }
+
+.subhead {
+  margin: 2.4rem 0 .85rem;
+  font-size: 1.2rem;
+  letter-spacing: -.01em;
+}
+.table-wrap {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .94rem;
+  line-height: 1.5;
+}
+.table th,
+.table td {
+  padding: .9rem 1rem;
+  text-align: left;
+  vertical-align: top;
+}
+.table thead { background: var(--surface-2); }
+.table thead th {
+  color: var(--ink);
+  font-size: .84rem;
+  letter-spacing: .01em;
+}
+.table tbody tr + tr { border-top: 1px solid var(--border); }
+.table tbody th {
+  width: 31%;
+  color: var(--ink);
+  font-weight: 600;
+}
+.table tbody td { color: var(--text-muted); }
+
+.bullets { margin: 1rem 0; padding-left: 1.25rem; }
+.bullets li { padding-left: .25rem; margin-bottom: .75rem; }
+.bullets li:last-child { margin-bottom: 0; }
+
+.steps--numbered {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: setup-step;
+}
+.steps--numbered .steps__item {
+  position: relative;
+  counter-increment: setup-step;
+  padding: 0 0 1.7rem 3.25rem;
+}
+.steps--numbered .steps__item:last-child { padding-bottom: 0; }
+.steps--numbered .steps__item::before {
+  content: counter(setup-step);
+  position: absolute;
+  top: -.1rem;
+  left: 0;
+  display: grid;
+  width: 2.2rem;
+  height: 2.2rem;
+  place-items: center;
+  border: 1px solid var(--brand-border);
+  border-radius: 50%;
+  background: var(--brand-soft);
+  color: var(--brand);
+  font-weight: 700;
+}
+.steps__title { margin-bottom: .3rem; font-size: 1.08rem; }
+.steps__item p { color: var(--text-muted); }
+.callout__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .7rem;
+  margin-top: 1rem;
+}
+
 /* ---------- closing / nominate ---------- */
 .closing {
   text-align: center;
@@ -358,6 +510,20 @@ img { max-width: 100%; }
 @media (max-width: 740px) {
   body { font-size: 16px; }
   .wrap { padding-inline: 20px; }
+  .requirements-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 620px) {
+  .table-wrap { overflow: visible; }
+  .table,
+  .table tbody,
+  .table tr,
+  .table th,
+  .table td { display: block; width: 100%; }
+  .table thead { position: absolute; clip: rect(0 0 0 0); clip-path: inset(50%); }
+  .table tbody tr + tr { border-top: 1px solid var(--border-strong); }
+  .table tbody th { padding-bottom: .25rem; background: var(--surface-2); }
+  .table tbody td { padding-top: .55rem; }
 }
 
 /* the header carries only the brand and the primary action; below this the

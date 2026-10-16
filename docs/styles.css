@@ -340,7 +340,6 @@ img { max-width: 100%; }
   line-height: 1.55;
 }
 .requirement strong { color: var(--text); }
-.requirements__more { margin-top: 1.5rem; }
 
 /* ---------- setup reference page ---------- */
 .pagehead {

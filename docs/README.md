@@ -9,7 +9,6 @@ The customer-facing landing page for the Agent Review Program, published with Gi
 | Path | What it is |
 |---|---|
 | `index.html` | The landing page: hero, overview video, screenshot gallery, program timeline, concise prerequisites, nominate. |
-| `setup.html` | Detailed Agent Review Center prerequisites, transcript guidance, and installation steps. |
 | `styles.css` | All styling. Fluent-flavoured tokens, forced dark, responsive, reduced-motion and print aware. |
 | `main.js` | ~90 lines of progressive enhancement: scroll-reveals sections and adds a hairline to the stuck header. The site is fully readable and navigable without it. |
 | `assets/` | Logo, screenshots and the overview video. See [`assets/README.md`](assets/README.md). |
@@ -54,8 +53,8 @@ fails AA**. Anything sitting on `--brand` takes dark text (`#0b1a26`) — see `.
 The landing page deliberately keeps prose short. It exists to show the product, explain the program,
 state the four prerequisites, and take a nomination.
 
-Dense operational detail belongs in `setup.html`. Keep the landing-page prerequisite cards concise
-and keep both surfaces synchronized when licensing or environment requirements change.
+Keep the landing-page prerequisite cards concise. Installation guidance and detailed setup
+requirements are not part of the published site.
 
 ## Content source
 

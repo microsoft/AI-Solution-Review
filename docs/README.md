@@ -8,9 +8,9 @@ The customer-facing landing page for the Agent Review Program, published with Gi
 
 | Path | What it is |
 |---|---|
-| `index.html` | The landing page: hero, overview video, screenshot gallery, program timeline, prerequisites, permissions/configurations, nominate. |
+| `index.html` | The landing page: quick navigation, hero, overview video, screenshot gallery, program timeline, prerequisites, permissions/configurations, nominate. |
 | `styles.css` | All styling. Fluent-flavoured tokens, forced dark, responsive, reduced-motion and print aware. |
-| `main.js` | ~90 lines of progressive enhancement: scroll-reveals sections and adds a hairline to the stuck header. The site is fully readable and navigable without it. |
+| `main.js` | Progressive enhancement: scroll-reveals sections, adds a hairline to the stuck header, and highlights the current quick-navigation link. The site is fully readable and navigable without it. |
 | `assets/` | Logo, screenshots and the overview video. See [`assets/README.md`](assets/README.md). |
 | `.nojekyll` | Tells GitHub Pages to serve these files as-is instead of running them through Jekyll. |
 

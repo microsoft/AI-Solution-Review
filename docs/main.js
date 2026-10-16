@@ -84,6 +84,82 @@
     update();
   }
 
+  /* -----------------------------------------------------------------------
+     Quick navigation highlights the section nearest the top of the page.
+     The links themselves are normal anchors and work without JavaScript.
+     ----------------------------------------------------------------------- */
+  function wireQuickNav() {
+    var links = Array.prototype.slice.call(document.querySelectorAll(".quick-nav__link"));
+    var items = links.map(function (link) {
+      var target = document.querySelector(link.getAttribute("href"));
+      return target ? { link: link, target: target } : null;
+    }).filter(Boolean);
+
+    if (!items.length) return;
+
+    var ticking = false;
+    var activeLink = null;
+
+    function keepCurrentLinkVisible(link) {
+      if (window.innerWidth >= 1440) return;
+
+      var list = link.closest(".quick-nav__list");
+      if (!list) return;
+
+      var left = link.offsetLeft;
+      var right = left + link.offsetWidth;
+      var visibleLeft = list.scrollLeft;
+      var visibleRight = visibleLeft + list.clientWidth;
+
+      if (left < visibleLeft || right > visibleRight) {
+        list.scrollTo({
+          left: Math.max(0, left - 12),
+          behavior: reduceMotion ? "auto" : "smooth"
+        });
+      }
+    }
+
+    function update() {
+      var marker = window.innerWidth >= 1440 ? 100 : 125;
+      var current = items[0];
+
+      items.forEach(function (item) {
+        if (item.target.getBoundingClientRect().top <= marker) current = item;
+      });
+
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) {
+        current = items[items.length - 1];
+      }
+
+      items.forEach(function (item) {
+        if (item === current) {
+          item.link.setAttribute("aria-current", "location");
+        } else {
+          item.link.removeAttribute("aria-current");
+        }
+      });
+
+      if (current.link !== activeLink) {
+        activeLink = current.link;
+        keepCurrentLinkVisible(activeLink);
+      }
+
+      ticking = false;
+    }
+
+    function request() {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(update);
+    }
+
+    window.addEventListener("scroll", request, { passive: true });
+    window.addEventListener("resize", request, { passive: true });
+    window.addEventListener("hashchange", request);
+    update();
+  }
+
   wireScrollReveal();
   wireStickyHeader();
+  wireQuickNav();
 })();

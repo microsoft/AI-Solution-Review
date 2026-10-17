@@ -109,18 +109,16 @@
 
       var listRect = list.getBoundingClientRect();
       var linkRect = link.getBoundingClientRect();
-      var delta = 0;
+      var nextLeft = list.scrollLeft;
 
-      if (linkRect.left < listRect.left) {
-        delta = linkRect.left - listRect.left - 12;
-      } else if (linkRect.right > listRect.right) {
-        delta = linkRect.right - listRect.right + 12;
+      if (linkRect.left < listRect.left || linkRect.right > listRect.right) {
+        nextLeft += linkRect.left - listRect.left;
       }
 
-      if (delta) {
-        list.scrollBy({
-          left: delta,
-          behavior: reduceMotion ? "auto" : "smooth"
+      if (nextLeft !== list.scrollLeft) {
+        list.scrollTo({
+          left: Math.max(0, nextLeft),
+          behavior: "auto"
         });
       }
     }

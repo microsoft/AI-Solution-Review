@@ -14,6 +14,12 @@ The customer-facing landing page for the Agent Review Program, published with Gi
 | `assets/` | Logo, screenshots and the overview video. See [`assets/README.md`](assets/README.md). |
 | `.nojekyll` | Tells GitHub Pages to serve these files as-is instead of running them through Jekyll. |
 
+## Quick navigation
+
+Every quick-navigation link intentionally repeats its destination's visible heading exactly. Do not
+abbreviate these labels: title parity makes the menu predictable. The menu becomes a roomy side rail
+only when the viewport has enough space; otherwise it stays as a larger horizontal-scroll tab row.
+
 ## The nomination forms
 
 Two audiences, two forms, both in the `#nominate` section of `index.html` and nowhere else:

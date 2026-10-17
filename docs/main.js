@@ -89,6 +89,7 @@
      The links themselves are normal anchors and work without JavaScript.
      ----------------------------------------------------------------------- */
   function wireQuickNav() {
+    var quickNav = document.querySelector(".quick-nav");
     var links = Array.prototype.slice.call(document.querySelectorAll(".quick-nav__link"));
     var items = links.map(function (link) {
       var target = document.querySelector(link.getAttribute("href"));
@@ -101,26 +102,33 @@
     var activeLink = null;
 
     function keepCurrentLinkVisible(link) {
-      if (window.innerWidth >= 1440) return;
+      if (window.innerWidth >= 1760) return;
 
       var list = link.closest(".quick-nav__list");
       if (!list) return;
 
-      var left = link.offsetLeft;
-      var right = left + link.offsetWidth;
-      var visibleLeft = list.scrollLeft;
-      var visibleRight = visibleLeft + list.clientWidth;
+      var listRect = list.getBoundingClientRect();
+      var linkRect = link.getBoundingClientRect();
+      var delta = 0;
 
-      if (left < visibleLeft || right > visibleRight) {
-        list.scrollTo({
-          left: Math.max(0, left - 12),
+      if (linkRect.left < listRect.left) {
+        delta = linkRect.left - listRect.left - 12;
+      } else if (linkRect.right > listRect.right) {
+        delta = linkRect.right - listRect.right + 12;
+      }
+
+      if (delta) {
+        list.scrollBy({
+          left: delta,
           behavior: reduceMotion ? "auto" : "smooth"
         });
       }
     }
 
     function update() {
-      var marker = window.innerWidth >= 1440 ? 100 : 125;
+      var marker = window.innerWidth >= 1760 || !quickNav
+        ? 100
+        : Math.ceil(quickNav.getBoundingClientRect().bottom + 16);
       var current = items[0];
 
       items.forEach(function (item) {

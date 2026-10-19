@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Nominate an agent for the Agent Review Program
+    url: https://microsoft.github.io/AI-Solution-Review/#nominate
+    about: Ask for an expert-guided review of your agent.
+  - name: Report a security vulnerability
+    url: https://aka.ms/SECURITY.md
+    about: Do not report security vulnerabilities in public issues. Follow Microsoft's security reporting guidance instead.
+  - name: Get help with a live production problem
+    url: https://learn.microsoft.com/power-platform/admin/get-help-support
+    about: This repository is not a support or escalation path. Use your normal Microsoft Support channel.

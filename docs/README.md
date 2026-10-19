@@ -2,7 +2,7 @@
 
 The customer-facing landing page for the Agent Review Program, published with GitHub Pages.
 
-**Live URL (once Pages is enabled):** <https://microsoft.github.io/AI-Solution-Review/>
+**Live URL:** <https://microsoft.github.io/AI-Solution-Review/>
 
 ## Contents
 
@@ -71,8 +71,10 @@ not in that source.
 Wording on the site comes from the repository [`README.md`](../README.md), except for the approved
 permissions/configurations source noted above. Do not add other product claims.
 
-> The repo is **private** but the published site is **public**. Never link to `github.com/microsoft/AI-Solution-Review`
-> or any file in it from these pages — those links 404 for visitors.
+The repository is **public**, as is the site. Installation guidance still stays off the site on
+purpose — customers get it from the repository's [guides](../guides/README.md). The site's
+prerequisites and permissions/configurations must match
+[`guides/prerequisites.md`](../guides/prerequisites.md), so change both together.
 
 ## Publishing
 

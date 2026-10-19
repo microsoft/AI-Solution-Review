@@ -1,0 +1,29 @@
+name: Question
+description: Ask how the review works — what is checked, prerequisites, findings, or data handling.
+labels: ["question"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before you ask, check the [FAQ](https://github.com/microsoft/AI-Solution-Review/blob/main/guides/faq.md) and search existing issues.
+
+        **Issues in this repository are public.** Do not post customer or tenant data, environment or agent identifiers, conversation transcripts, review results, or screenshots containing real data. Describe your question generically.
+  - type: textarea
+    id: question
+    attributes:
+      label: Your question
+      description: What would you like to know?
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Anything that helps us answer — for example, which guide you were reading or what you are trying to do.
+  - type: checkboxes
+    id: no-sensitive-data
+    attributes:
+      label: Public issue
+      options:
+        - label: I have not included tenant data, identifiers, transcripts, results, or screenshots containing real data.
+          required: true

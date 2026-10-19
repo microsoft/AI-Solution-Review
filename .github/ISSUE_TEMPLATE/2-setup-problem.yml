@@ -1,0 +1,52 @@
+name: Setup or install problem
+description: Something went wrong while installing or setting up the Agent Review Center.
+labels: ["setup"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        First, look up the message you see in [Troubleshooting](https://github.com/microsoft/AI-Solution-Review/blob/main/guides/troubleshooting.md), and run the readiness checklist (**Settings** > **Run checks**) in the Agent Review Center.
+
+        If you are in an engagement, your Microsoft contact is the fastest route. For a live production problem, use your normal Microsoft Support channel.
+
+        **Issues in this repository are public.** Do not post customer or tenant data, environment URLs or IDs, agent names, user names, conversation transcripts, or screenshots containing real data.
+  - type: input
+    id: version
+    attributes:
+      label: Solution version
+      description: The version from the file name, for example 20261016.1.
+      placeholder: "20261016.1"
+    validations:
+      required: true
+  - type: dropdown
+    id: step
+    attributes:
+      label: Where did it go wrong?
+      options:
+        - Importing the solution
+        - Running the setup app (Copilot Agent Kit Installer)
+        - Readiness checklist in the Agent Review Center
+        - Starting or running a review
+        - Runtime analysis or transcripts
+        - Something else
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: The steps you took and the exact message you saw. Remove any identifiers from the message.
+    validations:
+      required: true
+  - type: textarea
+    id: checklist
+    attributes:
+      label: Readiness checklist
+      description: Which readiness checks are green, yellow, or red? Remove any identifiers.
+  - type: checkboxes
+    id: no-sensitive-data
+    attributes:
+      label: Public issue
+      options:
+        - label: I have not included tenant data, identifiers, transcripts, results, or screenshots containing real data.
+          required: true

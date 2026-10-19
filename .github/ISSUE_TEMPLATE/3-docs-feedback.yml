@@ -1,0 +1,30 @@
+name: Documentation feedback
+description: Report something wrong, missing, or unclear in these docs or on the website.
+labels: ["documentation"]
+body:
+  - type: input
+    id: page
+    attributes:
+      label: Page
+      description: A link to the page, or its name.
+      placeholder: https://github.com/microsoft/AI-Solution-Review/blob/main/guides/install.md
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What's wrong or missing
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested change
+      description: Optional. If you'd rather fix it yourself, pull requests are welcome.
+  - type: checkboxes
+    id: no-sensitive-data
+    attributes:
+      label: Public issue
+      options:
+        - label: I have not included tenant data, identifiers, transcripts, results, or screenshots containing real data.
+          required: true

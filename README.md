@@ -3,6 +3,17 @@
 > An expert-guided review, debugging and optimization, and validation service for your Copilot Studio
 > agents, declarative agents, plugins, and skills.
 
+**[Website](https://microsoft.github.io/AI-Solution-Review/)** ·
+**[Download](#download)** ·
+**[Prerequisites](guides/prerequisites.md)** ·
+**[Install guide](guides/install.md)** ·
+**[Run a review](guides/run-a-review.md)** ·
+**[Troubleshooting](guides/troubleshooting.md)** ·
+**[FAQ](guides/faq.md)** ·
+**[Get help](SUPPORT.md)**
+
+![Agent Review Center showing a rolled-up score of B, 83 out of 100, across three Copilot Studio agents, with a review summary of 26 of 37 checks passed and a list of findings below.](docs/assets/shot-scorecard.png)
+
 The Agent Review Program pairs Microsoft experts with the **Agent Review Center** — a tool that runs
 in your own environment and scores your agent against practices Microsoft teams have gathered across
 customer engagements.
@@ -10,6 +21,50 @@ customer engagements.
 You get a scored baseline, risk-ranked findings with concrete remediation steps, and — once you have
 made the fixes — a re-run measured against that baseline. The tool stays in your environment
 afterward, so you can review your agents again whenever you want.
+
+---
+
+## Documentation
+
+| I want to… | Read |
+|---|---|
+| Understand the program and what the review covers | [What it is](#what-it-is) · [Website](https://microsoft.github.io/AI-Solution-Review/) |
+| Check that my tenant is ready, or hand my admin a checklist | [Prerequisites](guides/prerequisites.md) |
+| Get the solution file | [Download](#download) |
+| Install and set up the Agent Review Center | [Install guide](guides/install.md) |
+| Run my first review and read the results | [Run a review](guides/run-a-review.md) |
+| Fix a setup or review problem | [Troubleshooting](guides/troubleshooting.md) |
+| Find answers to common questions | [FAQ](guides/faq.md) |
+| See what changed in each version | [Changelog](CHANGELOG.md) |
+| Ask a question or report a problem with these docs | [Support](SUPPORT.md) |
+
+## Download
+
+The Agent Review Center ships as a Power Platform **managed solution**. Import it into a Power
+Platform environment in your own tenant.
+
+| | |
+|---|---|
+| **Latest version** | `20261016.1` — see the [changelog](CHANGELOG.md) |
+| **File** | [`AgentReviewCenter_20261016.1_managed.zip`](AgentReviewCenter_20261016.1_managed.zip) (1.6 MB) |
+| **Download** | [Latest release](https://github.com/microsoft/AI-Solution-Review/releases/latest) · [Direct download](https://github.com/microsoft/AI-Solution-Review/raw/main/AgentReviewCenter_20261016.1_managed.zip) |
+| **SHA-256** | `DBBF03DCCC2F4F6E208D5BFF70C2260A13E11AC2F74B6CE2AE07DD9673BB364B` |
+
+Import the `.zip` as-is — do not extract it. Get the [prerequisites](guides/prerequisites.md) in
+place first, then follow the [install guide](guides/install.md).
+
+## Quick start
+
+1. **Send the [prerequisites checklist](guides/prerequisites.md) to your Power Platform admin.**
+   Licenses, a standard Dataverse environment, code apps, and transcript settings.
+2. **Turn on transcript recording now.** It is not retroactive — nothing recorded before you switch
+   it on can be analyzed.
+3. **[Import the solution](guides/install.md#3-import-the-solution)** into the environment that holds
+   the agents you want reviewed.
+4. **[Run the setup app once](guides/install.md#4-run-the-setup-app-once)** to connect the solution
+   and start its review workflow.
+5. **[Open the Agent Review Center](guides/install.md#5-clear-the-readiness-checklist)**, clear the
+   readiness checklist, and select **Add review**. See [Run a review](guides/run-a-review.md).
 
 ---
 
@@ -52,6 +107,19 @@ and published references such as OWASP.
 | **Priority** | A risk-ranked backlog, so the highest-impact fixes come first. |
 | **Evidence** | A before-and-after score you can hand to stakeholders. |
 
+<table>
+  <tr>
+    <td width="50%"><img src="docs/assets/shot-finding-detail.png" alt="A finding called Contradictory Skill Guidance expanded to show what the rule checks, the exact wording found in the agent, why it matters, and a recommendation."><br><b>Every finding</b> names the failure, why it matters, and the fix — each one citing its source.</td>
+    <td width="50%"><img src="docs/assets/shot-runtime-errors.png" alt="Runtime error analysis showing 151 conversations analysed, 12 with errors, 237 tool calls and 65 knowledge searches, above a list of failing connectors ranked by occurrence."><br><b>Runtime analysis</b> pulls failures from your own transcripts — not a lab test.</td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="docs/assets/shot-knowledge-usage.png" alt="Knowledge usage showing 357 sources configured, 5 confirmed used and 348 never used."><br><b>Knowledge usage</b> measures the grounding you configured against what the agent actually cites.</td>
+    <td width="50%"><img src="docs/assets/shot-score-progress.png" alt="A score progress chart tracking one agent across three reviews, rising to 95 out of 100, up 11 points since the first review."><br><b>Score progress</b> shows each re-run against your baseline.</td>
+  </tr>
+</table>
+
+Screenshots are from a sample review of demo agents.
+
 ## The Agent Review Center
 
 The Agent Review Center is the tool behind the review. It runs in your own environment, against your
@@ -59,128 +127,61 @@ own agents.
 
 | Capability | What it does |
 |---|---|
-| **Scored review result** | A rolled score across every agent reviewed — a grade and a number, such as `B+ · 87/100` — with per-agent tabs so you can see which agent is dragging the score. |
-| **Review summary** | Total checks passed, broken down into passed, needs attention, and fail, plus the count of references cited. |
-| **Findings list** | Every finding, expandable, filterable by component and status, showing parsed fact, impact, recommendation, and detection method. You can include or ignore a rule, or jump straight to editing the skill. |
+| **Scored review result** | A rolled score across every agent reviewed — a grade and a number, such as `B · 83/100` — with per-agent tabs so you can see which agent is dragging the score. |
+| **Review summary** | Total checks passed, broken down into passed and failed, plus the count of references cited. |
+| **Findings list** | Every finding, expandable, filterable by component and status, showing what the rule checks, what was found, why it matters, and how to fix it. You can mark a rule as a manual pass where it does not apply. |
 | **Agent map** | How your agents connect, so routing and delegation problems are visible as structure, not buried in instructions. |
-| **Runtime analysis** | Behavior from real runs, not just static configuration. |
-| **Conversation analytics** | Coverage across your agents, conversations analyzed, detected risks, PII exposure, sentiment breakdown, and activity trends over time. |
-| **Agent debugger** | Step through a failed conversation and see variable values and the steps the agent actually took. |
+| **Runtime analysis** | Behavior from real runs, not just static configuration: errors, latency, tool calls, and knowledge usage from your conversation transcripts. |
+| **Agent debugger** | Step through a conversation and see the steps the agent actually took, variable values, tool calls, and a performance timeline. |
 | **Rule packs** | Versioned sets of checks, so you know exactly which rules produced a result and can compare like with like. |
 | **Snapshots and re-run** | Keep a snapshot of a review and run it again later. This is what turns "we changed some things" into a measured before-and-after. |
-| **Share results** | Hand the scored result to your own stakeholders. |
+| **Share results** | Download the scored result as a PDF or JSON report for your own stakeholders. |
 
-Every run records its own metadata — when it ran, how long it took, the model used, whether memory
-and web search were on, and its credit accounting — so a result is reproducible and auditable later.
+You can review three kinds of asset: **Copilot Studio agents** in your environment, and
+**declarative agents** and **skills** uploaded as files.
+
+Every run records its own metadata — when it ran, how long it took, the model used, and whether
+memory and web search were on — so a result is reproducible and auditable later.
 
 ## What you need to bring
 
 | What | Detail |
 |---|---|
 | **A named owner with the right access** | One person who can work on the agent directly, with about **3–6 hours** across the engagement. |
-| **Agreement to install the Agent Review Center** | It runs in **your own environment**, so your data stays in your tenant. See [Install the Agent Review Center](#install-the-agent-review-center). |
+| **Agreement to install the Agent Review Center** | It runs in **your own environment**, so your data stays in your tenant. See the [install guide](guides/install.md). |
 | **An agent with a meaningful user base** | In testing, pilot, or production, with enough real traces for the failure modes to be informative. |
-| **Licensing and credits** | A Copilot Studio license, a Power Apps Premium license, and Copilot credits. See [Prerequisites](#prerequisites). |
+| **Licensing and credits** | A Copilot Studio license, Power Apps Premium, and Copilot Credits. See [Prerequisites](guides/prerequisites.md). |
 
 An agent with little or no real traffic can still be reviewed for configuration and orchestration,
-but the runtime and conversation analysis will have little to work with.
-
-## Install the Agent Review Center
-
-The Agent Review Center is installed as part of the **Copilot Agent Kit**, an open-source toolkit for
-Copilot Studio agents. It goes into a Power Platform environment in your own tenant.
-
-Start this before your first working session. The tenant admin approvals and the transcript setting
-are the two things most likely to hold up a review, and neither is quick to arrange on the day.
-
-> The Copilot Agent Kit documentation refers to the underlying capability as the **Agent Review
-> Tool**. It is the same thing you will see described here as the Agent Review Center.
-
-### Prerequisites
-
-**Licensing — tenant level**
-
-| Requirement | Why |
-|---|---|
-| **Copilot Studio license** | The agents under review run on it. |
-| **Power Apps Premium license** | Required to run the app and the Power Automate cloud flows that use Premium connectors. |
-| **Copilot credits** | Running a review consumes credits. Credits must also be allocated to the environment where the Agent Review Center runs, not only owned at tenant level. |
-
-**Environment configuration — needs a system administrator**
-
-| Setting | Notes |
-|---|---|
-| **Dataverse provisioned** | The environment must [have Dataverse as a data store](https://learn.microsoft.com/en-us/power-platform/admin/create-environment). Configuration and results are stored there. |
-| **Not a preview environment** | Use a standard environment. |
-| **Code apps enabled** | [Enable Power Apps Code Apps](https://learn.microsoft.com/en-us/power-apps/developer/code-apps/overview#enable-code-apps-on-a-power-platform-environment) on the environment. |
-| **Power Apps component framework enabled** | [Enable the component framework for canvas apps](https://learn.microsoft.com/en-us/power-apps/developer/component-framework/component-framework-for-canvas-apps#enable-the-power-apps-component-framework-feature). |
-| **Bot transcripts enabled** | Required for runtime analysis and conversation analytics. See the note below — turn this on early. |
-| **Creator Kit deployed** | A required dependency. [Set up the Creator Kit](https://learn.microsoft.com/en-us/power-platform/guidance/creator-kit/setup) first. |
-| **Connectors allowed by data policy** | Your environment's [data loss prevention policies](https://learn.microsoft.com/en-us/power-platform/admin/wp-data-loss-prevention) must permit every connector shipped in the solution, and connections must be populated at import time — regardless of which features you plan to use. |
-
-**Access and roles**
-
-Two environments can be involved: the one where the Agent Review Center runs, and the one where the
-agent being reviewed lives. They can be the same environment, but they do not have to be.
-
-| Where | What your tenant admin grants |
-|---|---|
-| **Environment running the Agent Review Center** | System administrator to perform the install. For the review owner: a security role that can read the Agent Review Center tables, and direct access to the Agent Review Center code app. |
-| **Environment holding the agent under review** | **Agent Maker**, so the owner can work on the agent. **Bot Transcript Viewer**, so conversation transcripts can be read. Transcript access is [governed by environment security roles](https://learn.microsoft.com/en-us/microsoft-copilot-studio/admin-share-bots). |
-
-Full detail is in the [Copilot Agent Kit prerequisites](https://learn.microsoft.com/en-us/microsoft-copilot-studio/guidance/kit-prerequisites).
-
-### Turn on transcripts early
-
-**Transcript recording is not retroactive.** Nothing is backfilled. If recording is switched on the
-day before the review starts, there is almost no history to analyze, and the runtime and
-conversation analysis will have little to say.
-
-Two things to tell your admin:
-
-- Transcript recording is an **environment setting**, so it applies to agents in that environment,
-  not only the ones under review. Environment-group policies can override a per-environment setting.
-- **Retention is configurable.** Check that the retention window covers the period you want reviewed.
-
-After switching it on, run a test conversation and confirm a transcript row actually appears before
-you rely on it.
-
-### Install
-
-| Step | What to do |
-|---|---|
-| **1. Check prerequisites** | Work through [Copilot Agent Kit prerequisites](https://learn.microsoft.com/en-us/microsoft-copilot-studio/guidance/kit-prerequisites) before downloading anything. |
-| **2. Install the kit** | From [Marketplace](https://aka.ms/DownloadCopilotStudioKit), or import the latest managed solution from the [GitHub releases](https://github.com/microsoft/Power-CAT-Copilot-Studio-Kit/releases/latest). Full steps: [Install Copilot Agent Kit](https://learn.microsoft.com/en-us/microsoft-copilot-studio/guidance/kit-install). |
-| **3. Configure connection references** | In Power Apps, open the default solution and make sure the **Copilot Agent Kit - Dataverse** connection reference is valid. |
-| **4. Enable the cloud flows** | In Power Automate, confirm every flow in the solution is on. Enable them in order: flows ending in **Grandchild**, then **Child**, then the rest. |
-| **5. Finish in the Setup Wizard** | The kit includes a [Setup Wizard](https://learn.microsoft.com/en-us/microsoft-copilot-studio/guidance/kit-setup-wizard) for connection references, environment variables, and flows. The **Agents (preview)** connector used by the review workflow cannot be configured during solution import — skip it at import and complete it in the Setup Wizard. |
-
-If you are already scoping a review with your Microsoft contact, they can walk your admin through
-this. You do not have to get it all working alone before you talk to us.
+but the runtime analysis will have little to work with.
 
 ## Data handling
 
 - **The tool runs in your environment.** The Agent Review Center is installed in your own tenant and
   runs against your own agents.
 - **Your data stays in your tenant.** Transcripts, telemetry, and traces are analyzed where they
-  already live.
+  already live. Reviews and results are stored in Dataverse tables in the environment where you
+  install the tool.
 - **You control what is shared.** Results are yours. Sharing them outside your team is your decision.
+
+See the [FAQ](guides/faq.md#data-and-security) for what the solution installs and which connectors it
+uses.
 
 ## How to get started
 
 1. **Pick the agent or agents you want reviewed.** Something in testing, pilot, or production with a
    meaningful user base, and enough real traces for the findings to tell you something.
-2. **Ask your Microsoft team.** Talk to the Microsoft team you already work with and ask them about
-   the Agent Review Program.
-3. **Start the setup early.** Get the [prerequisites and permissions](#install-the-agent-review-center)
-   in front of your tenant admin, and turn on transcript recording as soon as you can.
+2. **Nominate your agent.** Use the [nomination options on the website](https://microsoft.github.io/AI-Solution-Review/#nominate),
+   or ask the Microsoft team you already work with about the Agent Review Program.
+3. **Start the setup early.** Get the [prerequisites](guides/prerequisites.md) in front of your
+   tenant admin, and turn on transcript recording as soon as you can.
 4. **Name your owner and book the first slot** for discovery, Agent Review Center setup, and data
    preparation.
 
 Not sure whether your agent is a fit? Ask your Microsoft contact — we will scope it with you
 beforehand.
 
-For questions about these docs, see [SUPPORT.md](SUPPORT.md).
+For questions, see [SUPPORT.md](SUPPORT.md).
 
 ---
 

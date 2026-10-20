@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FAQ — Agent Review Program</title>
+<meta name="description" content="Error messages you might see when you set up Agent Review Center, and how to fix them.">
+<meta name="color-scheme" content="dark">
+<link rel="canonical" href="https://microsoft.github.io/AI-Solution-Review/faq.html">
+<link rel="icon" href="assets/logo.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/logo.png">
+<link rel="stylesheet" href="styles.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body class="page--reference">
+
+<a class="skip" href="#main">Skip to main content</a>
+
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <a class="brand" href="./">
+      <!-- alt is empty because the wordmark beside it already names the link -->
+      <img class="brand__mark" src="assets/logo.png" alt="" width="280" height="280" decoding="async">
+      <span class="brand__text">Agent Review Program</span>
+    </a>
+
+    <a class="site-header__link" href="./">Overview</a>
+    <a class="btn btn--primary btn--sm site-header__cta" href="./#nominate">Nominate an agent</a>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="pagehead">
+    <div class="wrap wrap--narrow">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="./">Agent Review Program</a></li>
+          <li aria-current="page">FAQ</li>
+        </ol>
+      </nav>
+      <h1 class="pagehead__title">Frequently asked questions</h1>
+      <p class="pagehead__lede">
+        Error messages you might see when you set up Agent Review Center, and how to fix them.
+      </p>
+      <p class="pagehead__body">
+        Search this page for the error code or the exact wording on your screen.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===================== INSTALLING THE SOLUTION =====================
+       One <article class="faq"> per error. Give each a stable id so it can
+       be linked to directly, and replace tenant-specific values in quoted
+       error messages (policy names, IDs, timestamps) with placeholders:
+       this page is public.
+       ==================================================================== -->
+  <section class="section" aria-labelledby="faq-install-h">
+    <div class="wrap wrap--narrow">
+      <h2 class="section__title" id="faq-install-h">Installing the solution</h2>
+
+      <article class="faq" id="acp-dlp-blocked-connector" aria-labelledby="acp-dlp-blocked-connector-h">
+        <h3 class="faq__question" id="acp-dlp-blocked-connector-h">
+          Import fails with <code>AcpDlpPolicyEvaluation</code>: the <code>shared_flowmanagement</code> connector is blocked
+        </h3>
+
+        <h4 class="faq__label">What you see</h4>
+        <p>The solution import stops with an error like this one. Your message shows your own policy name, IDs and timestamps.</p>
+        <pre class="error-message"><code>Solution "Agent Review Center" failed to import: CanvasApp import: FAILURE: Code: AcpDlpPolicyEvaluation Message: The app 'cat_copilotagentkitinstaller_81f96' cannot be saved because one or more connectors it uses 'shared_flowmanagement' are blocked by Advanced Connector Policy (ACP) or Data Policies (DLP) for this environment. Please contact your environment administrator '' to update the policies '&lt;policy name&gt;' to allow the connectors used by this app. Link for the policy wiki ''. Violation details: [PolicyId: &lt;policy ID&gt;, PolicyDisplayName: &lt;policy name&gt;, PolicyType: DLP, PolicySource: , PolicyLastModified: &lt;timestamp&gt;, ViolationType: BlockedConnector, Parameters: [shared_flowmanagement]]. Client Request Id: &lt;request ID&gt;.</code></pre>
+
+        <h4 class="faq__label">How to fix it</h4>
+        <ol class="steps--numbered">
+          <li class="steps__item">
+            <p>In the Power Platform admin center, go to <strong>Security &rarr; Data and privacy &rarr; Data policies</strong>. On older layouts, it's <strong>Policies &rarr; Data policies</strong>.</p>
+          </li>
+          <li class="steps__item">
+            <p>Open the policy named in the error message (the <code>PolicyDisplayName</code> value).</p>
+          </li>
+          <li class="steps__item">
+            <p>On the <strong>Prebuilt connectors</strong> step, find <strong>Power Automate Management</strong> and move it from <strong>Blocked</strong> to <strong>Business</strong>. It needs to be in the same group as <strong>Microsoft Dataverse</strong> and <strong>Agents (preview)</strong>.</p>
+          </li>
+          <li class="steps__item">
+            <p>Check that those two are also in <strong>Business</strong>. Otherwise, the next attempt will fail with a <code>BusinessAndNonBusinessConnector</code> violation instead.</p>
+          </li>
+          <li class="steps__item">
+            <p>Save the policy, wait a few minutes for it to take effect, then retry the import.</p>
+          </li>
+        </ol>
+
+        <p class="learn-more">
+          Learn more:
+          <a href="https://learn.microsoft.com/en-us/power-platform/admin/wp-data-loss-prevention">Data policies</a>
+        </p>
+      </article>
+
+      <div class="callout faq__more">
+        <p>
+          Before you import, check the
+          <a href="./#permissions-setup">Agent Review Center permissions and configuration setup details</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap site-footer__inner">
+    <p class="site-footer__brand">Agent Review Program</p>
+    <p class="site-footer__links"><a href="./">Overview</a></p>
+    <p class="site-footer__legal">
+      Trademarks — this project may contain trademarks or logos for projects, products, or services.
+      Authorized use of Microsoft trademarks or logos is subject to and must follow
+      <a href="https://www.microsoft.com/legal/intellectualproperty/trademarks/usage/general">Microsoft's Trademark &amp; Brand Guidelines</a>.
+    </p>
+  </div>
+</footer>
+
+<script src="main.js" defer></script>
+</body>
+</html>

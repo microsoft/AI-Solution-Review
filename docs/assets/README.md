@@ -69,6 +69,24 @@ caption ("348 of 357 sources never used") quote specific figures from the screen
 
 ---
 
+## Setup screenshots
+
+Power Platform admin center captures from the *Agent Review Center - Permissions and Configuration
+Checklist* document, shown inside the collapsed setup details on `index.html`. They load lazily, so
+they cost nothing until a visitor opens the details.
+
+| File | Step | What it shows |
+|---|---|---|
+| `setup-target-env-features.png` | 2 | Environment settings, Product expanded, **Features** highlighted. |
+| `setup-code-apps-on.png` | 2 | **Power Apps Code Apps** with **Enable code apps** On. |
+| `setup-agent-env-features.png` | 3 | The agent environment's settings, **Features** highlighted. |
+| `setup-transcript-settings.png` | 3 | **Copilot Studio agents** section with both transcript settings selected. |
+
+Replace them only with captures from an updated version of that document, and keep them free of
+customer environment names.
+
+---
+
 ## Overview video
 
 `agent-review-overview.mp4` — 2:21, 1920 × 1080, H.264 / AAC, **15.6 MB**, self-hosted so the page

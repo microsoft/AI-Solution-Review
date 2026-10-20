@@ -165,7 +165,32 @@
     update();
   }
 
+  /* -----------------------------------------------------------------------
+     A link to the collapsed setup details (or to a step inside them) opens
+     the <details> first, so the target is visible when the page scrolls.
+     ----------------------------------------------------------------------- */
+  function wireDisclosureLinks() {
+    function openForHash() {
+      var id = window.location.hash.slice(1);
+      if (!id) return;
+
+      var target;
+      try { target = document.getElementById(decodeURIComponent(id)); } catch (e) { return; }
+      if (!target) return;
+
+      var details = target.closest("details");
+      if (!details || details.open) return;
+
+      details.open = true;
+      target.scrollIntoView({ block: "start" });
+    }
+
+    window.addEventListener("hashchange", openForHash);
+    openForHash();
+  }
+
   wireScrollReveal();
   wireStickyHeader();
   wireQuickNav();
+  wireDisclosureLinks();
 })();

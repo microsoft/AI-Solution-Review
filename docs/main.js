@@ -124,7 +124,10 @@
     }
 
     function update() {
-      var marker = window.innerWidth >= 1760 || !quickNav
+      // When the quick navigation is not sticky (short viewports), measure
+      // from just under the header instead of from the bottom of the menu.
+      var sticky = quickNav && window.getComputedStyle(quickNav).position !== "static";
+      var marker = window.innerWidth >= 1760 || !sticky
         ? 100
         : Math.ceil(quickNav.getBoundingClientRect().bottom + 16);
       var current = items[0];
@@ -209,9 +212,26 @@
     });
   }
 
+  /* -----------------------------------------------------------------------
+     Print: open every collapsed <details> (FAQ answers, setup details) so
+     the printout has the content, then restore what was closed.
+     ----------------------------------------------------------------------- */
+  function wirePrint() {
+    var opened = [];
+    window.addEventListener("beforeprint", function () {
+      opened = Array.prototype.slice.call(document.querySelectorAll("details:not([open])"));
+      opened.forEach(function (item) { item.open = true; });
+    });
+    window.addEventListener("afterprint", function () {
+      opened.forEach(function (item) { item.open = false; });
+      opened = [];
+    });
+  }
+
   wireScrollReveal();
   wireStickyHeader();
   wireQuickNav();
   wireDisclosureLinks();
   wireFaqToggles();
+  wirePrint();
 })();

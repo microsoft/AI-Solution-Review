@@ -1,7 +1,7 @@
 # Agent Review Program
 
 > An expert-guided review, debugging and optimization, and validation service for your Copilot Studio
-> agents, declarative agents, plugins, and skills.
+> agents, declarative agents, and skills.
 
 **[Website](https://microsoft.github.io/AI-Solution-Review/)** ·
 **[Download](#download)** ·
@@ -148,7 +148,7 @@ memory and web search were on — so a result is reproducible and auditable late
 | What | Detail |
 |---|---|
 | **A named owner with the right access** | One person who can work on the agent directly, with about **3–6 hours** across the engagement. |
-| **Agreement to install the Agent Review Center** | It runs in **your own environment**, so your data stays in your tenant. See the [install guide](guides/install.md). |
+| **Agreement to install the Agent Review Center** | It is installed and runs in **your own environment**. See the [install guide](guides/install.md). |
 | **An agent with a meaningful user base** | In testing, pilot, or production, with enough real traces for the failure modes to be informative. |
 | **Licensing and credits** | A Copilot Studio license, Power Apps Premium, and Copilot Credits. See [Prerequisites](guides/prerequisites.md). |
 
@@ -157,15 +157,14 @@ but the runtime analysis will have little to work with.
 
 ## Data handling
 
-- **The tool runs in your environment.** The Agent Review Center is installed in your own tenant and
-  runs against your own agents.
-- **Your data stays in your tenant.** Transcripts, telemetry, and traces are analyzed where they
-  already live. Reviews and results are stored in Dataverse tables in the environment where you
-  install the tool.
+- **The tool runs in your environment.** The Agent Review Center is installed in, and runs in, a
+  Power Platform environment in your own tenant, against your own agents.
+- **Results are stored there.** Reviews and results are stored in Dataverse tables in the
+  environment where you install the tool.
 - **You control what is shared.** Results are yours. Sharing them outside your team is your decision.
 
-See the [FAQ](guides/faq.md#data-and-security) for what the solution installs and which connectors it
-uses.
+For detailed data-handling questions, ask your Microsoft contact. See the
+[FAQ](guides/faq.md#data-and-security) for what the solution installs and which connectors it uses.
 
 ## How to get started
 

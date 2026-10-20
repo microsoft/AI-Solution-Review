@@ -34,9 +34,8 @@ files. See [Start a review](run-a-review.md#start-a-review).
 
 No. The [Copilot Agent Kit](https://learn.microsoft.com/microsoft-copilot-studio/guidance/kit-overview)
 includes an earlier tool called the Agent Review Tool. The Agent Review Center is distributed
-separately, as the managed solution in this repository. You do not need the Copilot Agent Kit to
-install it. If the kit is already installed in the environment you plan to use, check with your
-Microsoft contact first.
+separately, as the managed solution in this repository. If the kit is already installed in the
+environment you plan to use, check with your Microsoft contact first.
 
 ### Does it cost anything to run?
 
@@ -46,25 +45,24 @@ Agent Review Center runs. Each user also needs the licenses listed in
 
 ## Data and security
 
-### Does my data leave my tenant?
+### Where is my data stored?
 
-The Agent Review Center is installed in your own tenant and runs against your own agents.
-Transcripts, telemetry, and traces are analyzed where they already live, and reviews and results are
-stored in Dataverse tables in the environment where you install it. Results are yours — sharing them
-outside your team is your decision.
+The Agent Review Center is installed in, and runs in, a Power Platform environment in your own
+tenant; reviews and results are stored in Dataverse tables there. Results are yours — sharing them
+outside your team is your decision. For detailed data-handling questions, ask your Microsoft contact.
 
 ### What does the solution install, and which connectors does it use?
 
 Two apps, two cloud flows, a plug-in, eight Dataverse tables, and two connection references — one
-for **Microsoft Dataverse** and one for **Agents**. See
-[What gets installed](install.md#what-gets-installed).
+for **Microsoft Dataverse** and one for **Agents**. The one-time setup app also uses the **Power
+Automate Management** connector, so your data policies must allow all three together. See
+[What gets installed](install.md#what-gets-installed) and [Data policies](prerequisites.md#data-policies).
 
 ### Does it collect telemetry?
 
-The solution includes a cloud flow, **Global | LogFeatureTelemetry I ARC**, that records which
-features are used — for example, a review being created or run again — as flow runs in your own
-environment. The flow contains no connectors and makes no calls outside your environment. Beyond
-that, the two apps run on the Power Apps platform like any other Power Apps app.
+The solution includes a cloud flow, **Global | LogFeatureTelemetry I ARC**, that the app calls when
+you use a feature — for example, creating or re-running a review. The flow contains no connectors.
+For detailed data-handling questions, ask your Microsoft contact.
 
 ### What happens if my files contain a secret?
 

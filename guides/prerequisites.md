@@ -26,7 +26,8 @@ Use this to track progress with your admin. Each item links to the detail below.
 - [ ] A [Dataverse environment, standard release](#choose-the-environment)
 - [ ] [Code apps](#environment-configurations) turned on in that environment
 - [ ] [Both transcript settings](#turn-on-transcripts-early) turned on in that environment
-- [ ] [Data policies](#data-policies) allow the Microsoft Dataverse and Agents connectors
+- [ ] [Data policies](#data-policies) allow the Microsoft Dataverse, Agents, and Power Automate
+      Management connectors, together in the same group
 - [ ] The person installing is a [System Administrator](#roles-and-permissions) in the environment
 - [ ] Each reviewer has the [reviewer roles](#roles-and-permissions)
 
@@ -59,8 +60,8 @@ The Agent Review Center is installed into one Power Platform environment.
 |---|---|---|
 | **Dataverse environment, standard release** | Power Platform admin center (PPAC) > Manage > Environments | Power Platform admin |
 | **Copilot Credits allocated to the environment** | PPAC > Licensing > Copilot Studio > Manage capacity | Power Platform admin |
-| **Enable code apps: On** | PPAC > Environments > [env] > Settings > Product > Features > Code Apps | Environment System admin |
-| **Both transcript settings On** — see [below](#turn-on-transcripts-early) | PPAC > Environments > [env] > Settings > Product > Features > Copilot Studio agents | Environment System admin |
+| **Enable code apps: On** | PPAC > Environments > [env] > Settings > Product > Features > Code Apps | Power Platform admin or environment admin |
+| **Both transcript settings On** — see [below](#turn-on-transcripts-early) | PPAC > Environments > [env] > Settings > Product > Features > Copilot Studio agents | Power Platform admin or environment admin |
 
 The Agent Review Center and its setup app are both
 [code apps](https://learn.microsoft.com/power-apps/developer/code-apps/overview), which is why code
@@ -99,14 +100,17 @@ What each setting affects:
 
 ## Data policies
 
-The solution uses two connectors. Your environment's
+Your environment's
 [data policies](https://learn.microsoft.com/power-platform/admin/wp-data-loss-prevention) must allow
-both of them to be used together:
+these three connectors to be used together, in the same group. If the environment uses
+[advanced connector policies](https://learn.microsoft.com/power-platform/admin/advanced-connector-policies),
+add all three to the allowed list.
 
-| Connector | Connection reference in the solution | Used for |
+| Connector | Used by | Used for |
 |---|---|---|
-| **Microsoft Dataverse** | Agent Review Center | Reading agent configuration and transcripts, and storing reviews and results. |
-| **Agents** | Agent Review Tool | The AI-assisted checks run by the **Review Agent Components** workflow. |
+| **Microsoft Dataverse** | Connection reference **Agent Review Center \| Dataverse** | Reading agent configuration and transcripts, and storing reviews and results. |
+| **Agents** | Connection reference **Agent Review Tool \| Agents** | The AI-assisted checks run by the **Review Agent Components** workflow. |
+| **Power Automate Management** | The one-time setup app, **Copilot Agent Kit Installer** | Checking the review workflow's connections and starting it. If this connector is blocked, the import fails. |
 
 ## Roles and permissions
 

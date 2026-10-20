@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Agent Review Program</title>
-<meta name="description" content="An expert-guided review, debugging and optimization, and validation service for your Copilot Studio agents, declarative agents, plugins, and skills.">
+<meta name="description" content="An expert-guided review, debugging and optimization, and validation service for your Copilot Studio agents, declarative agents, and skills.">
 <meta name="color-scheme" content="dark">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Agent Review Program">
-<meta property="og:description" content="An expert-guided review, debugging and optimization, and validation service for your Copilot Studio agents, declarative agents, plugins, and skills.">
+<meta property="og:description" content="An expert-guided review, debugging and optimization, and validation service for your Copilot Studio agents, declarative agents, and skills.">
 <meta property="og:url" content="https://microsoft.github.io/AI-Solution-Review/">
 <!-- Link-preview crawlers need an absolute image URL. See assets/README.md. -->
 <meta property="og:image" content="https://microsoft.github.io/AI-Solution-Review/assets/og-card.png">
@@ -36,20 +36,28 @@
       <span class="brand__text">Agent Review Program</span>
     </a>
 
-    <a class="site-header__link" href="faq.html">FAQ</a>
+    <nav class="site-nav" aria-label="Site">
+      <ul class="site-nav__list">
+        <li class="site-nav__item site-nav__item--home"><a class="site-nav__link" href="./" aria-current="page">Overview</a></li>
+        <li class="site-nav__item"><a class="site-nav__link" href="install.html">Install</a></li>
+        <li class="site-nav__item"><a class="site-nav__link" href="faq.html">FAQ</a></li>
+      </ul>
+    </nav>
     <a class="btn btn--primary btn--sm site-header__cta" href="#nominate">Nominate an agent</a>
   </div>
 </header>
 
-<nav class="quick-nav" aria-label="Quick navigation">
+<nav class="quick-nav" aria-labelledby="quick-nav-label">
   <div class="quick-nav__inner">
-    <span class="quick-nav__label">On this page</span>
+    <span class="quick-nav__label" id="quick-nav-label">On this page</span>
     <ul class="quick-nav__list">
-      <li><a class="quick-nav__link" href="#overview">Know whether your agent is ready to ship.</a></li>
+      <li><a class="quick-nav__link" href="#program-and-center">The program and the tool</a></li>
       <li><a class="quick-nav__link" href="#overview-video">See it in two minutes</a></li>
-      <li><a class="quick-nav__link" href="#see-it">What you get back</a></li>
       <li><a class="quick-nav__link" href="#how-it-runs">How the program runs</a></li>
+      <li><a class="quick-nav__link" href="#about-center">What Agent Review Center is</a></li>
+      <li><a class="quick-nav__link" href="#see-it">What you get back</a></li>
       <li><a class="quick-nav__link" href="#what-you-need">What you need to bring</a></li>
+      <li><a class="quick-nav__link" href="#install">Install Agent Review Center</a></li>
       <li><a class="quick-nav__link" href="#permissions-configurations">Permissions and configurations</a></li>
       <li><a class="quick-nav__link" href="#nominate">Nominate an agent</a></li>
     </ul>
@@ -64,11 +72,12 @@
 
       <div class="hero__copy">
         <p class="eyebrow">Microsoft Agent Review Program</p>
-        <h1 class="hero__title">Know whether your agent is ready to ship.</h1>
+        <h1 class="hero__title">Know whether your agent is ready to ship</h1>
 
         <p class="hero__lede">
-          An expert-guided review, debugging and optimization, and validation service for your
-          Copilot&nbsp;Studio agents, declarative agents, plugins, and skills.
+          Microsoft experts help you review, debug, optimize, and validate your Copilot&nbsp;Studio
+          agents, declarative agents, and skills. You use Agent Review Center, a tool you install in your
+          own environment and keep.
         </p>
 
         <p class="hero__actions">
@@ -79,22 +88,86 @@
         <ul class="hero__trust">
           <li>
             <svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" focusable="false"><path d="M3 8.4 6.2 11.6 13 4.8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Runs in your own environment
+            For agents in testing, pilot, or production
           </li>
           <li>
             <svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" focusable="false"><path d="M3 8.4 6.2 11.6 13 4.8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Your data stays in your tenant
+            Installed in your own environment
+          </li>
+          <li>
+            <svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" focusable="false"><path d="M3 8.4 6.2 11.6 13 4.8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Results stored in Dataverse in that environment
+          </li>
+          <li>
+            <svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" focusable="false"><path d="M3 8.4 6.2 11.6 13 4.8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            You keep the tool afterward
           </li>
         </ul>
       </div>
 
-      <!-- Scored review result from the Agent Review Center. -->
+      <!-- Scored review result from Agent Review Center. -->
       <div class="hero__visual">
         <img class="hero__shot" src="assets/shot-scorecard.png"
+             srcset="assets/shot-scorecard-1262.png 1262w, assets/shot-scorecard.png 2524w"
+             sizes="(max-width: 1040px) calc(100vw - 40px), 540px"
              alt="Agent Review Center showing a rolled-up score of B, 83 out of 100, across three Copilot Studio agents, with a review summary of 26 of 37 checks passed and a list of findings below."
              width="2524" height="1344" decoding="async" fetchpriority="high">
       </div>
 
+    </div>
+  </section>
+
+  <!-- ===================== THE PROGRAM AND THE TOOL =====================
+       The one place on the page that defines the program and the tool. -->
+  <section class="section" id="program-and-center" aria-labelledby="program-and-center-h">
+    <div class="wrap">
+      <div class="section__head" data-reveal>
+        <h2 class="section__title" id="program-and-center-h">The program and the tool</h2>
+        <p class="section__lede">
+          The Agent Review Program is an expert-guided service. Agent Review Center is the app it uses,
+          installed in your own environment.
+        </p>
+      </div>
+
+      <div class="compare" data-reveal>
+        <article class="compare__card">
+          <p class="compare__tag">The service</p>
+          <h3 class="compare__title">Agent Review Program</h3>
+          <p>Microsoft experts review your agent with you, help you fix what matters most, and re-run the review to check the fixes.</p>
+          <dl class="compare__facts">
+            <div>
+              <dt>Who it&rsquo;s for</dt>
+              <dd>Teams with an agent in testing, pilot, or production that has real conversations to analyze. Not sure? Ask your Microsoft contact.</dd>
+            </div>
+            <div>
+              <dt>How long it takes</dt>
+              <dd>Three sessions across four weeks.</dd>
+            </div>
+            <div>
+              <dt>What you leave with</dt>
+              <dd>A prioritized list of fixes, and a before-and-after comparison against your baseline.</dd>
+            </div>
+          </dl>
+          <p class="compare__more"><a href="#how-it-runs">See how the program runs</a></p>
+        </article>
+
+        <article class="compare__card">
+          <p class="compare__tag">The tool</p>
+          <h3 class="compare__title">Agent Review Center</h3>
+          <p>A Power Platform app that scores how your agent is built and how it behaves in real conversations, and lists findings with fixes.</p>
+          <dl class="compare__facts">
+            <div>
+              <dt>What it reviews</dt>
+              <dd>Copilot Studio agents, plus declarative agents and skills uploaded as files.</dd>
+            </div>
+            <div>
+              <dt>After the program</dt>
+              <dd>It stays installed, so you can review your agents whenever you need to.</dd>
+            </div>
+          </dl>
+          <p class="compare__more"><a href="#about-center">More about Agent Review Center</a></p>
+        </article>
+      </div>
     </div>
   </section>
 
@@ -114,6 +187,7 @@
                  preload="none"
                  playsinline
                  poster="assets/video-poster.png"
+                 aria-label="Agent Review Center overview video"
                  width="1920" height="1080">
             <source src="assets/agent-review-overview.mp4" type="video/mp4">
             <!-- Captions: add assets/agent-review-overview.vtt, then uncomment.
@@ -123,8 +197,104 @@
             <a href="assets/agent-review-overview.mp4">Download the overview video</a>.
           </video>
         </div>
-        <figcaption>A walkthrough of the Agent Review Center — 2 minutes 21 seconds.</figcaption>
+        <figcaption>A walkthrough of Agent Review Center (2 minutes 21 seconds).</figcaption>
       </figure>
+    </div>
+  </section>
+
+  <!-- ===================== HOW THE PROGRAM RUNS ===================== -->
+  <section class="section" id="how-it-runs" aria-labelledby="how-it-runs-h">
+    <div class="wrap">
+      <div class="section__head" data-reveal>
+        <h2 class="section__title" id="how-it-runs-h">How the program runs</h2>
+        <p class="section__lede">Three sessions across four weeks. Microsoft experts guide each session, and your team works on the agent in between.</p>
+      </div>
+
+      <ol class="timeline timeline--detailed" data-reveal>
+        <li class="timeline__item">
+          <div class="timeline__when">
+            <p class="timeline__label">Session 1</p>
+            <p class="timeline__meta">1 hour &middot; Week 1</p>
+          </div>
+          <div class="timeline__body">
+            <p class="timeline__title">Discovery, tooling setup, and data preparation</p>
+            <p class="timeline__text">Confirm the use case, scope, success criteria, and top concerns. Install Agent Review Center and get the data ready for the review.</p>
+            <p class="timeline__text timeline__out"><strong>You leave with:</strong> an agreed scope and a plan for the review.</p>
+          </div>
+        </li>
+        <li class="timeline__item">
+          <div class="timeline__when">
+            <p class="timeline__label">Session 2</p>
+            <p class="timeline__meta">1&ndash;2 hours &middot; Week 2</p>
+          </div>
+          <div class="timeline__body">
+            <p class="timeline__title">Findings, patterns, and recommendations</p>
+            <p class="timeline__text">Walk through the risk-ranked findings in Agent Review Center, and agree which fixes to make, with the rationale for each.</p>
+            <p class="timeline__text timeline__out"><strong>You leave with:</strong> a prioritized list of recommendations and agreed actions.</p>
+          </div>
+        </li>
+        <li class="timeline__item" data-interval>
+          <div class="timeline__when">
+            <p class="timeline__label">Between sessions</p>
+            <p class="timeline__meta">Week 3</p>
+          </div>
+          <div class="timeline__body">
+            <p class="timeline__text">You implement the agreed fixes.</p>
+          </div>
+        </li>
+        <li class="timeline__item">
+          <div class="timeline__when">
+            <p class="timeline__label">Session 3</p>
+            <p class="timeline__meta">1&ndash;2 hours &middot; Week 4</p>
+          </div>
+          <div class="timeline__body">
+            <p class="timeline__title">Re-run against the baseline</p>
+            <p class="timeline__text">Re-run the review, compare it with your baseline, and identify remaining gaps and follow-ups.</p>
+            <p class="timeline__text timeline__out"><strong>You leave with:</strong> a final review summary and next steps.</p>
+          </div>
+        </li>
+        <li class="timeline__item" data-interval>
+          <div class="timeline__when">
+            <p class="timeline__label">Beyond</p>
+          </div>
+          <div class="timeline__body">
+            <p class="timeline__text">Keep the tool and review your agents whenever you need to.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ===================== WHAT AGENT REVIEW CENTER IS ===================== -->
+  <section class="section section--alt" id="about-center" aria-labelledby="about-center-h">
+    <div class="wrap">
+      <div class="section__head" data-reveal>
+        <h2 class="section__title" id="about-center-h">What Agent Review Center is</h2>
+        <p class="section__lede">
+          It reviews your agents against consistent architecture criteria, and tracks how their scores
+          change over time.
+        </p>
+      </div>
+
+      <div data-reveal>
+        <h3 class="subhead subhead--first">How a review works</h3>
+        <ol class="steps--numbered review-steps">
+          <li class="steps__item">
+            <h4 class="steps__title">Configuration checks</h4>
+            <p>Rules check how the agent is built: instructions, skills, tools, knowledge, orchestration, and evaluation coverage.</p>
+          </li>
+          <li class="steps__item">
+            <h4 class="steps__title">AI-assisted checks</h4>
+            <p>The Review Agent Components flow runs AI-assisted checks through the Agents connector. Their findings are labeled <strong>AI generated</strong>, so check the evidence before you act.</p>
+          </li>
+          <li class="steps__item">
+            <h4 class="steps__title">Runtime analysis</h4>
+            <p>For a Copilot Studio agent, its conversation transcripts show errors, latency, and which knowledge sources it actually uses.</p>
+          </li>
+        </ol>
+        <p class="review-result">You get a letter grade, a score out of 100, and findings with evidence and fixes. Select <strong>Review again</strong> after you fix, and compare against your baseline.</p>
+        <p class="learn-more">What it reviews, its features, and its limits are in the <a href="faq.html#faq-about-h">FAQ about Agent Review Center</a>.</p>
+      </div>
     </div>
   </section>
 
@@ -140,110 +310,153 @@
 
         <figure class="shot" data-reveal>
           <img class="shot__img" src="assets/shot-finding-detail.png"
+               srcset="assets/shot-finding-detail-1262.png 1262w, assets/shot-finding-detail.png 2524w"
+               sizes="(max-width: 1140px) calc(100vw - 40px), 1084px"
                alt="A finding called Contradictory Skill Guidance expanded to show what the rule checks, the exact wording found in the agent, why it matters, and a recommendation, beside a filterable list of 47 findings."
                width="2524" height="1344" loading="lazy" decoding="async">
           <figcaption>
-            <strong>No more guesswork.</strong>
-            Every finding names the failure, what it costs you, and the fix — each one citing its source.
+            <strong>Findings you can act on</strong>
+            Each finding shows the evidence, why it matters, how to fix it, and references.
           </figcaption>
         </figure>
 
         <figure class="shot" data-reveal>
           <img class="shot__img" src="assets/shot-runtime-errors.png"
-               alt="Runtime error analysis showing 151 conversations analysed, 12 with errors, 237 tool calls and 65 knowledge searches, above a list of failing connectors ranked by occurrence."
+               srcset="assets/shot-runtime-errors-1262.png 1262w, assets/shot-runtime-errors.png 2524w"
+               sizes="(max-width: 1140px) calc(100vw - 40px), 1084px"
+               alt="Runtime error analysis showing 151 conversations analyzed, 12 with errors, 237 tool calls, and 65 knowledge searches, above a list of failing connectors ranked by occurrence."
                width="2524" height="1344" loading="lazy" decoding="async">
           <figcaption>
-            <strong>See where it actually breaks.</strong>
-            Failures pulled from your own transcripts and telemetry — not a lab test.
+            <strong>Errors from real conversations</strong>
+            Errors, tool calls, and knowledge searches from your own conversation transcripts.
           </figcaption>
         </figure>
 
         <figure class="shot" data-reveal>
           <img class="shot__img" src="assets/shot-knowledge-usage.png"
-               alt="Knowledge usage showing 357 sources configured, 5 confirmed used and 348 never used, with knowledge sources ranked from most to least used."
+               srcset="assets/shot-knowledge-usage-1262.png 1262w, assets/shot-knowledge-usage.png 2524w"
+               sizes="(max-width: 1140px) calc(100vw - 40px), 1084px"
+               alt="Knowledge usage showing 357 sources configured, 5 confirmed used, and 348 never used, with knowledge sources ranked from most to least used."
                width="2524" height="1344" loading="lazy" decoding="async">
           <figcaption>
-            <strong>348 of 357 sources never used.</strong>
-            The grounding you think you have, measured against what the agent actually cites.
+            <strong>Knowledge your agent never uses</strong>
+            In this sample review, 348 of 357 configured sources were never cited.
           </figcaption>
         </figure>
 
         <figure class="shot" data-reveal>
           <img class="shot__img" src="assets/shot-score-progress.png"
+               srcset="assets/shot-score-progress-1262.png 1262w, assets/shot-score-progress.png 2524w"
+               sizes="(max-width: 1140px) calc(100vw - 40px), 1084px"
                alt="A score progress chart tracking one agent across three reviews, rising to 95 out of 100, up 11 points since the first review."
                width="2524" height="1344" loading="lazy" decoding="async">
           <figcaption>
-            <strong>Prove the fix worked.</strong>
-            A re-run scored against your baseline — evidence for stakeholders, not opinions.
+            <strong>Track progress against your baseline</strong>
+            Each re-run is scored against your first review.
+          </figcaption>
+        </figure>
+
+        <figure class="shot shot--native" data-reveal>
+          <img class="shot__img" src="assets/shot-architecture-map.png"
+               alt="Architecture map of a sample agent linked to two skills, two connector tools, and a knowledge file. Solid lines show links configured on the agent; dotted lines show links found by AI review."
+               width="824" height="588" loading="lazy" decoding="async">
+          <figcaption>
+            <strong>How your agent fits together</strong>
+            The architecture map shows links configured on the agent, and links that only the AI review found.
           </figcaption>
         </figure>
 
       </div>
     </div>
   </section>
-  <!-- ===================== HOW THE PROGRAM RUNS ===================== -->
-  <section class="section section--alt" id="how-it-runs" aria-labelledby="how-it-runs-h">
-    <div class="wrap">
-      <div class="section__head" data-reveal>
-        <h2 class="section__title" id="how-it-runs-h">How the program runs</h2>
-        <p class="section__lede">Three short sessions across four weeks.</p>
-      </div>
-
-      <ol class="timeline" data-reveal>
-        <li class="timeline__item">
-          <p class="timeline__label">Session 1</p>
-          <p class="timeline__text">Install the Agent Review Center and get the data ready for the review.</p>
-        </li>
-        <li class="timeline__item">
-          <p class="timeline__label">Session 2</p>
-          <p class="timeline__text">Conduct the agent review and walk through the risk-ranked findings and remediation backlog.</p>
-        </li>
-        <li class="timeline__item" data-interval>
-          <p class="timeline__label">Between sessions 2 and 3</p>
-          <p class="timeline__text">Implement the agreed fixes.</p>
-        </li>
-        <li class="timeline__item">
-          <p class="timeline__label">Session 3</p>
-          <p class="timeline__text">Re-run the agent review and see the improvement against the baseline.</p>
-        </li>
-        <li class="timeline__item" data-interval>
-          <p class="timeline__label">Beyond</p>
-          <p class="timeline__text">Keep the tool and review your agents whenever you need to.</p>
-        </li>
-      </ol>
-    </div>
-  </section>
 
   <!-- ===================== WHAT YOU NEED TO BRING ===================== -->
-  <section class="section" id="what-you-need" aria-labelledby="what-you-need-h">
+  <section class="section section--alt" id="what-you-need" aria-labelledby="what-you-need-h">
     <div class="wrap">
       <div class="section__head" data-reveal>
         <h2 class="section__title" id="what-you-need-h">What you need to bring</h2>
-        <p class="section__lede">Required licenses, capacity and environment for Agent Review Center (ARC).</p>
+        <p class="section__lede">What your team puts in, and what Agent Review Center needs.</p>
       </div>
 
+      <h3 class="subhead subhead--first" data-reveal>Your commitment</h3>
+      <ol class="commitments" data-reveal>
+        <li class="requirement">
+          <h4 class="requirement__title">A named owner with the right access</h4>
+          <p>One person who can work on the agent directly, with about <strong>3&ndash;6 hours</strong> across the sessions.</p>
+        </li>
+        <li class="requirement">
+          <h4 class="requirement__title">Agent Review Center installed</h4>
+          <p>Agreement to install and run Agent Review Center in your own environment. See the <a href="install.html">installation guide</a>.</p>
+        </li>
+        <li class="requirement">
+          <h4 class="requirement__title">An agent with a meaningful user base</h4>
+          <p>In testing, pilot, or production, with real conversations to analyze.</p>
+        </li>
+      </ol>
+
+      <h3 class="subhead" data-reveal>Licenses, capacity, and environment</h3>
       <div class="requirements-grid" data-reveal>
         <article class="requirement">
-          <h3 class="requirement__title">Copilot Studio</h3>
-          <p>Copilot Studio tenant license, plus a <strong>Copilot Studio User License</strong> for each ARC user.</p>
+          <h4 class="requirement__title">Copilot Studio</h4>
+          <p>Copilot Studio tenant license, plus a <strong>Copilot Studio User License</strong> for each person who uses Agent Review Center.</p>
         </article>
 
         <article class="requirement">
-          <h3 class="requirement__title">Power Apps Premium</h3>
-          <p>Power Apps Premium coverage for each ARC user (Premium license, pay-as-you-go, or App Pass).</p>
+          <h4 class="requirement__title">Power Apps Premium</h4>
+          <p>Power Apps Premium coverage for each person who uses Agent Review Center (Premium license, pay-as-you-go, or App Pass).</p>
         </article>
 
         <article class="requirement">
-          <h3 class="requirement__title">Copilot Credits</h3>
+          <h4 class="requirement__title">Copilot Credits</h4>
           <p>Copilot Credits (Copilot Studio capacity pack or pay-as-you-go billing plan).</p>
         </article>
 
         <article class="requirement">
-          <h3 class="requirement__title">Dataverse environment</h3>
+          <h4 class="requirement__title">Dataverse environment</h4>
           <p>Standard release.</p>
         </article>
       </div>
 
+    </div>
+  </section>
+
+  <!-- ===================== INSTALL ===================== -->
+  <section class="section" id="install" aria-labelledby="install-h">
+    <div class="wrap">
+      <div class="section__head" data-reveal>
+        <h2 class="section__title" id="install-h">Install Agent Review Center</h2>
+        <p class="section__lede">
+          Most setup needs a Power Platform admin, and transcripts only build up after recording is on,
+          so start early.
+        </p>
+      </div>
+
+      <ol class="steps--numbered install-overview" data-reveal>
+        <li class="steps__item">
+          <h3 class="steps__title"><span class="steps__range">Steps 1&ndash;2 &middot;</span> Prepare the environments</h3>
+          <p>Credits allocated, code apps on, and transcript recording on.</p>
+          <p class="steps__who"><span class="who"><span class="visually-hidden">Who: </span>Power Platform admin or environment admin</span></p>
+        </li>
+        <li class="steps__item">
+          <h3 class="steps__title"><span class="steps__range">Step 3 &middot;</span> Allow the connectors</h3>
+          <p>Microsoft Dataverse, Agents, and Power Automate Management, together in the same group.</p>
+          <p class="steps__who"><span class="who"><span class="visually-hidden">Who: </span>Power Platform admin</span></p>
+        </li>
+        <li class="steps__item">
+          <h3 class="steps__title"><span class="steps__range">Steps 4&ndash;5 &middot;</span> Import the solution and run the setup app</h3>
+          <p class="steps__who"><span class="who"><span class="visually-hidden">Who: </span>System Administrator in the environment</span></p>
+        </li>
+        <li class="steps__item">
+          <h3 class="steps__title"><span class="steps__range">Steps 6&ndash;8 &middot;</span> Share, verify, and run your first review</h3>
+          <p>Assign roles, share the agent and the app, then run the readiness checks.</p>
+          <p class="steps__who"><span class="who"><span class="visually-hidden">Who: </span>System Administrator, agent owner, and reviewers</span></p>
+        </li>
+      </ol>
+
+      <p class="callout__actions" data-reveal>
+        <a class="btn btn--primary" href="install.html">Read the installation guide</a>
+        <a class="btn btn--ghost" href="https://github.com/microsoft/AI-Solution-Review/releases/latest">Download the latest release from GitHub</a>
+      </p>
     </div>
   </section>
 
@@ -252,7 +465,7 @@
     <div class="wrap">
       <div class="section__head" data-reveal>
         <h2 class="section__title" id="permissions-configurations-h">Permissions and configurations</h2>
-        <p class="section__lede">Agent Review Center (ARC) runs as a Power Apps code app and reads Copilot Studio agents and conversation transcripts from Dataverse.</p>
+        <p class="section__lede">Agent Review Center runs as a Power Apps code app and reads Copilot Studio agents and conversation transcripts from Dataverse.</p>
       </div>
 
       <div data-reveal>
@@ -275,23 +488,23 @@
             <tbody>
               <tr>
                 <th scope="row">Dataverse environment, standard release</th>
-                <td data-label="Where">Power Platform admin center (PPAC) &gt; Manage &gt; Environments</td>
+                <td data-label="Where">Power Platform admin center &gt; Manage &gt; Environments</td>
                 <td data-label="Who can set it">Power Platform admin</td>
               </tr>
               <tr>
                 <th scope="row">Copilot Credits allocated to the environment</th>
-                <td data-label="Where">PPAC &gt; Licensing &gt; Copilot Studio &gt; Manage capacity</td>
+                <td data-label="Where">Power Platform admin center &gt; Licensing &gt; Copilot Studio &gt; Manage capacity</td>
                 <td data-label="Who can set it">Power Platform admin</td>
               </tr>
               <tr>
                 <th scope="row">Enable code apps: On</th>
-                <td data-label="Where">PPAC &gt; Environments &gt; [env] &gt; Settings &gt; Product &gt; Features &gt; Code Apps</td>
-                <td data-label="Who can set it">Environment System admin</td>
+                <td data-label="Where">Power Platform admin center &gt; Manage &gt; Environments &gt; [environment] &gt; Settings &gt; Product &gt; Features &gt; Power Apps code apps</td>
+                <td data-label="Who can set it">Power Platform admin or environment admin</td>
               </tr>
               <tr>
                 <th scope="row">Both transcript settings On: &ldquo;Allow conversation transcripts and their associated metadata to be saved in Dataverse&rdquo; and &ldquo;Allow agent owners and editors to see session transcripts&hellip;&rdquo;</th>
-                <td data-label="Where">PPAC &gt; Environments &gt; [env] &gt; Settings &gt; Product &gt; Features &gt; Copilot Studio agents</td>
-                <td data-label="Who can set it">Environment System admin</td>
+                <td data-label="Where">Power Platform admin center &gt; Manage &gt; Environments &gt; [environment] &gt; Settings &gt; Product &gt; Features &gt; Copilot Studio agents</td>
+                <td data-label="Who can set it">Power Platform admin or environment admin</td>
               </tr>
             </tbody>
           </table>
@@ -307,11 +520,10 @@
       </div>
 
       <!-- ============ PERMISSIONS AND CONFIGURATION SETUP DETAILS ============
-           Collapsed by default so the landing page stays short. Source: the
-           approved "Agent Review Center - Permissions and Configuration
-           Checklist" document. See docs/README.md before editing.
+           Collapsed by default so the landing page stays short.
+           Source: approved permissions checklist. See docs/README.md before editing.
            ==================================================================== -->
-      <details class="disclosure" id="permissions-setup" data-reveal>
+      <details class="disclosure" id="permissions-setup">
         <summary class="disclosure__toggle">
           <span class="disclosure__show">Show details about Agent Review Center permissions and configuration setup</span>
           <span class="disclosure__hide">Hide details about Agent Review Center permissions and configuration setup</span>
@@ -429,7 +641,7 @@
             Learn more:
             <a href="https://learn.microsoft.com/en-us/power-platform/admin/create-environment">Create and manage environments</a> &middot;
             <a href="https://learn.microsoft.com/en-us/power-apps/maker/powerapps-preview-program">Power Apps preview program and early release cycle environments</a> &middot;
-            <a href="https://learn.microsoft.com/en-us/power-platform/admin/manage-copilot-studio-messages-capacity">Manage Copilot Studio credits and capacity</a>
+            <a href="https://learn.microsoft.com/en-us/power-platform/admin/manage-copilot-studio-copilot-credits-capacity">Manage Copilot Studio credits and capacity</a>
           </p>
 
           <!-- Step 2 -->
@@ -556,6 +768,11 @@
           <p class="scope"><span class="scope__label">Scope</span> Target installation environment</p>
           <p>Use an account that has the System Administrator role in the environment.</p>
           <p>Before you start, make sure that the data policies of the environment allow all connectors that the solution uses. These connectors include Microsoft Dataverse. Code apps apply data policies when the app starts.</p>
+          <!-- Site addition (verified), not from the approved permissions checklist. -->
+          <div class="callout callout--site-note">
+            <p><strong>Note: three connectors</strong></p>
+            <p>The data policies must allow these three connectors together, in the same group: <strong>Microsoft Dataverse</strong>, <strong>Agents</strong>, and <strong>Power Automate Management</strong>. The one-time setup app uses Power Automate Management, and the import fails if it is blocked. See <a href="install.html#data-policies">Data policies and connectors</a> in the installation guide.</p>
+          </div>
 
           <h4>Import the solution and set the connections</h4>
           <ol class="procedure">
@@ -601,6 +818,8 @@
             <a href="https://learn.microsoft.com/en-us/power-apps/maker/data-platform/create-connection-reference">Use a connection reference in a solution</a>
           </p>
           <p class="learn-more">Import failed? See the <a href="faq.html#faq-install-h">FAQ</a> for frequently encountered errors and fixes.</p>
+          <!-- Site navigation, not from the approved permissions checklist. -->
+          <p class="learn-more">Next: run the one-time setup app and check the readiness checklist. See the <a href="install.html#setup-app">installation guide</a>.</p>
 
           <!-- Checklist -->
           <h3 id="setup-checklist">Checklist</h3>
@@ -642,7 +861,7 @@
               <ul class="bullets">
                 <li><a href="https://learn.microsoft.com/en-us/microsoft-copilot-studio/requirements-licensing">Assign licenses and manage access to Copilot Studio</a></li>
                 <li><a href="https://www.microsoft.com/licensing/guidance/microsoft-copilot-studio">Microsoft Copilot Studio licensing guidance</a></li>
-                <li><a href="https://learn.microsoft.com/en-us/power-platform/admin/manage-copilot-studio-messages-capacity">Manage Copilot Studio credits and capacity</a></li>
+                <li><a href="https://learn.microsoft.com/en-us/power-platform/admin/manage-copilot-studio-copilot-credits-capacity">Manage Copilot Studio credits and capacity</a></li>
                 <li><a href="https://learn.microsoft.com/en-us/power-apps/developer/code-apps/overview">Power Apps code apps overview</a></li>
               </ul>
             </div>
@@ -711,7 +930,14 @@
 <footer class="site-footer">
   <div class="wrap site-footer__inner">
     <p class="site-footer__brand">Agent Review Program</p>
-    <p class="site-footer__links"><a href="faq.html">Frequently asked questions</a></p>
+    <nav class="site-footer__links" aria-label="Footer">
+      <ul>
+        <li><a href="./" aria-current="page">Overview</a></li>
+        <li><a href="install.html">Installation guide</a></li>
+        <li><a href="faq.html">Frequently asked questions</a></li>
+        <li><a href="https://github.com/microsoft/AI-Solution-Review">GitHub repository</a></li>
+      </ul>
+    </nav>
     <p class="site-footer__legal">
       Trademarks — this project may contain trademarks or logos for projects, products, or services.
       Authorized use of Microsoft trademarks or logos is subject to and must follow

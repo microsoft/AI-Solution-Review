@@ -41,62 +41,208 @@
       </nav>
       <h1 class="pagehead__title">Frequently asked questions</h1>
       <p class="pagehead__lede">
-        Error messages you might see when you set up Agent Review Center, and how to fix them.
+        Common questions about Agent Review Center, and the error messages people run into most often
+        when they set it up, with how to fix them.
       </p>
       <p class="pagehead__body">
-        Search this page for the error code or the exact wording on your screen.
+        Select a question to see the answer. To find an error, search this page for the error code or the
+        exact wording on your screen.
       </p>
+      <div class="faq-tools" hidden>
+        <button type="button" class="btn btn--ghost btn--sm" data-faq-toggle="open">Expand all</button>
+        <button type="button" class="btn btn--ghost btn--sm" data-faq-toggle="close">Collapse all</button>
+      </div>
     </div>
   </section>
 
-  <!-- ===================== INSTALLING THE SOLUTION =====================
-       One <article class="faq"> per error. Give each a stable id so it can
-       be linked to directly, and replace tenant-specific values in quoted
-       error messages (policy names, IDs, timestamps) with placeholders:
-       this page is public.
-       ==================================================================== -->
-  <section class="section" aria-labelledby="faq-install-h">
+  <!-- ============================ FAQ ENTRIES ============================
+       One <details class="faq"> per question, collapsed by default. Give each
+       a stable id so it can be linked to directly (faq.html#<id> opens it).
+       This page is public: replace tenant-specific values in quoted error
+       messages (policy names, IDs, timestamps) with placeholders.
+       ===================================================================== -->
+
+  <!-- ===================== INSTALLING THE SOLUTION ===================== -->
+  <section class="section faq-group" aria-labelledby="faq-install-h">
     <div class="wrap wrap--narrow">
       <h2 class="section__title" id="faq-install-h">Installing the solution</h2>
 
-      <article class="faq" id="acp-dlp-blocked-connector" aria-labelledby="acp-dlp-blocked-connector-h">
-        <h3 class="faq__question" id="acp-dlp-blocked-connector-h">
+      <details class="faq" id="acp-dlp-blocked-connector">
+        <summary class="faq__question">
           Import fails with <code>AcpDlpPolicyEvaluation</code>: the <code>shared_flowmanagement</code> connector is blocked
-        </h3>
+        </summary>
+        <div class="faq__answer">
+          <h3 class="faq__label">What you see</h3>
+          <p>The solution import stops with an error like this one. Your message shows your own policy name, IDs and timestamps.</p>
+          <pre class="error-message"><code>Solution "Agent Review Center" failed to import: CanvasApp import: FAILURE: Code: AcpDlpPolicyEvaluation Message: The app 'cat_copilotagentkitinstaller_81f96' cannot be saved because one or more connectors it uses 'shared_flowmanagement' are blocked by Advanced Connector Policy (ACP) or Data Policies (DLP) for this environment. Please contact your environment administrator '' to update the policies '&lt;policy name&gt;' to allow the connectors used by this app. Link for the policy wiki ''. Violation details: [PolicyId: &lt;policy ID&gt;, PolicyDisplayName: &lt;policy name&gt;, PolicyType: DLP, PolicySource: , PolicyLastModified: &lt;timestamp&gt;, ViolationType: BlockedConnector, Parameters: [shared_flowmanagement]]. Client Request Id: &lt;request ID&gt;.</code></pre>
 
-        <h4 class="faq__label">What you see</h4>
-        <p>The solution import stops with an error like this one. Your message shows your own policy name, IDs and timestamps.</p>
-        <pre class="error-message"><code>Solution "Agent Review Center" failed to import: CanvasApp import: FAILURE: Code: AcpDlpPolicyEvaluation Message: The app 'cat_copilotagentkitinstaller_81f96' cannot be saved because one or more connectors it uses 'shared_flowmanagement' are blocked by Advanced Connector Policy (ACP) or Data Policies (DLP) for this environment. Please contact your environment administrator '' to update the policies '&lt;policy name&gt;' to allow the connectors used by this app. Link for the policy wiki ''. Violation details: [PolicyId: &lt;policy ID&gt;, PolicyDisplayName: &lt;policy name&gt;, PolicyType: DLP, PolicySource: , PolicyLastModified: &lt;timestamp&gt;, ViolationType: BlockedConnector, Parameters: [shared_flowmanagement]]. Client Request Id: &lt;request ID&gt;.</code></pre>
+          <h3 class="faq__label">How to fix it</h3>
+          <ol class="steps--numbered">
+            <li class="steps__item">
+              <p>In the Power Platform admin center, go to <strong>Security &rarr; Data and privacy &rarr; Data policies</strong>. On older layouts, it's <strong>Policies &rarr; Data policies</strong>.</p>
+            </li>
+            <li class="steps__item">
+              <p>Open the policy named in the error message (the <code>PolicyDisplayName</code> value).</p>
+            </li>
+            <li class="steps__item">
+              <p>On the <strong>Prebuilt connectors</strong> step, find <strong>Power Automate Management</strong> and move it from <strong>Blocked</strong> to <strong>Business</strong>. It needs to be in the same group as <strong>Microsoft Dataverse</strong> and <strong>Agents (preview)</strong>.</p>
+            </li>
+            <li class="steps__item">
+              <p>Check that those two are also in <strong>Business</strong>. Otherwise, the next attempt will fail with a <code>BusinessAndNonBusinessConnector</code> violation instead.</p>
+            </li>
+            <li class="steps__item">
+              <p>Save the policy, wait a few minutes for it to take effect, then retry the import.</p>
+            </li>
+          </ol>
 
-        <h4 class="faq__label">How to fix it</h4>
-        <ol class="steps--numbered">
-          <li class="steps__item">
-            <p>In the Power Platform admin center, go to <strong>Security &rarr; Data and privacy &rarr; Data policies</strong>. On older layouts, it's <strong>Policies &rarr; Data policies</strong>.</p>
-          </li>
-          <li class="steps__item">
-            <p>Open the policy named in the error message (the <code>PolicyDisplayName</code> value).</p>
-          </li>
-          <li class="steps__item">
-            <p>On the <strong>Prebuilt connectors</strong> step, find <strong>Power Automate Management</strong> and move it from <strong>Blocked</strong> to <strong>Business</strong>. It needs to be in the same group as <strong>Microsoft Dataverse</strong> and <strong>Agents (preview)</strong>.</p>
-          </li>
-          <li class="steps__item">
-            <p>Check that those two are also in <strong>Business</strong>. Otherwise, the next attempt will fail with a <code>BusinessAndNonBusinessConnector</code> violation instead.</p>
-          </li>
-          <li class="steps__item">
-            <p>Save the policy, wait a few minutes for it to take effect, then retry the import.</p>
-          </li>
-        </ol>
+          <p class="learn-more">
+            Learn more:
+            <a href="https://learn.microsoft.com/en-us/power-platform/admin/wp-data-loss-prevention">Data policies</a>
+          </p>
+        </div>
+      </details>
 
-        <p class="learn-more">
-          Learn more:
-          <a href="https://learn.microsoft.com/en-us/power-platform/admin/wp-data-loss-prevention">Data policies</a>
-        </p>
-      </article>
+      <details class="faq" id="import-fails-apps-missing">
+        <summary class="faq__question">The import fails, or the apps are missing after the import</summary>
+        <div class="faq__answer">
+          <p>The environment is not ready for code apps, or the import did not complete.</p>
+          <p>Confirm that <strong>Enable code apps</strong> is on in the environment, and that you are a <strong>System Administrator</strong> there. See steps <a href="./#setup-step-1">1</a> and <a href="./#setup-step-2">2</a> of the setup details.</p>
+        </div>
+      </details>
+
+      <details class="faq" id="setup-could-not-complete">
+        <summary class="faq__question">The setup app says <q>Setup could not complete</q></summary>
+        <div class="faq__answer">
+          <p>The setup app (<strong>Copilot Agent Kit Installer</strong>) could not confirm the connections or start the review workflow.</p>
+          <p>Check that both connections exist and are signed in, and that your data policies allow the <strong>Microsoft Dataverse</strong> and <strong>Agents</strong> connectors to be used together. Then open the setup app again &mdash; it repairs what it can on each run.</p>
+        </div>
+      </details>
+
+      <details class="faq" id="connection-references-need-connection">
+        <summary class="faq__question"><q>&hellip;connection references still need a connection.</q></summary>
+        <div class="faq__answer">
+          <p>A connection reference in the solution has no connection.</p>
+          <p>Run the <strong>Copilot Agent Kit Installer</strong> app, or select the connection in the readiness checklist. To check by hand, see <a href="./#setup-step-5">step 5</a> of the setup details.</p>
+        </div>
+      </details>
+
+      <details class="faq" id="required-flows-off">
+        <summary class="faq__question"><q>&hellip;required flows are off. Map every connection first.</q></summary>
+        <div class="faq__answer">
+          <p>The <strong>Review Agent Components</strong> workflow is off because a connection is missing.</p>
+          <p>Fix the connections first, then turn the flow on from the readiness checklist, or run the setup app again.</p>
+        </div>
+      </details>
+
+      <details class="faq" id="flow-owner-rights">
+        <summary class="faq__question"><q>You need owner or co-owner rights on this flow to turn this flow on.</q></summary>
+        <div class="faq__answer">
+          <p>Your account cannot change the flow's state. The user who imported the solution owns its flows and connection references.</p>
+          <p>Ask the person who installed the solution, or a System Administrator, to turn it on in Power Automate.</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ===================== TRANSCRIPTS AND RUNTIME ANALYSIS ===================== -->
+  <section class="section section--alt faq-group" aria-labelledby="faq-transcripts-h">
+    <div class="wrap wrap--narrow">
+      <h2 class="section__title" id="faq-transcripts-h">Transcripts and runtime analysis</h2>
+
+      <details class="faq" id="transcript-recording-off">
+        <summary class="faq__question"><q>Conversation transcript recording is turned off for this environment</q></summary>
+        <div class="faq__answer">
+          <p>There are no transcripts to analyze.</p>
+          <p>Turn on transcript recording in the agent environment &mdash; see <a href="./#setup-step-3">step 3</a> of the setup details. Recording is not retroactive: only conversations after you turn it on are saved.</p>
+        </div>
+      </details>
+
+      <details class="faq" id="older-conversations">
+        <summary class="faq__question">I just turned on transcripts. Can I analyze older conversations?</summary>
+        <div class="faq__answer">
+          <p>No. Transcript recording is not retroactive &mdash; only conversations after it was turned on are recorded. This is why we ask you to turn it on before the review period starts.</p>
+        </div>
+      </details>
+
+      <details class="faq" id="no-transcript-records">
+        <summary class="faq__question"><q>No transcript records in this range</q></summary>
+        <div class="faq__answer">
+          <p>Nothing was recorded in the dates you chose.</p>
+          <p>Widen the date range. Recording only captures conversations after it was turned on.</p>
+        </div>
+      </details>
+
+      <details class="faq" id="transcript-viewing-blocked">
+        <summary class="faq__question"><q>Transcript viewing is blocked for this environment.</q></summary>
+        <div class="faq__answer">
+          <p>The analysis still runs, but individual conversations cannot be opened to confirm a finding.</p>
+          <p>Turn on <strong>Allow agent owners and editors to see session transcripts&hellip;</strong> for the environment. See <a href="./#setup-step-3">step 3</a> of the setup details.</p>
+        </div>
+      </details>
+
+      <details class="faq" id="cannot-read-transcripts">
+        <summary class="faq__question"><q>Couldn't read conversation transcripts just now.</q></summary>
+        <div class="faq__answer">
+          <p>Transcripts could not be read at that moment.</p>
+          <p>Try again, or run the review without runtime analysis. Check that the reviewer has the <strong>Bot Transcript Viewer</strong> role &mdash; see <a href="./#setup-step-4">step 4</a> of the setup details.</p>
+        </div>
+      </details>
+
+      <details class="faq" id="other-environment">
+        <summary class="faq__question">Can Agent Review Center review agents in another environment?</summary>
+        <div class="faq__answer">
+          <p>Configuration reviews can cover agents in other environments, but conversation transcripts are only analyzed in the environment Agent Review Center runs in. To include runtime analysis, install it in the same environment as the agent.</p>
+          <p>If you see <q>Conversation transcripts are analysed only in the environment this app runs in.</q>, this is why. The configuration review still runs.</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ===================== ABOUT THE PROGRAM ===================== -->
+  <section class="section faq-group" aria-labelledby="faq-about-h">
+    <div class="wrap wrap--narrow">
+      <h2 class="section__title" id="faq-about-h">About the program and the tool</h2>
+
+      <details class="faq" id="program-vs-center">
+        <summary class="faq__question">What is the difference between the Agent Review Program and Agent Review Center?</summary>
+        <div class="faq__answer">
+          <p>The <strong>Agent Review Program</strong> is the expert-guided service: Microsoft experts work with you to review your agent, walk through the findings, and validate your fixes. <strong>Agent Review Center</strong> is the tool behind it. It runs in your own environment, and it stays there after the engagement so you can review your agents again whenever you want.</p>
+        </div>
+      </details>
+
+      <details class="faq" id="agent-kit">
+        <summary class="faq__question">Is Agent Review Center the same as the Agent Review Tool in the Copilot Agent Kit?</summary>
+        <div class="faq__answer">
+          <p>No. The Copilot Agent Kit includes an earlier tool called the Agent Review Tool. Agent Review Center is distributed separately, and you do not need the Copilot Agent Kit to install it. If the kit is already installed in the environment you plan to use, check with your Microsoft contact first.</p>
+        </div>
+      </details>
+
+      <details class="faq" id="data-leave-tenant">
+        <summary class="faq__question">Does my data leave my tenant?</summary>
+        <div class="faq__answer">
+          <p>Agent Review Center is installed in your own tenant and runs against your own agents. Transcripts, telemetry, and traces are analyzed where they already live, and reviews and results are stored in Dataverse tables in the environment where you install it. Results are yours &mdash; sharing them outside your team is your decision.</p>
+        </div>
+      </details>
+
+      <details class="faq" id="cost">
+        <summary class="faq__question">Does it cost anything to run?</summary>
+        <div class="faq__answer">
+          <p>Running a review consumes Copilot Credits, which must be allocated to the environment where Agent Review Center runs. Each user also needs the licenses listed in <a href="./#what-you-need">What you need to bring</a>.</p>
+        </div>
+      </details>
+
+      <details class="faq" id="who-needs-to-be-involved">
+        <summary class="faq__question">Who needs to be involved in setup?</summary>
+        <div class="faq__answer">
+          <p>A Power Platform admin for licensing, credits, and environment settings; a System Administrator in the environment to import the solution; and the reviewers themselves. See the <a href="./#setup-checklist">setup checklist</a>.</p>
+        </div>
+      </details>
 
       <div class="callout faq__more">
         <p>
           Before you import, check the
           <a href="./#permissions-setup">Agent Review Center permissions and configuration setup details</a>.
+          During an engagement, raise anything not covered here with your Microsoft contact.
         </p>
       </div>
     </div>

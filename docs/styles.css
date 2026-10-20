@@ -631,10 +631,55 @@ img { max-width: 100%; }
   text-transform: uppercase;
 }
 
-/* ---------- FAQ page ---------- */
-.faq + .faq { margin-top: 3rem; padding-top: 2.5rem; border-top: 1px solid var(--border); }
-.faq__question { font-size: 1.3rem; line-height: 1.35; margin: 1.6rem 0 1.2rem; }
-.faq__question code { font-size: .82em; overflow-wrap: anywhere; }
+/* ---------- FAQ page ----------
+   Each question is a native <details>, collapsed by default. */
+.faq-tools { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.4rem; }
+.faq-tools[hidden] { display: none; }
+.faq-group { padding-block: clamp(2rem, 4vw, 3rem); }
+.faq-group .section__title { margin-bottom: 1.2rem; }
+
+.faq {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+.faq + .faq { margin-top: .6rem; }
+.faq[open] { border-color: var(--border-strong); }
+
+.faq__question {
+  position: relative;
+  display: block;
+  padding: 1rem 3rem 1rem 1.2rem;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 1.06rem;
+  font-weight: 600;
+  line-height: 1.4;
+  list-style: none;
+  cursor: pointer;
+  border-radius: var(--radius-lg);
+}
+.faq__question::-webkit-details-marker { display: none; }
+.faq__question::after {
+  content: "";
+  position: absolute;
+  top: 1.35rem;
+  right: 1.3rem;
+  width: .5rem;
+  height: .5rem;
+  border-right: 2px solid var(--text-muted);
+  border-bottom: 2px solid var(--text-muted);
+  transform: rotate(45deg);
+  transition: transform .15s ease-out;
+}
+.faq[open] > .faq__question::after { transform: translateY(3px) rotate(-135deg); }
+.faq__question:hover { background: var(--surface-2); }
+.faq[open] > .faq__question { border-bottom: 1px solid var(--border); border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
+.faq__question code { font-size: .86em; overflow-wrap: anywhere; }
+.faq__question q { quotes: "\201C" "\201D" "\2018" "\2019"; }
+
+.faq__answer { padding: 1.1rem 1.2rem 1.3rem; }
+.faq__answer > :first-child { margin-top: 0; }
 .faq__label {
   margin: 1.6rem 0 .6rem;
   color: var(--ink);
@@ -661,7 +706,7 @@ img { max-width: 100%; }
   overflow-wrap: anywhere;
 }
 .error-message code { padding: 0; background: none; font-size: inherit; }
-.faq__more { margin-top: 3rem; }
+.faq__more { margin-top: 2.5rem; }
 html:has(body.page--reference) { scroll-padding-top: 80px; }
 
 /* ---------- reference content primitives ---------- */

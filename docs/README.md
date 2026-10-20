@@ -9,7 +9,7 @@ The customer-facing landing page for the Agent Review Program, published with Gi
 | Path | What it is |
 |---|---|
 | `index.html` | The landing page: quick navigation, hero, overview video, screenshot gallery, program timeline, prerequisites, permissions/configurations (with collapsed setup details), nominate. |
-| `faq.html` | FAQ: known setup error messages and how to fix them. Linked from the header and footer. |
+| `faq.html` | FAQ: common questions and frequently encountered setup errors, each collapsible. Linked from the header and footer. |
 | `styles.css` | All styling. Fluent-flavoured tokens, forced dark, responsive, reduced-motion and print aware. |
 | `main.js` | Progressive enhancement: scroll-reveals sections, adds a hairline to the stuck header, highlights the current quick-navigation link, and opens the setup details when a link points into them. The site is fully readable and navigable without it. |
 | `assets/` | Logo, screenshots, setup screenshots and the overview video. See [`assets/README.md`](assets/README.md). |
@@ -82,10 +82,13 @@ automatically (`main.js`).
 
 ## FAQ page
 
-`faq.html` lists setup error messages the team has seen, each with a verified fix. Add one
-`<article class="faq">` per error, with a stable `id` so it can be linked to. The site is public:
-replace tenant-specific values in quoted error messages — policy names, policy IDs, request IDs,
-timestamps — with placeholders such as `<policy name>`.
+`faq.html` groups common questions and setup error messages, each with a verified answer. Every
+entry is a `<details class="faq">`, **collapsed by default**, with a stable `id` so it can be linked
+to — `faq.html#<id>` opens it (`main.js`). *Expand all* / *Collapse all* buttons appear when
+JavaScript is available. Answers come from [`guides/faq.md`](../guides/faq.md),
+[`guides/troubleshooting.md`](../guides/troubleshooting.md), or a fix the team has verified; keep
+them in step. The site is public: replace tenant-specific values in quoted error messages — policy
+names, policy IDs, request IDs, timestamps — with placeholders such as `<policy name>`.
 
 ## Content source
 

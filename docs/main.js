@@ -189,8 +189,29 @@
     openForHash();
   }
 
+  /* -----------------------------------------------------------------------
+     FAQ: "Expand all" / "Collapse all". The buttons stay hidden without
+     JavaScript; each question still opens on its own.
+     ----------------------------------------------------------------------- */
+  function wireFaqToggles() {
+    var tools = document.querySelector(".faq-tools");
+    if (!tools) return;
+
+    var items = Array.prototype.slice.call(document.querySelectorAll("details.faq"));
+    if (!items.length) return;
+
+    tools.hidden = false;
+    tools.addEventListener("click", function (event) {
+      var button = event.target.closest("[data-faq-toggle]");
+      if (!button) return;
+      var open = button.getAttribute("data-faq-toggle") === "open";
+      items.forEach(function (item) { item.open = open; });
+    });
+  }
+
   wireScrollReveal();
   wireStickyHeader();
   wireQuickNav();
   wireDisclosureLinks();
+  wireFaqToggles();
 })();

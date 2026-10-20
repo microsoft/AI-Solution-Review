@@ -26,7 +26,7 @@ ffmpeg -y -f lavfi -i "color=c=0x1b1a19:s=1200x630" -i logo.png \
 
 ## Screenshots
 
-All five are in place. They are captures of the Agent Review Center against demo agents
+The hero shot and five gallery shots are in place. They are captures of the Agent Review Center against demo agents
 (Contoso, ZAVA, DevDocs Assistant, Python Expert Agent) — no customer data.
 
 | File | Where it appears | What it shows |
@@ -36,6 +36,14 @@ All five are in place. They are captures of the Agent Review Center against demo
 | `shot-runtime-errors.png` | Gallery 2 | Runtime → Errors: conversations analysed, error counts, tool calls, and the failing connectors. |
 | `shot-knowledge-usage.png` | Gallery 3 | Runtime → Knowledge: 357 sources configured vs 5 confirmed used vs 348 never used. |
 | `shot-score-progress.png` | Gallery 4 | One agent's score across three reviews, rising to 95/100. |
+| `shot-architecture-map.png` | Gallery 5 | Architecture map of the demo ZAVA Store Operations Agent: skills, connector tools and a knowledge file, with configured links solid and AI-found links dotted. |
+
+**`shot-architecture-map.png` is the exception to the specification below.** It is an **824 × 588**
+crop of a 1280 × 720 (1×) capture, cropped to the map canvas. The right-hand details
+panel was cropped off because it shows component IDs and schema names, and the tab row was cropped off
+because it carries the old tab name (*Agent map*; the current build calls it *Architecture*). It is
+shown at its own pixel size (`.shot--native`, max 824px) so it is never upscaled. Replace it with a
+2× capture of the **Architecture** tab when one is available, cropped the same way.
 
 **Specification**
 
@@ -45,6 +53,10 @@ All five are in place. They are captures of the Agent Review Center against demo
   what keeps the interface text sharp on high-DPI screens rather than soft and upscaled. A 1280px
   source shown at this size looks visibly blurry — that is the problem these replaced.
 - **File size:** these sit at 149–410 KB each. Keep replacements under ~500 KB.
+- **Smaller copies for srcset:** each 2524-wide shot has a -1262.png copy (1262 × 672), a
+  high-quality bicubic downscale, so phones and 1× screens don't download the full file. The <img>s
+  list both in srcset. When you replace a shot, regenerate its -1262.png too (PowerShell
+  System.Drawing with InterpolationMode = HighQualityBicubic, or fmpeg -vf scale=1262:-1:flags=lanczos).
 - **Content:** these are customer-facing on a **public** site. Scrub real tenant data — customer and
   user names, email addresses, environment URLs, GUIDs, and any PII in transcript text.
 
@@ -65,7 +77,7 @@ Note that `Emulation.setDeviceMetricsOverride` over CDP does **not** work for th
 
 The images are plain `<img>` tags in `docs/index.html`. Swap the file, and update the `alt` text and
 the `<figcaption>` to match what the new capture actually shows — several alt strings and one
-caption ("348 of 357 sources never used") quote specific figures from the screenshot.
+caption ("348 of 357 configured sources were never cited") quote specific figures from the screenshot.
 
 ---
 

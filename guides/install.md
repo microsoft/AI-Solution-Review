@@ -56,8 +56,8 @@ Get-FileHash .\AgentReviewCenter_20261016.1_managed.zip -Algorithm SHA256
 
    | Connection reference | Connector |
    |---|---|
-   | **Agent Review Center** | Microsoft Dataverse |
-   | **Agent Review Tool** | Agents |
+   | **Agent Review Center \| Dataverse** | Microsoft Dataverse |
+   | **Agent Review Tool \| Agents** | Agents |
 
 7. Select **Import** and wait for the success message. This can take several minutes.
 
@@ -111,9 +111,10 @@ For each person who will run reviews:
 
 1. **Assign the reviewer roles** — Environment Maker, Bot Viewer, and Bot Transcript Viewer. See
    [Roles and permissions](prerequisites.md#roles-and-permissions).
-2. **Share the app.** In Power Apps, select **Apps**, select **Agent Review Center**, then
+2. **Share the agent.** In Copilot Studio, open the agent, select **Share**, and add the reviewer.
+3. **Share the app.** In Power Apps, select **Apps**, select **Agent Review Center**, then
    **Share**, and add the reviewer.
-3. **Check their licenses** — a Copilot Studio User License and Power Apps Premium coverage. See
+4. **Check their licenses** — a Copilot Studio User License and Power Apps Premium coverage. See
    [Licensing](prerequisites.md#licensing).
 
 You're ready. Continue to [Run a review →](run-a-review.md)
@@ -130,9 +131,9 @@ publisher **PowerCAT** (prefix `cat`).
 | Code app | **Agent Review Center** | The app you use to run reviews and read results. |
 | Code app | **Copilot Agent Kit Installer** | One-time setup for Agent Review connections and workflow activation. |
 | Cloud flow | **Review Agent Components** | Runs the review. Uses the Dataverse and Agents connections. |
-| Cloud flow | **Global \| LogFeatureTelemetry I ARC** | Records which features are used (for example, a review being created or run again) as runs in your environment. It makes no calls outside your environment. |
+| Cloud flow | **Global \| LogFeatureTelemetry I ARC** | Called by the app when you use a feature (for example, creating or re-running a review). It contains no connectors. |
 | Plug-in | **AgentRuntimeAnalyzer** | Processes runtime analysis jobs asynchronously in Dataverse. |
-| Connection references | **Agent Review Center** (Dataverse), **Agent Review Tool** (Agents) | See [Data policies](prerequisites.md#data-policies). |
+| Connection references | **Agent Review Center \| Dataverse**, **Agent Review Tool \| Agents** | See [Data policies](prerequisites.md#data-policies). |
 | Dataverse tables | Agent Review, Agent Review Job, Agent Review Job Item, Architecture Review, Architecture Review Agent, Architecture Review Result, Architecture Review Orchestration Record, Runtime Analysis Job | Store your reviews, snapshots, and results. |
 
 The solution depends on Copilot Studio being provisioned in the environment.

@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Install Agent Review Center — Agent Review Program</title>
+<meta name="description" content="How to install Agent Review Center in your own Power Platform environment: who does each step, when to do it, and how to check that it worked.">
+<meta name="color-scheme" content="dark">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="Install Agent Review Center">
+<meta property="og:description" content="How to install Agent Review Center in your own Power Platform environment: who does each step, when to do it, and how to check that it worked.">
+<meta property="og:url" content="https://microsoft.github.io/AI-Solution-Review/install.html">
+<meta property="og:image" content="https://microsoft.github.io/AI-Solution-Review/assets/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Agent Review Center logo">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://microsoft.github.io/AI-Solution-Review/install.html">
+
+<link rel="icon" href="assets/logo.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/logo.png">
+<link rel="stylesheet" href="styles.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body class="page--reference">
+
+<a class="skip" href="#main">Skip to main content</a>
+
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <a class="brand" href="./">
+      <!-- alt is empty because the wordmark beside it already names the link -->
+      <img class="brand__mark" src="assets/logo.png" alt="" width="280" height="280" decoding="async">
+      <span class="brand__text">Agent Review Program</span>
+    </a>
+
+    <nav class="site-nav" aria-label="Site">
+      <ul class="site-nav__list">
+        <li class="site-nav__item site-nav__item--home"><a class="site-nav__link" href="./">Overview</a></li>
+        <li class="site-nav__item"><a class="site-nav__link" href="install.html" aria-current="page">Install</a></li>
+        <li class="site-nav__item"><a class="site-nav__link" href="faq.html">FAQ</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn--primary btn--sm site-header__cta" href="./#nominate">Nominate an agent</a>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="pagehead">
+    <div class="wrap wrap--narrow">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="./">Agent Review Program</a></li>
+          <li aria-current="page">Install</li>
+        </ol>
+      </nav>
+      <h1 class="pagehead__title">Install Agent Review Center</h1>
+      <p class="pagehead__lede">
+        A step-by-step guide for you and your admins: who does each step, when to do it, and how to
+        check that it worked.
+      </p>
+      <p class="pagehead__body">
+        Agent Review Center is a managed Power Platform solution that you import into an environment in
+        your own tenant. If you are in the Agent Review Program, you install it together with Microsoft
+        experts in Session&nbsp;1. Getting steps 1 to 3 done beforehand makes that session much smoother.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================ AT A GLANCE ============================ -->
+  <section class="section section--alt" aria-labelledby="glance-h">
+    <div class="wrap wrap--narrow">
+      <h2 class="section__title" id="glance-h">At a glance</h2>
+      <p class="section__lede">Nine steps. Most of the early ones need an admin, so share this page with yours.</p>
+
+      <div class="table-wrap">
+        <table class="table table--labelled guide-glance">
+          <caption class="visually-hidden">Installation steps, who does each one, and when</caption>
+          <thead>
+            <tr>
+              <th scope="col">Step</th>
+              <th scope="col">Who</th>
+              <th scope="col">When</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"><a href="#before-you-start">1. Before you start</a></th>
+              <td data-label="Who">Agent owner, with your admins</td>
+              <td data-label="When">As early as you can</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="#configure-environments">2. Configure the environments</a></th>
+              <td data-label="Who">Power Platform admin or environment admin</td>
+              <td data-label="When">Before you import. Turn on transcripts first.</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="#data-policies">3. Data policies and connectors</a></th>
+              <td data-label="Who">Power Platform admin</td>
+              <td data-label="When">Before you import</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="#import-solution">4. Download and import the solution</a></th>
+              <td data-label="Who">System Administrator</td>
+              <td data-label="When">When steps 2 and 3 are done</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="#setup-app">5. Run the one-time setup app</a></th>
+              <td data-label="Who">System Administrator</td>
+              <td data-label="When">Right after the import</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="#share">6. Share with reviewers</a></th>
+              <td data-label="Who">System Administrator and agent owner</td>
+              <td data-label="When">After setup is complete</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="#verify">7. Verify the installation</a></th>
+              <td data-label="Who">A reviewer, with an admin at hand</td>
+              <td data-label="When">Before your first review</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="#first-review">8. Run your first review</a></th>
+              <td data-label="Who">A reviewer</td>
+              <td data-label="When">Once the readiness checks pass</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="#upgrade-uninstall">9. Upgrade or uninstall</a></th>
+              <td data-label="Who">System Administrator</td>
+              <td data-label="When">When a new version is released</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-label="Installation steps">
+    <div class="wrap wrap--narrow">
+
+      <!-- ============================ 1 ============================ -->
+      <section class="phase" id="before-you-start" aria-labelledby="before-you-start-h">
+        <h2 class="phase__title" id="before-you-start-h"><span class="step-num" aria-hidden="true">1</span> Before you start</h2>
+        <dl class="phase__meta">
+          <dt>Who</dt><dd>The agent owner, with your Power Platform admin and a System Administrator for the environment.</dd>
+          <dt>When</dt><dd>As early as you can. Licenses and data policy changes can take time to arrange, and transcripts need time to build up.</dd>
+          <dt>Done when</dt><dd>Every task below has a named person.</dd>
+        </dl>
+
+        <h3 id="roles">Who&rsquo;s who</h3>
+        <p>This guide uses these role names:</p>
+        <dl class="glossary">
+          <dt>Power Platform admin</dt><dd>Manages tenant-wide settings, licenses, capacity, and data policies.</dd>
+          <dt>Environment admin</dt><dd>Manages the settings of one environment.</dd>
+          <dt>System Administrator</dt><dd>The Dataverse security role in the environment. This person imports the solution, and the account that imports it owns its apps, flows, and connection references.</dd>
+          <dt>Agent owner</dt><dd>Owns the agent in Copilot Studio and shares it with reviewers.</dd>
+          <dt>Reviewer</dt><dd>Runs reviews in Agent Review Center.</dd>
+        </dl>
+
+        <h3>Who does what</h3>
+        <div class="table-wrap">
+          <table class="table table--labelled">
+            <caption class="visually-hidden">Installation tasks and who can do each one</caption>
+            <thead>
+              <tr>
+                <th scope="col">Task</th>
+                <th scope="col">Who can do it</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Licenses, and Copilot Credits allocated to the environment</th>
+                <td data-label="Who can do it">Power Platform admin</td>
+              </tr>
+              <tr>
+                <th scope="row">Code apps and transcript settings</th>
+                <td data-label="Who can do it">Power Platform admin or environment admin</td>
+              </tr>
+              <tr>
+                <th scope="row">Data policies and advanced connector policies</th>
+                <td data-label="Who can do it">Power Platform admin. Environment admins can&rsquo;t edit tenant-level policies.</td>
+              </tr>
+              <tr>
+                <th scope="row">Import the solution, run the setup app, check the flows</th>
+                <td data-label="Who can do it">System Administrator</td>
+              </tr>
+              <tr>
+                <th scope="row">Assign reviewer roles</th>
+                <td data-label="Who can do it">System Administrator</td>
+              </tr>
+              <tr>
+                <th scope="row">Share the agent with reviewers</th>
+                <td data-label="Who can do it">Agent owner</td>
+              </tr>
+              <tr>
+                <th scope="row">Share the Agent Review Center app</th>
+                <td data-label="Who can do it">System Administrator</td>
+              </tr>
+              <tr>
+                <th scope="row">Run reviews</th>
+                <td data-label="Who can do it">Reviewers</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Plan ahead</h3>
+        <ul class="bullets">
+          <li><strong>Choose the environment.</strong> Two environments can be involved: the <strong>target installation environment</strong>, where you install Agent Review Center, and the <strong>agent environment</strong>, where the agent you review lives. Install in the agent environment if you can, so they are the same. Configuration reviews can cover agents in other environments, but conversation transcripts are only analyzed in the environment where Agent Review Center runs.</li>
+          <li><strong>Turn on transcript recording now.</strong> Recording is not retroactive: only conversations after you turn it on are saved. Transcripts are kept for 30 days by default unless an admin changes the retention period, so plan your first review while the conversations you care about are still there. See <a href="https://learn.microsoft.com/en-us/microsoft-copilot-studio/analytics-transcripts-powerapps">Download conversation transcripts in Power Apps</a>.</li>
+          <li><strong>Arrange licenses and credits.</strong> See <a href="./#what-you-need">What you need to bring</a>.</li>
+          <li><strong>Have an admin available during the install.</strong> A Power Platform admin, an environment admin, or a System Administrator needs to be available to change settings and assign roles. In the program, that means having them in Session&nbsp;1.</li>
+          <li><strong>Already using the Copilot Agent Kit in that environment?</strong> Check with your Microsoft contact before you import Agent Review Center.</li>
+        </ul>
+
+        <div class="callout">
+          <p>Send your admin this page. Every setting, with screenshots, is in the <a href="./#permissions-setup">Agent Review Center permissions and configuration setup details</a>.</p>
+        </div>
+      </section>
+
+      <!-- ============================ 2 ============================ -->
+      <section class="phase" id="configure-environments" aria-labelledby="configure-environments-h">
+        <h2 class="phase__title" id="configure-environments-h"><span class="step-num" aria-hidden="true">2</span> Configure the environments</h2>
+        <dl class="phase__meta">
+          <dt>Who</dt><dd>Power Platform admin or environment admin.</dd>
+          <dt>When</dt><dd>Before you import. Turn on transcript recording first, because it only saves conversations from that point on.</dd>
+          <dt>Done when</dt><dd>The checks at the end of this step pass.</dd>
+        </dl>
+
+        <p>The settings, with screenshots, are in the setup details on the overview page:</p>
+        <ul class="bullets">
+          <li><a href="./#setup-step-1">Prepare the target installation environment</a>: a Dataverse environment on the standard release cycle, with Copilot Credits allocated.</li>
+          <li><a href="./#setup-step-2">Make sure that Power Apps Code Apps is on</a>: Agent Review Center and its setup app are both code apps.</li>
+          <li><a href="./#setup-step-3">Set transcript recording to on</a>, in the agent environment. Both transcript settings need to be on.</li>
+        </ul>
+
+        <div class="callout callout--verify">
+          <p><strong>Check it worked</strong></p>
+          <ul class="bullets bullets--compact">
+            <li>In the Power Platform admin center, under <strong>Licensing &gt; Copilot Studio &gt; Manage capacity</strong>, the environment shows Copilot Credits allocated.</li>
+            <li><strong>Enable code apps</strong> shows <strong>On</strong> in the environment&rsquo;s <strong>Settings &gt; Product &gt; Features</strong>.</li>
+            <li>Run a test conversation with your agent, then confirm that its transcript appears. See <a href="https://learn.microsoft.com/en-us/microsoft-copilot-studio/analytics-transcripts-powerapps">Download conversation transcripts in Power Apps</a>.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ============================ 3 ============================ -->
+      <section class="phase" id="data-policies" aria-labelledby="data-policies-h">
+        <h2 class="phase__title" id="data-policies-h"><span class="step-num" aria-hidden="true">3</span> Data policies and connectors</h2>
+        <dl class="phase__meta">
+          <dt>Who</dt><dd>Power Platform admin.</dd>
+          <dt>When</dt><dd>Before you import. After you save a policy change, wait a few minutes for it to take effect.</dd>
+          <dt>Done when</dt><dd>The three connectors below are allowed together, in every policy that applies to the environment.</dd>
+        </dl>
+
+        <p>Your data policies must allow these three connectors <strong>together, in the same group</strong>. If one is blocked, the import fails.</p>
+
+        <div class="table-wrap">
+          <table class="table table--labelled">
+            <caption class="visually-hidden">Connectors that the data policies must allow, and what each is used for</caption>
+            <thead>
+              <tr>
+                <th scope="col">Connector</th>
+                <th scope="col">Used for</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Microsoft Dataverse</th>
+                <td data-label="Used for">Reading agent configuration and transcripts, and storing reviews and results. Connection reference: <strong>Agent Review Center | Dataverse</strong>.</td>
+              </tr>
+              <tr>
+                <th scope="row">Agents</th>
+                <td data-label="Used for">The AI-assisted checks run by the <strong>Review Agent Components</strong> flow. Connection reference: <strong>Agent Review Tool | Agents</strong>. It may be listed as <strong>Agents (preview)</strong>; its connector ID is <code>shared_agentnode</code>.</td>
+              </tr>
+              <tr>
+                <th scope="row">Power Automate Management</th>
+                <td data-label="Used for">The one-time setup app, which checks the Review Agent Components flow&rsquo;s connections and starts it.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>If the environment uses data policies</h3>
+        <ol class="procedure">
+          <li>In the Power Platform admin center, go to <strong>Security &gt; Data and privacy &gt; Data policy</strong>. On older layouts, it&rsquo;s <strong>Policies &gt; Data policies</strong>.</li>
+          <li>Open each policy that applies to the environment.</li>
+          <li>On the <strong>Prebuilt connectors</strong> step, make sure that <strong>Microsoft Dataverse</strong>, <strong>Agents</strong>, and <strong>Power Automate Management</strong> are all in <strong>Business</strong>. If they&rsquo;re split across groups, the import can fail with a different policy violation.</li>
+          <li>Save the policy, and wait a few minutes before you import.</li>
+        </ol>
+
+        <h3>If the environment uses advanced connector policies</h3>
+        <p>Advanced connector policies block every connector that isn&rsquo;t explicitly allowed, including new ones. Add all three connectors to the allowed list:</p>
+        <ul class="bullets">
+          <li><strong>For a single environment:</strong> in the Power Platform admin center, select <strong>Security &gt; Data and privacy &gt; Advanced connector policies</strong>, add the connectors, and select <strong>Save</strong>.</li>
+          <li><strong>For an environment group:</strong> select <strong>Manage &gt; Environment groups</strong>, open the group, and select <strong>Rules &gt; Advanced connector policies</strong>. Add the connectors, select <strong>Save</strong>, and then select <strong>Publish rules</strong>.</li>
+        </ul>
+
+        <div class="callout callout--verify">
+          <p><strong>Check it worked</strong></p>
+          <p>Open each policy that applies to the environment, and confirm that Microsoft Dataverse, Agents, and Power Automate Management are all in <strong>Business</strong>, or all on the allowed list for an advanced connector policy.</p>
+        </div>
+
+        <p class="learn-more">
+          Learn more:
+          <a href="https://learn.microsoft.com/en-us/power-platform/admin/wp-data-loss-prevention">Data policies</a> &middot;
+          <a href="https://learn.microsoft.com/en-us/power-platform/admin/advanced-connector-policies">Advanced connector policies</a>
+        </p>
+        <p class="learn-more">
+          Import blocked by a policy? See
+          <a href="faq.html#acp-dlp-blocked-connector">Power Automate Management is blocked</a>,
+          <a href="faq.html#acp-agents-connector-blocked">an advanced connector policy blocks a connector</a>, and
+          <a href="faq.html#cannot-edit-policy">I can&rsquo;t edit the policy</a>.
+        </p>
+        <p class="handoff"><strong>Next:</strong> tell the System Administrator who will import the solution.</p>
+      </section>
+
+      <!-- ============================ 4 ============================ -->
+      <section class="phase" id="import-solution" aria-labelledby="import-solution-h">
+        <h2 class="phase__title" id="import-solution-h"><span class="step-num" aria-hidden="true">4</span> Download and import the solution</h2>
+        <dl class="phase__meta">
+          <dt>Who</dt><dd>A System Administrator in the target installation environment. The account that imports the solution becomes the owner of its apps, flows, and connection references, so choose it carefully.</dd>
+          <dt>When</dt><dd>When steps 2 and 3 are done. The import can take several minutes.</dd>
+          <dt>Done when</dt><dd>Each connection reference has a connection, and both cloud flows are on.</dd>
+        </dl>
+
+        <h3>Download</h3>
+        <ol class="procedure">
+          <li>Download the latest <code>AgentReviewCenter_&lt;version&gt;_managed.zip</code> from the <a href="https://github.com/microsoft/AI-Solution-Review/releases/latest">latest release on GitHub</a>. Downloading it there directly avoids passing the file around by email or chat.</li>
+          <li>Keep the <code>.zip</code> as it is. Don&rsquo;t extract it. If your browser gives you a folder instead, download it again with automatic unzipping turned off.</li>
+          <li>Optional: compare the file&rsquo;s SHA-256 hash with the one published in the <a href="https://github.com/microsoft/AI-Solution-Review#download">repository README</a> and the release notes. In PowerShell: <code>Get-FileHash .\AgentReviewCenter_&lt;version&gt;_managed.zip -Algorithm SHA256</code></li>
+        </ol>
+
+        <h3>Import</h3>
+        <ol class="procedure">
+          <li>Sign in to <a href="https://make.powerapps.com">Power Apps</a> and select the target installation environment.</li>
+          <li>Select <strong>Solutions &gt; Import solution &gt; Browse</strong>, choose the <code>.zip</code> file, and select <strong>Next</strong>.</li>
+          <li>Check the details: the solution is <strong>Agent Review Center</strong>, from the publisher <strong>PowerCAT</strong>. Select <strong>Next</strong>.</li>
+          <li>For each connection reference, select an existing connection or create one:
+            <ul>
+              <li><strong>Agent Review Center | Dataverse</strong>: Microsoft Dataverse</li>
+              <li><strong>Agent Review Tool | Agents</strong>: Agents</li>
+            </ul>
+          </li>
+          <li>Select <strong>Import</strong>, and wait for the success message.</li>
+        </ol>
+        <p>Set both connections here if you can. The setup app in the next step checks them. If it can&rsquo;t complete, map the connection references and turn the flows on by hand, as in <a href="./#setup-step-5">Install the solution provided by the Agent Review Center team</a> in the setup details.</p>
+
+        <div class="callout callout--verify">
+          <p><strong>Check it worked</strong></p>
+          <ul class="bullets bullets--compact">
+            <li>In the solution, <strong>Connection references</strong> shows a valid connection for each one.</li>
+            <li>In Power Automate, under <strong>Solutions &gt; Agent Review Center &gt; Cloud flows</strong>, both flows show <strong>On</strong>.</li>
+          </ul>
+        </div>
+
+        <p class="learn-more">
+          Import failed? See <a href="faq.html#import-fails-apps-missing">The import fails, or the apps are missing</a>,
+          <a href="faq.html#zip-became-folder">I have a folder instead of a .zip file</a>, and the other
+          <a href="faq.html#faq-install-h">questions about installing Agent Review Center</a>. For a list of
+          everything the solution adds, see <a href="#what-gets-installed">What gets installed</a>.
+        </p>
+      </section>
+
+      <!-- ============================ 5 ============================ -->
+      <section class="phase" id="setup-app" aria-labelledby="setup-app-h">
+        <h2 class="phase__title" id="setup-app-h"><span class="step-num" aria-hidden="true">5</span> Run the one-time setup app</h2>
+        <dl class="phase__meta">
+          <dt>Who</dt><dd>A System Administrator, usually the person who imported the solution.</dd>
+          <dt>When</dt><dd>Right after the import.</dd>
+          <dt>Done when</dt><dd>The app shows <strong>Setup is complete</strong>, or you&rsquo;ve checked the connection references and flows by hand (<a href="./#setup-step-5">Install the solution provided by the Agent Review Center team</a> in the setup details).</dd>
+        </dl>
+
+        <p>The setup app is named <strong>Copilot Agent Kit Installer</strong>. Despite its name, it&rsquo;s part of the Agent Review Center solution: it connects Agent Review Center&rsquo;s connections and starts the Review Agent Components flow.</p>
+        <ol class="procedure">
+          <li>In Power Apps, select <strong>Apps</strong> and open <strong>Copilot Agent Kit Installer</strong>.</li>
+          <li>If Power Apps asks you to allow its connections, select <strong>Allow</strong>.</li>
+          <li>The setup app checks four things and fixes what it can.</li>
+          <li>Wait for <strong>Setup is complete</strong>.</li>
+        </ol>
+
+        <div class="table-wrap">
+          <table class="table table--labelled">
+            <caption class="visually-hidden">The four checks in the setup app</caption>
+            <thead>
+              <tr>
+                <th scope="col">Check</th>
+                <th scope="col">What it confirms</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Agents connection</th>
+                <td data-label="What it confirms">Power Apps assigned a connected Agents account.</td>
+              </tr>
+              <tr>
+                <th scope="row">Dataverse connection</th>
+                <td data-label="What it confirms">Power Apps assigned a connected Dataverse account.</td>
+              </tr>
+              <tr>
+                <th scope="row">Workflow connections</th>
+                <td data-label="What it confirms">The Review Agent Components flow uses the assigned Agents and Dataverse connections.</td>
+              </tr>
+              <tr>
+                <th scope="row">Review workflow</th>
+                <td data-label="What it confirms">The Review Agent Components flow is started.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>You can run the setup app again at any time to repair the connections and the flow.</p>
+
+        <div class="callout callout--verify">
+          <p><strong>Check it worked</strong></p>
+          <p>The setup app shows <strong>Setup is complete</strong>, and both flows show <strong>On</strong> in Power Automate.</p>
+        </div>
+
+        <p class="learn-more">See <a href="faq.html#setup-could-not-complete">Setup could not complete</a> in the FAQ if the setup app stops.</p>
+        <p class="handoff"><strong>Next:</strong> when setup is complete, tell the agent owner and the reviewers.</p>
+      </section>
+
+      <!-- ============================ 6 ============================ -->
+      <section class="phase" id="share" aria-labelledby="share-h">
+        <h2 class="phase__title" id="share-h"><span class="step-num" aria-hidden="true">6</span> Share with reviewers</h2>
+        <dl class="phase__meta">
+          <dt>Who</dt><dd>A System Administrator assigns roles and shares the app. The agent owner shares the agent.</dd>
+          <dt>When</dt><dd>After setup is complete.</dd>
+          <dt>Done when</dt><dd>Each reviewer can open Agent Review Center.</dd>
+        </dl>
+
+        <p>For each person who will run reviews:</p>
+        <ol class="procedure">
+          <li><strong>Check their licenses.</strong> See <a href="./#what-you-need">What you need to bring</a>.</li>
+          <li><strong>Assign the reviewer roles</strong> in the agent environment: Environment Maker, Bot Viewer, and Bot Transcript Viewer. In the Power Platform admin center, select the user under <strong>Access &gt; Users</strong>, then select <strong>Manage security roles</strong>. See <a href="./#setup-step-4">Give access to the agent and its transcripts</a> in the setup details, and <a href="https://learn.microsoft.com/en-us/power-platform/admin/assign-security-roles">Assign a security role to a user</a>.</li>
+          <li><strong>Share the agent</strong> with the reviewer: in Copilot Studio, open the agent and select <strong>Share</strong>.</li>
+          <li><strong>Share the app:</strong> in Power Apps, select <strong>Apps</strong>, select <strong>Agent Review Center</strong>, select <strong>Share</strong>, and add the reviewer.</li>
+        </ol>
+
+        <div class="callout">
+          <p>The readiness check <strong>You have the access this environment needs</strong> may show yellow for reviewers who aren&rsquo;t System Administrators. If a reviewer can&rsquo;t create reviews, contact your Microsoft contact.</p>
+        </div>
+
+        <div class="callout callout--verify">
+          <p><strong>Check it worked</strong></p>
+          <p>Ask one reviewer to open Agent Review Center.</p>
+        </div>
+      </section>
+
+      <!-- ============================ 7 ============================ -->
+      <section class="phase" id="verify" aria-labelledby="verify-h">
+        <h2 class="phase__title" id="verify-h"><span class="step-num" aria-hidden="true">7</span> Verify the installation</h2>
+        <dl class="phase__meta">
+          <dt>Who</dt><dd>A reviewer, with an admin at hand to fix anything that isn&rsquo;t ready.</dd>
+          <dt>When</dt><dd>Before your first review.</dd>
+          <dt>Done when</dt><dd>The readiness checklist is green, or you know what each remaining item blocks.</dd>
+        </dl>
+
+        <ol class="procedure">
+          <li>In Power Apps, select <strong>Apps</strong> and open <strong>Agent Review Center</strong>.</li>
+          <li>On first launch, a <strong>Welcome &mdash; let&rsquo;s set you up!</strong> message shows a readiness checklist. You can return to it at any time from the <strong>Settings</strong> (gear) button on the reviews list.</li>
+          <li>Select <strong>Run checks</strong>, and work through anything red or yellow.</li>
+        </ol>
+
+        <div class="table-wrap">
+          <table class="table table--labelled">
+            <caption class="visually-hidden">Readiness checks and what each one blocks if it is not green</caption>
+            <thead>
+              <tr>
+                <th scope="col">Check</th>
+                <th scope="col">If it is not green</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Environment reachable</th>
+                <td data-label="If it is not green">Blocks every check below.</td>
+              </tr>
+              <tr>
+                <th scope="row">Copilot Studio provisioned</th>
+                <td data-label="If it is not green">Blocks every review in this environment.</td>
+              </tr>
+              <tr>
+                <th scope="row">You have the access this environment needs</th>
+                <td data-label="If it is not green">Configuration reviews still run; runtime transcript analysis may be blocked.</td>
+              </tr>
+              <tr>
+                <th scope="row">Transcript recording enabled at environment level</th>
+                <td data-label="If it is not green">Blocks runtime analysis and credit estimation.</td>
+              </tr>
+              <tr>
+                <th scope="row">Transcript viewing enabled for agent owners</th>
+                <td data-label="If it is not green">Reviewers may not be able to open the transcripts behind a score.</td>
+              </tr>
+              <tr>
+                <th scope="row">Connections enabled</th>
+                <td data-label="If it is not green">Blocks flow activation and analysis.</td>
+              </tr>
+              <tr>
+                <th scope="row">Flows enabled</th>
+                <td data-label="If it is not green">Blocks analysis runs.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>You can still run configuration reviews while items are being fixed. Use <strong>Copy admin link</strong> to send your admin straight to the setting that needs changing, then select <strong>Run checks</strong> again.</p>
+      </section>
+
+      <!-- ============================ 8 ============================ -->
+      <section class="phase" id="first-review" aria-labelledby="first-review-h">
+        <h2 class="phase__title" id="first-review-h"><span class="step-num" aria-hidden="true">8</span> Run your first review</h2>
+        <dl class="phase__meta">
+          <dt>Who</dt><dd>A reviewer.</dd>
+          <dt>When</dt><dd>Once the readiness checks pass. A configuration-only review can run sooner.</dd>
+          <dt>Done when</dt><dd>The review shows <strong>Review complete</strong>, with a grade and findings.</dd>
+        </dl>
+
+        <ol class="procedure">
+          <li>In Agent Review Center, select <strong>Add review</strong>, and give it a <strong>Project name</strong>.</li>
+          <li>Under <strong>What kind of asset are you reviewing?</strong>, choose <strong>Copilot Studio Agent</strong>, <strong>Declarative Agent</strong>, or <strong>Skill</strong>.
+            <ul>
+              <li>For a Copilot Studio agent, select the environment where the agent lives, and then choose the agent.</li>
+              <li>For a declarative agent or skill, upload its files: <code>.zip</code>, <code>.md</code>, <code>.yaml</code>, <code>.yml</code>, or <code>.json</code>.</li>
+            </ul>
+          </li>
+          <li>To include runtime analysis for a Copilot Studio agent, set the <strong>date range for transcripts</strong>. The app counts the transcript records in the range before you start. If it finds none, widen the range or check that transcript recording is on.</li>
+          <li>Select <strong>Create</strong>. Progress is shown as the review runs. You can select <strong>Continue in background</strong> and come back later.</li>
+        </ol>
+        <p class="learn-more">
+          Next: read the results, work through the findings, and measure your fixes. See
+          <a href="https://github.com/microsoft/AI-Solution-Review/blob/main/guides/run-a-review.md">Run a review</a> on GitHub.
+        </p>
+      </section>
+
+      <!-- ============================ 9 ============================ -->
+      <section class="phase" id="upgrade-uninstall" aria-labelledby="upgrade-uninstall-h">
+        <h2 class="phase__title" id="upgrade-uninstall-h"><span class="step-num" aria-hidden="true">9</span> Upgrade or uninstall</h2>
+        <dl class="phase__meta">
+          <dt>Who</dt><dd>A System Administrator in the environment.</dd>
+          <dt>When</dt><dd>When a new version is released, or when you no longer need Agent Review Center.</dd>
+          <dt>Done when</dt><dd>After an upgrade, <strong>Run checks</strong> is green.</dd>
+        </dl>
+
+        <h3 id="upgrade">Upgrade to a new version</h3>
+        <ol class="procedure">
+          <li>Download the new <code>.zip</code> from the <a href="https://github.com/microsoft/AI-Solution-Review/releases/latest">latest release</a>.</li>
+          <li>In Power Apps, select <strong>Solutions &gt; Import solution</strong>, and choose the new file.</li>
+          <li>Power Apps recognizes that Agent Review Center is already installed. Keep the default upgrade option, and select <strong>Import</strong>.</li>
+          <li>Open Agent Review Center and select <strong>Run checks</strong>. If connections or flows show as off, run the setup app again.</li>
+        </ol>
+        <p>Your existing reviews and results stay in place. To hear about new versions, select <strong>Watch &gt; Custom &gt; Releases</strong> on the <a href="https://github.com/microsoft/AI-Solution-Review">GitHub repository</a>. The <a href="https://github.com/microsoft/AI-Solution-Review/blob/main/CHANGELOG.md">changelog</a> lists what changed.</p>
+
+        <h3 id="uninstall">Uninstall</h3>
+        <div class="callout callout--warn">
+          <p><strong>Caution</strong></p>
+          <p>Deleting the solution deletes its Dataverse tables, and <strong>every review and result stored in them</strong>. First, download the PDF or JSON report for any results you want to keep.</p>
+        </div>
+        <p class="after-callout">In Power Apps, select <strong>Solutions</strong>, select <strong>Agent Review Center</strong>, and then select <strong>Delete</strong>.</p>
+      </section>
+
+      <!-- ============================ REFERENCE ============================ -->
+      <section class="phase" id="what-gets-installed" aria-labelledby="what-gets-installed-h">
+        <h2 class="phase__title" id="what-gets-installed-h">Reference: what gets installed</h2>
+        <p>Everything is in one managed solution, <strong>Agent Review Center</strong> (<code>AgentReviewCenter</code>), from the publisher <strong>PowerCAT</strong>. It needs Copilot Studio to be available in the environment.</p>
+        <div class="table-wrap">
+          <table class="table table--labelled">
+            <caption class="visually-hidden">Components in the Agent Review Center solution</caption>
+            <thead>
+              <tr>
+                <th scope="col">Component</th>
+                <th scope="col">What it does</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Agent Review Center (code app)</th>
+                <td data-label="What it does">The app you use to run reviews and read results.</td>
+              </tr>
+              <tr>
+                <th scope="row">Copilot Agent Kit Installer (code app)</th>
+                <td data-label="What it does">The one-time setup app for the connections and the Review Agent Components flow.</td>
+              </tr>
+              <tr>
+                <th scope="row">Review Agent Components (cloud flow)</th>
+                <td data-label="What it does">Runs the review, using the Dataverse and Agents connections.</td>
+              </tr>
+              <tr>
+                <th scope="row">Global | LogFeatureTelemetry I ARC (cloud flow)</th>
+                <td data-label="What it does">Called by the app when you use a feature. Contains no connectors.</td>
+              </tr>
+              <tr>
+                <th scope="row">AgentRuntimeAnalyzer (plug-in)</th>
+                <td data-label="What it does">Processes runtime analysis jobs asynchronously in Dataverse.</td>
+              </tr>
+              <tr>
+                <th scope="row">Eight Dataverse tables</th>
+                <td data-label="What it does">Store your reviews, snapshots, and results.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
+  </section>
+
+  <!-- ============================ HELP ============================ -->
+  <section class="section section--alt" aria-labelledby="get-help-h" id="get-help">
+    <div class="wrap wrap--narrow">
+      <h2 class="section__title" id="get-help-h">Get help</h2>
+      <ul class="bullets">
+        <li><strong>Error messages and common questions:</strong> see the <a href="faq.html">FAQ</a>. Select <strong>Expand all</strong>, then search for the exact wording on your screen.</li>
+        <li><strong>During an engagement:</strong> raise anything not covered here with your Microsoft contact.</li>
+        <li><strong>Questions about the documentation:</strong> <a href="https://github.com/microsoft/AI-Solution-Review/issues/new/choose">open an issue on GitHub</a>. Issues are public, so don&rsquo;t post tenant data, transcripts, or screenshots with real data.</li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap site-footer__inner">
+    <p class="site-footer__brand">Agent Review Program</p>
+    <nav class="site-footer__links" aria-label="Footer">
+      <ul>
+        <li><a href="./">Overview</a></li>
+        <li><a href="install.html" aria-current="page">Installation guide</a></li>
+        <li><a href="faq.html">Frequently asked questions</a></li>
+        <li><a href="https://github.com/microsoft/AI-Solution-Review">GitHub repository</a></li>
+      </ul>
+    </nav>
+    <p class="site-footer__legal">
+      Trademarks — this project may contain trademarks or logos for projects, products, or services.
+      Authorized use of Microsoft trademarks or logos is subject to and must follow
+      <a href="https://www.microsoft.com/legal/intellectualproperty/trademarks/usage/general">Microsoft's Trademark &amp; Brand Guidelines</a>.
+    </p>
+  </div>
+</footer>
+
+<script src="main.js" defer></script>
+</body>
+</html>

@@ -60,6 +60,7 @@
       <li><a class="quick-nav__link" href="#install">Install Agent Review Center</a></li>
       <li><a class="quick-nav__link" href="#permissions-configurations">Permissions and configurations</a></li>
       <li><a class="quick-nav__link" href="#nominate">Nominate an agent</a></li>
+      <li><a class="quick-nav__link" href="#contact">Contact the Agent Review Program team</a></li>
     </ul>
   </div>
 </nav>
@@ -453,10 +454,25 @@
         </li>
       </ol>
 
-      <p class="callout__actions" data-reveal>
-        <a class="btn btn--primary" href="install.html">Read the installation guide</a>
-        <a class="btn btn--ghost" href="https://github.com/microsoft/AI-Solution-Review/releases/latest">Download the latest release from GitHub</a>
-      </p>
+      <!-- ===================== SOLUTION DOWNLOAD =====================
+           Points at the GitHub release asset. On each release, update the
+           URL, version and size here and in install.html (#download) —
+           see .github/RELEASING.md.
+           ============================================================ -->
+      <div class="download-card" data-reveal>
+        <div class="download-card__text">
+          <p class="download-card__title">Agent Review Center solution</p>
+          <p class="download-card__meta">Version 20261016.1 &middot; managed solution &middot; 1.6&nbsp;MB</p>
+          <p class="download-card__note">Import the <code>.zip</code> as it is &mdash; don&rsquo;t extract it.</p>
+        </div>
+        <div class="download-card__actions">
+          <a class="btn btn--primary"
+             href="https://github.com/microsoft/AI-Solution-Review/releases/download/v20261016.1/AgentReviewCenter_20261016.1_managed.zip"
+             type="application/zip" download
+             data-solution-download>Download Agent Review Center (.zip)</a>
+          <a class="btn btn--ghost" href="install.html">Read the installation guide</a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -925,6 +941,28 @@
     </div>
   </section>
 
+  <!-- ===================== CONTACT =====================
+       The team mailbox lives in these mailto links only (index, install,
+       faq: section + footer). Change all of them together.
+       ==================================================== -->
+  <section class="section contact" id="contact" aria-labelledby="contact-h">
+    <div class="wrap wrap--narrow">
+      <div class="contact__card" data-reveal>
+        <div>
+          <h2 class="contact__title" id="contact-h">Contact the Agent Review Program team</h2>
+          <p class="contact__text">
+            Questions about the program, whether your agent is a fit, or installing Agent Review Center?
+            Email the team at
+            <a href="mailto:serenaxie@microsoft.com?subject=Agent%20Review%20Program%20question">serenaxie@microsoft.com</a>.
+            Don&rsquo;t include transcripts or other sensitive data.
+          </p>
+        </div>
+        <a class="btn btn--ghost btn--lg contact__btn"
+           href="mailto:serenaxie@microsoft.com?subject=Agent%20Review%20Program%20question">Email the Agent Review Program team</a>
+      </div>
+    </div>
+  </section>
+
 </main>
 
 <footer class="site-footer">
@@ -935,6 +973,7 @@
         <li><a href="./" aria-current="page">Overview</a></li>
         <li><a href="install.html">Installation guide</a></li>
         <li><a href="faq.html">Frequently asked questions</a></li>
+        <li><a href="mailto:serenaxie@microsoft.com?subject=Agent%20Review%20Program%20question">Contact the Agent Review Program team</a></li>
         <li><a href="https://github.com/microsoft/AI-Solution-Review">GitHub repository</a></li>
       </ul>
     </nav>

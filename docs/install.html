@@ -326,11 +326,25 @@
           <dt>Done when</dt><dd>Each connection reference has a connection, and both cloud flows are on.</dd>
         </dl>
 
-        <h3>Download</h3>
+        <h3 id="download">Download</h3>
+        <!-- Same release asset as the overview page; update both on each release. -->
+        <div class="download-card download-card--inline">
+          <div class="download-card__text">
+            <p class="download-card__title">Agent Review Center solution</p>
+            <p class="download-card__meta">Version 20261016.1 &middot; managed solution &middot; 1.6&nbsp;MB</p>
+            <p class="download-card__note">SHA-256 <code class="download-card__hash">DBBF03DCCC2F4F6E208D5BFF70C2260A13E11AC2F74B6CE2AE07DD9673BB364B</code></p>
+          </div>
+          <div class="download-card__actions">
+            <a class="btn btn--primary"
+               href="https://github.com/microsoft/AI-Solution-Review/releases/download/v20261016.1/AgentReviewCenter_20261016.1_managed.zip"
+               type="application/zip" download
+               data-solution-download>Download Agent Review Center (.zip)</a>
+          </div>
+        </div>
         <ol class="procedure">
-          <li>Download the latest <code>AgentReviewCenter_&lt;version&gt;_managed.zip</code> from the <a href="https://github.com/microsoft/AI-Solution-Review/releases/latest">latest release on GitHub</a>. Downloading it there directly avoids passing the file around by email or chat.</li>
+          <li>Select <strong>Download Agent Review Center (.zip)</strong> above. Every version is also listed on the <a href="https://github.com/microsoft/AI-Solution-Review/releases">GitHub releases page</a>. Downloading it here directly avoids passing the file around by email or chat.</li>
           <li>Keep the <code>.zip</code> as it is. Don&rsquo;t extract it. If your browser gives you a folder instead, download it again with automatic unzipping turned off.</li>
-          <li>Optional: compare the file&rsquo;s SHA-256 hash with the one published in the <a href="https://github.com/microsoft/AI-Solution-Review#download">repository README</a> and the release notes. In PowerShell: <code>Get-FileHash .\AgentReviewCenter_&lt;version&gt;_managed.zip -Algorithm SHA256</code></li>
+          <li>Optional: check that the file&rsquo;s SHA-256 hash matches the one above. In PowerShell: <code>Get-FileHash .\AgentReviewCenter_20261016.1_managed.zip -Algorithm SHA256</code></li>
         </ol>
 
         <h3>Import</h3>
@@ -546,7 +560,7 @@
 
         <h3 id="upgrade">Upgrade to a new version</h3>
         <ol class="procedure">
-          <li>Download the new <code>.zip</code> from the <a href="https://github.com/microsoft/AI-Solution-Review/releases/latest">latest release</a>.</li>
+          <li>Download the new <code>.zip</code> with the <a href="#download">download button in step 4</a>, or from the <a href="https://github.com/microsoft/AI-Solution-Review/releases/latest">latest release</a>.</li>
           <li>In Power Apps, select <strong>Solutions &gt; Import solution</strong>, and choose the new file.</li>
           <li>Power Apps recognizes that Agent Review Center is already installed. Keep the default upgrade option, and select <strong>Import</strong>.</li>
           <li>Open Agent Review Center and select <strong>Run checks</strong>. If connections or flows show as off, run the setup app again.</li>
@@ -614,6 +628,7 @@
       <ul class="bullets">
         <li><strong>Error messages and common questions:</strong> see the <a href="faq.html">FAQ</a>. Select <strong>Expand all</strong>, then search for the exact wording on your screen.</li>
         <li><strong>During an engagement:</strong> raise anything not covered here with your Microsoft contact.</li>
+        <li><strong>Anything else:</strong> <a href="mailto:serenaxie@microsoft.com?subject=Agent%20Review%20Center%20installation%20question">contact the Agent Review Program team</a> by email. Don&rsquo;t include transcripts or other sensitive data.</li>
         <li><strong>Questions about the documentation:</strong> <a href="https://github.com/microsoft/AI-Solution-Review/issues/new/choose">open an issue on GitHub</a>. Issues are public, so don&rsquo;t post tenant data, transcripts, or screenshots with real data.</li>
       </ul>
     </div>
@@ -629,6 +644,7 @@
         <li><a href="./">Overview</a></li>
         <li><a href="install.html" aria-current="page">Installation guide</a></li>
         <li><a href="faq.html">Frequently asked questions</a></li>
+        <li><a href="mailto:serenaxie@microsoft.com?subject=Agent%20Review%20Program%20question">Contact the Agent Review Program team</a></li>
         <li><a href="https://github.com/microsoft/AI-Solution-Review">GitHub repository</a></li>
       </ul>
     </nav>

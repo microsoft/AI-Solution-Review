@@ -916,6 +916,53 @@ html:has(body.page--reference) { scroll-padding-top: 80px; }
   color: var(--text-muted);
 }
 
+/* ---------- contact the program team ---------- */
+.contact { padding-top: 0; background: var(--bg); }
+.contact__card {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem 2rem;
+  padding: 1.5rem 1.6rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+.contact__card > div { flex: 1 1 100%; }
+.contact__title { font-size: 1.3rem; letter-spacing: -.012em; margin-bottom: .4rem; }
+.contact__text { color: var(--text-muted); font-size: .98rem; max-width: 62ch; }
+.contact__btn { flex-shrink: 0; }
+
+/* ---------- solution download ----------
+   The button points at the GitHub release asset; see .github/RELEASING.md. */
+.download-card {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 1.75rem;
+  margin-top: 1.8rem;
+  padding: 1.25rem 1.4rem;
+  background: var(--surface);
+  border: 1px solid var(--brand-border);
+  border-left: 3px solid var(--brand);
+  border-radius: var(--radius-lg);
+}
+.download-card--inline { margin: .8rem 0 1.2rem; }
+.download-card__text { flex: 1 1 28ch; min-width: 0; }
+.download-card__title {
+  margin-bottom: .2rem;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 1.08rem;
+  font-weight: 600;
+}
+.download-card__meta,
+.download-card__note { margin-bottom: .15rem; color: var(--text-muted); font-size: .9rem; }
+.download-card__hash { font-size: .78rem; overflow-wrap: anywhere; word-break: break-all; }
+.download-card__actions { display: flex; flex-wrap: wrap; gap: .7rem; }
+
 /* ---------- footer ---------- */
 .site-footer { border-top: 1px solid var(--border); background: var(--bg); padding-block: 2.5rem 2.75rem; }
 .site-footer__brand { font-family: var(--font-display); font-weight: 600; color: var(--ink); margin-bottom: .85rem; }
@@ -1111,6 +1158,9 @@ html:has(body.page--reference) { scroll-padding-top: 80px; }
   .reference-groups,
   .compare { grid-template-columns: 1fr; }
   .disclosure__toggle { width: 100%; }
+  .download-card__actions,
+  .download-card__actions .btn,
+  .contact__btn { width: 100%; text-align: center; }
 }
 
 @media (max-width: 620px) {
@@ -1208,7 +1258,7 @@ html:has(body.page--reference) { scroll-padding-top: 80px; }
    ========================================================================= */
 @media print {
   html { background: #fff; color-scheme: light; }
-  .site-header, .quick-nav, .skip, .hero__actions, .closing .btn, .video, .callout__actions, .faq-tools, .faq-toc { display: none; }
+  .site-header, .quick-nav, .skip, .hero__actions, .closing .btn, .video, .callout__actions, .faq-tools, .faq-toc, .download-card__actions, .contact__btn { display: none; }
   body { background: #fff; color: #000; font-size: 11pt; }
   *, *::before, *::after { background: transparent !important; box-shadow: none !important; }
   .js [data-reveal] { opacity: 1 !important; transform: none !important; }

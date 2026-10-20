@@ -48,6 +48,29 @@ neutrally — they scroll to a choice rather than to a single form.
 Use the `aka.ms` short links, not the resolved `forms.cloud.microsoft` URLs, so either form can be
 repointed without a site change.
 
+## Contact the Agent Review Program team
+
+The team's contact address is `serenaxie@microsoft.com` for now. It appears as `mailto:` links in:
+
+- `index.html`: the `#contact` section (also in the quick navigation) and the footer
+- `install.html`: *Get help* and the footer
+- `faq.html`: the `#contact-team` entry, the closing callout, and the footer
+
+When the team gets a shared mailbox, search `docs/` for `serenaxie@microsoft.com` and replace every
+occurrence. The address is shown as visible text as well as a link, because `mailto:` does nothing on
+machines without a default mail app.
+
+## Solution download
+
+The **Download Agent Review Center (.zip)** buttons (`index.html` `#install`, and `install.html`
+`#download`) link straight to the `.zip` attached to the GitHub release, for example
+`https://github.com/microsoft/AI-Solution-Review/releases/download/v20261016.1/AgentReviewCenter_20261016.1_managed.zip`.
+GitHub Pages serves only `docs/`, so the repository-root `.zip` can't be linked from the site, and
+no copy of the binary is kept in `docs/`.
+
+The URL, version, size and (on `install.html`) SHA-256 are written into both pages. **Update them
+on every release** — this is a step in [`.github/RELEASING.md`](../.github/RELEASING.md).
+
 ## Dark only, on purpose
 
 The page ships **one palette: dark**, regardless of the visitor's OS setting. The link gets shared

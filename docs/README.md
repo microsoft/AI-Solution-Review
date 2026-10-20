@@ -8,10 +8,11 @@ The customer-facing landing page for the Agent Review Program, published with Gi
 
 | Path | What it is |
 |---|---|
-| `index.html` | The landing page: quick navigation, hero, overview video, screenshot gallery, program timeline, prerequisites, permissions/configurations, nominate. |
+| `index.html` | The landing page: quick navigation, hero, overview video, screenshot gallery, program timeline, prerequisites, permissions/configurations (with collapsed setup details), nominate. |
+| `faq.html` | FAQ: known setup error messages and how to fix them. Linked from the header and footer. |
 | `styles.css` | All styling. Fluent-flavoured tokens, forced dark, responsive, reduced-motion and print aware. |
-| `main.js` | Progressive enhancement: scroll-reveals sections, adds a hairline to the stuck header, and highlights the current quick-navigation link. The site is fully readable and navigable without it. |
-| `assets/` | Logo, screenshots and the overview video. See [`assets/README.md`](assets/README.md). |
+| `main.js` | Progressive enhancement: scroll-reveals sections, adds a hairline to the stuck header, highlights the current quick-navigation link, and opens the setup details when a link points into them. The site is fully readable and navigable without it. |
+| `assets/` | Logo, screenshots, setup screenshots and the overview video. See [`assets/README.md`](assets/README.md). |
 | `.nojekyll` | Tells GitHub Pages to serve these files as-is instead of running them through Jekyll. |
 
 ## Quick navigation
@@ -57,24 +58,45 @@ fails AA**. Anything sitting on `--brand` takes dark text (`#0b1a26`) — see `.
 ## Keep it short
 
 The landing page deliberately keeps prose short. It exists to show the product, explain the program,
-state the prerequisites and required permissions/configurations, and take a nomination.
+state the prerequisites and required permissions/configurations, and take a nomination. Longer
+material is either collapsed (setup details) or on its own page (FAQ).
 
-Keep the prerequisite cards concise. Installation guidance is not part of the published site.
+Keep the prerequisite cards concise.
 
 The **Permissions and configurations** section has a narrower source boundary than the rest of the
 page: it comes only from the approved *Agent Review Center - Roles, Permissions and Configurations*
 document. Do not add roles, admin permissions, environment settings or setup dependencies that are
 not in that source.
 
+### Setup details: hidden until clicked
+
+Below that section, a native `<details>` element (`#permissions-setup`) holds the full
+**Agent Review Center permissions and configuration setup details**. It is **collapsed by default** so the
+landing page stays short; visitors open it with the *Show details about Agent Review Center
+permissions and configuration setup* toggle. Its content comes only from the approved
+*Agent Review Center - Permissions and Configuration Checklist* document, including its screenshots
+(`assets/setup-*.png`). Keep it collapsed and keep it in step with that document.
+
+Links to `#permissions-setup`, or to a step inside it such as `#setup-step-5`, open the details
+automatically (`main.js`).
+
+## FAQ page
+
+`faq.html` lists setup error messages the team has seen, each with a verified fix. Add one
+`<article class="faq">` per error, with a stable `id` so it can be linked to. The site is public:
+replace tenant-specific values in quoted error messages — policy names, policy IDs, request IDs,
+timestamps — with placeholders such as `<policy name>`.
+
 ## Content source
 
 Wording on the site comes from the repository [`README.md`](../README.md), except for the approved
-permissions/configurations source noted above. Do not add other product claims.
+permissions/configurations sources and the FAQ noted above. Do not add other product claims.
 
-The repository is **public**, as is the site. Installation guidance still stays off the site on
-purpose — customers get it from the repository's [guides](../guides/README.md). The site's
+The repository is **public**, as is the site. The full install guide stays in the repository's
+[guides](../guides/README.md); the site carries only the collapsed setup details above. The site's
 prerequisites and permissions/configurations must match
-[`guides/prerequisites.md`](../guides/prerequisites.md), so change both together.
+[`guides/prerequisites.md`](../guides/prerequisites.md), and FAQ errors should also appear in
+[`guides/troubleshooting.md`](../guides/troubleshooting.md), so change them together.
 
 ## Publishing
 

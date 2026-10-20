@@ -36,6 +36,7 @@
       <span class="brand__text">Agent Review Program</span>
     </a>
 
+    <a class="site-header__link" href="faq.html">FAQ</a>
     <a class="btn btn--primary btn--sm site-header__cta" href="#nominate">Nominate an agent</a>
   </div>
 </header>
@@ -304,6 +305,371 @@
           <li>Bot Transcript Viewer</li>
         </ul>
       </div>
+
+      <!-- ============ PERMISSIONS AND CONFIGURATION SETUP DETAILS ============
+           Collapsed by default so the landing page stays short. Source: the
+           approved "Agent Review Center - Permissions and Configuration
+           Checklist" document. See docs/README.md before editing.
+           ==================================================================== -->
+      <details class="disclosure" id="permissions-setup" data-reveal>
+        <summary class="disclosure__toggle">
+          <span class="disclosure__show">Show details about Agent Review Center permissions and configuration setup</span>
+          <span class="disclosure__hide">Hide details about Agent Review Center permissions and configuration setup</span>
+        </summary>
+
+        <div class="disclosure__body">
+          <h3 id="setup-purpose">Purpose</h3>
+          <p>This guide gives the environment settings and security roles that Agent Review Center needs. Agent Review Center uses Power Apps Code Apps and Copilot Studio conversation transcripts.</p>
+
+          <h3 id="setup-before-you-start">Before you start</h3>
+          <p>Make sure that the tenant has these items. The tenant admin usually supplies them.</p>
+          <ul class="bullets">
+            <li>A Copilot Studio tenant license, and a Copilot Studio User License for the user of Agent Review Center.</li>
+            <li>Power Apps Premium coverage for each user of Agent Review Center. This can be a Power Apps Premium license, pay-as-you-go billing, or an App Pass.</li>
+            <li>Copilot Credits from a Copilot Studio capacity pack or a pay-as-you-go billing plan.</li>
+          </ul>
+          <p class="learn-more">
+            Learn more:
+            <a href="https://learn.microsoft.com/en-us/microsoft-copilot-studio/requirements-licensing">Assign licenses and manage access to Copilot Studio</a> &middot;
+            <a href="https://www.microsoft.com/licensing/guidance/microsoft-copilot-studio">Microsoft Copilot Studio licensing guidance</a> &middot;
+            <a href="https://learn.microsoft.com/en-us/power-apps/developer/code-apps/overview">Power Apps code apps overview</a>
+          </p>
+
+          <h3 id="setup-summary">Setup summary</h3>
+          <div class="table-wrap">
+            <table class="table setup-table">
+              <caption class="visually-hidden">Agent Review Center setup requirements, where to configure each one, who can configure it, and why it is necessary</caption>
+              <colgroup>
+                <col class="setup-table__requirement">
+                <col class="setup-table__where">
+                <col class="setup-table__who">
+                <col class="setup-table__why">
+              </colgroup>
+              <thead>
+                <tr>
+                  <th scope="col">Requirement</th>
+                  <th scope="col">Where to configure it</th>
+                  <th scope="col">Who can configure it</th>
+                  <th scope="col">Why it is necessary</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table__group">
+                  <th scope="colgroup" colspan="4">Target installation environment &middot; Steps 1&ndash;2</th>
+                </tr>
+                <tr>
+                  <th scope="row">Dataverse environment, not preview</th>
+                  <td data-label="Where to configure it">Power Platform admin center &gt; Manage &gt; Environments</td>
+                  <td data-label="Who can configure it">Power Platform admin</td>
+                  <td data-label="Why it is necessary">Agent Review Center, Code Apps, and transcripts use Dataverse.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Copilot Credits allocated</th>
+                  <td data-label="Where to configure it">Power Platform admin center &gt; Licensing &gt; Copilot Studio &gt; Manage capacity</td>
+                  <td data-label="Who can configure it">Power Platform admin</td>
+                  <td data-label="Why it is necessary">An environment can use prepaid credits only after you allocate them to it.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Power Apps Code Apps on</th>
+                  <td data-label="Where to configure it">Power Platform admin center &gt; Manage &gt; Environments &gt; Settings &gt; Product &gt; Features</td>
+                  <td data-label="Who can configure it">Power Platform admin or environment admin</td>
+                  <td data-label="Why it is necessary">This setting lets the environment run code apps.</td>
+                </tr>
+                <tr class="table__group">
+                  <th scope="colgroup" colspan="4">Agent environment &middot; Steps 3&ndash;4</th>
+                </tr>
+                <tr>
+                  <th scope="row">Transcript recording on</th>
+                  <td data-label="Where to configure it">Power Platform admin center &gt; Manage &gt; Environments &gt; Settings &gt; Product &gt; Features &gt; Copilot Studio agents</td>
+                  <td data-label="Who can configure it">Power Platform admin or environment admin</td>
+                  <td data-label="Why it is necessary">This setting saves agent session transcripts and metadata in Dataverse.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Agent shared with reviewer</th>
+                  <td data-label="Where to configure it">Copilot Studio &gt; agent &gt; Share</td>
+                  <td data-label="Who can configure it">Agent owner. A System Administrator assigns roles.</td>
+                  <td data-label="Why it is necessary">Transcript access applies only to agents that the user creates or that are shared with the user.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Bot Transcript Viewer role</th>
+                  <td data-label="Where to configure it">Dataverse environment security roles, or Copilot Studio agent sharing</td>
+                  <td data-label="Who can configure it">System Administrator, or an admin with permission to manage environment roles</td>
+                  <td data-label="Why it is necessary">This role lets the user read conversation transcripts. The Environment Maker role does not give this access.</td>
+                </tr>
+                <tr class="table__group">
+                  <th scope="colgroup" colspan="4">Target installation environment &middot; Steps 5&ndash;6</th>
+                </tr>
+                <tr>
+                  <th scope="row">Solution installed, flows on</th>
+                  <td data-label="Where to configure it">Power Apps &gt; Solutions; Power Automate &gt; Solutions &gt; Cloud flows</td>
+                  <td data-label="Who can configure it">System Administrator</td>
+                  <td data-label="Why it is necessary">A flow can run only if its connection references have valid connections.</td>
+                </tr>
+                <tr>
+                  <th scope="row">App role and app sharing</th>
+                  <td data-label="Where to configure it">Power Platform admin center &gt; Environments &gt; Users or Teams; Power Apps &gt; Apps &gt; Share</td>
+                  <td data-label="Who can configure it">System Administrator; app owner</td>
+                  <td data-label="Why it is necessary">A user must have table access and a shared app to open Agent Review Center.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Step 1 -->
+          <h3 id="setup-step-1"><span class="step-num">1</span> Prepare the target installation environment</h3>
+          <p class="scope"><span class="scope__label">Scope</span> Target installation environment</p>
+          <p>Do these steps in the environment where you will install Agent Review Center.</p>
+          <ul class="bullets">
+            <li>Use a Power Platform environment that has a Dataverse database.</li>
+            <li>Do not use a Dataverse for Teams environment. In this type of environment, Copilot Studio does not save transcripts to the Dataverse transcript table.</li>
+            <li>Use a standard release environment. Do not use an early release cycle environment. Early release environments get updates first and are for preview use, not for production.</li>
+            <li>Allocate Copilot Credits to the environment. Go to <strong>Power Platform admin center &gt; Licensing &gt; Copilot Studio</strong>, and then select <strong>Manage capacity</strong>.</li>
+          </ul>
+          <p class="learn-more">
+            Learn more:
+            <a href="https://learn.microsoft.com/en-us/power-platform/admin/create-environment">Create and manage environments</a> &middot;
+            <a href="https://learn.microsoft.com/en-us/power-apps/maker/powerapps-preview-program">Power Apps preview program and early release cycle environments</a> &middot;
+            <a href="https://learn.microsoft.com/en-us/power-platform/admin/manage-copilot-studio-messages-capacity">Manage Copilot Studio credits and capacity</a>
+          </p>
+
+          <!-- Step 2 -->
+          <h3 id="setup-step-2"><span class="step-num">2</span> Make sure that Power Apps Code Apps is on</h3>
+          <p class="scope"><span class="scope__label">Scope</span> Target installation environment</p>
+          <p>An environment setting controls Power Apps Code Apps.</p>
+          <ol class="procedure">
+            <li>Sign in to Power Platform admin center.</li>
+            <li>Select <strong>Manage &gt; Environments</strong>.</li>
+            <li>Select the target installation environment.</li>
+            <li>
+              Select <strong>Settings &gt; Product &gt; Features</strong>.
+              <figure class="setup-shot">
+                <img src="assets/setup-target-env-features.png" width="1832" height="650" loading="lazy" decoding="async"
+                     alt="Environment settings in Power Platform admin center, with Product expanded and Features highlighted.">
+              </figure>
+            </li>
+            <li>Find <strong>Power Apps code apps</strong>.</li>
+            <li>
+              Look at the <strong>Enable code apps</strong> setting:
+              <ul>
+                <li><strong>On:</strong> Code Apps are available in the environment.</li>
+                <li><strong>Off:</strong> Code Apps are not available in the environment.</li>
+              </ul>
+            </li>
+            <li>
+              If the setting is <strong>Off</strong>, set <strong>Enable code apps</strong> to <strong>On</strong>.
+              <figure class="setup-shot">
+                <img src="assets/setup-code-apps-on.png" width="1838" height="622" loading="lazy" decoding="async"
+                     alt="The Power Apps Code Apps setting on the Features page, with Enable code apps switched On.">
+              </figure>
+            </li>
+            <li>If you changed the setting, select <strong>Save</strong>.</li>
+          </ol>
+          <div class="callout">
+            <p><strong>Who can change this setting</strong></p>
+            <p>A Power Platform admin or an environment admin must change this setting. To change many environments at the same time, use environment groups and rules.</p>
+          </div>
+          <p class="learn-more">
+            Learn more:
+            <a href="https://learn.microsoft.com/en-us/power-apps/developer/code-apps/overview">Power Apps code apps overview</a>
+          </p>
+
+          <!-- Step 3 -->
+          <h3 id="setup-step-3"><span class="step-num">3</span> Set transcript recording to on</h3>
+          <p class="scope"><span class="scope__label">Scope</span> Agent environment</p>
+          <p>Do these steps in the environment of the agent that you review.</p>
+          <p>Transcript recording and transcript access are two different items:</p>
+          <div class="callout">
+            <p><strong>Key difference</strong></p>
+            <p><strong>Transcript recording</strong> controls if the system saves conversation data.<br>
+               <strong>Transcript access</strong> controls who can read this data.</p>
+          </div>
+          <p class="after-callout">In Power Platform admin center, do these steps:</p>
+          <ol class="procedure">
+            <li>Select <strong>Manage &gt; Environments</strong>.</li>
+            <li>Select the agent environment.</li>
+            <li>
+              Select <strong>Settings &gt; Product &gt; Features</strong>.
+              <figure class="setup-shot">
+                <img src="assets/setup-agent-env-features.png" width="1406" height="392" loading="lazy" decoding="async"
+                     alt="Settings page for the agent environment in Power Platform admin center, with Features highlighted under Product.">
+              </figure>
+            </li>
+            <li>Go to the <strong>Copilot Studio agents</strong> section.</li>
+            <li>
+              Set these two settings to on:
+              <ul>
+                <li><strong>Allow agent owners and editors to see session transcripts from conversation interactions in their agents.</strong></li>
+                <li><strong>Allow conversation transcripts and their associated metadata to be saved in Dataverse.</strong></li>
+              </ul>
+              <figure class="setup-shot">
+                <img src="assets/setup-transcript-settings.png" width="1404" height="802" loading="lazy" decoding="async"
+                     alt="The Copilot Studio agents section of the Features page, with both transcript settings selected: allow agent owners and editors to see session transcripts, and allow conversation transcripts and their metadata to be saved in Dataverse.">
+              </figure>
+            </li>
+            <li>Select <strong>Save</strong>.</li>
+          </ol>
+          <div class="callout callout--warn">
+            <p><strong>Caution</strong></p>
+            <p>Set the Dataverse transcript setting to on <strong>before the review period starts</strong>.</p>
+            <p>This setting controls if the system writes transcripts to the Dataverse transcript table. The system saves transcripts only for conversations that occur after you set it to on.</p>
+            <p>An environment admin can change this setting for one environment. A System Administrator can apply the environment group rule <strong>Accessing transcripts from conversations in Copilot Studio agents</strong>. This rule overrides the settings of each environment in the group.</p>
+          </div>
+          <p class="learn-more">
+            Learn more:
+            <a href="https://learn.microsoft.com/en-US/microsoft-copilot-studio/admin-transcript-controls">Control transcript access and retention</a>
+          </p>
+
+          <!-- Step 4 -->
+          <h3 id="setup-step-4"><span class="step-num">4</span> Give access to the agent and its transcripts</h3>
+          <p class="scope"><span class="scope__label">Scope</span> Agent environment</p>
+          <p>In the agent environment, each reviewer must have three items:</p>
+          <ul class="bullets">
+            <li>The <strong>Environment Maker</strong> role</li>
+            <li>The <strong>Bot Viewer</strong> role</li>
+            <li>The <strong>Bot Transcript Viewer</strong> role</li>
+          </ul>
+
+          <h4>Environment Maker role</h4>
+          <p>A user must have the Environment Maker security role before you can share an agent with the user. This role includes the ChatBotReaders privilege. Users need this privilege to chat with agents in the environment.</p>
+          <p>The Environment Maker role does not give access to transcripts.</p>
+
+          <h4>Give Bot Transcript Viewer access</h4>
+          <p>Bot Transcript Viewer is a Dataverse security role. It is not an environment feature setting. By default, only admins have this role.</p>
+          <p>Give this role to each user who must read conversation transcripts. Assign the role in the agent environment in one of these two ways:</p>
+          <ul class="bullets">
+            <li><strong>During agent sharing.</strong> If the user who shares the agent is a System Administrator, the share panel shows the <strong>Environment security roles</strong> section. Assign the role in this section.</li>
+            <li><strong>In Power Platform admin center.</strong> Select the user under <strong>Access &gt; Users</strong>. Then select <strong>Manage security roles</strong>.</li>
+          </ul>
+          <div class="callout">
+            <p><strong>Note</strong></p>
+            <p>The Environment Maker role alone does not give access to transcripts.</p>
+            <p>If the agent content is sensitive, give transcript access only to users who have privacy training.</p>
+          </div>
+          <p class="learn-more">
+            Learn more:
+            <a href="https://learn.microsoft.com/en-us/microsoft-copilot-studio/admin-share-bots">Share agents with other users</a> &middot;
+            <a href="https://learn.microsoft.com/en-US/microsoft-copilot-studio/analytics-transcripts-powerapps">Download conversation transcripts in Power Apps</a>
+          </p>
+
+          <!-- Step 5 -->
+          <h3 id="setup-step-5"><span class="step-num">5</span> Install the solution provided by the Agent Review Center team</h3>
+          <p class="scope"><span class="scope__label">Scope</span> Target installation environment</p>
+          <p>Use an account that has the System Administrator role in the environment.</p>
+          <p>Before you start, make sure that the data policies of the environment allow all connectors that the solution uses. These connectors include Microsoft Dataverse. Code apps apply data policies when the app starts.</p>
+
+          <h4>Import the solution and set the connections</h4>
+          <ol class="procedure">
+            <li>Sign in to Power Apps.</li>
+            <li>Select the target installation environment.</li>
+            <li>Select <strong>Solutions &gt; Import solution</strong>.</li>
+            <li>Select <strong>Browse</strong>.</li>
+            <li>Select the managed solution file.</li>
+            <li>Select <strong>Next</strong>.</li>
+            <li>Examine the solution details.</li>
+            <li>Select <strong>Next</strong>.</li>
+            <li>For each connection reference, create or select a connection. This includes the Microsoft Dataverse connection reference.</li>
+            <li>Select <strong>Import</strong>.</li>
+            <li>Wait until the import is complete.</li>
+          </ol>
+          <p class="after-list">After the import, do these steps:</p>
+          <ol class="procedure">
+            <li>Open the solution.</li>
+            <li>Select <strong>Connection references</strong>.</li>
+            <li>Make sure that each connection reference has a valid connection.</li>
+            <li>If you change a connection reference, select <strong>Save</strong>.</li>
+          </ol>
+
+          <h4>Make sure that the cloud flows are on</h4>
+          <p>If each connection reference has a connection, the import gives each flow the status that it had at export. Thus, the flows are usually already on. To make sure, do these steps:</p>
+          <ol class="procedure">
+            <li>Sign in to Power Automate.</li>
+            <li>Select the target installation environment.</li>
+            <li>Select <strong>Solutions</strong>.</li>
+            <li>Open the <strong>Agent Review Center</strong> solution.</li>
+            <li>Select <strong>Cloud flows</strong>.</li>
+            <li>Make sure that the <strong>Status</strong> of each flow is <strong>On</strong>.</li>
+            <li>If the status of a flow is <strong>Off</strong>, select the flow and select <strong>Turn on</strong>.</li>
+          </ol>
+          <div class="callout">
+            <p><strong>Note</strong></p>
+            <p>The user who imports the solution becomes the owner of all its components. These components include flows and connection references. Select this user carefully.</p>
+          </div>
+          <p class="learn-more">
+            Learn more:
+            <a href="https://learn.microsoft.com/en-us/power-platform/admin/wp-data-loss-prevention">Data policies</a> &middot;
+            <a href="https://learn.microsoft.com/en-us/power-automate/import-flow-solution">Import a solution that contains cloud flows</a> &middot;
+            <a href="https://learn.microsoft.com/en-us/power-apps/maker/data-platform/create-connection-reference">Use a connection reference in a solution</a>
+          </p>
+          <p class="learn-more">Import failed? See the <a href="faq.html">FAQ</a> for known error messages and fixes.</p>
+
+          <!-- Checklist -->
+          <h3 id="setup-checklist">Checklist</h3>
+          <p>Before you use Agent Review Center, make sure that:</p>
+
+          <h4>Target installation environment</h4>
+          <ul class="checklist">
+            <li>The environment has Dataverse.</li>
+            <li>The environment is a standard release environment, not an early release environment.</li>
+            <li>The environment has an allocation of Copilot Credits.</li>
+            <li>Power Apps Code Apps is on.</li>
+          </ul>
+
+          <h4>Agent environment</h4>
+          <ul class="checklist">
+            <li>Transcript recording is on.</li>
+            <li>The system saves transcripts and metadata in Dataverse.</li>
+            <li>Each reviewer has the Environment Maker role.</li>
+            <li>Each reviewer has shared access to the agent.</li>
+            <li>Each reviewer who must read transcripts has the Bot Transcript Viewer role.</li>
+            <li>No one uses the Environment Maker role as a replacement for the Bot Transcript Viewer role.</li>
+          </ul>
+
+          <h4>Agent Review Center installation</h4>
+          <ul class="checklist">
+            <li>The solution is installed in the target installation environment.</li>
+            <li>Each connection reference has a valid connection.</li>
+            <li>Each cloud flow is on.</li>
+            <li>Each user has the Agent Review Center security role.</li>
+            <li>Each user has access to the shared code app.</li>
+            <li>A Power Platform admin, an environment admin, or a System Administrator is available to change settings and assign roles.</li>
+          </ul>
+
+          <!-- References -->
+          <h3 id="setup-references">References</h3>
+          <div class="reference-groups">
+            <div>
+              <h4>Licensing and capacity</h4>
+              <ul class="bullets">
+                <li><a href="https://learn.microsoft.com/en-us/microsoft-copilot-studio/requirements-licensing">Assign licenses and manage access to Copilot Studio</a></li>
+                <li><a href="https://www.microsoft.com/licensing/guidance/microsoft-copilot-studio">Microsoft Copilot Studio licensing guidance</a></li>
+                <li><a href="https://learn.microsoft.com/en-us/power-platform/admin/manage-copilot-studio-messages-capacity">Manage Copilot Studio credits and capacity</a></li>
+                <li><a href="https://learn.microsoft.com/en-us/power-apps/developer/code-apps/overview">Power Apps code apps overview</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4>Environment and installation</h4>
+              <ul class="bullets">
+                <li><a href="https://learn.microsoft.com/en-us/power-platform/admin/create-environment">Create and manage environments</a></li>
+                <li><a href="https://learn.microsoft.com/en-us/power-apps/maker/powerapps-preview-program">Power Apps preview program and early release cycle environments</a></li>
+                <li><a href="https://learn.microsoft.com/en-us/power-platform/admin/wp-data-loss-prevention">Data policies</a></li>
+                <li><a href="https://learn.microsoft.com/en-us/power-automate/import-flow-solution">Import a solution that contains cloud flows</a></li>
+                <li><a href="https://learn.microsoft.com/en-us/power-apps/maker/data-platform/create-connection-reference">Use a connection reference in a solution</a></li>
+                <li><a href="https://learn.microsoft.com/en-us/power-platform/admin/manage-group-teams">Manage group teams</a></li>
+                <li><a href="https://learn.microsoft.com/en-us/power-platform/admin/assign-security-roles">Assign a security role to a user</a></li>
+                <li><a href="https://learn.microsoft.com/en-us/power-apps/maker/canvas-apps/share-app">Share a canvas app with your organization</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4>Agent access and transcripts</h4>
+              <ul class="bullets">
+                <li><a href="https://learn.microsoft.com/en-us/microsoft-copilot-studio/admin-share-bots">Share agents with other users</a></li>
+                <li><a href="https://learn.microsoft.com/en-US/microsoft-copilot-studio/admin-transcript-controls">Control transcript access and retention</a></li>
+                <li><a href="https://learn.microsoft.com/en-US/microsoft-copilot-studio/analytics-transcripts-powerapps">Download conversation transcripts in Power Apps</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </details>
     </div>
   </section>
 
@@ -345,6 +711,7 @@
 <footer class="site-footer">
   <div class="wrap site-footer__inner">
     <p class="site-footer__brand">Agent Review Program</p>
+    <p class="site-footer__links"><a href="faq.html">Frequently asked questions</a></p>
     <p class="site-footer__legal">
       Trademarks — this project may contain trademarks or logos for projects, products, or services.
       Authorized use of Microsoft trademarks or logos is subject to and must follow

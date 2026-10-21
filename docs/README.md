@@ -8,11 +8,11 @@ The customer-facing landing page for the Agent Review Program, published with Gi
 
 | Path | What it is |
 |---|---|
-| `index.html` | The landing page: quick navigation, hero, *The program and the tool*, overview video, how the program runs, what Agent Review Center is, screenshot gallery, what you need to bring, install summary, permissions/configurations (with collapsed setup details), nominate. |
-| `install.html` | Installation guide: nine steps from *Before you start* to *Upgrade or uninstall*, each with who does it, when, and how to check it. Links into the collapsed setup details on `index.html` rather than repeating them. |
+| `index.html` | The landing page: quick navigation, hero, *The program and the tool*, overview video, how the program runs, what Agent Review Center is, screenshot gallery, install summary, what you need to bring, nominate, contact. |
+| `install.html` | Installation guide: nine steps from *Before you start* to *Upgrade or uninstall*, each with who does it, when, and how to check it. |
 | `faq.html` | FAQ: program, Agent Review Center, installation, transcripts, results, and updates questions, plus frequently encountered setup errors, each collapsible. |
 | `styles.css` | All styling. Fluent-flavoured tokens, forced dark, responsive, reduced-motion and print aware. |
-| `main.js` | Progressive enhancement: scroll-reveals sections, adds a hairline to the stuck header, highlights the current quick-navigation link, opens the setup details (or an FAQ entry) when a link points into them, and opens every collapsed `<details>` while printing. The site is fully readable and navigable without it. |
+| `main.js` | Progressive enhancement: scroll-reveals sections, adds a hairline to the stuck header, highlights the current quick-navigation link, opens an FAQ entry when a link points inside it, and opens every collapsed `<details>` while printing. The site is fully readable and navigable without it. |
 | `assets/` | Logo, screenshots, setup screenshots and the overview video. See [`assets/README.md`](assets/README.md). |
 | `.nojekyll` | Tells GitHub Pages to serve these files as-is instead of running them through Jekyll. |
 
@@ -92,57 +92,29 @@ fails AA**. Anything sitting on `--brand` takes dark text (`#0b1a26`) — see `.
 ## Keep it short
 
 The landing page deliberately keeps prose short. It exists to explain the program and the tool, show
-the product, state the prerequisites and required permissions/configurations, summarize installation,
-and take a nomination. Longer material is either collapsed (setup details) or on its own page
-(installation guide, FAQ). Prefer cards, tables and timelines to paragraphs.
+the product, summarize installation, state the prerequisites, and take a nomination. Longer material
+belongs on its own page (installation guide or FAQ). Prefer cards, tables and timelines to paragraphs.
 
-Aim for about **1,000 visible words** on the landing page, not counting the collapsed setup details.
-Define the program and the tool once, in *The program and the tool*, and don't redefine them in other
-sections. No outcome promises or marketing taglines: captions describe what a screenshot shows.
+Aim for about **1,000 visible words** on the landing page. Define the program and the tool once, in
+*The program and the tool*, and don't redefine them in other sections. No outcome promises or
+marketing taglines: captions describe what a screenshot shows.
 
 Keep the prerequisite cards concise.
 
-The **Permissions and configurations** section has a narrower source boundary than the rest of the
-page: it comes only from the approved *Agent Review Center - Roles, Permissions and Configurations*
-document. Do not add roles, admin permissions, environment settings or setup dependencies that are
-not in that source.
-
-One deliberate exception: the *Who can set it* column for code apps and transcript settings says
-**Power Platform admin or environment admin**, matching the setup details and Microsoft Learn,
-where the short summary document says *Environment System admin*.
-
-### Setup details: hidden until clicked
-
-Below that section, a native `<details>` element (`#permissions-setup`) holds the full
-**Agent Review Center permissions and configuration setup details**. It is **collapsed by default** so the
-landing page stays short; visitors open it with the *Show details about Agent Review Center
-permissions and configuration setup* toggle. Its content comes only from the approved
-*Agent Review Center - Permissions and Configuration Checklist* document, including its screenshots
-(`assets/setup-*.png`). Keep it collapsed and keep it in step with that document.
-
-Links to `#permissions-setup`, or to a step inside it such as `#setup-step-5`, open the details
-automatically (`main.js`).
-
-Two additions inside the details are **not** from the approved document, and each is marked with an
-HTML comment (keep these comments short and neutral; they are public): a note in step 5 that data policies must allow **Microsoft Dataverse, Agents and Power
-Automate Management** together (verified by a real import that failed when Power Automate Management
-was blocked), and a link from step 5 to the installation guide. Keep any future site additions inside
-the details just as clearly marked, and keep them to verified facts and navigation. Fixing a Microsoft
-Learn link that now redirects is fine. The details element has no `data-reveal`, so deep links land
-exactly on their target.
+Keep detailed permissions and configuration instructions in `install.html`, not on the landing page.
+In both document order and quick navigation, *What you need to bring* must lead directly to
+*Nominate an agent*.
 
 ## Installation guide
 
 `install.html` is the customer installation guide. It is organized as nine steps, each with a
-*Who / When / Done when* summary and a *Check it worked* box. It **links into** the collapsed setup
-details (`./#setup-step-1` … `./#setup-step-5`, `./#permissions-setup`) for the settings, roles and
-screenshots instead of repeating them, so the approved document stays the single source for those.
-Link to setup steps by their **name**, not their number, because the guide has its own step numbers.
-Step 1 defines the role names (*Power Platform admin, environment admin, System Administrator, agent
-owner, reviewer*); use only those on every page. Steps that change hands end with a *Next:* line.
-The rest comes from [`guides/install.md`](../guides/install.md), [`guides/prerequisites.md`](../guides/prerequisites.md),
-the solution package itself, and Microsoft Learn for admin-center procedures. Change it together with
-those guides.
+*Who / When / Done when* summary and a *Check it worked* box. Link directly to its named section
+anchors rather than to landing-page setup details. Step 1 defines the role names (*Power Platform
+admin, environment admin, System Administrator, agent owner, reviewer*); use only those on every
+page. Steps that change hands end with a *Next:* line. The guide comes from the approved permissions
+and configuration documents, [`guides/install.md`](../guides/install.md),
+[`guides/prerequisites.md`](../guides/prerequisites.md), the solution package itself, and Microsoft
+Learn for admin-center procedures. Change it together with those sources.
 
 ## FAQ page
 
@@ -163,7 +135,7 @@ Wording on the site comes from:
 
 - the repository [`README.md`](../README.md) and [`guides/`](../guides/README.md);
 - customer-facing Agent Review Program material, such as the customer-facing program deck;
-- the approved permissions/configurations documents noted above;
+- the approved permissions/configuration documents that feed the installation guide;
 - the shipped solution package, for facts about what it installs and the messages it shows;
 - Microsoft Learn, for admin-center procedures.
 
@@ -178,9 +150,10 @@ Do not add other product claims. In particular:
   statements need product and legal sign-off first.
 - No pricing, roadmap or outcome figures unless a customer-facing source states them.
 
-The repository is **public**, as is the site. The site's prerequisites and permissions/configurations
-must match [`guides/prerequisites.md`](../guides/prerequisites.md), the installation guide must match
-[`guides/install.md`](../guides/install.md), and FAQ errors should also appear in
+The repository is **public**, as is the site. The site's prerequisites must match
+[`guides/prerequisites.md`](../guides/prerequisites.md), permissions/configuration guidance in the
+installation guide must match its approved sources and [`guides/install.md`](../guides/install.md),
+and FAQ errors should also appear in
 [`guides/troubleshooting.md`](../guides/troubleshooting.md), so change them together.
 
 ## Publishing

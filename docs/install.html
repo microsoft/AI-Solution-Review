@@ -216,7 +216,7 @@
         </ul>
 
         <div class="callout">
-          <p>Send your admin this page. Every setting, with screenshots, is in the <a href="./#permissions-setup">Agent Review Center permissions and configuration setup details</a>.</p>
+          <p>Send your admin this page. It organizes every required setting, role, and installation check by owner.</p>
         </div>
       </section>
 
@@ -229,11 +229,11 @@
           <dt>Done when</dt><dd>The checks at the end of this step pass.</dd>
         </dl>
 
-        <p>The settings, with screenshots, are in the setup details on the overview page:</p>
+        <p>Configure these settings before you import:</p>
         <ul class="bullets">
-          <li><a href="./#setup-step-1">Prepare the target installation environment</a>: a Dataverse environment on the standard release cycle, with Copilot Credits allocated.</li>
-          <li><a href="./#setup-step-2">Make sure that Power Apps Code Apps is on</a>: Agent Review Center and its setup app are both code apps.</li>
-          <li><a href="./#setup-step-3">Set transcript recording to on</a>, in the agent environment. Both transcript settings need to be on.</li>
+          <li><strong>Prepare the target installation environment:</strong> use a Dataverse environment on the standard release cycle, with Copilot Credits allocated.</li>
+          <li><strong>Make sure that Power Apps Code Apps is on:</strong> Agent Review Center and its setup app are both code apps.</li>
+          <li><strong>Set transcript recording to on</strong> in the agent environment. Both transcript settings need to be on.</li>
         </ul>
 
         <div class="callout callout--verify">
@@ -360,7 +360,7 @@
           </li>
           <li>Select <strong>Import</strong>, and wait for the success message.</li>
         </ol>
-        <p>Set both connections here if you can. The setup app in the next step checks them. If it can&rsquo;t complete, map the connection references and turn the flows on by hand, as in <a href="./#setup-step-5">Install the solution provided by the Agent Review Center team</a> in the setup details.</p>
+        <p>Set both connections here if you can. The setup app in the next step checks them. If it can&rsquo;t complete, use the checks in <a href="#setup-app">Run the one-time setup app</a> and the linked FAQ troubleshooting.</p>
 
         <div class="callout callout--verify">
           <p><strong>Check it worked</strong></p>
@@ -384,7 +384,7 @@
         <dl class="phase__meta">
           <dt>Who</dt><dd>A System Administrator, usually the person who imported the solution.</dd>
           <dt>When</dt><dd>Right after the import.</dd>
-          <dt>Done when</dt><dd>The app shows <strong>Setup is complete</strong>, or you&rsquo;ve checked the connection references and flows by hand (<a href="./#setup-step-5">Install the solution provided by the Agent Review Center team</a> in the setup details).</dd>
+          <dt>Done when</dt><dd>The app shows <strong>Setup is complete</strong>, or you&rsquo;ve checked the connection references and flows by hand using the checks below.</dd>
         </dl>
 
         <p>The setup app is named <strong>Copilot Agent Kit Installer</strong>. Despite its name, it&rsquo;s part of the Agent Review Center solution: it connects Agent Review Center&rsquo;s connections and starts the Review Agent Components flow.</p>
@@ -448,7 +448,7 @@
         <p>For each person who will run reviews:</p>
         <ol class="procedure">
           <li><strong>Check their licenses.</strong> See <a href="./#what-you-need">What you need to bring</a>.</li>
-          <li><strong>Assign the reviewer roles</strong> in the agent environment: Environment Maker, Bot Viewer, and Bot Transcript Viewer. In the Power Platform admin center, select the user under <strong>Access &gt; Users</strong>, then select <strong>Manage security roles</strong>. See <a href="./#setup-step-4">Give access to the agent and its transcripts</a> in the setup details, and <a href="https://learn.microsoft.com/en-us/power-platform/admin/assign-security-roles">Assign a security role to a user</a>.</li>
+          <li><strong>Assign the reviewer roles</strong> in the agent environment: Environment Maker, Bot Viewer, and Bot Transcript Viewer. In the Power Platform admin center, select the user under <strong>Access &gt; Users</strong>, then select <strong>Manage security roles</strong>. See <a href="https://learn.microsoft.com/en-us/power-platform/admin/assign-security-roles">Assign a security role to a user</a>.</li>
           <li><strong>Share the agent</strong> with the reviewer: in Copilot Studio, open the agent and select <strong>Share</strong>.</li>
           <li><strong>Share the app:</strong> in Power Apps, select <strong>Apps</strong>, select <strong>Agent Review Center</strong>, select <strong>Share</strong>, and add the reviewer.</li>
         </ol>

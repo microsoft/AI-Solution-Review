@@ -90,6 +90,9 @@
      ----------------------------------------------------------------------- */
   function wireQuickNav() {
     var quickNav = document.querySelector(".quick-nav");
+    var menu = document.querySelector(".quick-nav__menu");
+    var summary = document.querySelector(".quick-nav__summary");
+    var currentTitle = document.querySelector(".quick-nav__current");
     var links = Array.prototype.slice.call(document.querySelectorAll(".quick-nav__link"));
     var items = links.map(function (link) {
       var target = document.querySelector(link.getAttribute("href"));
@@ -100,27 +103,11 @@
 
     var ticking = false;
     var activeLink = null;
+    var compactMenu = window.matchMedia("(max-width: 1759px)");
 
-    function keepCurrentLinkVisible(link) {
-      if (window.innerWidth >= 1760) return;
-
-      var list = link.closest(".quick-nav__list");
-      if (!list) return;
-
-      var listRect = list.getBoundingClientRect();
-      var linkRect = link.getBoundingClientRect();
-      var nextLeft = list.scrollLeft;
-
-      if (linkRect.left < listRect.left || linkRect.right > listRect.right) {
-        nextLeft += linkRect.left - listRect.left;
-      }
-
-      if (nextLeft !== list.scrollLeft) {
-        list.scrollTo({
-          left: Math.max(0, nextLeft),
-          behavior: "auto"
-        });
-      }
+    function syncMenuMode() {
+      if (!menu) return;
+      menu.open = !compactMenu.matches;
     }
 
     function update() {
@@ -150,7 +137,7 @@
 
       if (current.link !== activeLink) {
         activeLink = current.link;
-        keepCurrentLinkVisible(activeLink);
+        if (currentTitle) currentTitle.textContent = activeLink.textContent.trim();
       }
 
       ticking = false;
@@ -165,6 +152,38 @@
     window.addEventListener("scroll", request, { passive: true });
     window.addEventListener("resize", request, { passive: true });
     window.addEventListener("hashchange", request);
+
+    if (compactMenu.addEventListener) {
+      compactMenu.addEventListener("change", syncMenuMode);
+    } else {
+      compactMenu.addListener(syncMenuMode);
+    }
+
+    links.forEach(function (link) {
+      link.addEventListener("click", function () {
+        if (!menu || !compactMenu.matches) return;
+        window.setTimeout(function () {
+          menu.open = false;
+          if (summary) summary.focus({ preventScroll: true });
+        }, 0);
+      });
+    });
+
+    if (menu) {
+      menu.addEventListener("keydown", function (event) {
+        if (event.key !== "Escape" || !menu.open || !compactMenu.matches) return;
+        event.preventDefault();
+        menu.open = false;
+        if (summary) summary.focus();
+      });
+
+      document.addEventListener("click", function (event) {
+        if (!compactMenu.matches || !menu.open || menu.contains(event.target)) return;
+        menu.open = false;
+      });
+    }
+
+    syncMenuMode();
     update();
   }
 

@@ -27,10 +27,11 @@ copy the header and footer from an existing one and add it to both on every page
 
 Every quick-navigation link intentionally repeats its destination's visible heading exactly. Do not
 abbreviate these labels: title parity makes the menu predictable. The menu becomes a roomy side rail
-only when the viewport has enough space; otherwise it stays as a larger horizontal-scroll tab row
-with a thin visible scrollbar. On short viewports (560px tall or less) it stops sticking, so the stuck
-header and menu don't cover the page. The hero is deliberately not in the menu: its heading is a
-tagline, not a destination.
+only when the viewport has enough space; otherwise a compact *On this page* control shows the current
+section and opens the links in a responsive one-, two-, or three-column panel. It is a native
+`<details>` element, so it remains keyboard-accessible and usable without JavaScript. On short
+viewports (560px tall or less) it stops sticking, so the stuck header and menu don't cover the page.
+The hero is deliberately not in the menu: its heading is a tagline, not a destination.
 
 ## The nomination forms
 

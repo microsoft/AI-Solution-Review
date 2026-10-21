@@ -201,10 +201,15 @@
       if (!target) return;
 
       var details = target.closest("details");
-      if (!details || details.open) return;
+      if (details && !details.open) details.open = true;
 
-      details.open = true;
-      target.scrollIntoView({ block: "start" });
+      /* Opening details changes page height, and same-page hash changes can
+         retain the old position. Wait for layout, then scroll deliberately. */
+      window.requestAnimationFrame(function () {
+        window.requestAnimationFrame(function () {
+          target.scrollIntoView({ block: "start" });
+        });
+      });
     }
 
     window.addEventListener("hashchange", openForHash);
@@ -232,6 +237,42 @@
   }
 
   /* -----------------------------------------------------------------------
+     Installation guide: expand or collapse the nine numbered steps. The
+     controls stay hidden without JavaScript; native details still work.
+     ----------------------------------------------------------------------- */
+  function wireInstallToggles() {
+    var tools = document.querySelector(".install-tools");
+    if (!tools) return;
+
+    var steps = Array.prototype.slice.call(document.querySelectorAll("[data-install-step]"));
+    var expandButton = tools.querySelector('[data-install-toggle="open"]');
+    var collapseButton = tools.querySelector('[data-install-toggle="close"]');
+    if (!steps.length || !expandButton || !collapseButton) return;
+
+    function syncControls() {
+      expandButton.disabled = steps.every(function (step) { return step.open; });
+      collapseButton.disabled = steps.every(function (step) { return !step.open; });
+    }
+
+    expandButton.addEventListener("click", function () {
+      steps.forEach(function (step) { step.open = true; });
+      syncControls();
+    });
+
+    collapseButton.addEventListener("click", function () {
+      steps.forEach(function (step) { step.open = false; });
+      syncControls();
+    });
+
+    steps.forEach(function (step) {
+      step.addEventListener("toggle", syncControls);
+    });
+
+    tools.hidden = false;
+    syncControls();
+  }
+
+  /* -----------------------------------------------------------------------
      Print: open every collapsed <details> so the printout has the content,
      then restore what was closed.
      ----------------------------------------------------------------------- */
@@ -252,5 +293,6 @@
   wireQuickNav();
   wireDisclosureLinks();
   wireFaqToggles();
+  wireInstallToggles();
   wirePrint();
 })();

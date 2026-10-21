@@ -9,10 +9,10 @@ The customer-facing landing page for the Agent Review Program, published with Gi
 | Path | What it is |
 |---|---|
 | `index.html` | The landing page: quick navigation, hero, *The program and the tool*, overview video, how the program runs, what Agent Review Center is, screenshot gallery, install summary, what you need to bring, nominate, contact. |
-| `install.html` | Installation guide: nine steps from *Before you start* to *Upgrade or uninstall*, each with who does it, when, and how to check it. |
+| `install.html` | Installation guide: a featured solution download followed by nine individually collapsible steps from *Before you start* to *Upgrade or uninstall*. |
 | `faq.html` | FAQ: program, Agent Review Center, installation, transcripts, results, and updates questions, plus frequently encountered setup errors, each collapsible. |
 | `styles.css` | All styling. Fluent-flavoured tokens, forced dark, responsive, reduced-motion and print aware. |
-| `main.js` | Progressive enhancement: scroll-reveals sections, adds a hairline to the stuck header, highlights the current quick-navigation link, opens an FAQ entry when a link points inside it, and opens every collapsed `<details>` while printing. The site is fully readable and navigable without it. |
+| `main.js` | Progressive enhancement: scroll-reveals sections, adds a hairline to the stuck header, highlights the current quick-navigation link, opens a disclosure when a link points inside it, adds FAQ and installation-guide expand/collapse controls, and opens every collapsed `<details>` while printing. The site is fully readable and navigable without it. |
 | `assets/` | Logo, screenshots, setup screenshots and the overview video. See [`assets/README.md`](assets/README.md). |
 | `.nojekyll` | Tells GitHub Pages to serve these files as-is instead of running them through Jekyll. |
 
@@ -63,8 +63,9 @@ machines without a default mail app.
 
 ## Solution download
 
-The **Download Agent Review Center (.zip)** buttons (`index.html` `#install`, and `install.html`
-`#download`) link straight to the `.zip` attached to the GitHub release, for example
+The **Download Agent Review Center (.zip)** buttons (`index.html` `#install`, and the centered
+featured download near the top of `install.html` at `#download`) link straight to the `.zip`
+attached to the GitHub release, for example
 `https://github.com/microsoft/AI-Solution-Review/releases/download/v20261016.1/AgentReviewCenter_20261016.1_managed.zip`.
 GitHub Pages serves only `docs/`, so the repository-root `.zip` can't be linked from the site, and
 no copy of the binary is kept in `docs/`.
@@ -108,12 +109,23 @@ In both document order and quick navigation, *What you need to bring* must lead 
 
 ## Installation guide
 
-`install.html` is the customer installation guide. It is organized as nine steps, each with a
-*Who / When / Done when* summary and a *Check it worked* box. Link directly to its named section
-anchors rather than to landing-page setup details. Step 1 defines the role names (*Power Platform
-admin, environment admin, System Administrator, agent owner, reviewer*); use only those on every
-page. Steps that change hands end with a *Next:* line. The guide comes from the approved permissions
-and configuration documents, [`guides/install.md`](../guides/install.md),
+`install.html` is the customer installation guide. Keep the solution download centered and prominent
+near the top. The guide is organized as nine native `<details class="install-step">` disclosures,
+collapsed by default. Each summary has the exact step title plus abbreviated *Who* and *When*
+context; the open body keeps the full *Who / When / Done when* summary and *Check it worked* box.
+The reference about installed components is a separate disclosure and does not count as a step.
+
+Every step has a stable section `id`. Link directly to those anchors rather than to landing-page
+setup details: `main.js` opens the correct disclosure before scrolling, including when a link points
+to a nested heading. Never rename or remove an anchor without updating all incoming links.
+*Expand all* / *Collapse all* controls appear when JavaScript is available. Without JavaScript, the
+native disclosures remain keyboard-accessible; print styles expose every body, and JavaScript also
+opens and restores disclosures around printing.
+
+Step 1 defines the role names (*Power Platform admin, environment admin, System Administrator, agent
+owner, reviewer*); use only those on every page. Steps that change hands end with a *Next:* line. The
+guide comes from the approved permissions and configuration documents,
+[`guides/install.md`](../guides/install.md),
 [`guides/prerequisites.md`](../guides/prerequisites.md), the solution package itself, and Microsoft
 Learn for admin-center procedures. Change it together with those sources.
 

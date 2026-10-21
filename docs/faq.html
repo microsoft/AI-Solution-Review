@@ -246,7 +246,7 @@
       <details class="faq" id="who-needs-to-be-involved">
         <summary class="faq__question">Who needs to be involved in setup?</summary>
         <div class="faq__answer">
-          <p>A Power Platform admin for licensing, credits, data policies, and environment settings; a System Administrator in the environment to import the solution; the agent owner, to share the agent; and the reviewers themselves. See <a href="install.html#roles">who&rsquo;s who</a> in the installation guide, and the <a href="./#setup-checklist">setup checklist</a>.</p>
+          <p>A Power Platform admin for licensing, credits, data policies, and environment settings; a System Administrator in the environment to import the solution; the agent owner, to share the agent; and the reviewers themselves. See <a href="install.html#roles">who&rsquo;s who</a> and <a href="install.html#verify">verify the installation</a> in the installation guide.</p>
         </div>
       </details>
 
@@ -341,7 +341,7 @@
         <summary class="faq__question">The import fails, or the apps are missing after the import</summary>
         <div class="faq__answer">
           <p>The environment is not ready for code apps, or the import did not complete.</p>
-          <p>Confirm that <strong>Enable code apps</strong> is on in the environment, and that you are a <strong>System Administrator</strong> there. See <a href="./#setup-step-1">Prepare the target installation environment</a> and <a href="./#setup-step-2">Make sure that Power Apps Code Apps is on</a> in the setup details. Also check that your data policies allow the <a href="#which-connectors">three connectors</a>.</p>
+          <p>Confirm that <strong>Enable code apps</strong> is on in the environment, and that you are a <strong>System Administrator</strong> there. See <a href="install.html#configure-environments">Configure the environments</a> in the installation guide. Also check that your data policies allow the <a href="#which-connectors">three connectors</a>.</p>
         </div>
       </details>
 
@@ -357,7 +357,7 @@
         <div class="faq__answer">
           <p>The setup app (<strong>Copilot Agent Kit Installer</strong>) could not confirm the connections or start the Review Agent Components flow.</p>
           <p>Check that both connections exist and are signed in, and that your data policies allow <strong>Microsoft Dataverse</strong>, <strong>Agents</strong>, and <strong>Power Automate Management</strong> to be used together. Then open the setup app again. It repairs what it can on each run.</p>
-          <p>If it still can&rsquo;t complete, map the connection references and turn the cloud flows on by hand, as in <a href="./#setup-step-5">Install the solution provided by the Agent Review Center team</a> in the setup details, and let your Microsoft contact know.</p>
+          <p>If it still can&rsquo;t complete, follow <a href="install.html#setup-app">Run the one-time setup app</a> in the installation guide, and let your Microsoft contact know.</p>
         </div>
       </details>
 
@@ -365,7 +365,7 @@
         <summary class="faq__question"><span class="faq__tag">Error</span> <q>&hellip;connection references still need a connection.</q></summary>
         <div class="faq__answer">
           <p>A connection reference in the solution has no connection.</p>
-          <p>Run the setup app (<strong>Copilot Agent Kit Installer</strong>), or select the connection in the readiness checklist. To check by hand, see <a href="./#setup-step-5">Install the solution provided by the Agent Review Center team</a> in the setup details.</p>
+          <p>Run the setup app (<strong>Copilot Agent Kit Installer</strong>), or select the connection in the readiness checklist. To check by hand, see <a href="install.html#setup-app">Run the one-time setup app</a> in the installation guide.</p>
         </div>
       </details>
 
@@ -396,7 +396,7 @@
         <summary class="faq__question"><span class="faq__tag">Error</span> <q>Conversation transcript recording is turned off for this environment</q></summary>
         <div class="faq__answer">
           <p>There are no transcripts to analyze.</p>
-          <p>Turn on transcript recording in the agent environment. See <a href="./#setup-step-3">Set transcript recording to on</a> in the setup details. Recording is not retroactive: only conversations after you turn it on are saved.</p>
+          <p>Turn on transcript recording in the agent environment. See <a href="install.html#configure-environments">Configure the environments</a> in the installation guide. Recording is not retroactive: only conversations after you turn it on are saved.</p>
         </div>
       </details>
 
@@ -424,7 +424,7 @@
         <summary class="faq__question"><span class="faq__tag">Error</span> <q>Transcript viewing is blocked for this environment.</q></summary>
         <div class="faq__answer">
           <p>The analysis still runs, but individual conversations cannot be opened to confirm a finding.</p>
-          <p>Turn on <strong>Allow agent owners and editors to see session transcripts&hellip;</strong> for the environment. See <a href="./#setup-step-3">Set transcript recording to on</a> in the setup details.</p>
+          <p>Turn on <strong>Allow agent owners and editors to see session transcripts&hellip;</strong> for the environment. See <a href="install.html#configure-environments">Configure the environments</a> in the installation guide.</p>
         </div>
       </details>
 
@@ -432,7 +432,7 @@
         <summary class="faq__question"><span class="faq__tag">Error</span> <q>Couldn't read conversation transcripts just now.</q></summary>
         <div class="faq__answer">
           <p>Transcripts could not be read at that moment.</p>
-          <p>Try again, or run the review without runtime analysis. Check that the reviewer has the <strong>Bot Transcript Viewer</strong> role. See <a href="./#setup-step-4">Give access to the agent and its transcripts</a> in the setup details.</p>
+          <p>Try again, or run the review without runtime analysis. Check that the reviewer has the <strong>Bot Transcript Viewer</strong> role. See <a href="install.html#share">Share with reviewers</a> in the installation guide.</p>
         </div>
       </details>
 
@@ -518,8 +518,7 @@
 
       <div class="callout faq__more">
         <p>
-          Installing for the first time? Follow the <a href="install.html">installation guide</a>, and check the
-          <a href="./#permissions-setup">Agent Review Center permissions and configuration setup details</a>.
+          Installing for the first time? Follow the <a href="install.html">installation guide</a>.
           During an engagement, raise anything not covered here with your Microsoft contact, or
           <a href="mailto:serenaxie@microsoft.com?subject=Agent%20Review%20Program%20question">contact the Agent Review Program team</a>.
         </p>

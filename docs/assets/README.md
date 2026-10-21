@@ -84,8 +84,8 @@ caption ("348 of 357 configured sources were never cited") quote specific figure
 ## Setup screenshots
 
 Power Platform admin center captures from the *Agent Review Center - Permissions and Configuration
-Checklist* document, shown inside the collapsed setup details on `index.html`. They load lazily, so
-they cost nothing until a visitor opens the details.
+Checklist* document. They are retained as source-reference captures and are not shown on the landing
+page.
 
 | File | Step | What it shows |
 |---|---|---|

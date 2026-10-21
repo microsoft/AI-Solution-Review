@@ -129,7 +129,7 @@
       var sticky = quickNav && window.getComputedStyle(quickNav).position !== "static";
       var marker = window.innerWidth >= 1760 || !sticky
         ? 100
-        : Math.ceil(quickNav.getBoundingClientRect().bottom + 16);
+        : Math.ceil(quickNav.getBoundingClientRect().bottom + 24);
       var current = items[0];
 
       items.forEach(function (item) {
@@ -169,8 +169,8 @@
   }
 
   /* -----------------------------------------------------------------------
-     A link to the collapsed setup details (or to a step inside them) opens
-     the <details> first, so the target is visible when the page scrolls.
+     A link to a target inside collapsed details opens the <details> first,
+     so the target is visible when the page scrolls.
      ----------------------------------------------------------------------- */
   function wireDisclosureLinks() {
     function openForHash() {
@@ -213,8 +213,8 @@
   }
 
   /* -----------------------------------------------------------------------
-     Print: open every collapsed <details> (FAQ answers, setup details) so
-     the printout has the content, then restore what was closed.
+     Print: open every collapsed <details> so the printout has the content,
+     then restore what was closed.
      ----------------------------------------------------------------------- */
   function wirePrint() {
     var opened = [];

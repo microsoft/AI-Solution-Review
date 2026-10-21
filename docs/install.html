@@ -66,90 +66,65 @@
         your own tenant. If you are in the Agent Review Program, you install it together with Microsoft
         experts in Session&nbsp;1. Getting steps 1 to 3 done beforehand makes that session much smoother.
       </p>
-    </div>
-  </section>
 
-  <!-- ============================ AT A GLANCE ============================ -->
-  <section class="section section--alt" aria-labelledby="glance-h">
-    <div class="wrap wrap--narrow">
-      <h2 class="section__title" id="glance-h">At a glance</h2>
-      <p class="section__lede">Nine steps. Most of the early ones need an admin, so share this page with yours.</p>
-
-      <div class="table-wrap">
-        <table class="table table--labelled guide-glance">
-          <caption class="visually-hidden">Installation steps, who does each one, and when</caption>
-          <thead>
-            <tr>
-              <th scope="col">Step</th>
-              <th scope="col">Who</th>
-              <th scope="col">When</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row"><a href="#before-you-start">1. Before you start</a></th>
-              <td data-label="Who">Agent owner, with your admins</td>
-              <td data-label="When">As early as you can</td>
-            </tr>
-            <tr>
-              <th scope="row"><a href="#configure-environments">2. Configure the environments</a></th>
-              <td data-label="Who">Power Platform admin or environment admin</td>
-              <td data-label="When">Before you import. Turn on transcripts first.</td>
-            </tr>
-            <tr>
-              <th scope="row"><a href="#data-policies">3. Data policies and connectors</a></th>
-              <td data-label="Who">Power Platform admin</td>
-              <td data-label="When">Before you import</td>
-            </tr>
-            <tr>
-              <th scope="row"><a href="#import-solution">4. Download and import the solution</a></th>
-              <td data-label="Who">System Administrator</td>
-              <td data-label="When">When steps 2 and 3 are done</td>
-            </tr>
-            <tr>
-              <th scope="row"><a href="#setup-app">5. Run the one-time setup app</a></th>
-              <td data-label="Who">System Administrator</td>
-              <td data-label="When">Right after the import</td>
-            </tr>
-            <tr>
-              <th scope="row"><a href="#share">6. Share with reviewers</a></th>
-              <td data-label="Who">System Administrator and agent owner</td>
-              <td data-label="When">After setup is complete</td>
-            </tr>
-            <tr>
-              <th scope="row"><a href="#verify">7. Verify the installation</a></th>
-              <td data-label="Who">A reviewer, with an admin at hand</td>
-              <td data-label="When">Before your first review</td>
-            </tr>
-            <tr>
-              <th scope="row"><a href="#first-review">8. Run your first review</a></th>
-              <td data-label="Who">A reviewer</td>
-              <td data-label="When">Once the readiness checks pass</td>
-            </tr>
-            <tr>
-              <th scope="row"><a href="#upgrade-uninstall">9. Upgrade or uninstall</a></th>
-              <td data-label="Who">System Administrator</td>
-              <td data-label="When">When a new version is released</td>
-            </tr>
-          </tbody>
-        </table>
+      <!-- Same release asset as the overview page; update both on each release. -->
+      <div class="download-card download-card--featured" id="download" aria-labelledby="download-h">
+        <div class="download-card__text">
+          <p class="download-card__eyebrow">Solution download</p>
+          <h2 class="download-card__title" id="download-h">Download Agent Review Center</h2>
+          <p class="download-card__meta">Version 20261016.1 &middot; managed solution &middot; 1.6&nbsp;MB</p>
+          <p class="download-card__note">Keep the <code>.zip</code> as it is &mdash; don&rsquo;t extract it.</p>
+          <p class="download-card__note">SHA-256 <code class="download-card__hash">DBBF03DCCC2F4F6E208D5BFF70C2260A13E11AC2F74B6CE2AE07DD9673BB364B</code></p>
+        </div>
+        <div class="download-card__actions">
+          <a class="btn btn--primary btn--lg"
+             href="https://github.com/microsoft/AI-Solution-Review/releases/download/v20261016.1/AgentReviewCenter_20261016.1_managed.zip"
+             type="application/zip" download
+             data-solution-download>Download Agent Review Center (.zip)</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="section" aria-label="Installation steps">
+  <section class="section section--alt" aria-labelledby="install-steps-h">
     <div class="wrap wrap--narrow">
+      <div class="install-steps__head">
+        <div>
+          <h2 class="section__title" id="install-steps-h">Installation steps</h2>
+          <p class="section__lede">Nine steps. Open only the step you need; each summary shows who owns it and when to do it.</p>
+        </div>
+        <div class="install-tools" hidden aria-label="Installation step controls">
+          <button class="btn btn--ghost btn--sm" type="button" data-install-toggle="open">Expand all</button>
+          <button class="btn btn--ghost btn--sm" type="button" data-install-toggle="close">Collapse all</button>
+        </div>
+      </div>
 
       <!-- ============================ 1 ============================ -->
-      <section class="phase" id="before-you-start" aria-labelledby="before-you-start-h">
-        <h2 class="phase__title" id="before-you-start-h"><span class="step-num" aria-hidden="true">1</span> Before you start</h2>
+      <details class="phase install-step" id="before-you-start" aria-labelledby="before-you-start-h" data-install-step="1">
+        <summary class="phase__summary">
+          <h3 class="phase__title" id="before-you-start-h">
+            <span class="step-num" aria-hidden="true">1</span>
+            <span class="phase__summary-copy">
+              <span class="phase__summary-title">Before you start</span>
+              <span class="phase__summary-meta"><span><strong>Who:</strong> Agent owner + admins</span><span><strong>When:</strong> As early as you can</span></span>
+            </span>
+            <span class="phase__summary-action" aria-hidden="true">
+              <span class="phase__show">Show</span>
+              <span class="phase__hide">Hide</span>
+              <svg class="phase__chevron" viewBox="0 0 16 16" width="16" height="16" focusable="false">
+                <path d="m4 6 4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </h3>
+        </summary>
+        <div class="phase__body">
         <dl class="phase__meta">
           <dt>Who</dt><dd>The agent owner, with your Power Platform admin and a System Administrator for the environment.</dd>
           <dt>When</dt><dd>As early as you can. Licenses and data policy changes can take time to arrange, and transcripts need time to build up.</dd>
           <dt>Done when</dt><dd>Every task below has a named person.</dd>
         </dl>
 
-        <h3 id="roles">Who&rsquo;s who</h3>
+        <h4 id="roles">Who&rsquo;s who</h4>
         <p>This guide uses these role names:</p>
         <dl class="glossary">
           <dt>Power Platform admin</dt><dd>Manages tenant-wide settings, licenses, capacity, and data policies.</dd>
@@ -159,7 +134,7 @@
           <dt>Reviewer</dt><dd>Runs reviews in Agent Review Center.</dd>
         </dl>
 
-        <h3>Who does what</h3>
+        <h4>Who does what</h4>
         <div class="table-wrap">
           <table class="table table--labelled">
             <caption class="visually-hidden">Installation tasks and who can do each one</caption>
@@ -206,7 +181,7 @@
           </table>
         </div>
 
-        <h3>Plan ahead</h3>
+        <h4>Plan ahead</h4>
         <ul class="bullets">
           <li><strong>Choose the environment.</strong> Two environments can be involved: the <strong>target installation environment</strong>, where you install Agent Review Center, and the <strong>agent environment</strong>, where the agent you review lives. Install in the agent environment if you can, so they are the same. Configuration reviews can cover agents in other environments, but conversation transcripts are only analyzed in the environment where Agent Review Center runs.</li>
           <li><strong>Turn on transcript recording now.</strong> Recording is not retroactive: only conversations after you turn it on are saved. Transcripts are kept for 30 days by default unless an admin changes the retention period, so plan your first review while the conversations you care about are still there. See <a href="https://learn.microsoft.com/en-us/microsoft-copilot-studio/analytics-transcripts-powerapps">Download conversation transcripts in Power Apps</a>.</li>
@@ -218,11 +193,28 @@
         <div class="callout">
           <p>Send your admin this page. It organizes every required setting, role, and installation check by owner.</p>
         </div>
-      </section>
+        </div>
+      </details>
 
       <!-- ============================ 2 ============================ -->
-      <section class="phase" id="configure-environments" aria-labelledby="configure-environments-h">
-        <h2 class="phase__title" id="configure-environments-h"><span class="step-num" aria-hidden="true">2</span> Configure the environments</h2>
+      <details class="phase install-step" id="configure-environments" aria-labelledby="configure-environments-h" data-install-step="2">
+        <summary class="phase__summary">
+          <h3 class="phase__title" id="configure-environments-h">
+            <span class="step-num" aria-hidden="true">2</span>
+            <span class="phase__summary-copy">
+              <span class="phase__summary-title">Configure the environments</span>
+              <span class="phase__summary-meta"><span><strong>Who:</strong> Power Platform or environment admin</span><span><strong>When:</strong> Before import</span></span>
+            </span>
+            <span class="phase__summary-action" aria-hidden="true">
+              <span class="phase__show">Show</span>
+              <span class="phase__hide">Hide</span>
+              <svg class="phase__chevron" viewBox="0 0 16 16" width="16" height="16" focusable="false">
+                <path d="m4 6 4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </h3>
+        </summary>
+        <div class="phase__body">
         <dl class="phase__meta">
           <dt>Who</dt><dd>Power Platform admin or environment admin.</dd>
           <dt>When</dt><dd>Before you import. Turn on transcript recording first, because it only saves conversations from that point on.</dd>
@@ -244,11 +236,28 @@
             <li>Run a test conversation with your agent, then confirm that its transcript appears. See <a href="https://learn.microsoft.com/en-us/microsoft-copilot-studio/analytics-transcripts-powerapps">Download conversation transcripts in Power Apps</a>.</li>
           </ul>
         </div>
-      </section>
+        </div>
+      </details>
 
       <!-- ============================ 3 ============================ -->
-      <section class="phase" id="data-policies" aria-labelledby="data-policies-h">
-        <h2 class="phase__title" id="data-policies-h"><span class="step-num" aria-hidden="true">3</span> Data policies and connectors</h2>
+      <details class="phase install-step" id="data-policies" aria-labelledby="data-policies-h" data-install-step="3">
+        <summary class="phase__summary">
+          <h3 class="phase__title" id="data-policies-h">
+            <span class="step-num" aria-hidden="true">3</span>
+            <span class="phase__summary-copy">
+              <span class="phase__summary-title">Data policies and connectors</span>
+              <span class="phase__summary-meta"><span><strong>Who:</strong> Power Platform admin</span><span><strong>When:</strong> Before import</span></span>
+            </span>
+            <span class="phase__summary-action" aria-hidden="true">
+              <span class="phase__show">Show</span>
+              <span class="phase__hide">Hide</span>
+              <svg class="phase__chevron" viewBox="0 0 16 16" width="16" height="16" focusable="false">
+                <path d="m4 6 4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </h3>
+        </summary>
+        <div class="phase__body">
         <dl class="phase__meta">
           <dt>Who</dt><dd>Power Platform admin.</dd>
           <dt>When</dt><dd>Before you import. After you save a policy change, wait a few minutes for it to take effect.</dd>
@@ -283,7 +292,7 @@
           </table>
         </div>
 
-        <h3>If the environment uses data policies</h3>
+        <h4>If the environment uses data policies</h4>
         <ol class="procedure">
           <li>In the Power Platform admin center, go to <strong>Security &gt; Data and privacy &gt; Data policy</strong>. On older layouts, it&rsquo;s <strong>Policies &gt; Data policies</strong>.</li>
           <li>Open each policy that applies to the environment.</li>
@@ -291,7 +300,7 @@
           <li>Save the policy, and wait a few minutes before you import.</li>
         </ol>
 
-        <h3>If the environment uses advanced connector policies</h3>
+        <h4>If the environment uses advanced connector policies</h4>
         <p>Advanced connector policies block every connector that isn&rsquo;t explicitly allowed, including new ones. Add all three connectors to the allowed list:</p>
         <ul class="bullets">
           <li><strong>For a single environment:</strong> in the Power Platform admin center, select <strong>Security &gt; Data and privacy &gt; Advanced connector policies</strong>, add the connectors, and select <strong>Save</strong>.</li>
@@ -315,39 +324,42 @@
           <a href="faq.html#cannot-edit-policy">I can&rsquo;t edit the policy</a>.
         </p>
         <p class="handoff"><strong>Next:</strong> tell the System Administrator who will import the solution.</p>
-      </section>
+        </div>
+      </details>
 
       <!-- ============================ 4 ============================ -->
-      <section class="phase" id="import-solution" aria-labelledby="import-solution-h">
-        <h2 class="phase__title" id="import-solution-h"><span class="step-num" aria-hidden="true">4</span> Download and import the solution</h2>
+      <details class="phase install-step" id="import-solution" aria-labelledby="import-solution-h" data-install-step="4">
+        <summary class="phase__summary">
+          <h3 class="phase__title" id="import-solution-h">
+            <span class="step-num" aria-hidden="true">4</span>
+            <span class="phase__summary-copy">
+              <span class="phase__summary-title">Download and import the solution</span>
+              <span class="phase__summary-meta"><span><strong>Who:</strong> System Administrator</span><span><strong>When:</strong> After steps 2 and 3</span></span>
+            </span>
+            <span class="phase__summary-action" aria-hidden="true">
+              <span class="phase__show">Show</span>
+              <span class="phase__hide">Hide</span>
+              <svg class="phase__chevron" viewBox="0 0 16 16" width="16" height="16" focusable="false">
+                <path d="m4 6 4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </h3>
+        </summary>
+        <div class="phase__body">
         <dl class="phase__meta">
           <dt>Who</dt><dd>A System Administrator in the target installation environment. The account that imports the solution becomes the owner of its apps, flows, and connection references, so choose it carefully.</dd>
           <dt>When</dt><dd>When steps 2 and 3 are done. The import can take several minutes.</dd>
           <dt>Done when</dt><dd>Each connection reference has a connection, and both cloud flows are on.</dd>
         </dl>
 
-        <h3 id="download">Download</h3>
-        <!-- Same release asset as the overview page; update both on each release. -->
-        <div class="download-card download-card--inline">
-          <div class="download-card__text">
-            <p class="download-card__title">Agent Review Center solution</p>
-            <p class="download-card__meta">Version 20261016.1 &middot; managed solution &middot; 1.6&nbsp;MB</p>
-            <p class="download-card__note">SHA-256 <code class="download-card__hash">DBBF03DCCC2F4F6E208D5BFF70C2260A13E11AC2F74B6CE2AE07DD9673BB364B</code></p>
-          </div>
-          <div class="download-card__actions">
-            <a class="btn btn--primary"
-               href="https://github.com/microsoft/AI-Solution-Review/releases/download/v20261016.1/AgentReviewCenter_20261016.1_managed.zip"
-               type="application/zip" download
-               data-solution-download>Download Agent Review Center (.zip)</a>
-          </div>
-        </div>
+        <h4>Get the solution file</h4>
         <ol class="procedure">
-          <li>Select <strong>Download Agent Review Center (.zip)</strong> above. Every version is also listed on the <a href="https://github.com/microsoft/AI-Solution-Review/releases">GitHub releases page</a>. Downloading it here directly avoids passing the file around by email or chat.</li>
+          <li>If you have not already, use the <a href="#download">featured download at the top of this page</a>. Every version is also listed on the <a href="https://github.com/microsoft/AI-Solution-Review/releases">GitHub releases page</a>. Downloading it here directly avoids passing the file around by email or chat.</li>
           <li>Keep the <code>.zip</code> as it is. Don&rsquo;t extract it. If your browser gives you a folder instead, download it again with automatic unzipping turned off.</li>
-          <li>Optional: check that the file&rsquo;s SHA-256 hash matches the one above. In PowerShell: <code>Get-FileHash .\AgentReviewCenter_20261016.1_managed.zip -Algorithm SHA256</code></li>
+          <li>Optional: check that the file&rsquo;s SHA-256 hash matches the one in the featured download card. In PowerShell: <code>Get-FileHash .\AgentReviewCenter_20261016.1_managed.zip -Algorithm SHA256</code></li>
         </ol>
 
-        <h3>Import</h3>
+        <h4>Import</h4>
         <ol class="procedure">
           <li>Sign in to <a href="https://make.powerapps.com">Power Apps</a> and select the target installation environment.</li>
           <li>Select <strong>Solutions &gt; Import solution &gt; Browse</strong>, choose the <code>.zip</code> file, and select <strong>Next</strong>.</li>
@@ -376,11 +388,28 @@
           <a href="faq.html#faq-install-h">questions about installing Agent Review Center</a>. For a list of
           everything the solution adds, see <a href="#what-gets-installed">What gets installed</a>.
         </p>
-      </section>
+        </div>
+      </details>
 
       <!-- ============================ 5 ============================ -->
-      <section class="phase" id="setup-app" aria-labelledby="setup-app-h">
-        <h2 class="phase__title" id="setup-app-h"><span class="step-num" aria-hidden="true">5</span> Run the one-time setup app</h2>
+      <details class="phase install-step" id="setup-app" aria-labelledby="setup-app-h" data-install-step="5">
+        <summary class="phase__summary">
+          <h3 class="phase__title" id="setup-app-h">
+            <span class="step-num" aria-hidden="true">5</span>
+            <span class="phase__summary-copy">
+              <span class="phase__summary-title">Run the one-time setup app</span>
+              <span class="phase__summary-meta"><span><strong>Who:</strong> System Administrator</span><span><strong>When:</strong> Right after import</span></span>
+            </span>
+            <span class="phase__summary-action" aria-hidden="true">
+              <span class="phase__show">Show</span>
+              <span class="phase__hide">Hide</span>
+              <svg class="phase__chevron" viewBox="0 0 16 16" width="16" height="16" focusable="false">
+                <path d="m4 6 4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </h3>
+        </summary>
+        <div class="phase__body">
         <dl class="phase__meta">
           <dt>Who</dt><dd>A System Administrator, usually the person who imported the solution.</dd>
           <dt>When</dt><dd>Right after the import.</dd>
@@ -434,11 +463,28 @@
 
         <p class="learn-more">See <a href="faq.html#setup-could-not-complete">Setup could not complete</a> in the FAQ if the setup app stops.</p>
         <p class="handoff"><strong>Next:</strong> when setup is complete, tell the agent owner and the reviewers.</p>
-      </section>
+        </div>
+      </details>
 
       <!-- ============================ 6 ============================ -->
-      <section class="phase" id="share" aria-labelledby="share-h">
-        <h2 class="phase__title" id="share-h"><span class="step-num" aria-hidden="true">6</span> Share with reviewers</h2>
+      <details class="phase install-step" id="share" aria-labelledby="share-h" data-install-step="6">
+        <summary class="phase__summary">
+          <h3 class="phase__title" id="share-h">
+            <span class="step-num" aria-hidden="true">6</span>
+            <span class="phase__summary-copy">
+              <span class="phase__summary-title">Share with reviewers</span>
+              <span class="phase__summary-meta"><span><strong>Who:</strong> System Administrator + agent owner</span><span><strong>When:</strong> After setup</span></span>
+            </span>
+            <span class="phase__summary-action" aria-hidden="true">
+              <span class="phase__show">Show</span>
+              <span class="phase__hide">Hide</span>
+              <svg class="phase__chevron" viewBox="0 0 16 16" width="16" height="16" focusable="false">
+                <path d="m4 6 4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </h3>
+        </summary>
+        <div class="phase__body">
         <dl class="phase__meta">
           <dt>Who</dt><dd>A System Administrator assigns roles and shares the app. The agent owner shares the agent.</dd>
           <dt>When</dt><dd>After setup is complete.</dd>
@@ -461,11 +507,28 @@
           <p><strong>Check it worked</strong></p>
           <p>Ask one reviewer to open Agent Review Center.</p>
         </div>
-      </section>
+        </div>
+      </details>
 
       <!-- ============================ 7 ============================ -->
-      <section class="phase" id="verify" aria-labelledby="verify-h">
-        <h2 class="phase__title" id="verify-h"><span class="step-num" aria-hidden="true">7</span> Verify the installation</h2>
+      <details class="phase install-step" id="verify" aria-labelledby="verify-h" data-install-step="7">
+        <summary class="phase__summary">
+          <h3 class="phase__title" id="verify-h">
+            <span class="step-num" aria-hidden="true">7</span>
+            <span class="phase__summary-copy">
+              <span class="phase__summary-title">Verify the installation</span>
+              <span class="phase__summary-meta"><span><strong>Who:</strong> Reviewer + admin</span><span><strong>When:</strong> Before first review</span></span>
+            </span>
+            <span class="phase__summary-action" aria-hidden="true">
+              <span class="phase__show">Show</span>
+              <span class="phase__hide">Hide</span>
+              <svg class="phase__chevron" viewBox="0 0 16 16" width="16" height="16" focusable="false">
+                <path d="m4 6 4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </h3>
+        </summary>
+        <div class="phase__body">
         <dl class="phase__meta">
           <dt>Who</dt><dd>A reviewer, with an admin at hand to fix anything that isn&rsquo;t ready.</dd>
           <dt>When</dt><dd>Before your first review.</dd>
@@ -521,11 +584,28 @@
         </div>
 
         <p>You can still run configuration reviews while items are being fixed. Use <strong>Copy admin link</strong> to send your admin straight to the setting that needs changing, then select <strong>Run checks</strong> again.</p>
-      </section>
+        </div>
+      </details>
 
       <!-- ============================ 8 ============================ -->
-      <section class="phase" id="first-review" aria-labelledby="first-review-h">
-        <h2 class="phase__title" id="first-review-h"><span class="step-num" aria-hidden="true">8</span> Run your first review</h2>
+      <details class="phase install-step" id="first-review" aria-labelledby="first-review-h" data-install-step="8">
+        <summary class="phase__summary">
+          <h3 class="phase__title" id="first-review-h">
+            <span class="step-num" aria-hidden="true">8</span>
+            <span class="phase__summary-copy">
+              <span class="phase__summary-title">Run your first review</span>
+              <span class="phase__summary-meta"><span><strong>Who:</strong> Reviewer</span><span><strong>When:</strong> After readiness checks</span></span>
+            </span>
+            <span class="phase__summary-action" aria-hidden="true">
+              <span class="phase__show">Show</span>
+              <span class="phase__hide">Hide</span>
+              <svg class="phase__chevron" viewBox="0 0 16 16" width="16" height="16" focusable="false">
+                <path d="m4 6 4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </h3>
+        </summary>
+        <div class="phase__body">
         <dl class="phase__meta">
           <dt>Who</dt><dd>A reviewer.</dd>
           <dt>When</dt><dd>Once the readiness checks pass. A configuration-only review can run sooner.</dd>
@@ -547,37 +627,71 @@
           Next: read the results, work through the findings, and measure your fixes. See
           <a href="https://github.com/microsoft/AI-Solution-Review/blob/main/guides/run-a-review.md">Run a review</a> on GitHub.
         </p>
-      </section>
+        </div>
+      </details>
 
       <!-- ============================ 9 ============================ -->
-      <section class="phase" id="upgrade-uninstall" aria-labelledby="upgrade-uninstall-h">
-        <h2 class="phase__title" id="upgrade-uninstall-h"><span class="step-num" aria-hidden="true">9</span> Upgrade or uninstall</h2>
+      <details class="phase install-step" id="upgrade-uninstall" aria-labelledby="upgrade-uninstall-h" data-install-step="9">
+        <summary class="phase__summary">
+          <h3 class="phase__title" id="upgrade-uninstall-h">
+            <span class="step-num" aria-hidden="true">9</span>
+            <span class="phase__summary-copy">
+              <span class="phase__summary-title">Upgrade or uninstall</span>
+              <span class="phase__summary-meta"><span><strong>Who:</strong> System Administrator</span><span><strong>When:</strong> For upgrades or removal</span></span>
+            </span>
+            <span class="phase__summary-action" aria-hidden="true">
+              <span class="phase__show">Show</span>
+              <span class="phase__hide">Hide</span>
+              <svg class="phase__chevron" viewBox="0 0 16 16" width="16" height="16" focusable="false">
+                <path d="m4 6 4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </h3>
+        </summary>
+        <div class="phase__body">
         <dl class="phase__meta">
           <dt>Who</dt><dd>A System Administrator in the environment.</dd>
           <dt>When</dt><dd>When a new version is released, or when you no longer need Agent Review Center.</dd>
           <dt>Done when</dt><dd>After an upgrade, <strong>Run checks</strong> is green.</dd>
         </dl>
 
-        <h3 id="upgrade">Upgrade to a new version</h3>
+        <h4 id="upgrade">Upgrade to a new version</h4>
         <ol class="procedure">
-          <li>Download the new <code>.zip</code> with the <a href="#download">download button in step 4</a>, or from the <a href="https://github.com/microsoft/AI-Solution-Review/releases/latest">latest release</a>.</li>
+          <li>Download the new <code>.zip</code> with the <a href="#download">featured download at the top of this page</a>, or from the <a href="https://github.com/microsoft/AI-Solution-Review/releases/latest">latest release</a>.</li>
           <li>In Power Apps, select <strong>Solutions &gt; Import solution</strong>, and choose the new file.</li>
           <li>Power Apps recognizes that Agent Review Center is already installed. Keep the default upgrade option, and select <strong>Import</strong>.</li>
           <li>Open Agent Review Center and select <strong>Run checks</strong>. If connections or flows show as off, run the setup app again.</li>
         </ol>
         <p>Your existing reviews and results stay in place. To hear about new versions, select <strong>Watch &gt; Custom &gt; Releases</strong> on the <a href="https://github.com/microsoft/AI-Solution-Review">GitHub repository</a>. The <a href="https://github.com/microsoft/AI-Solution-Review/blob/main/CHANGELOG.md">changelog</a> lists what changed.</p>
 
-        <h3 id="uninstall">Uninstall</h3>
+        <h4 id="uninstall">Uninstall</h4>
         <div class="callout callout--warn">
           <p><strong>Caution</strong></p>
           <p>Deleting the solution deletes its Dataverse tables, and <strong>every review and result stored in them</strong>. First, download the PDF or JSON report for any results you want to keep.</p>
         </div>
         <p class="after-callout">In Power Apps, select <strong>Solutions</strong>, select <strong>Agent Review Center</strong>, and then select <strong>Delete</strong>.</p>
-      </section>
+        </div>
+      </details>
 
       <!-- ============================ REFERENCE ============================ -->
-      <section class="phase" id="what-gets-installed" aria-labelledby="what-gets-installed-h">
-        <h2 class="phase__title" id="what-gets-installed-h">Reference: what gets installed</h2>
+      <details class="phase phase--reference" id="what-gets-installed" aria-labelledby="what-gets-installed-h">
+        <summary class="phase__summary">
+          <h3 class="phase__title" id="what-gets-installed-h">
+            <span class="step-num phase__reference-icon" aria-hidden="true">i</span>
+            <span class="phase__summary-copy">
+              <span class="phase__summary-title">Reference: what gets installed</span>
+              <span class="phase__summary-meta">Solution components and data storage</span>
+            </span>
+            <span class="phase__summary-action" aria-hidden="true">
+              <span class="phase__show">Show</span>
+              <span class="phase__hide">Hide</span>
+              <svg class="phase__chevron" viewBox="0 0 16 16" width="16" height="16" focusable="false">
+                <path d="m4 6 4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </h3>
+        </summary>
+        <div class="phase__body">
         <p>Everything is in one managed solution, <strong>Agent Review Center</strong> (<code>AgentReviewCenter</code>), from the publisher <strong>PowerCAT</strong>. It needs Copilot Studio to be available in the environment.</p>
         <div class="table-wrap">
           <table class="table table--labelled">
@@ -616,7 +730,8 @@
             </tbody>
           </table>
         </div>
-      </section>
+        </div>
+      </details>
 
     </div>
   </section>

@@ -854,8 +854,7 @@ html:has(body.page--reference) { scroll-padding-top: 80px; }
 .contact__text { color: var(--text-muted); font-size: .98rem; max-width: 62ch; }
 .contact__btn { flex-shrink: 0; }
 
-/* ---------- solution download ----------
-   The button points at the GitHub release asset; see .github/RELEASING.md. */
+/* ---------- Microsoft Marketplace card ---------- */
 .download-card {
   display: flex;
   flex-wrap: wrap;
@@ -897,7 +896,6 @@ html:has(body.page--reference) { scroll-padding-top: 80px; }
 }
 .download-card__meta,
 .download-card__note { margin-bottom: .15rem; color: var(--text-muted); font-size: .9rem; }
-.download-card__hash { font-size: .78rem; overflow-wrap: anywhere; word-break: break-all; }
 .download-card__actions { display: flex; flex-wrap: wrap; gap: .7rem; }
 .download-card--featured .download-card__text { flex-basis: auto; }
 .download-card--featured .download-card__title { font-size: clamp(1.25rem, 2.5vw, 1.55rem); }

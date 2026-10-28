@@ -9,7 +9,7 @@ The customer-facing landing page for the Agent Review Program, published with Gi
 | Path | What it is |
 |---|---|
 | `index.html` | The landing page: quick navigation, hero, *The program and the tool*, overview video, how the program runs, what Agent Review Center is, screenshot gallery, install summary, what you need to bring, nominate, contact. |
-| `install.html` | Installation guide: a featured solution download followed by nine individually collapsible steps from *Before you start* to *Upgrade or uninstall*. |
+| `install.html` | Installation guide: a featured Microsoft Marketplace card followed by nine individually collapsible steps from *Before you start* to *Upgrade or uninstall*. |
 | `faq.html` | FAQ: program, Agent Review Center, installation, transcripts, results, and updates questions, plus frequently encountered setup errors, each collapsible. |
 | `styles.css` | All styling. Fluent-flavoured tokens, forced dark, responsive, reduced-motion and print aware. |
 | `main.js` | Progressive enhancement: scroll-reveals sections, adds a hairline to the stuck header, highlights the current quick-navigation link, opens a disclosure when a link points inside it, adds FAQ and installation-guide expand/collapse controls, and opens every collapsed `<details>` while printing. The site is fully readable and navigable without it. |
@@ -61,17 +61,17 @@ When the team gets a shared mailbox, search `docs/` for `serenaxie@microsoft.com
 occurrence. The address is shown as visible text as well as a link, because `mailto:` does nothing on
 machines without a default mail app.
 
-## Solution download
+## Microsoft Marketplace
 
-The **Download Agent Review Center (.zip)** buttons (`index.html` `#install`, and the centered
-featured download near the top of `install.html` at `#download`) link straight to the `.zip`
-attached to the GitHub release, for example
-`https://github.com/microsoft/AI-Solution-Review/releases/download/v20261016.1/AgentReviewCenter_20261016.1_managed.zip`.
-GitHub Pages serves only `docs/`, so the repository-root `.zip` can't be linked from the site, and
-no copy of the binary is kept in `docs/`.
+The primary Agent Review Center calls to action (`index.html` `#install`, and the centered featured
+card near the top of `install.html` at `#download`) link to the official Microsoft Marketplace
+listing:
+`https://marketplace.microsoft.com/en-us/product/microsoftpowercatarch.agentreviewprogram`.
 
-The URL, version, size and (on `install.html`) SHA-256 are written into both pages. **Update them
-on every release** — this is a step in [`.github/RELEASING.md`](../.github/RELEASING.md).
+Keep the listing title and publisher aligned with Marketplace: **Agent Review Center**, published by
+**Microsoft Corp - Power CAT**. The website intentionally does not expose a solution `.zip`, version,
+size, or SHA-256. GitHub releases remain available for maintainers, but customer installation starts
+in Marketplace.
 
 ## Dark only, on purpose
 
@@ -109,8 +109,8 @@ In both document order and quick navigation, *What you need to bring* must lead 
 
 ## Installation guide
 
-`install.html` is the customer installation guide. Keep the solution download centered and prominent
-near the top. The guide is organized as nine native `<details class="install-step">` disclosures,
+`install.html` is the customer installation guide. Keep the Microsoft Marketplace card centered and
+prominent near the top. The guide is organized as nine native `<details class="install-step">` disclosures,
 collapsed by default. Each summary has the exact step title plus abbreviated *Who* and *When*
 context; the open body keeps the full *Who / When / Done when* summary and *Check it worked* box.
 The reference about installed components is a separate disclosure and does not count as a step.

@@ -62,25 +62,23 @@
         check that it worked.
       </p>
       <p class="pagehead__body">
-        Agent Review Center is a managed Power Platform solution that you import into an environment in
-        your own tenant. If you are in the Agent Review Program, you install it together with Microsoft
-        experts in Session&nbsp;1. Getting steps 1 to 3 done beforehand makes that session much smoother.
+        Agent Review Center is a managed Power Platform solution that you add to an environment in your
+        own tenant from Microsoft Marketplace. If you are in the Agent Review Program, you install it
+        together with Microsoft experts in Session&nbsp;1. Getting steps 1 to 3 done beforehand makes
+        that session much smoother.
       </p>
 
-      <!-- Same release asset as the overview page; update both on each release. -->
+      <!-- Same Marketplace listing as the overview page. Keep both links in sync. -->
       <div class="download-card download-card--featured" id="download" aria-labelledby="download-h">
         <div class="download-card__text">
-          <p class="download-card__eyebrow">Solution download</p>
-          <h2 class="download-card__title" id="download-h">Download Agent Review Center</h2>
-          <p class="download-card__meta">Version 20261016.1 &middot; managed solution &middot; 1.6&nbsp;MB</p>
-          <p class="download-card__note">Keep the <code>.zip</code> as it is &mdash; don&rsquo;t extract it.</p>
-          <p class="download-card__note">SHA-256 <code class="download-card__hash">DBBF03DCCC2F4F6E208D5BFF70C2260A13E11AC2F74B6CE2AE07DD9673BB364B</code></p>
+          <p class="download-card__eyebrow">Microsoft Marketplace</p>
+          <h2 class="download-card__title" id="download-h">Get Agent Review Center</h2>
+          <p class="download-card__meta">Free &middot; Published by Microsoft Corp - Power CAT</p>
+          <p class="download-card__note">Select <strong>Get it now</strong>, sign in, and follow the prompts to install the managed solution in your target environment.</p>
         </div>
         <div class="download-card__actions">
           <a class="btn btn--primary btn--lg"
-             href="https://github.com/microsoft/AI-Solution-Review/releases/download/v20261016.1/AgentReviewCenter_20261016.1_managed.zip"
-             type="application/zip" download
-             data-solution-download>Download Agent Review Center (.zip)</a>
+             href="https://marketplace.microsoft.com/en-us/product/microsoftpowercatarch.agentreviewprogram">Open Microsoft Marketplace</a>
         </div>
       </div>
     </div>
@@ -333,7 +331,7 @@
           <h3 class="phase__title" id="import-solution-h">
             <span class="step-num" aria-hidden="true">4</span>
             <span class="phase__summary-copy">
-              <span class="phase__summary-title">Download and import the solution</span>
+              <span class="phase__summary-title">Get Agent Review Center from Marketplace</span>
               <span class="phase__summary-meta"><span><strong>Who:</strong> System Administrator</span><span><strong>When:</strong> After steps 2 and 3</span></span>
             </span>
             <span class="phase__summary-action" aria-hidden="true">
@@ -347,44 +345,29 @@
         </summary>
         <div class="phase__body">
         <dl class="phase__meta">
-          <dt>Who</dt><dd>A System Administrator in the target installation environment. The account that imports the solution becomes the owner of its apps, flows, and connection references, so choose it carefully.</dd>
-          <dt>When</dt><dd>When steps 2 and 3 are done. The import can take several minutes.</dd>
-          <dt>Done when</dt><dd>Each connection reference has a connection, and both cloud flows are on.</dd>
+          <dt>Who</dt><dd>A System Administrator in the target installation environment. The account that installs the solution becomes the owner of its apps, flows, and connection references, so choose it carefully.</dd>
+          <dt>When</dt><dd>When steps 2 and 3 are done. Installation can take several minutes.</dd>
+          <dt>Done when</dt><dd>Agent Review Center and its managed solution appear in the target environment.</dd>
         </dl>
 
-        <h4>Get the solution file</h4>
+        <h4>Install from Microsoft Marketplace</h4>
         <ol class="procedure">
-          <li>If you have not already, use the <a href="#download">featured download at the top of this page</a>. Every version is also listed on the <a href="https://github.com/microsoft/AI-Solution-Review/releases">GitHub releases page</a>. Downloading it here directly avoids passing the file around by email or chat.</li>
-          <li>Keep the <code>.zip</code> as it is. Don&rsquo;t extract it. If your browser gives you a folder instead, download it again with automatic unzipping turned off.</li>
-          <li>Optional: check that the file&rsquo;s SHA-256 hash matches the one in the featured download card. In PowerShell: <code>Get-FileHash .\AgentReviewCenter_20261016.1_managed.zip -Algorithm SHA256</code></li>
+          <li>Open the <a href="https://marketplace.microsoft.com/en-us/product/microsoftpowercatarch.agentreviewprogram">Agent Review Center listing in Microsoft Marketplace</a>, and confirm that the publisher is <strong>Microsoft Corp - Power CAT</strong>.</li>
+          <li>Select <strong>Get it now</strong>, then sign in with the System Administrator account you chose for the target environment.</li>
+          <li>Follow the Marketplace prompts, choose the target installation environment, and start the installation.</li>
+          <li>Wait for Marketplace to finish adding the managed solution.</li>
         </ol>
-
-        <h4>Import</h4>
-        <ol class="procedure">
-          <li>Sign in to <a href="https://make.powerapps.com">Power Apps</a> and select the target installation environment.</li>
-          <li>Select <strong>Solutions &gt; Import solution &gt; Browse</strong>, choose the <code>.zip</code> file, and select <strong>Next</strong>.</li>
-          <li>Check the details: the solution is <strong>Agent Review Center</strong>, from the publisher <strong>PowerCAT</strong>. Select <strong>Next</strong>.</li>
-          <li>For each connection reference, select an existing connection or create one:
-            <ul>
-              <li><strong>Agent Review Center | Dataverse</strong>: Microsoft Dataverse</li>
-              <li><strong>Agent Review Tool | Agents</strong>: Agents</li>
-            </ul>
-          </li>
-          <li>Select <strong>Import</strong>, and wait for the success message.</li>
-        </ol>
-        <p>Set both connections here if you can. The setup app in the next step checks them. If it can&rsquo;t complete, use the checks in <a href="#setup-app">Run the one-time setup app</a> and the linked FAQ troubleshooting.</p>
 
         <div class="callout callout--verify">
           <p><strong>Check it worked</strong></p>
           <ul class="bullets bullets--compact">
-            <li>In the solution, <strong>Connection references</strong> shows a valid connection for each one.</li>
-            <li>In Power Automate, under <strong>Solutions &gt; Agent Review Center &gt; Cloud flows</strong>, both flows show <strong>On</strong>.</li>
+            <li>In <a href="https://make.powerapps.com">Power Apps</a>, select the target environment. Under <strong>Apps</strong>, <strong>Agent Review Center</strong> appears.</li>
+            <li>Under <strong>Solutions</strong>, the managed <strong>Agent Review Center</strong> solution appears.</li>
           </ul>
         </div>
 
         <p class="learn-more">
-          Import failed? See <a href="faq.html#import-fails-apps-missing">The import fails, or the apps are missing</a>,
-          <a href="faq.html#zip-became-folder">I have a folder instead of a .zip file</a>, and the other
+          Installation failed? See <a href="faq.html#import-fails-apps-missing">The installation fails, or the apps are missing</a>, and the other
           <a href="faq.html#faq-install-h">questions about installing Agent Review Center</a>. For a list of
           everything the solution adds, see <a href="#what-gets-installed">What gets installed</a>.
         </p>
@@ -657,9 +640,9 @@
 
         <h4 id="upgrade">Upgrade to a new version</h4>
         <ol class="procedure">
-          <li>Download the new <code>.zip</code> with the <a href="#download">featured download at the top of this page</a>, or from the <a href="https://github.com/microsoft/AI-Solution-Review/releases/latest">latest release</a>.</li>
-          <li>In Power Apps, select <strong>Solutions &gt; Import solution</strong>, and choose the new file.</li>
-          <li>Power Apps recognizes that Agent Review Center is already installed. Keep the default upgrade option, and select <strong>Import</strong>.</li>
+          <li>Open the <a href="https://marketplace.microsoft.com/en-us/product/microsoftpowercatarch.agentreviewprogram">Agent Review Center listing in Microsoft Marketplace</a>, and select <strong>Get it now</strong>.</li>
+          <li>Sign in with a System Administrator account, choose the environment where Agent Review Center is already installed, and follow the Marketplace prompts.</li>
+          <li>Wait for Marketplace to finish updating the managed solution.</li>
           <li>Open Agent Review Center and select <strong>Run checks</strong>. If connections or flows show as off, run the setup app again.</li>
         </ol>
         <p>Your existing reviews and results stay in place. To hear about new versions, select <strong>Watch &gt; Custom &gt; Releases</strong> on the <a href="https://github.com/microsoft/AI-Solution-Review">GitHub repository</a>. The <a href="https://github.com/microsoft/AI-Solution-Review/blob/main/CHANGELOG.md">changelog</a> lists what changed.</p>

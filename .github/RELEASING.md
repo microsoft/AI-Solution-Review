@@ -31,11 +31,9 @@ In one pull request:
    what changed for customers.
 4. Update the version in the `Get-FileHash` example in [`guides/install.md`](../guides/install.md#2-download-the-solution)
    and the placeholder in [`ISSUE_TEMPLATE/2-setup-problem.yml`](ISSUE_TEMPLATE/2-setup-problem.yml).
-5. Update the website's **Download Agent Review Center (.zip)** buttons in
-   [`docs/index.html`](../docs/index.html) (`#install`) and [`docs/install.html`](../docs/install.html)
-   (`#download`): the release-asset URL (`releases/download/v<version>/AgentReviewCenter_<version>_managed.zip`),
-   version, size, and — on `install.html` — the SHA-256 and the `Get-FileHash` example. The links
-   will 404 until step 3's release exists, so merge this pull request and publish the release together.
+5. Do not put the release asset on the customer website. Its installation calls to action intentionally
+   point to the official [Microsoft Marketplace listing](https://marketplace.microsoft.com/en-us/product/microsoftpowercatarch.agentreviewprogram).
+   Update that URL only if the Marketplace listing itself changes.
 6. If setup steps, prerequisites, or messages in the app changed, update the
    [guides](../guides/README.md).
 
@@ -52,6 +50,7 @@ gh release create v<version> .\AgentReviewCenter_<version>_managed.zip `
   --latest
 ```
 
-Then check that the README links, the website's download buttons, and the
-[latest release](https://github.com/microsoft/AI-Solution-Review/releases/latest) all download the
-new file.
+Then check that the README links and the
+[latest release](https://github.com/microsoft/AI-Solution-Review/releases/latest) download the new
+file. Separately confirm that the customer website still sends people to Microsoft Marketplace,
+not to a GitHub release asset.

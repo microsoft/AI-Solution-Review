@@ -4,6 +4,15 @@ New versions of the Agent Review Center managed solution, newest first. Download
 [Releases](https://github.com/microsoft/AI-Solution-Review/releases). To upgrade, see
 [Upgrade to a new version](guides/install.md#upgrade-to-a-new-version).
 
+## 20261104.2
+
+- **File:** `AgentReviewCenter_20261104.2_managed.zip` (1.6 MB)
+- **SHA-256:** `A84181F51409214B72705DCF27C8879B243F4875BF4006620BBD1A4A3D393448`
+
+Updated the managed solution package to version `20261104.2`. The website now offers the package
+as an alternative download, while Microsoft Marketplace remains the primary installation route.
+For manual installation or upgrade, follow the [install guide](guides/install.md).
+
 ## 20261016.1
 
 - **File:** `AgentReviewCenter_20261016.1_managed.zip` (1.6 MB)

@@ -31,9 +31,11 @@ In one pull request:
    what changed for customers.
 4. Update the version in the `Get-FileHash` example in [`guides/install.md`](../guides/install.md#2-download-the-solution)
    and the placeholder in [`ISSUE_TEMPLATE/2-setup-problem.yml`](ISSUE_TEMPLATE/2-setup-problem.yml).
-5. Do not put the release asset on the customer website. Its installation calls to action intentionally
-   point to the official [Microsoft Marketplace listing](https://marketplace.microsoft.com/en-us/product/microsoftpowercatarch.agentreviewprogram).
-   Update that URL only if the Marketplace listing itself changes.
+5. Update the alternative ZIP download links, version, and size in `docs/index.html` and
+   `docs/install.html`. Keep Microsoft Marketplace as the primary installation route, and preserve
+   the links to the manual installation guide and repository checksum. Update the official
+   [Microsoft Marketplace listing](https://marketplace.microsoft.com/en-us/product/microsoftpowercatarch.agentreviewprogram)
+   URL only if the listing itself changes.
 6. If setup steps, prerequisites, or messages in the app changed, update the
    [guides](../guides/README.md).
 
@@ -52,5 +54,5 @@ gh release create v<version> .\AgentReviewCenter_<version>_managed.zip `
 
 Then check that the README links and the
 [latest release](https://github.com/microsoft/AI-Solution-Review/releases/latest) download the new
-file. Separately confirm that the customer website still sends people to Microsoft Marketplace,
-not to a GitHub release asset.
+file. Separately confirm that the customer website keeps Microsoft Marketplace as the primary route
+and that both alternative ZIP download buttons provide the new file.

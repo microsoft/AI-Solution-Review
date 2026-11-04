@@ -69,9 +69,10 @@ listing:
 `https://marketplace.microsoft.com/en-us/product/microsoftpowercatarch.agentreviewprogram`.
 
 Keep the listing title and publisher aligned with Marketplace: **Agent Review Center**, published by
-**Microsoft Corp - Power CAT**. The website intentionally does not expose a solution `.zip`, version,
-size, or SHA-256. GitHub releases remain available for maintainers, but customer installation starts
-in Marketplace.
+**Microsoft Corp - Power CAT**. Marketplace remains the primary installation route. Both download
+cards also offer the current managed solution ZIP as an alternative, with its version, size, and a
+link to the manual installation guide. Keep these ZIP links and version details aligned with the
+repository's [download table](../README.md#download); the featured card links there for the SHA-256.
 
 ## Dark only, on purpose
 

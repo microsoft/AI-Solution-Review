@@ -14,8 +14,8 @@ body:
     id: version
     attributes:
       label: Solution version
-      description: The version from the file name, for example 20261016.1.
-      placeholder: "20261016.1"
+      description: The version from the file name, for example 20261104.2.
+      placeholder: "20261104.2"
     validations:
       required: true
   - type: dropdown

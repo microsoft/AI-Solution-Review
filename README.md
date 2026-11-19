@@ -45,10 +45,10 @@ Platform environment in your own tenant.
 
 | | |
 |---|---|
-| **Latest version** | `20261104.2` — see the [changelog](CHANGELOG.md) |
-| **File** | [`AgentReviewCenter_20261104.2_managed.zip`](AgentReviewCenter_20261104.2_managed.zip) (1.6 MB) |
-| **Download** | [Latest release](https://github.com/microsoft/AI-Solution-Review/releases/latest) · [Direct download](https://github.com/microsoft/AI-Solution-Review/raw/main/AgentReviewCenter_20261104.2_managed.zip) |
-| **SHA-256** | `A84181F51409214B72705DCF27C8879B243F4875BF4006620BBD1A4A3D393448` |
+| **Latest version** | `20261119.2` — see the [changelog](CHANGELOG.md) |
+| **File** | [`AgentReviewCenter_20261119.2_managed.zip`](AgentReviewCenter_20261119.2_managed.zip) (2.0 MB) |
+| **Download** | [Latest release](https://github.com/microsoft/AI-Solution-Review/releases/latest) · [Direct download](https://github.com/microsoft/AI-Solution-Review/raw/main/AgentReviewCenter_20261119.2_managed.zip) |
+| **SHA-256** | `EC4AD5B5ECC1835D18AA54AD08577EA56303D3EE368BB90E64B06F6031186DA1` |
 
 Import the `.zip` as-is — do not extract it. Get the [prerequisites](guides/prerequisites.md) in
 place first, then follow the [install guide](guides/install.md).

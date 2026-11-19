@@ -40,7 +40,7 @@ Optionally, confirm the file is intact by comparing its hash with the SHA-256 pu
 [README](../README.md#download) and the release notes:
 
 ```powershell
-Get-FileHash .\AgentReviewCenter_20261104.2_managed.zip -Algorithm SHA256
+Get-FileHash .\AgentReviewCenter_20261119.2_managed.zip -Algorithm SHA256
 ```
 
 ## 3. Import the solution
